@@ -23,7 +23,12 @@ export default function Header() {
           <img
             src="/logo.png"
             alt="Oportunidades"
-            className="h-10 w-auto"
+            className="hidden h-10 w-auto md:block"
+          />
+          <img
+            src="/logo-mobile.png"
+            alt="Oportunidades"
+            className="block h-10 w-auto md:hidden"
           />
         </Link>
 

@@ -16,7 +16,7 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel'
 import { Input } from '@/components/ui/input'
-import { ArrowLeft, ArrowRight, Search } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Bookmark, Search } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 const categories = [
@@ -136,7 +136,7 @@ function HeroSection() {
       />
       <Header transparent />
 
-      <div className="relative mx-auto grid max-w-6xl gap-12 px-4 pb-16 pt-20 md:pt-48 md:grid-cols-2 md:items-center">
+      <div className="relative mx-auto grid max-w-6xl gap-12 md:gap-24 px-4 pb-16 pt-20 md:pt-48 md:grid-cols-2 md:items-center justify-between">
         <div>
           <h1 className="mt-4 text-2xl font-bold leading-tight text-navy md:text-4xl">
             Encontra aqui a tua próxima oportunidade
@@ -165,16 +165,32 @@ function HeroSection() {
         </div>
 
         <div className="relative">
-          <img 
+          <img
             src="/ready-graduation.png"
-            className="w-full object-cover object-[100%_20%] h-92 md:h-[500px] rounded-xl"
-            alt="Oportunidades" 
+            className="h-92 w-full rounded-xl object-cover object-[100%_20%]"
+            alt="Oportunidades"
           />
-          <div className="absolute -bottom-6 left-6 rounded-md bg-white p-4 shadow-lg">
-            <p className="text-sm font-semibold text-navy">
-              +250 candidaturas este mês
-            </p>
-            <p className="text-xs text-soft">Atualizado em tempo real</p>
+          <div className="absolute -bottom-6 left-6 w-[320px] rounded-xl border border-sand bg-white p-4 shadow-lg shadow-black/10">
+            <div className="flex items-start justify-between gap-3">
+              <span className="inline-block rounded-full bg-brand px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-white">
+                Valido até 10/01/2026
+              </span>
+              <Bookmark className="h-5 w-5 text-brand" aria-hidden="true" />
+            </div>
+            <div className="mt-4 flex items-start justify-between gap-4">
+              <div>
+                <p className="text-base font-semibold text-navy">STEM Excellence</p>
+                <p className="mt-1 text-xs text-muted">
+                  Oferecido pela: Mozal
+                </p>
+              </div>
+              <div className="text-right">
+                <p className="text-xs font-semibold uppercase tracking-[0.1em] text-muted">
+                  Até
+                </p>
+                <p className="text-xl font-bold text-brand">$2,500</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

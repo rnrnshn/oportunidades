@@ -2,11 +2,13 @@ import {
   HeadContent,
   Scripts,
   createRootRouteWithContext,
+  Link,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import Header from '../components/Header'
+import { Button } from '@/components/ui/button'
 
 import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 
@@ -29,10 +31,55 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'Oportunidades',
+      },
+      {
+        name: 'description',
+        content: 'Plataforma moçambicana para descobrir bolsas, estágios e oportunidades académicas.',
+      },
+      {
+        name: 'theme-color',
+        content: '#0049AF',
       },
     ],
     links: [
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png',
+      },
+      {
+        rel: 'icon',
+        href: '/favicon.ico',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '192x192',
+        href: '/android-chrome-192x192.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '512x512',
+        href: '/android-chrome-512x512.png',
+      },
+      {
+        rel: 'manifest',
+        href: '/manifest.json',
+      },
       {
         rel: 'stylesheet',
         href: appCss,
@@ -41,6 +88,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
   }),
 
   shellComponent: RootDocument,
+  notFoundComponent: NotFoundPage,
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
@@ -67,5 +115,38 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <Scripts />
       </body>
     </html>
+  )
+}
+
+function NotFoundPage() {
+  return (
+    <main className="bg-canvas-soft text-navy">
+      <div className="mx-auto flex min-h-[70vh] max-w-4xl flex-col items-center justify-center gap-4 px-4 text-center">
+        <span className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-strong">
+          Página não encontrada
+        </span>
+        <h1 className="text-4xl font-bold tracking-tight">
+          Não encontrámos essa página
+        </h1>
+        <p className="max-w-2xl text-base text-soft">
+          O endereço que procuras pode ter sido removido ou está temporariamente
+          indisponível. Verifica o URL ou regressa à página inicial.
+        </p>
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+          <Button
+            variant="outline"
+            className="rounded-md border-sand-strong text-navy"
+            onClick={() => window.history.back()}
+          >
+            Voltar
+          </Button>
+          <Link to="/">
+            <Button className="rounded-md bg-brand px-6 py-2 font-semibold text-white hover:bg-brand-dark">
+              Ir para o início
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </main>
   )
 }

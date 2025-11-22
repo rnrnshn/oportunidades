@@ -21,7 +21,7 @@ export default function Header() {
       <div className="max-w-6xl mx-auto flex items-center gap-4 px-4 py-4">
         <Link to="/" className="flex items-center gap-2">
           <img
-            src="/logo.svg"
+            src="/logo.png"
             alt="Oportunidades"
             className="h-10 w-auto"
           />

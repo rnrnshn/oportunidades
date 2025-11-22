@@ -3,6 +3,7 @@ import {
   Scripts,
   createRootRouteWithContext,
   Link,
+  useRouterState,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
@@ -84,6 +85,19 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         rel: 'stylesheet',
         href: appCss,
       },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossOrigin: 'anonymous',
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+      },
     ],
   }),
 
@@ -98,8 +112,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <Header />
-        {children}
+        <BodyLayout>{children}</BodyLayout>
         <TanStackDevtools
           config={{
             position: 'bottom-right',
@@ -115,6 +128,18 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <Scripts />
       </body>
     </html>
+  )
+}
+
+function BodyLayout({ children }: { children: React.ReactNode }) {
+  const { location } = useRouterState()
+  const isHome = location.pathname === '/'
+
+  return (
+    <>
+      {!isHome && <Header />}
+      {children}
+    </>
   )
 }
 

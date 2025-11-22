@@ -1,4 +1,5 @@
 import ImagePlaceholder from '@/components/ImagePlaceholder'
+import Header from '@/components/Header'
 import SiteFooter from '@/components/SiteFooter'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -129,55 +130,45 @@ export function PublicHomePage() {
 function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-canvas-soft">
-      <div className="relative mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-2 md:items-center lg:py-20">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[url('/header-pattern-bg.svg')] bg-cover bg-center opacity-60"
+        aria-hidden="true"
+      />
+      <Header transparent />
+
+      <div className="relative mx-auto grid max-w-6xl gap-12 px-4 pb-16 pt-20 md:pt-48 md:grid-cols-2 md:items-center">
         <div>
-          <span className="text-sm font-semibold uppercase tracking-[0.2em] text-warm">
-            Plataforma verificada
-          </span>
-          <h1 className="mt-4 text-4xl font-bold leading-tight text-navy md:text-5xl">
+          <h1 className="mt-4 text-2xl font-bold leading-tight text-navy md:text-4xl">
             Encontra aqui a tua próxima oportunidade
           </h1>
-          <p className="mt-4 text-base text-subtle md:text-lg">
-            Bolsas, estágios, empregos e universidades, tudo num só lugar.
-            Descobre programas atualizados, prazos e orientações completas.
+          <p className="mt-4 text-subtle">
+            Bolsas de estudo, universidades, estágios e empregos, tudo num só espaço pensado para estudantes e jovens profissionais.
           </p>
 
           <form
-            className="mt-8 flex flex-col gap-3 rounded-md bg-white/60 p-3 shadow-lg md:flex-row md:items-center"
+            className="mt-8 flex w-full max-w-2xl items-center overflow-hidden rounded-xl bg-white shadow-lg shadow-black/10 ring-1 ring-black/5"
             onSubmit={(event) => event.preventDefault()}
           >
-            <div className="flex flex-1 items-center gap-3 rounded-md bg-white px-4 py-3">
-              <Search className="text-hint-2" size={20} />
-              <Input
-                type="text"
-                placeholder="Bolsa, universidade, empresa..."
-                className="h-auto border-none bg-transparent p-0 text-sm text-navy shadow-none placeholder:text-hint focus-visible:ring-0"
-              />
-            </div>
+            <Input
+              type="text"
+              placeholder="Bolsa em Maputo"
+              className="h-12 flex-1 border-none bg-transparent px-5 text-sm text-navy shadow-none placeholder:text-gray-400 focus-visible:ring-0 focus-visible:outline-none"
+            />
             <Button
               type="submit"
-              className="rounded-md bg-brand px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark"
+              className="flex h-12 w-14 shrink-0 items-center justify-center rounded-none bg-brand text-white transition hover:bg-brand-dark"
+              aria-label="Pesquisar"
             >
-              Pesquisar
+              <Search className="h-5 w-5" strokeWidth={2.5} />
             </Button>
           </form>
-
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-soft">
-            <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-md bg-brand" />
-              Atualizado diariamente
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-md bg-gold" />
-              Conteúdo verificado
-            </div>
-          </div>
         </div>
 
         <div className="relative">
-          <ImagePlaceholder
-            label="Imagem destaque"
-            className="h-64 w-full rounded-md"
+          <img 
+            src="/ready-graduation.png"
+            className="w-full object-cover object-[100%_20%] h-92 md:h-[500px] rounded-xl"
+            alt="Oportunidades" 
           />
           <div className="absolute -bottom-6 left-6 rounded-md bg-white p-4 shadow-lg">
             <p className="text-sm font-semibold text-navy">

@@ -4,26 +4,34 @@ import { useState } from 'react'
 
 import { AuthDialog } from '@/features/auth/AuthDialog'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 const navLinks = [
-  { label: 'Oportunidades', to: '/' },
-  { label: 'Universidades', to: '/' },
-  { label: 'Empregos', to: '/' },
+  { label: 'Bolsas de Estudo', to: '/' },
+  { label: 'Universidade', to: '/' },
+  { label: 'Emprego', to: '/' },
   { label: 'Sobre', to: '/about' },
 ]
 
-export default function Header() {
+export default function Header({ transparent = false }: { transparent?: boolean }) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [authMode, setAuthMode] = useState<'login' | 'signup' | null>(null)
 
   return (
-    <header className="bg-canvas-soft border-b border-sand sticky top-0 z-40">
-      <div className="max-w-6xl mx-auto flex items-center gap-4 px-4 py-4">
+    <header
+      className={cn(
+        'z-40 w-full',
+        transparent
+          ? 'absolute inset-x-0 top-0 border-transparent bg-transparent'
+          : 'sticky top-0 border-b border-sand bg-canvas-soft'
+      )}
+    >
+      <div className="max-w-6xl mx-auto flex items-center justify-between  px-4 py-4">
         <Link to="/" className="flex items-center gap-2">
           <img
             src="/logo.png"
             alt="Oportunidades"
-            className="hidden h-10 w-auto md:block"
+            className="hidden h-12 w-auto md:block"
           />
           <img
             src="/logo-mobile.png"
@@ -32,7 +40,7 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-navy">
+        <nav className="hidden md:flex items-center  gap-6 text-sm font-medium text-navy">
           {navLinks.map((link) => (
             <Link
               key={link.label}
@@ -44,16 +52,16 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="ml-auto hidden md:flex items-center gap-3">
+        <div className="hidden md:grid md:grid-cols-2 items-center gap-3">
           <Button
             variant="outline"
-            className="rounded-md border-brand border-opacity-30 text-brand"
+            className="rounded-lg border-brand border-opacity-30 text-brand"
             onClick={() => setAuthMode('login')}
           >
             Entrar
           </Button>
           <Button
-            className="rounded-md bg-brand hover:bg-brand-dark"
+            className="rounded-lg bg-brand hover:bg-brand-dark"
             onClick={() => setAuthMode('signup')}
           >
             Criar conta

@@ -36,16 +36,16 @@ const categories = [
 
 const steps = [
   {
-    title: 'Candidata-te com confiança',
-    description: 'Processos explicados passo a passo com requisitos claros.',
+    title: 'Candidata-te e evolui',
+    description: 'Entra em contacto directo com instituições e empresas.',
   },
   {
-    title: 'Recebe orientação',
-    description: 'Mentores e guias que te ajudam a destacar a tua candidatura.',
+    title: 'Candidata-te e evolui',
+    description: 'Entra em contacto directo com instituições e empresas.',
   },
   {
-    title: 'Celebra o teu progresso',
-    description: 'Acompanha resultados e regista as tuas conquistas.',
+    title: 'Candidata-te e evolui',
+    description: 'Entra em contacto directo com instituições e empresas.',
   },
 ]
 
@@ -227,41 +227,51 @@ function CategorySection() {
 
 function StepsSection() {
   return (
-    <section className="bg-white py-16">
+    <section className="relative overflow-hidden bg-white py-16">
+      <div
+        className="pointer-events-none absolute inset-y-6 left-0 w-64 -translate-x-10 bg-[url('/header-pattern-bg.svg')] bg-contain bg-left-top bg-no-repeat opacity-20"
+        aria-hidden="true"
+      />
       <div className="mx-auto max-w-6xl px-4">
-        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-strong">
-              Guia Oportunidades
-            </p>
-            <h2 className="text-3xl font-semibold text-navy">
-              Estuda, descobre e cresce
-            </h2>
-          </div>
-          <p className="max-w-xl text-sm text-muted">
-            Acompanhamos-te em todas as fases do processo, desde a pesquisa até
-            ao envio de candidaturas completas.
+        <div className="max-w-3xl mb-8">
+          <h2 className="text-3xl font-semibold text-navy">Entra, descobre e cresce</h2>
+          <p className="mt-3 text-lg text-[#6a6e74]">
+            Três passos simples para começares a usar a plataforma e transformares oportunidades em conquistas.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-8 md:grid-cols-3">
+        <div className="relative grid gap-6 md:gap-12 md:grid-cols-3">
           {steps.map((step, index) => (
-            <Card
-              key={step.title}
-              className="rounded-md border-none bg-soft shadow-none"
+            <div
+              key={`${step.title}-${index}`}
+              className="relative overflow-hidden bg-white"
             >
-              <CardHeader className="space-y-4">
-                <div className="text-6xl font-bold text-decor">
-                  {(index + 1).toString().padStart(2, '0')}
+              <div className="relative mb-9 flex items-center">
+                <span className="relative z-10 flex h-5 w-5 items-center justify-center rounded-full border-[4px] border-[#8f8f8f] bg-white" />
+                <span
+                  className="pointer-events-none ml-4 hidden h-px flex-1 border-t border-dashed border-[#9f9f9f] md:block"
+                  aria-hidden="true"
+                />
+                <span
+                  className="pointer-events-none ml-4 flex h-px flex-1 border-t border-dashed border-[#c2c2c2] md:hidden"
+                  aria-hidden="true"
+                />
+              </div>
+              <div className="flex gap-2 items-stretch">
+                <div>
+                  <h3 className="text-xl font-semibold text-[#1f1f1f]">{step.title}</h3>
+                  <p className="leading-relaxed text-[#61656b]">
+                    {step.description}
+                  </p>
                 </div>
-                <CardTitle className="text-xl text-navy">
-                  {step.title}
-                </CardTitle>
-                <CardDescription className="text-muted">
-                  {step.description}
-                </CardDescription>
-              </CardHeader>
-            </Card>
+                <div
+                  className="pointer-events-none text-[140px] font-black leading-none text-[#f0f0f0] md:text-[160px]"
+                  aria-hidden="true"
+                >
+                  {index + 1}
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>

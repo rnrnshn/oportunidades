@@ -21,24 +21,16 @@ import { useEffect, useState } from 'react'
 
 const categories = [
   {
-    title: 'Bolsas de Estudo',
-    description: 'Programas nacionais e internacionais com apoio financeiro.',
-    label: 'Bolsas',
+    title: 'Bolsas de Estudos',
+    image: '/categories/universidade.jpg',
   },
   {
     title: 'Universidades',
-    description: 'Catálogo completo com cursos, propinas e prazos.',
-    label: 'Universidades',
+    image: '/categories/universidadesss.jpg',
   },
   {
     title: 'Empregos',
-    description: 'Vagas para recém-formados e jovens profissionais.',
-    label: 'Empregos',
-  },
-  {
-    title: 'Formações',
-    description: 'Workshops e bootcamps para acelerar a tua carreira.',
-    label: 'Formações',
+    image: '/categories/jobs.jpg',
   },
 ]
 
@@ -115,7 +107,7 @@ const stats = [
 
 export function PublicHomePage() {
   return (
-    <main className="bg-soft text-navy">
+    <main className="bg-white text-navy">
       <HeroSection />
       <CategorySection />
       <StepsSection />
@@ -200,50 +192,33 @@ function HeroSection() {
 
 function CategorySection() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-16">
-      <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-strong">
-            Explorar
-          </p>
-          <h2 className="text-3xl font-semibold text-navy">
-            What are you looking for today?
-          </h2>
-        </div>
-        <p className="max-w-xl text-sm text-muted">
-          Seleciona uma categoria para começares a receber oportunidades que se
-          alinham com os teus objetivos.
-        </p>
-      </div>
+    <section className="mx-auto max-w-6xl px-4 py-16 bg-white">
+      <h2 className="text-2xl font-semibold text-navy">
+        Que oportunidade procuras hoje?
+      </h2>
 
-      <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-6 grid gap-4 md:grid-cols-3">
         {categories.map((category) => (
-          <Card
+          <div
             key={category.title}
-            className="h-full rounded-md border-soft shadow-sm"
+            className="group relative h-40 overflow-hidden rounded-2xl bg-white shadow-xs"
           >
-            <CardContent className="p-4 space-y-4">
-              <ImagePlaceholder
-                label={category.label}
-                className="h-32 w-full rounded-md"
-              />
-              <div>
-                <CardTitle className="text-lg text-navy">
-                  {category.title}
-                </CardTitle>
-                <CardDescription className="mt-2 text-muted">
-                  {category.description}
-                </CardDescription>
-              </div>
-              <Button
-                variant="ghost"
-                className="px-0 text-sm font-semibold text-brand hover:bg-transparent"
-              >
-                Explorar
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </CardContent>
-          </Card>
+            <img
+              src={category.image}
+              alt={category.title}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/75 to-white/20" />
+            <div className="relative flex h-full flex-col justify-center px-5">
+              <p className="text-lg font-semibold text-brand">
+                {category.title}
+              </p>
+              <button className="mt-1 flex items-center gap-2 text-sm font-semibold text-brand transition hover:translate-x-0.5">
+                Ver mais
+                <span className="h-2 w-2 rounded-full bg-[#f58220]" aria-hidden="true" />
+              </button>
+            </div>
+          </div>
         ))}
       </div>
     </section>

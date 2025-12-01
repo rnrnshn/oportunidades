@@ -1,4 +1,3 @@
-import ImagePlaceholder from '@/components/ImagePlaceholder'
 import Header from '@/components/Header'
 import SiteFooter from '@/components/SiteFooter'
 import { Button } from '@/components/ui/button'
@@ -6,7 +5,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardHeader,
   CardTitle,
 } from '@/components/ui/card'
 import {
@@ -15,7 +13,7 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel'
 import { Input } from '@/components/ui/input'
-import { ArrowLeft, ArrowRight, Bookmark, Camera, Search } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Bookmark, Camera, GraduationCap, Search } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 const categories = [
@@ -104,9 +102,9 @@ const scholarships = [
 ]
 
 const stats = [
-  { value: '1 000+', label: 'Oportunidades verificadas' },
-  { value: '50+', label: 'Universidades no catálogo' },
-  { value: '4 000+', label: 'Candidatos orientados' },
+  { value: '+1 000', label: 'Oportunidades registadas' },
+  { value: '+1 000', label: 'Universidades no catálogo' },
+  { value: '+1 000', label: 'Oportunidades registadas' },
 ]
 
 export function PublicHomePage() {
@@ -502,57 +500,54 @@ function ScholarshipSection() {
 function CommunitySection() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-16">
-      <Card className="rounded-md border-soft bg-white shadow-sm">
-        <CardContent className="p-8">
-          <div className="grid gap-8 md:grid-cols-2 md:items-center">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-strong">
-                Comunidade
-              </p>
-              <CardTitle className="mt-3 text-3xl text-navy">
-                Feita para jovens que querem mais
-              </CardTitle>
-              <CardDescription className="mt-4 text-muted">
-                A plataforma é construída com mentores, universidades e empresas
-                que acreditam no talento moçambicano.
-              </CardDescription>
+      <div className="space-y-10">
+        <div className="space-y-2">
+          <h2 className="text-2xl font-semibold text-[#1f1f1f]">
+            Feita para jovens que querem mais
+          </h2>
+          <p className="text-base text-[#5a5e66]">
+            A Oportunidades liga estudantes e jovens profissionais a programas que fazem a diferença.
+          </p>
+        </div>
 
-              <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                {stats.map((stat) => (
-                  <div key={stat.label}>
-                    <div className="text-2xl font-bold text-brand">
-                      {stat.value}
-                    </div>
-                    <p className="text-sm text-muted">{stat.label}</p>
-                  </div>
-                ))}
+        <div className="grid gap-6 md:grid-cols-3">
+          {stats.map((stat) => (
+            <div key={stat.label} className="flex items-center gap-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#e8edff] text-[#2d3f85]">
+                <GraduationCap className="h-7 w-7" />
+              </div>
+              <div>
+                <p className="text-xl font-semibold text-[#f58220]">{stat.value}</p>
+                <p className="text-base font-semibold text-[#1f1f1f]">{stat.label}</p>
               </div>
             </div>
+          ))}
+        </div>
 
-            <div className="space-y-6">
-              <ImagePlaceholder
-                label="Mentoria"
-                className="h-40 w-full rounded-md"
-              />
-              <Card className="rounded-md border-none bg-canvas-soft">
-                <CardContent className="p-6">
-                  <CardTitle className="text-xl text-navy">
-                    Começa hoje a explorar o teu futuro
-                  </CardTitle>
-                  <CardDescription className="mt-2 text-earth">
-                    Junta-te à comunidade e recebe orientação personalizada para
-                    as tuas candidaturas.
-                  </CardDescription>
-                  <Button className="mt-5 rounded-md bg-brand px-5 py-3 text-sm font-semibold text-white hover:bg-brand-dark">
-                    Criar conta gratuitamente
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </CardContent>
-              </Card>
+        <div className="overflow-hidden rounded-2xl border border-[#e3e6eb] shadow-none">
+          <div className="grid gap-0 md:grid-cols-[1.2fr_1fr] md:items-stretch">
+            <img
+              src="/community.jpg"
+              alt="Comunidade de graduados"
+              className="h-96 w-full object-cover object-[100%_20%]"
+            />
+            <div className="flex h-full flex-col justify-center gap-4 p-6 sm:p-8 bg-white">
+              <h3 className="text-2xl font-semibold text-[#0c64e6]">
+                Começa hoje a explorar o teu futuro
+              </h3>
+              <p className="text-base text-[#5a5e66]">
+                Cria a tua conta e recebe acesso a todas as oportunidades no teu perfil.
+              </p>
+              <p className="text-base text-[#5a5e66]">
+                Descobre oportunidades académicas e profissionais criadas especialmente para jovens como tu. Dá o primeiro passo para construir um caminho cheio de possibilidades.
+              </p>
+              <Button className="mt-2 w-fit rounded-lg bg-[#0049AF] px-5 py-3 text-sm font-semibold text-white shadow-none transition hover:bg-[#0a56c4]">
+                Criar Conta Gratuitamente
+              </Button>
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </section>
   )
 }

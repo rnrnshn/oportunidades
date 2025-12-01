@@ -51,24 +51,29 @@ const steps = [
 
 const articles = [
   {
-    title: 'Como preparar uma candidatura de bolsa memorável',
-    tag: 'Guia prático',
-    readingTime: '6 min',
+    title: 'Como se preparar para entrevistas',
+    excerpt: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,',
+    image: '/graduation.png',
   },
   {
-    title: 'Universidades com cursos STEM mais procurados',
-    tag: 'Universidades',
-    readingTime: '5 min',
+    title: 'Como se preparar para entrevistas',
+    excerpt: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,',
+    image: '/graduation.png',
   },
   {
-    title: 'Checklist para entrevistas de estágio',
-    tag: 'Carreira',
-    readingTime: '4 min',
+    title: 'Como se preparar para entrevistas',
+    excerpt: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,',
+    image: '/graduation.png',
   },
   {
-    title: 'Como financiar a tua formação profissional',
-    tag: 'Finanças',
-    readingTime: '7 min',
+    title: 'Como se preparar para entrevistas',
+    excerpt: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,',
+    image: '/graduation.png',
+  },
+  {
+    title: 'Como se preparar para entrevistas',
+    excerpt: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,',
+    image: '/graduation.png',
   },
 ]
 
@@ -283,6 +288,37 @@ function ArticlesSection() {
   const [carouselApi, setCarouselApi] = useState<any>()
   const [canScroll, setCanScroll] = useState({ prev: false, next: true })
 
+  const CarouselControls = ({ className = '' }: { className?: string }) => (
+    <div className={`flex items-center gap-4 ${className}`}>
+      <div className="flex items-center gap-2">
+        <button
+          type="button"
+          onClick={() => carouselApi?.scrollPrev()}
+          disabled={!canScroll.prev}
+          className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f58220] text-white shadow-sm transition hover:bg-[#e57414] disabled:cursor-not-allowed disabled:opacity-50"
+          aria-label="Artigos anteriores"
+        >
+          <ArrowLeft className="h-4 w-4" />
+        </button>
+        <button
+          type="button"
+          onClick={() => carouselApi?.scrollNext()}
+          disabled={!canScroll.next}
+          className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f58220] text-white shadow-sm transition hover:bg-[#e57414] disabled:cursor-not-allowed disabled:opacity-50"
+          aria-label="Mais artigos"
+        >
+          <ArrowRight className="h-4 w-4" />
+        </button>
+      </div>
+      <button
+        type="button"
+        className="text-sm font-semibold text-[#0049AF] transition hover:underline"
+      >
+        Ver todas
+      </button>
+    </div>
+  )
+
   useEffect(() => {
     if (!carouselApi) return
     const update = () => {
@@ -305,102 +341,50 @@ function ArticlesSection() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-16">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-strong">
-            Conteúdo curado
-          </p>
-          <h2 className="text-3xl font-semibold text-navy">
-            Artigos recomendados
-          </h2>
-        </div>
-        <div className="flex items-center gap-4">
-          <Button
-            variant="ghost"
-            className="px-0 text-sm font-semibold text-brand hover:bg-transparent"
-          >
-            Ver blog
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-          <div className="hidden sm:flex items-center gap-3">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => carouselApi?.scrollPrev()}
-              disabled={!canScroll.prev}
-              className="rounded-md border-blue text-soft-2"
-              aria-label="Artigos anteriores"
-            >
-              <ArrowLeft className="h-4 w-4" />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => carouselApi?.scrollNext()}
-              disabled={!canScroll.next}
-              className="rounded-md border-blue text-soft-2"
-              aria-label="Mais artigos"
-            >
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </div>
-        </div>
+        <h2 className="text-2xl font-semibold text-navy">Artigos recomendados</h2>
+        <CarouselControls className="hidden md:flex md:justify-normal" />
       </div>
 
       <Carousel
-        className="mt-10"
+        className="mt-8"
         opts={{ align: 'start', dragFree: true }}
         setApi={setCarouselApi}
       >
-        <CarouselContent>
-          {articles.map((article) => (
+        <CarouselContent className="pb-2">
+          {articles.map((article, index) => (
             <CarouselItem
-              key={article.title}
-              className="basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+              key={`${article.title}-${index}`}
+              className="basis-[85%] sm:basis-1/2 lg:basis-1/3"
             >
-              <Card className="h-full rounded-md border-soft shadow-sm">
-                <CardContent className="flex h-full flex-col gap-4 p-4">
-                  <ImagePlaceholder
-                    label="Artigo"
-                    className="h-36 w-full rounded-md"
+              <Card className="h-full overflow-hidden rounded-[22px] border border-[#dfe4ec] shadow-none py-0">
+                <CardContent className="flex h-full flex-col p-0">
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    className="h-48 w-full object-cover"
                   />
-                  <Badge className="w-fit border-0 bg-transparent px-0 text-warm">
-                    {article.tag}
-                  </Badge>
-                  <CardTitle className="text-base text-navy">
-                    {article.title}
-                  </CardTitle>
-                  <CardDescription className="text-muted">
-                    {article.readingTime} de leitura
-                  </CardDescription>
+                  <div className="flex h-full flex-col gap-3 px-5 py-5">
+                    <CardTitle className="text-lg font-semibold leading-snug text-[#1b1b1b]">
+                      {article.title}
+                    </CardTitle>
+                    <CardDescription className="text-sm leading-6 text-[#6f747f]">
+                      {article.excerpt}
+                    </CardDescription>
+                    <button
+                      type="button"
+                      className="mt-auto inline-flex items-center gap-2 text-[15px] font-semibold text-[#0049AF] transition hover:underline"
+                    >
+                      Read article
+                      <ArrowRight className="h-4 w-4" />
+                    </button>
+                  </div>
                 </CardContent>
               </Card>
             </CarouselItem>
           ))}
         </CarouselContent>
       </Carousel>
-
-      <div className="mt-6 flex justify-center gap-3 sm:hidden">
-        <Button
-          variant="outline"
-          size="icon"
-          onClick={() => carouselApi?.scrollPrev()}
-          disabled={!canScroll.prev}
-          className="rounded-md border-blue text-soft-2"
-          aria-label="Artigos anteriores"
-        >
-          <ArrowLeft className="h-4 w-4" />
-        </Button>
-        <Button
-          variant="outline"
-          size="icon"
-          onClick={() => carouselApi?.scrollNext()}
-          disabled={!canScroll.next}
-          className="rounded-md border-blue text-soft-2"
-          aria-label="Mais artigos"
-        >
-          <ArrowRight className="h-4 w-4" />
-        </Button>
-      </div>
+      <CarouselControls className="mt-6 justify-center md:hidden" />
     </section>
   )
 }

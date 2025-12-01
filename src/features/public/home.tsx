@@ -480,7 +480,7 @@ function ScholarshipSection() {
             type="button"
             onClick={() => carouselApi?.scrollNext()}
             disabled={!canScroll.next}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#d6d9e0] bg-white text-[#0c64e6] shadow-[0_4px_10px_rgba(12,100,230,0.12)] transition hover:bg-[#eef3ff] disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#d6d9e0] bg-white text-[#0049AF] shadow-[0_4px_10px_rgba(12,100,230,0.12)] transition hover:bg-[#eef3ff] disabled:cursor-not-allowed disabled:opacity-50"
             aria-label="Mais bolsas"
           >
             <ArrowRight className="h-4 w-4" />
@@ -532,7 +532,7 @@ function CommunitySection() {
               className="h-96 w-full object-cover object-[100%_20%]"
             />
             <div className="flex h-full flex-col justify-center gap-4 p-6 sm:p-8 bg-white">
-              <h3 className="text-2xl font-semibold text-[#0c64e6]">
+              <h3 className="text-2xl font-semibold text-[#0049AF]">
                 Começa hoje a explorar o teu futuro
               </h3>
               <p className="text-base text-[#5a5e66]">

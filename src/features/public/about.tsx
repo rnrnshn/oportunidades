@@ -1,24 +1,24 @@
-import ImagePlaceholder from '@/components/ImagePlaceholder'
 import SiteFooter from '@/components/SiteFooter'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardTitle } from '@/components/ui/card'
+import { GraduationCap } from 'lucide-react'
 
 const steps = [
   {
-    title: 'Informação completa',
+    title: 'Comprehensive information',
     description:
-      'Metodologia própria de curadoria para garantir que cada oportunidade tem requisitos claros e atualizados.',
+      'We curate and present comprehensive information about universities, courses, and scholarships, making it easy for students to find the information.',
   },
   {
-    title: 'Universidades top',
+    title: 'Access to top universities',
     description:
-      'Catálogo nacional com dados académicos, bolsas internas e contactos para acelerar a orientação.',
+      'Our platform provides students with access to detailed insights into university programs, admission requirements, and more.',
   },
   {
-    title: 'Orientação contínua',
+    title: 'Scholarship Opportunities',
     description:
-      'Guias, mentores e conteúdos práticos para submeter candidaturas convincentes e acompanhar resultados.',
+      'We offer students access to a wide range of scholarship opportunities along with details about eligibility criteria, application deadlines.',
   },
 ]
 
@@ -30,6 +30,14 @@ const stats = [
 
 const partners = ['MaputoEdu', 'TechnoServe', 'MozLabs', 'STEM Network', 'Fundação Horizonte', 'Impacto+']
 
+const highlightStats = [
+  { value: '+1 000', label: 'Oportunidades registadas' },
+  { value: '+1 000', label: 'universidades no catálogo' },
+  { value: '+1 000', label: 'Oportunidades registadas' },
+]
+
+const partnerPlaceholders = Array.from({ length: 8 })
+
 export function PublicAboutPage() {
   return (
     <main className="bg-soft text-navy">
@@ -37,7 +45,8 @@ export function PublicAboutPage() {
       <IntroSection />
       <VisionSection />
       <JourneySection />
-      <ImpactSection />
+      <HighlightsSection />
+      <PartnersSection />
       <JoinSection />
       <SiteFooter />
     </main>
@@ -47,7 +56,7 @@ export function PublicAboutPage() {
 function HeroBanner() {
   return (
     <section className="bg-white">
-      <ImagePlaceholder label="Hero imagem" className="h-64 w-full rounded-none md:h-[420px]" />
+      <img src="/categories/universidade.jpg" className="h-64 w-full rounded-none md:h-[420px] object-cover object-center" />
     </section>
   )
 }
@@ -83,7 +92,7 @@ function IntroSection() {
             </div>
           </div>
         </div>
-        <ImagePlaceholder label="Equipa" className="h-64 w-full rounded-md" />
+        <img src="/graduation.png" alt="Equipa" className="h-full w-full object-cover rounded-md" />
       </div>
     </section>
   )
@@ -93,7 +102,7 @@ function VisionSection() {
   return (
     <section className="bg-white">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 pb-16 md:grid-cols-2 md:items-center">
-        <ImagePlaceholder label="Visão" className="h-64 w-full rounded-md" />
+        <img src="/about_university.jpg" alt="Visão" className="h-96 w-full object-cover rounded-md" />
         <div className="space-y-6">
           <div>
             <h3 className="text-lg font-semibold">Missão</h3>
@@ -124,21 +133,74 @@ function VisionSection() {
 
 function JourneySection() {
   return (
-    <section className="bg-canvas py-16">
+    <section className="relative overflow-hidden bg-[#fff6e9] py-16">
+      <div
+        className="pointer-events-none absolute inset-x-[-30%] bottom-[-140px] h-[230px] rotate-[-2.5deg] bg-white"
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto max-w-6xl px-4">
+        <div className="space-y-2">
+          <h2 className="text-2xl font-semibold text-[#1f1f1f]">Entra, descobre e cresce</h2>
+          <p className="text-base text-[#5a5e66]">
+            Três passos simples para começares a usar a plataforma e transformares oportunidades em conquistas.
+          </p>
+        </div>
+
+        <div className="relative mt-10">
+          <div className="pointer-events-none absolute inset-x-4 top-8 hidden h-px border-t border-dashed border-[#b3b3b3] md:block" />
+          <div className="grid gap-6 md:grid-cols-3">
+            {steps.map((step, index) => (
+              <Card
+                key={step.title}
+                className="relative overflow-hidden rounded-2xl border-none bg-white shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+              >
+                <CardContent className="space-y-4 p-6">
+                  <div className="relative flex items-center gap-3">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#b0b0b0] text-[#b0b0b0]" />
+                  </div>
+                  <CardTitle className="text-base font-semibold text-[#1f1f1f]">
+                    {step.title}
+                  </CardTitle>
+                  <CardDescription className="text-sm leading-6 text-[#5a5e66]">
+                    {step.description}
+                  </CardDescription>
+                  <div className="pointer-events-none absolute bottom-4 right-4 text-7xl font-black text-[#f1f1f1]">
+                    {index + 1}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function HighlightsSection() {
+  return (
+    <section className="bg-white py-12">
       <div className="mx-auto max-w-6xl px-4">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-warm">
-          Estuda, descobre e cresce
-        </p>
-        <h2 className="mt-2 text-3xl font-semibold">Um caminho claro para o teu próximo passo</h2>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {steps.map((step, index) => (
-            <Card key={step.title} className="rounded-md border-none bg-white shadow-sm">
-              <CardContent className="space-y-4 p-6">
-                <div className="text-5xl font-bold text-decor">{(index + 1).toString().padStart(2, '0')}</div>
-                <CardTitle className="text-xl text-navy">{step.title}</CardTitle>
-                <CardDescription className="text-muted">{step.description}</CardDescription>
-              </CardContent>
-            </Card>
+        <div className="space-y-2">
+          <h3 className="text-xl font-semibold text-[#1f1f1f]">
+            Feita para jovens que querem mais
+          </h3>
+          <p className="text-sm text-[#5a5e66]">
+            A Oportunidades liga estudantes e jovens profissionais a programas que fazem a diferença.
+          </p>
+        </div>
+
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          {highlightStats.map((stat) => (
+            <div key={stat.label} className="flex items-center gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#e8edff] text-[#2d3f85]">
+                <GraduationCap className="h-6 w-6" />
+              </div>
+              <div>
+                <p className="text-lg font-semibold text-[#f58220]">{stat.value}</p>
+                <p className="text-base font-semibold text-[#1f1f1f]">{stat.label}</p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -146,72 +208,66 @@ function JourneySection() {
   )
 }
 
-function ImpactSection() {
+function PartnersSection() {
   return (
-    <section className="bg-white py-16">
+    <section className="bg-white pb-12">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="grid gap-12 md:grid-cols-2">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-strong">
-              Feita para jovens que querem mais
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold">Impacto em números</h2>
-            <p className="mt-4 text-sm text-muted">
-              Resultados alcançados com apoio de universidades, ONG e organizações empresariais que acreditam no
-              talento jovem moçambicano.
-            </p>
-            <div className="mt-8 grid gap-6 sm:grid-cols-3">
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <div className="text-2xl font-bold text-brand">{stat.value}</div>
-                  <p className="text-sm text-muted">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">Os nossos parceiros</h3>
-            <p className="mt-2 text-sm text-muted">
-              Universidades, centros de formação, fundações e organizações internacionais ajudam-nos a fornecer dados
-              exclusivos e oportunidades verificadas.
-            </p>
-            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
-              {partners.map((partner) => (
-                <div
-                  key={partner}
-                  className="flex h-20 items-center justify-center rounded-md border border-soft bg-soft text-sm font-semibold text-note"
-                >
-                  {partner}
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="space-y-2">
+          <h3 className="text-lg font-semibold text-[#1f1f1f]">Our partners</h3>
+          <p className="text-sm text-[#5a5e66]">
+            We partner with universities, colleges, and educational organizations across Mozambique to provide students
+            with access to comprehensive information about courses, admission requirements, and campus life.
+          </p>
         </div>
+
+        <div className="mt-6 flex flex-wrap gap-4">
+          {partnerPlaceholders.map((_, index) => (
+            <div
+              key={index}
+              className="h-11 w-11 rounded-full bg-[#f0f0f0]"
+            />
+          ))}
+        </div>
+
+        <Button className="mt-6 rounded-md bg-[#0049AF] px-5 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-[#0a56c4]">
+          Inquire for partnership
+        </Button>
       </div>
     </section>
   )
 }
 
+function ImpactSection() {
+  return null
+}
+
 function JoinSection() {
   return (
     <section className="bg-white pb-16">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 md:grid-cols-2 md:items-center">
-        <div>
-          <h2 className="text-3xl font-semibold">Começa hoje a explorar o teu futuro</h2>
-          <p className="mt-3 text-sm text-muted">
-            Junta-te à comunidade Oportunidades e recebe atualizações, mentoria e ferramentas práticas para transformar
-            candidaturas em conquistas.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-4">
-            <Button className="rounded-md bg-brand px-5 py-3 text-sm font-semibold text-white hover:bg-brand-dark">
-              Criar conta gratuitamente
-            </Button>
-            <Button variant="outline" className="rounded-md border border-brand text-brand">
-              Contactar equipa
-            </Button>
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="overflow-hidden rounded-2xl border border-[#e3e6eb] shadow-sm">
+          <div className="grid gap-0 md:grid-cols-[1.2fr_1fr] md:items-stretch">
+            <img
+              src="/graduation.png"
+              alt="Graduates"
+              className="h-full w-full min-h-[180px] object-cover"
+            />
+            <div className="flex h-full flex-col justify-center gap-3 px-5 py-6 sm:px-8 sm:py-8 bg-white">
+              <h3 className="text-xl font-semibold text-[#0049AF]">
+                Começa hoje a explorar o teu futuro
+              </h3>
+              <p className="text-base text-[#5a5e66]">
+                Cria a tua conta e recebe acesso a todas as oportunidades no teu perfil.
+              </p>
+              <p className="text-base text-[#5a5e66]">
+                Descobre oportunidades académicas e profissionais criadas especialmente para jovens como tu. Dá o primeiro passo para construir um caminho cheio de possibilidades.
+              </p>
+              <Button className="mt-1 w-fit rounded-md bg-[#0049AF] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0a56c4]">
+                Criar Conta Gratuitamente
+              </Button>
+            </div>
           </div>
         </div>
-        <ImagePlaceholder label="Mentoria" className="h-48 w-full rounded-md" />
       </div>
     </section>
   )

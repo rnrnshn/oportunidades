@@ -1,7 +1,6 @@
 import ImagePlaceholder from '@/components/ImagePlaceholder'
 import Header from '@/components/Header'
 import SiteFooter from '@/components/SiteFooter'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -16,7 +15,7 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel'
 import { Input } from '@/components/ui/input'
-import { ArrowLeft, ArrowRight, Bookmark, Search } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Bookmark, Camera, Search } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 const categories = [
@@ -390,54 +389,109 @@ function ArticlesSection() {
 }
 
 function ScholarshipSection() {
+  const [carouselApi, setCarouselApi] = useState<any>()
+  const [canScroll, setCanScroll] = useState({ prev: false, next: true })
+
+  useEffect(() => {
+    if (!carouselApi) return
+    const update = () => {
+      setCanScroll({
+        prev: carouselApi.canScrollPrev(),
+        next: carouselApi.canScrollNext(),
+      })
+    }
+
+    update()
+    carouselApi.on('select', update)
+    carouselApi.on('reInit', update)
+
+    return () => {
+      carouselApi.off('select', update)
+      carouselApi.off('reInit', update)
+    }
+  }, [carouselApi])
+
   return (
-    <section className="bg-canvas-soft/60 py-16">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-warm">
-              Atualizado semanalmente
-            </p>
-            <h2 className="text-3xl font-semibold text-navy">
-              Bolsas de estudo e outras oportunidades
-            </h2>
-          </div>
-          <p className="max-w-xl text-sm text-warm-dark">
-            Programas em destaque com valores que fazem a diferença.
+    <section className="relative overflow-hidden bg-[#fff6e9] py-16">
+      <div
+        className="pointer-events-none absolute inset-x-[-30%] bottom-[-140px] h-[230px] rotate-[-2.5deg] bg-white z-0"
+        aria-hidden="true"
+      />
+      <div className="relative z-10 mx-auto max-w-6xl px-4">
+        <div className="space-y-2 text-navy">
+          <h2 className="text-2xl font-semibold text-[#2f2f2f]">
+            Bolsas de estudo e outras oportunidades
+          </h2>
+          <p className="text-sm text-[#555a63]">
+            A Oportunidades liga estudantes e jovens profissionais a programas que fazem a diferença.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {scholarships.map((scholarship) => (
-            <Card
-              key={scholarship.name}
-              className="rounded-md border-gold bg-white shadow-sm"
-            >
-              <CardContent className="p-5 space-y-3">
-                <Badge className="w-fit border-0 bg-transparent px-0 text-warm">
-                  {scholarship.sponsor}
-                </Badge>
-                <CardTitle className="text-lg text-navy">
-                  {scholarship.name}
-                </CardTitle>
-                <CardDescription className="text-muted">
-                  Apoio financeiro até
-                </CardDescription>
-                <div className="text-2xl font-bold text-brand">
-                  {scholarship.amount}
-                </div>
-                <CardDescription className="text-muted">
-                  Candidaturas até {scholarship.deadline}
-                </CardDescription>
-              </CardContent>
-            </Card>
-          ))}
+        <Carousel className="mt-10" opts={{ align: 'start' }} setApi={setCarouselApi}>
+          <CarouselContent className="pb-4">
+            {scholarships.map((scholarship, index) => (
+              <CarouselItem
+                key={`${scholarship.name}-${index}`}
+                className="basis-full sm:basis-1/2 lg:basis-1/3"
+              >
+                <Card className="h-full rounded-xl border-none bg-white shadow-none py-0">
+                  <CardContent className="flex h-full flex-col gap-5 p-4 sm:p-5">
+                    <div className="flex items-start gap-3">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-md border border-[#e5e7ef] bg-[#f4f5f8] [background-image:radial-gradient(circle_at_1px_1px,#d5d7de_1px,transparent_0)] [background-size:10px_10px]">
+                        <Camera className="h-4 w-4 text-[#9aa1ad]" />
+                      </div>
+                      <div className="flex-1">
+                        <CardTitle className="text-sm font-semibold text-[#1f1f1f]">
+                          {scholarship.name}
+                        </CardTitle>
+                        <CardDescription className="text-xs text-[#6a6f79]">
+                          Oferecido por: {scholarship.sponsor}
+                        </CardDescription>
+                      </div>
+                      <Bookmark className="h-4 w-4 shrink-0 text-[#607089]" aria-hidden="true" />
+                    </div>
+                    <div className="flex items-end justify-between gap-3">
+                      <span className="inline-flex rounded-full bg-[#0049AF] px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white">
+                        Aberto até {scholarship.deadline}
+                      </span>
+                      <div className="text-right leading-tight">
+                        <p className="text-xs text-[#7a7f89]">Até</p>
+                        <p className="text-2xl font-bold text-[#0049AF]">
+                          {scholarship.amount}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+
+        <div className="mt-6 flex items-center justify-center gap-3">
+          <button
+            type="button"
+            onClick={() => carouselApi?.scrollPrev()}
+            disabled={!canScroll.prev}
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f58220] text-white shadow-md transition hover:bg-[#e57414] disabled:cursor-not-allowed disabled:opacity-50"
+            aria-label="Bolsas anteriores"
+          >
+            <ArrowLeft className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => carouselApi?.scrollNext()}
+            disabled={!canScroll.next}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#d6d9e0] bg-white text-[#0c64e6] shadow-[0_4px_10px_rgba(12,100,230,0.12)] transition hover:bg-[#eef3ff] disabled:cursor-not-allowed disabled:opacity-50"
+            aria-label="Mais bolsas"
+          >
+            <ArrowRight className="h-4 w-4" />
+          </button>
         </div>
 
-        <div className="mt-8 flex justify-center">
-          <Button className="inline-flex items-center gap-2 rounded-md bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark">
+        <div className="mt-5 flex justify-center">
+          <Button className="rounded-xl bg-[#0049AF] px-8 py-6 text-sm font-semibold text-white shadow-md transition hover:bg-[#0a56c4]">
             Mais oportunidades
-            <ArrowRight className="h-4 w-4" />
           </Button>
         </div>
       </div>

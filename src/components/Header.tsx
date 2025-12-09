@@ -7,8 +7,8 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
-  { label: 'Bolsas de Estudo', to: '/' },
-  { label: 'Universidade', to: '/' },
+  { label: 'Bolsas de Estudo', to: '/bolsas' },
+  { label: 'Universidades', to: '/universidades' },
   { label: 'Emprego', to: '/' },
   { label: 'Sobre', to: '/about' },
 ]

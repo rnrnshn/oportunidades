@@ -9,15 +9,29 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UniversidadesRouteImport } from './routes/universidades'
 import { Route as StyleguideRouteImport } from './routes/styleguide'
+import { Route as BolsasRouteImport } from './routes/bolsas'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BolsasIndexRouteImport } from './routes/bolsas/index'
 import { Route as UniversitiesSlugRouteImport } from './routes/universities/$slug'
+import { Route as BolsasSlugRouteImport } from './routes/bolsas/$slug'
 
+const UniversidadesRoute = UniversidadesRouteImport.update({
+  id: '/universidades',
+  path: '/universidades',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StyleguideRoute = StyleguideRouteImport.update({
   id: '/styleguide',
   path: '/styleguide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BolsasRoute = BolsasRouteImport.update({
+  id: '/bolsas',
+  path: '/bolsas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AccountRoute = AccountRouteImport.update({
@@ -35,63 +49,121 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BolsasIndexRoute = BolsasIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BolsasRoute,
+} as any)
 const UniversitiesSlugRoute = UniversitiesSlugRouteImport.update({
   id: '/universities/$slug',
   path: '/universities/$slug',
   getParentRoute: () => rootRouteImport,
+} as any)
+const BolsasSlugRoute = BolsasSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BolsasRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
+  '/bolsas': typeof BolsasRouteWithChildren
   '/styleguide': typeof StyleguideRoute
+  '/universidades': typeof UniversidadesRoute
+  '/bolsas/$slug': typeof BolsasSlugRoute
   '/universities/$slug': typeof UniversitiesSlugRoute
+  '/bolsas/': typeof BolsasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/styleguide': typeof StyleguideRoute
+  '/universidades': typeof UniversidadesRoute
+  '/bolsas/$slug': typeof BolsasSlugRoute
   '/universities/$slug': typeof UniversitiesSlugRoute
+  '/bolsas': typeof BolsasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
+  '/bolsas': typeof BolsasRouteWithChildren
   '/styleguide': typeof StyleguideRoute
+  '/universidades': typeof UniversidadesRoute
+  '/bolsas/$slug': typeof BolsasSlugRoute
   '/universities/$slug': typeof UniversitiesSlugRoute
+  '/bolsas/': typeof BolsasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/account' | '/styleguide' | '/universities/$slug'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/account'
+    | '/bolsas'
+    | '/styleguide'
+    | '/universidades'
+    | '/bolsas/$slug'
+    | '/universities/$slug'
+    | '/bolsas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/account' | '/styleguide' | '/universities/$slug'
+  to:
+    | '/'
+    | '/about'
+    | '/account'
+    | '/styleguide'
+    | '/universidades'
+    | '/bolsas/$slug'
+    | '/universities/$slug'
+    | '/bolsas'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/account'
+    | '/bolsas'
     | '/styleguide'
+    | '/universidades'
+    | '/bolsas/$slug'
     | '/universities/$slug'
+    | '/bolsas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AccountRoute: typeof AccountRoute
+  BolsasRoute: typeof BolsasRouteWithChildren
   StyleguideRoute: typeof StyleguideRoute
+  UniversidadesRoute: typeof UniversidadesRoute
   UniversitiesSlugRoute: typeof UniversitiesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/universidades': {
+      id: '/universidades'
+      path: '/universidades'
+      fullPath: '/universidades'
+      preLoaderRoute: typeof UniversidadesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/styleguide': {
       id: '/styleguide'
       path: '/styleguide'
       fullPath: '/styleguide'
       preLoaderRoute: typeof StyleguideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bolsas': {
+      id: '/bolsas'
+      path: '/bolsas'
+      fullPath: '/bolsas'
+      preLoaderRoute: typeof BolsasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/account': {
@@ -115,6 +187,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bolsas/': {
+      id: '/bolsas/'
+      path: '/'
+      fullPath: '/bolsas/'
+      preLoaderRoute: typeof BolsasIndexRouteImport
+      parentRoute: typeof BolsasRoute
+    }
     '/universities/$slug': {
       id: '/universities/$slug'
       path: '/universities/$slug'
@@ -122,14 +201,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UniversitiesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bolsas/$slug': {
+      id: '/bolsas/$slug'
+      path: '/$slug'
+      fullPath: '/bolsas/$slug'
+      preLoaderRoute: typeof BolsasSlugRouteImport
+      parentRoute: typeof BolsasRoute
+    }
   }
 }
+
+interface BolsasRouteChildren {
+  BolsasSlugRoute: typeof BolsasSlugRoute
+  BolsasIndexRoute: typeof BolsasIndexRoute
+}
+
+const BolsasRouteChildren: BolsasRouteChildren = {
+  BolsasSlugRoute: BolsasSlugRoute,
+  BolsasIndexRoute: BolsasIndexRoute,
+}
+
+const BolsasRouteWithChildren =
+  BolsasRoute._addFileChildren(BolsasRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AccountRoute: AccountRoute,
+  BolsasRoute: BolsasRouteWithChildren,
   StyleguideRoute: StyleguideRoute,
+  UniversidadesRoute: UniversidadesRoute,
   UniversitiesSlugRoute: UniversitiesSlugRoute,
 }
 export const routeTree = rootRouteImport

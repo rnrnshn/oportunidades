@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/react-router'
+import { Link, useLocation } from '@tanstack/react-router'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 
@@ -16,15 +16,18 @@ const navLinks = [
 export default function Header({ transparent = false }: { transparent?: boolean }) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [authMode, setAuthMode] = useState<'login' | 'signup' | null>(null)
+  const location = useLocation()
+  const isHome = location.pathname === '/'
 
   return (
     <header
       className={cn(
         'z-40 w-full',
-        transparent
+        (transparent || isHome)
           ? 'absolute inset-x-0 top-0 border-transparent bg-transparent'
-          : 'sticky top-0 border-b border-sand bg-canvas-soft'
+          : 'sticky top-0 border-b border-sand bg-white'
       )}
+      data-home={isHome}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between  px-4 py-4">
         <Link to="/" className="flex items-center gap-2">

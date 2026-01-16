@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+
 import SiteFooter from '@/components/SiteFooter'
 import { Button } from '@/components/ui/button'
 import {
@@ -128,7 +128,7 @@ function HeroSection() {
         className="pointer-events-none absolute inset-0 bg-[url('/header-pattern-bg.svg')] bg-cover bg-center opacity-60"
         aria-hidden="true"
       />
-      <Header transparent />
+
 
       <div className="relative mx-auto grid max-w-6xl gap-12 md:gap-24 px-4 pb-16 pt-20 md:pt-48 md:grid-cols-2 md:items-center justify-between">
         <div>

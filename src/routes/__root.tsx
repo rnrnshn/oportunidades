@@ -3,7 +3,6 @@ import {
   Scripts,
   createRootRouteWithContext,
   Link,
-  useRouterState,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
@@ -132,12 +131,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 }
 
 function BodyLayout({ children }: { children: React.ReactNode }) {
-  const { location } = useRouterState()
-  const isHome = location.pathname === '/'
-
   return (
     <>
-      {!isHome && <Header />}
+      <Header />
       {children}
     </>
   )

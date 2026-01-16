@@ -1,4 +1,4 @@
-import { MIN_TUITION, MAX_TUITION, TUITION_STEP } from './types'
+import { MIN_TUITION, MAX_TUITION, TUITION_STEP } from '../types'
 
 export function formatCurrency(value: number) {
   return new Intl.NumberFormat('pt-MZ', {

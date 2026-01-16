@@ -3,9 +3,8 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
-import { RangeSlider, SelectField } from './components'
-import { formatCurrency } from './components'
-import { Filters } from './types'
+import { RangeSlider, SelectField, formatCurrency } from './ui-parts'
+import { Filters } from '../types'
 
 type UniversitiesFilterProps = {
   filters: Filters

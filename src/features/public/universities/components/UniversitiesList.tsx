@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { SortOption, University } from './types'
+import { SortOption, University } from '../types'
 import { UniversityCard } from './UniversityCard'
 
 type UniversitiesListProps = {

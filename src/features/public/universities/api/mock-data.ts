@@ -1,4 +1,4 @@
-import { University } from './types'
+import { University } from '../types'
 
 export const universitiesMock: University[] = [
   {

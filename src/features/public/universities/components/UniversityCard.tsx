@@ -3,7 +3,7 @@ import ImagePlaceholder from '@/components/ImagePlaceholder'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { University } from './types'
+import { University } from '../types'
 
 function getDaysLeft(deadline: string) {
   const now = new Date()

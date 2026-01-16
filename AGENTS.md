@@ -54,7 +54,7 @@ This document provides context, standards, and best practices for AI agents and 
 *   **Accessibility (a11y)**:
     *   Ensure all interactive elements are keyboard accessible.
     *   Use proper `aria-*` attributes when semantic HTML is insufficient.
-    *   Ensure sufficient color contrast.
+    *   Ensure sufficissent color contrast.
     *   All `img` tags must have a meaningful `alt` attribute.
 
 ## 6. Project Structure
@@ -63,3 +63,107 @@ This document provides context, standards, and best practices for AI agents and 
 *   `src/components`: Shared components.
 *   `src/utils`: Helper functions and utilities.
 *   `src/lib`: Configuration and third-party library setups.
+
+## 7. Environment & Configuration
+
+*   **Node Version**: Specify exact version (e.g., Node 20.x LTS).
+*   **Package Manager**: pnpm / npm / yarn (pick one).
+*   **Environment Variables**:
+    *   Use `.env` and `.env.local`.
+    *   Never commit secrets.
+*   **Runtime Targets**:
+    *   Client
+    *   Server (Nitro)
+*   **Feature Flags** (if any): Describe how they are toggled.
+
+## 8. Data Layer Conventions
+
+*   **API Location**: All API calls live in `src/lib/api`.
+*   **Query Keys**:
+    *   Must be defined as constants.
+    *   Use hierarchical keys: ['opportunities', 'list']
+*   **Error Handling**:
+    *   Normalize API errors.
+    *   UI components must not handle raw API responses.
+*   **Mutation Rules**:
+    *   Always invalidate related queries.
+
+## 9. State Management Guidelines
+
+*   **Server State** → TanStack Query
+*   **URL State** → Router search params
+*   **Form State** → React Hook Form
+*   **UI State** (modals, toggles) → Local component state
+*   Avoid global client state unless strictly necessary.
+
+## 10. Routing Guidelines
+
+*   Use file-based routes exclusively.
+*   Prefer route loaders for data fetching.
+*   Avoid fetching data inside deeply nested components.
+*   Redirect logic must live in route files, not components.
+
+## 11. UI States
+
+Every data-driven view must handle:
+*   Loading state
+*   Error state
+*   Empty state
+
+Use shared components from `src/components/ui` where possible.
+
+## 12. Styling Guidelines
+
+*   Use Tailwind utility classes only (no inline styles).
+*   Use design tokens (spacing, colors, font sizes) consistently.
+*   Avoid arbitrary values unless necessary.
+*   Dark mode support: clarify if required.
+
+## 13. Testing
+
+*   Unit tests for utilities.
+*   Component tests for complex UI.
+*   Prefer testing behavior over implementation.
+*   Avoid snapshot-only tests.
+
+## 14. Git Conventions
+
+*   Use conventional commits:
+    *   feat:
+    *   fix:
+    *   refactor:
+    *   chore:
+*   One feature per commit.
+*   No unrelated changes in the same commit.
+
+## 15. AI Agent Rules
+
+*   Do not introduce new libraries without approval.
+*   Do not refactor unrelated code.
+*   Preserve existing behavior unless explicitly instructed.
+*   Prefer small, incremental chsanges.
+*   Ask before making architectural changes.
+
+## 16. Feature-Based Separation (UI vs Hooks vs API)
+
+* Feature code lives in `src/features/<featureName>/...`.
+
+* **Presentational components** → `src/features/<feature>/components`
+  * Props in → UI out.
+  * No TanStack Query usage here.
+  * No API calls here.
+
+* **Hooks (feature logic)** → `src/features/<feature>/hooks`
+  * Owns TanStack Query calls, derived state, handlers, side effects.
+  * Returns a “view-model” object for UI components.
+  * Avoid returning raw API responses if transformation is needed.
+
+* **API clients / server calls** → `src/features/<feature>/api`
+  * Fetchers only (no React).
+  * Keep request/response typing strict.
+  * Validate responses with Zod schemas from `schemas/`.
+
+* **Route files** (`src/routes/**`)
+  * Keep thin: assemble feature pieces.
+  * Call feature hooks and render feature components.
+

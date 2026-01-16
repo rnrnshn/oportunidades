@@ -19,7 +19,7 @@ export function ArticlesSection() {
           type="button"
           onClick={() => carouselApi?.scrollPrev()}
           disabled={!canScroll.prev}
-          className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f58220] text-white shadow-sm transition hover:bg-[#e57414] disabled:cursor-not-allowed disabled:opacity-50"
+          className="flex h-8 w-8 items-center justify-center rounded-full bg-orange text-white shadow-sm transition hover:bg-orange-dark disabled:cursor-not-allowed disabled:opacity-50"
           aria-label="Artigos anteriores"
         >
           <ArrowLeft className="h-4 w-4" />
@@ -28,7 +28,7 @@ export function ArticlesSection() {
           type="button"
           onClick={() => carouselApi?.scrollNext()}
           disabled={!canScroll.next}
-          className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f58220] text-white shadow-sm transition hover:bg-[#e57414] disabled:cursor-not-allowed disabled:opacity-50"
+          className="flex h-8 w-8 items-center justify-center rounded-full bg-orange text-white shadow-sm transition hover:bg-orange-dark disabled:cursor-not-allowed disabled:opacity-50"
           aria-label="Mais artigos"
         >
           <ArrowRight className="h-4 w-4" />
@@ -36,7 +36,7 @@ export function ArticlesSection() {
       </div>
       <button
         type="button"
-        className="text-sm font-semibold text-[#0049AF] transition hover:underline"
+        className="text-sm font-semibold text-brand transition hover:underline"
       >
         Ver todas
       </button>
@@ -82,7 +82,7 @@ export function ArticlesSection() {
               key={`${article.title}-${index}`}
               className="basis-[85%] sm:basis-1/2 lg:basis-1/3"
             >
-              <Card className="h-full overflow-hidden rounded-[22px] border border-[#dfe4ec] shadow-none py-0">
+              <Card className="h-full overflow-hidden rounded-[22px] border border-soft shadow-none py-0">
                 <CardContent className="flex h-full flex-col p-0">
                   <img
                     src={article.image}
@@ -90,15 +90,15 @@ export function ArticlesSection() {
                     className="h-48 w-full object-cover"
                   />
                   <div className="flex h-full flex-col gap-3 px-5 py-5">
-                    <CardTitle className="text-lg font-semibold leading-snug text-[#1b1b1b]">
+                    <CardTitle className="text-lg font-semibold leading-snug text-navy">
                       {article.title}
                     </CardTitle>
-                    <CardDescription className="text-sm leading-6 text-[#6f747f]">
+                    <CardDescription className="text-sm leading-6 text-muted">
                       {article.excerpt}
                     </CardDescription>
                     <button
                       type="button"
-                      className="mt-auto inline-flex items-center gap-2 text-[15px] font-semibold text-[#0049AF] transition hover:underline"
+                      className="mt-auto inline-flex items-center gap-2 text-[15px] font-semibold text-brand transition hover:underline"
                     >
                       Read article
                       <ArrowRight className="h-4 w-4" />

@@ -26,7 +26,7 @@ export function CategorySection() {
               <button className="mt-1 flex items-center gap-2 text-sm font-semibold text-brand transition hover:translate-x-0.5">
                 Ver mais
                 <span
-                  className="h-2 w-2 rounded-full bg-[#f58220]"
+                  className="h-2 w-2 rounded-full bg-orange"
                   aria-hidden="true"
                 />
               </button>

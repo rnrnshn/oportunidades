@@ -41,6 +41,8 @@ code {
   --accent-warm: #b16a1c;
   --accent-warm-dark: #815c32;
   --accent-earth: #736047;
+  --accent-orange: #f58220;
+  --accent-orange-dark: #e57414;
   --success: #1f9a52;
   --bg-soft: #f8f9fe;
   --bg-canvas-2: #fcefd5;
@@ -231,6 +233,12 @@ code {
   .text-gold {
     color: var(--accent-gold);
   }
+  .text-orange {
+    color: var(--accent-orange);
+  }
+  .text-orange-dark {
+    color: var(--accent-orange-dark);
+  }
   .text-success {
     color: var(--success);
   }
@@ -272,6 +280,12 @@ code {
   }
   .bg-gold {
     background-color: var(--accent-gold);
+  }
+  .bg-orange {
+    background-color: var(--accent-orange);
+  }
+  .bg-orange-dark {
+    background-color: var(--accent-orange-dark);
   }
   .border-soft {
     border-color: var(--border);

@@ -12,7 +12,7 @@ export function StepsSection() {
           <h2 className="text-3xl font-semibold text-navy">
             Entra, descobre e cresce
           </h2>
-          <p className="mt-3 text-lg text-[#6a6e74]">
+          <p className="mt-3 text-lg text-muted">
             Três passos simples para começares a usar a plataforma e transformares
             oportunidades em conquistas.
           </p>
@@ -37,10 +37,10 @@ export function StepsSection() {
               </div>
               <div className="flex gap-2 items-stretch">
                 <div>
-                  <h3 className="text-xl font-semibold text-[#1f1f1f]">
+                  <h3 className="text-xl font-semibold text-navy">
                     {step.title}
                   </h3>
-                  <p className="leading-relaxed text-[#61656b]">
+                  <p className="leading-relaxed text-muted">
                     {step.description}
                   </p>
                 </div>

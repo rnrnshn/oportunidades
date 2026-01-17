@@ -1,6 +1,7 @@
 import ImagePlaceholder from '@/components/ImagePlaceholder'
 import SiteFooter from '@/components/SiteFooter'
 import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 import {
   FeeTable,
   ProgramList,

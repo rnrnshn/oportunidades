@@ -1,4 +1,3 @@
-import SiteFooter from '@/components/SiteFooter'
 import { ListingLayout } from '@/components/layout/ListingLayout'
 import { Sparkles } from 'lucide-react'
 import { ScholarshipsFilter } from './scholarships/components/ScholarshipsFilter'

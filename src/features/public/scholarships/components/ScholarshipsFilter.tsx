@@ -1,8 +1,5 @@
-import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
-import { SlidersHorizontal, Sparkles } from 'lucide-react'
 import { MultiSelect } from '@/components/ui/multi-select'
 import { Filters, coverageOptions } from '../types'
 import { formatCurrency, RangeSlider, SelectField } from './ui-parts'

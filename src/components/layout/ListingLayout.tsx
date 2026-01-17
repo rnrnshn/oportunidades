@@ -1,5 +1,4 @@
 import SiteFooter from '@/components/SiteFooter'
-import { Badge } from '@/components/ui/badge'
 import { ReactNode } from 'react'
 
 interface ListingLayoutProps {

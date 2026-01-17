@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { SlidersHorizontal, Sparkles } from 'lucide-react'
+import { MultiSelect } from '@/components/ui/multi-select'
 import { Filters, coverageOptions } from '../types'
 import { formatCurrency, RangeSlider, SelectField } from './ui-parts'
 
@@ -33,43 +34,20 @@ export function ScholarshipsFilter({
   return (
     <aside className="space-y-4">
       <Card className="border-soft bg-white shadow-none">
-        <CardContent className="space-y-3 p-5">
-          <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-tint text-brand">
-              <Sparkles className="h-5 w-5" />
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-navy">
-                Preferes recomendações?
-              </p>
-              <p className="text-xs text-muted">
-                Responde a 5 perguntas e recebemos por ti.
-              </p>
-            </div>
-          </div>
-          <Button className="w-full rounded-lg bg-brand hover:bg-brand-dark">
-            <Sparkles className="mr-2 h-4 w-4" />
-            Pedir recomendações
-          </Button>
-        </CardContent>
-      </Card>
-
-      <Card className="border-soft bg-white shadow-none">
-        <CardContent className="space-y-4 p-5">
+        <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-base font-semibold text-navy">Filtrar bolsas</p>
-              <p className="text-xs text-muted">
-                Afina a pesquisa pela tua realidade.
-              </p>
             </div>
-            <button
-              type="button"
-              onClick={resetFilters}
-              className="text-sm font-semibold text-brand hover:underline"
-            >
-              Reset ({activeFiltersCount})
-            </button>
+            {activeFiltersCount > 0 && (
+              <button
+                type="button"
+                onClick={resetFilters}
+                className="text-sm font-semibold text-brand hover:underline"
+              >
+                Reset ({activeFiltersCount})
+              </button>
+            )}
           </div>
 
           <div className="space-y-4">
@@ -133,28 +111,12 @@ export function ScholarshipsFilter({
 
             <div className="space-y-2">
               <label className="text-sm font-semibold text-navy">Cobertura</label>
-              <div className="grid grid-cols-2 gap-2">
-                {coverageOptions.map((option) => (
-                  <label
-                    key={option}
-                    className="flex items-center gap-2 rounded-lg border border-soft bg-canvas-soft px-3 py-2 text-sm text-navy hover:border-brand/40"
-                  >
-                    <Checkbox
-                      checked={filters.coverage.includes(option)}
-                      onChange={() => {
-                        setFilters((prev) => {
-                          const exists = prev.coverage.includes(option)
-                          const nextCoverage = exists
-                            ? prev.coverage.filter((item) => item !== option)
-                            : [...prev.coverage, option]
-                          return { ...prev, coverage: nextCoverage }
-                        })
-                      }}
-                    />
-                    <span>{option}</span>
-                  </label>
-                ))}
-              </div>
+              <MultiSelect
+                options={coverageOptions}
+                value={filters.coverage}
+                onChange={(value) => updateFilters({ coverage: value })}
+                placeholder="Seleciona a cobertura"
+              />
             </div>
 
             <div className="space-y-3">
@@ -181,19 +143,7 @@ export function ScholarshipsFilter({
               formatOption={(value) => `Até ${value} dias`}
               onChange={(value) => updateFilters({ deadlineWindow: value })}
             />
-
-            <div className="space-y-2 rounded-xl border border-dashed border-soft bg-canvas-soft px-3 py-3 text-xs text-muted">
-              <p className="font-semibold text-navy">
-                Filtros aplicados automaticamente
-              </p>
-              <p>Os resultados abaixo reflectem as escolhas feitas aqui.</p>
-            </div>
           </div>
-
-          <Button className="w-full rounded-lg bg-brand hover:bg-brand-dark">
-            <SlidersHorizontal className="mr-2 h-4 w-4" />
-            Aplicar filtros
-          </Button>
         </CardContent>
       </Card>
     </aside>

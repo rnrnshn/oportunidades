@@ -1,9 +1,10 @@
-import { SlidersHorizontal, Sparkles, Star } from 'lucide-react'
+import { SlidersHorizontal, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { RangeSlider, SelectField, formatCurrency } from './ui-parts'
+import { RatingsFilter } from '@/components/ui/ratings-filter'
 import { Filters } from '../types'
 
 type UniversitiesFilterProps = {
@@ -32,37 +33,20 @@ export function UniversitiesFilter({
   return (
     <aside className="space-y-4">
       <Card className="border-soft bg-white shadow-none">
-        <CardContent className="space-y-3 p-5">
-          <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-tint text-brand">
-              <Sparkles className="h-5 w-5" />
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-navy">Ajuda personalizada?</p>
-              <p className="text-xs text-muted">Recebe recomendações de universidades em minutos.</p>
-            </div>
-          </div>
-          <Button className="w-full rounded-lg bg-brand hover:bg-brand-dark">
-            <Sparkles className="mr-2 h-4 w-4" />
-            Pedir recomendações
-          </Button>
-        </CardContent>
-      </Card>
-
-      <Card className="border-soft bg-white shadow-none">
-        <CardContent className="space-y-4 p-5">
+        <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-base font-semibold text-navy">Filtrar universidades</p>
-              <p className="text-xs text-muted">Afina por localização, tipo e propinas.</p>
             </div>
-            <button
-              type="button"
-              onClick={resetFilters}
-              className="text-sm font-semibold text-brand hover:underline"
-            >
-              Reset ({activeFiltersCount})
-            </button>
+            {activeFiltersCount > 0 && (
+              <button
+                type="button"
+                onClick={resetFilters}
+                className="text-sm font-semibold text-brand hover:underline"
+              >
+                Reset ({activeFiltersCount})
+              </button>
+            )}
           </div>
 
           <div className="space-y-4">
@@ -108,34 +92,6 @@ export function UniversitiesFilter({
               onChange={(value) => updateFilters({ modality: value })}
             />
 
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-navy">Avaliações</label>
-              <div className="grid grid-cols-2 gap-2">
-                {[5, 4, 3].map((stars) => (
-                  <label
-                    key={stars}
-                    className="flex items-center gap-2 rounded-lg border border-soft bg-canvas-soft px-3 py-2 text-sm text-navy hover:border-brand/40"
-                  >
-                    <Checkbox
-                      checked={filters.rating.includes(stars)}
-                      onChange={() => {
-                        setFilters((prev) => {
-                          const exists = prev.rating.includes(stars)
-                          const next = exists
-                            ? prev.rating.filter((value) => value !== stars)
-                            : [...prev.rating, stars]
-                          return { ...prev, rating: next }
-                        })
-                      }}
-                    />
-                    <span className="flex items-center gap-1">
-                      {stars} <Star className="h-4 w-4 fill-brand text-brand" />
-                    </span>
-                  </label>
-                ))}
-              </div>
-            </div>
-
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <label className="text-sm font-semibold text-navy">Propinas</label>
@@ -157,17 +113,7 @@ export function UniversitiesFilter({
               formatOption={(value) => `Até ${value} dias`}
               onChange={(value) => updateFilters({ deadlineWindow: value })}
             />
-
-            <div className="space-y-2 rounded-xl border border-dashed border-soft bg-canvas-soft px-3 py-3 text-xs text-muted">
-              <p className="font-semibold text-navy">Filtros aplicados automaticamente</p>
-              <p>Actualizamos a lista conforme ajustas os filtros.</p>
-            </div>
           </div>
-
-          <Button className="w-full rounded-lg bg-brand hover:bg-brand-dark">
-            <SlidersHorizontal className="mr-2 h-4 w-4" />
-            Aplicar filtros
-          </Button>
         </CardContent>
       </Card>
     </aside>

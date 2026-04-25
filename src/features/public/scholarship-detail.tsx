@@ -2,7 +2,7 @@ import SiteFooter from '@/components/SiteFooter'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Link } from '@tanstack/react-router'
+import { Link, useLoaderData } from '@tanstack/react-router'
 import { useState } from 'react'
 import {
   ArrowRight,
@@ -60,13 +60,15 @@ const relatedScholarships: RelatedScholarship[] = [
 
 export function ScholarshipDetailPage() {
   const [activeTab, setActiveTab] = useState<'geral' | 'eligibility' | 'application'>('geral')
+  const scholarship = useLoaderData({ from: '/bolsas/$slug' })
+  const amountRange = formatAmountRange(scholarship.amount_min, scholarship.amount_max, scholarship.amount_currency)
 
   return (
     <main className="bg-white text-navy">
       <header className="relative">
         <img
-          src="/categories/universidade.jpg"
-          alt="Scholarship hero"
+          src={scholarship.hero_image_url || '/categories/universidade.jpg'}
+          alt={scholarship.title}
           className="h-64 w-full object-cover md:h-80"
         />
       </header>
@@ -74,14 +76,14 @@ export function ScholarshipDetailPage() {
       <section className="mx-auto max-w-6xl px-4 py-8 space-y-6">
         <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-muted">
           <Link to="/bolsas" className="text-brand hover:underline">
-            Scholarships
+            Bolsas
           </Link>
           <span className="text-sand">›</span>
-          <span>Food Technology</span>
+          <span>{scholarship.area || 'Oportunidades'}</span>
           <span className="text-sand">›</span>
-          <span>Agricultural</span>
+          <span>{scholarship.degree_level || 'Bolsa'}</span>
           <span className="text-sand">›</span>
-          <span>Engineering</span>
+          <span>{scholarship.program_area || scholarship.country}</span>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-[1.1fr_320px] lg:items-start">
@@ -90,11 +92,12 @@ export function ScholarshipDetailPage() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-sm text-muted">
                   <Clock className="h-4 w-4 text-brand" />
-                  <span>Close in 89 days</span>
+                  <span>{formatDeadline(scholarship.deadline)}</span>
                 </div>
                 <h1 className="text-3xl font-bold leading-tight text-navy">
-                  Education Excellence Grant
+                  {scholarship.title}
                 </h1>
+                <p className="text-sm text-subtle">Oferecido por: {scholarship.entity_name}</p>
               </div>
               <Button variant="outline" className="rounded-full border-sand text-navy">
                 Bookmark
@@ -113,8 +116,7 @@ export function ScholarshipDetailPage() {
                 <div className="space-y-1">
                   <h2 className="text-lg font-semibold text-navy">Scholarship Details</h2>
                   <p className="text-sm text-subtle">
-                    This scholarship is designed to support students pursuing a degree in STEM fields. It aims to provide
-                    financial assistance to those who demonstrate academic excellence and a passion for innovation.{' '}
+                    {scholarship.description}{' '}
                     <Link to="/about" className="text-brand hover:underline">Learn more</Link>
                   </p>
                 </div>
@@ -124,27 +126,21 @@ export function ScholarshipDetailPage() {
                     <CircleDollarSign className="h-5 w-5 text-brand" aria-hidden="true" />
                     Scholarship grant
                   </div>
-                  <p className="text-sm text-subtle">$000,000.00 - 100,000.00</p>
+                  <p className="text-sm text-subtle">{amountRange}</p>
+                  {scholarship.coverage.length > 0 ? <p className="text-sm text-subtle">Coverage: {scholarship.coverage.join(', ')}</p> : null}
                 </div>
 
                 <div className="border-t border-sand pt-4 space-y-2">
                   <h3 className="text-base font-semibold text-navy">Qualifications</h3>
                   <div className="text-sm text-subtle leading-relaxed">
-                    - Bachelor&apos;s degree in a STEM field<br />
-                    - Strong academic record<br />
-                    - Demonstrated passion for innovation<br />
-                    - Financial need
+                    {renderLines(scholarship.eligibility || scholarship.requirements || 'Requisitos por confirmar.')}
                   </div>
                 </div>
 
                 <div className="border-t border-sand pt-4 space-y-2">
                   <h3 className="text-base font-semibold text-navy">Application Process</h3>
                   <div className="text-sm text-subtle leading-relaxed">
-                    To apply for the scholarship, you must complete the following steps:<br />
-                    - Submit a copy of your Bachelor&apos;s degree in a STEM field<br />
-                    - Provide transcripts showing a strong academic record<br />
-                    - Write a statement showcasing your passion for innovation<br />
-                    - Submit documentation demonstrating financial need
+                    {renderLines(scholarship.application_process || 'Processo de candidatura por confirmar.')}
                   </div>
                 </div>
               </CardContent>
@@ -159,11 +155,13 @@ export function ScholarshipDetailPage() {
               <p className="text-sm font-semibold text-navy">I applied</p>
             </div>
             <p className="text-base font-semibold text-navy">
-              Licenciatura em Engenharia Informática
+              {[scholarship.degree_level, scholarship.program_area].filter(Boolean).join(' em ') || scholarship.area || 'Programa por confirmar'}
             </p>
-            <Button className="w-full rounded-lg bg-brand text-white hover:bg-brand-dark">
-              Visit scholarship website
-              <ArrowUpRight className="ml-2 h-4 w-4" />
+            <Button asChild className="w-full rounded-lg bg-brand text-white hover:bg-brand-dark">
+              <a href={scholarship.apply_url || '#'} rel="noreferrer" target="_blank">
+                {scholarship.external_url_label || 'Visit scholarship website'}
+                <ArrowUpRight className="ml-2 h-4 w-4" />
+              </a>
             </Button>
             <button
               type="button"
@@ -268,4 +266,27 @@ function TabPill({ label, active, onClick }: { label: string; active: boolean; o
       {label}
     </button>
   )
+}
+
+function formatDeadline(deadline?: string) {
+  if (!deadline) return 'Prazo por confirmar'
+  const days = Math.ceil((new Date(deadline).getTime() - Date.now()) / (1000 * 60 * 60 * 24))
+  if (days < 0) return 'Prazo encerrado'
+  return `Close in ${days} days`
+}
+
+function formatAmountRange(min: string | undefined, max: string | undefined, currency: string) {
+  if (min && max) return `${currency} ${min} - ${max}`
+  if (max) return `Até ${currency} ${max}`
+  if (min) return `${currency} ${min}`
+  return 'Valor por confirmar'
+}
+
+function renderLines(value: string) {
+  return value.split('\n').map((line, index) => (
+    <span key={`${line}-${index}`}>
+      {line}
+      <br />
+    </span>
+  ))
 }

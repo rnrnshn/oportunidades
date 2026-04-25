@@ -2,92 +2,91 @@ import ImagePlaceholder from '@/components/ImagePlaceholder'
 import SiteFooter from '@/components/SiteFooter'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import { useLoaderData } from '@tanstack/react-router'
 import {
   FeeTable,
   ProgramList,
   ScholarshipList,
   UniversitySummary,
 } from '@/features/universities/components'
-
-const university = {
-  name: 'Eduardo Mondlane University',
-  slug: 'universidade-eduardo-mondlane',
-  founded: '1962',
-  type: 'Publica',
-  location: 'Maputo, Mozambique',
-  website: 'uem.mz',
-  email: 'contato@uem.mz',
-  phone: '+258 21 493 180',
-  programs: [
-    { level: 'Licenciatura', course: 'Bachelor of Business & International Relations', tuition: '$2,500/ano' },
-    { level: 'Mestrado', course: 'Advanced Economic Development Studies', tuition: '$4,000/ano' },
-    { level: 'Licenciatura', course: 'Public Health & Epidemiology', tuition: '$2,800/ano' },
-  ],
-  fees: [
-    { item: 'Propina anual', value: '$2,000' },
-    { item: 'Taxa de inscrição', value: '$150' },
-    { item: 'Mensalidade', value: '$180' },
-    { item: 'Prazos', value: '15 Setembro 2025' },
-  ],
-  scholarships: [
-    { name: 'STEM Excellence', amount: '$2,500', status: 'Aberta' },
-    { name: 'Eduardo Mondlane Alumni', amount: '$2,000', status: 'Inscrições em breve' },
-  ],
-}
+import type { UniversityDetail } from '@/features/universities/api'
 
 export function UniversityDetailPage() {
+  const university = useLoaderData({ from: '/universities/$slug' })
+
   return (
     <main className="bg-soft text-navy">
-      <HeaderBanner />
+      <HeaderBanner university={university} />
       <section className="bg-white">
-        <UniversitySummary meta={university} />
+        <UniversitySummary
+          meta={{
+            name: university.name,
+            founded: university.founded_year ? String(university.founded_year) : '',
+            type: university.type,
+            location: [university.city, university.province, university.country].filter(Boolean).join(', '),
+            email: university.email ?? '',
+            phone: university.phone ?? '',
+            logoURL: university.logo_url,
+            website: university.website,
+            tags: university.tags,
+          }}
+        />
       </section>
-      <OverviewSection />
-      <ProgramsSection />
-      <TuitionSection />
-      <ScholarshipsSection />
-      <ContactPanel />
+      <OverviewSection university={university} />
+      <ProgramsSection university={university} />
+      <TuitionSection university={university} />
+      <ScholarshipsSection university={university} />
+      <ContactPanel university={university} />
       <SiteFooter />
     </main>
   )
 }
 
-function HeaderBanner() {
+function HeaderBanner({ university }: { university: UniversityDetail }) {
   return (
     <section className="bg-white">
-      <ImagePlaceholder label="Campus" className="h-60 w-full rounded-none md:h-72" />
+      {university.campus_image_url ? (
+        <img src={university.campus_image_url} alt={`${university.name} campus`} className="h-60 w-full object-cover md:h-72" width="1440" height="320" />
+      ) : (
+        <ImagePlaceholder label="Campus" className="h-60 w-full rounded-none md:h-72" />
+      )}
     </section>
   )
 }
 
-function OverviewSection() {
+function OverviewSection({ university }: { university: UniversityDetail }) {
   return (
     <section className="bg-white py-10">
       <div className="mx-auto max-w-5xl px-4 space-y-6">
         <div>
           <h2 className="text-lg font-semibold">University details</h2>
           <p className="mt-2 text-sm text-muted">
-            Eduardo Mondlane University is the oldest and largest university in Mozambique. The university is recognised
-            for research in natural sciences, public health and economics across the SADC region.
+            {university.description || `${university.name} disponibiliza informação académica, contactos e oportunidades para candidatos.`}
           </p>
         </div>
-        <ImagePlaceholder label="Mapa" className="h-40 w-full rounded-md" />
+        {university.map_url ? (
+          <a className="block rounded-md border border-soft p-4 text-sm font-semibold text-brand hover:underline" href={university.map_url} rel="noreferrer" target="_blank">
+            Ver localização no mapa
+          </a>
+        ) : (
+          <ImagePlaceholder label="Mapa" className="h-40 w-full rounded-md" />
+        )}
         <div className="grid gap-4 text-sm text-muted md:grid-cols-2">
           <div>
             <div className="font-semibold text-navy">Campus sede</div>
-            Av. Julius Nyerere, Maputo
+            {university.address || [university.city, university.province].filter(Boolean).join(', ') || university.province}
           </div>
           <div>
             <div className="font-semibold text-navy">Contactos</div>
-            {university.email} • {university.phone}
+            {[university.email, university.phone].filter(Boolean).join(' • ') || 'Contactos por confirmar'}
           </div>
           <div>
             <div className="font-semibold text-navy">Calendário</div>
-            Janeiro - Novembro
+            {university.academic_calendar || 'Por confirmar'}
           </div>
           <div>
             <div className="font-semibold text-navy">Estudantes</div>
-            +25 000 estudantes ativos
+            {university.student_count ? `+${university.student_count.toLocaleString('pt-PT')} estudantes ativos` : 'Por confirmar'}
           </div>
         </div>
       </div>
@@ -95,7 +94,13 @@ function OverviewSection() {
   )
 }
 
-function ProgramsSection() {
+function ProgramsSection({ university }: { university: UniversityDetail }) {
+  const programs = (university.courses ?? []).map((course) => ({
+    level: course.level,
+    course: course.name,
+    tuition: course.annual_fee ? `${course.annual_fee} MZN/ano` : 'Propina por confirmar',
+  }))
+
   return (
     <section className="bg-white py-10">
       <div className="mx-auto max-w-5xl px-4 space-y-6">
@@ -105,24 +110,32 @@ function ProgramsSection() {
             Ver todos os programas
           </Button>
         </div>
-        <ProgramList programs={university.programs} />
+        <ProgramList programs={programs} />
       </div>
     </section>
   )
 }
 
-function TuitionSection() {
+function TuitionSection({ university }: { university: UniversityDetail }) {
+  const fees = (university.fees ?? []).map((fee) => ({ item: fee.label, value: fee.value }))
+
   return (
     <section className="bg-white py-10">
       <div className="mx-auto max-w-5xl px-4">
         <h2 className="text-lg font-semibold">Propinas & taxas</h2>
-        <FeeTable fees={university.fees} />
+        <FeeTable fees={fees} />
       </div>
     </section>
   )
 }
 
-function ScholarshipsSection() {
+function ScholarshipsSection({ university }: { university: UniversityDetail }) {
+  const scholarships = (university.scholarships ?? []).map((scholarship) => ({
+    name: scholarship.name,
+    amount: scholarship.amount ?? '',
+    status: scholarship.status,
+  }))
+
   return (
     <section className="bg-white py-10">
       <div className="mx-auto max-w-5xl px-4 space-y-4">
@@ -132,13 +145,13 @@ function ScholarshipsSection() {
             Ver todas
           </Button>
         </div>
-        <ScholarshipList scholarships={university.scholarships} />
+        <ScholarshipList scholarships={scholarships} />
       </div>
     </section>
   )
 }
 
-function ContactPanel() {
+function ContactPanel({ university }: { university: UniversityDetail }) {
   return (
     <section className="bg-white pb-16">
       <div className="mx-auto max-w-5xl px-4">
@@ -147,7 +160,7 @@ function ContactPanel() {
             <div>
               <h3 className="text-lg font-semibold text-navy">Precisas de orientação?</h3>
               <p className="text-sm text-subtle">
-                A nossa equipa ajuda-te a compreender requisitos, prazos e bolsas disponíveis nesta universidade.
+                A nossa equipa ajuda-te a compreender requisitos, prazos e bolsas disponíveis na {university.name}.
               </p>
             </div>
             <Button className="rounded-md bg-brand text-white hover:bg-brand-dark">Contactar mentoria</Button>

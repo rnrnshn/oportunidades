@@ -1,8 +1,9 @@
 import ImagePlaceholder from '@/components/ImagePlaceholder'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+import { Link } from '@tanstack/react-router'
 import { Bookmark, Building2, Globe2, MapPin } from 'lucide-react'
-import { University } from '../types'
+import type { University } from '../types'
 
 export function UniversityCard({ university }: { university: University }) {
   const formattedDate = new Date(university.deadline)
@@ -25,7 +26,13 @@ export function UniversityCard({ university }: { university: University }) {
           <div className="flex items-start justify-between gap-4">
             <div className="space-y-1">
               <h3 className="text-lg font-bold leading-tight text-navy sm:text-xl">
-                {university.name}
+                <Link
+                  to="/universities/$slug"
+                  params={{ slug: university.id }}
+                  className="hover:text-brand hover:underline"
+                >
+                  {university.name}
+                </Link>
               </h3>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-subtle">
                 <div className="flex items-center gap-1.5">
@@ -52,12 +59,13 @@ export function UniversityCard({ university }: { university: University }) {
           </div>
 
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
-            <a
-              href="#"
+            <Link
+              to="/universities/$slug"
+              params={{ slug: university.id }}
               className="text-sm font-semibold text-brand hover:underline"
             >
               Visitar página da universidade
-            </a>
+            </Link>
             <Button className="h-9 rounded-lg bg-brand px-4 text-xs font-bold uppercase tracking-wider text-white hover:bg-brand-dark">
               Admissões até {formattedDate}
             </Button>

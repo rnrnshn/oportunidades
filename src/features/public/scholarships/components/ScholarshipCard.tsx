@@ -1,8 +1,9 @@
 import ImagePlaceholder from '@/components/ImagePlaceholder'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+import { Link } from '@tanstack/react-router'
 import { Bookmark } from 'lucide-react'
-import { Scholarship } from '../types'
+import type { Scholarship } from '../types'
 
 export function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
   const formattedDeadline = new Date(scholarship.deadline)
@@ -34,7 +35,13 @@ export function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-2xl font-bold text-navy">
-                    {scholarship.title}
+                    <Link
+                      to="/bolsas/$slug"
+                      params={{ slug: scholarship.id }}
+                      className="hover:text-brand hover:underline"
+                    >
+                      {scholarship.title}
+                    </Link>
                   </h3>
                   <p className="text-base text-subtle">
                     Oferecido por: {scholarship.provider}
@@ -52,8 +59,10 @@ export function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <Button className="h-8 rounded-lg bg-brand text-xs font-bold uppercase text-white hover:bg-brand-dark">
-            Aberto até {formattedDeadline}
+          <Button asChild className="h-8 rounded-lg bg-brand text-xs font-bold uppercase text-white hover:bg-brand-dark">
+            <Link to="/bolsas/$slug" params={{ slug: scholarship.id }}>
+              Aberto até {formattedDeadline}
+            </Link>
           </Button>
           <span className="text-xs text-subtle">
             Publicado: {formattedPostedDate}

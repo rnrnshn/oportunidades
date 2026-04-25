@@ -27,6 +27,9 @@ export type UniversityMeta = {
   location: string
   email: string
   phone: string
+  logoURL?: string
+  website?: string
+  tags: string[]
 }
 
 export function UniversitySummary({
@@ -37,37 +40,48 @@ export function UniversitySummary({
   return (
     <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 pb-6 pt-8 md:flex-row md:items-center md:justify-between">
       <div className="flex items-start gap-4">
-        <ImagePlaceholder label="Logo" className="h-16 w-16 rounded-md" />
+        {meta.logoURL ? (
+          <img src={meta.logoURL} alt={`${meta.name} logo`} className="h-16 w-16 rounded-md object-contain" width="64" height="64" />
+        ) : (
+          <ImagePlaceholder label="Logo" className="h-16 w-16 rounded-md" />
+        )}
         <div>
           <h1 className="text-2xl font-semibold text-navy">{meta.name}</h1>
           <div className="mt-2 flex flex-wrap gap-2 text-sm text-muted">
-            <span>Fundada em {meta.founded}</span>
+            {meta.founded ? <span>Fundada em {meta.founded}</span> : null}
             <span>• {meta.type}</span>
             <span>• {meta.location}</span>
           </div>
           <div className="mt-3 flex gap-3">
-            <Button className="rounded-md bg-brand text-white hover:bg-brand-dark">
-              Website oficial
+            <Button asChild className="rounded-md bg-brand text-white hover:bg-brand-dark">
+              <a href={meta.website || '#'} rel="noreferrer" target="_blank">
+                Website oficial
+              </a>
             </Button>
             <Button
+              asChild
               variant="outline"
               className="rounded-md border border-brand text-brand"
             >
-              Contactar
+              <a href={meta.email ? `mailto:${meta.email}` : '#'}>Contactar</a>
             </Button>
           </div>
         </div>
       </div>
       <div className="flex gap-2">
-        <Badge className="rounded-md bg-brand-tint text-brand">Government</Badge>
-        <Badge className="rounded-md bg-canvas text-warm">Academics</Badge>
-        <Badge className="rounded-md bg-mint text-success">Tuition</Badge>
+        {meta.tags.map((tag) => (
+          <Badge key={tag} className="rounded-md bg-brand-tint text-brand">{tag}</Badge>
+        ))}
       </div>
     </div>
   )
 }
 
 export function ProgramList({ programs }: { programs: UniversityProgram[] }) {
+  if (programs.length === 0) {
+    return <p className="text-sm text-muted">Programas por confirmar.</p>
+  }
+
   return (
     <div className="space-y-3">
       {programs.map((program) => (
@@ -95,6 +109,10 @@ export function ProgramList({ programs }: { programs: UniversityProgram[] }) {
 }
 
 export function FeeTable({ fees }: { fees: UniversityFee[] }) {
+  if (fees.length === 0) {
+    return <p className="mt-4 text-sm text-muted">Propinas e taxas por confirmar.</p>
+  }
+
   return (
     <div className="mt-4 overflow-hidden rounded-md border border-soft bg-white">
       <table className="w-full text-left text-sm text-navy">
@@ -122,6 +140,10 @@ export function ScholarshipList({
 }: {
   scholarships: UniversityScholarship[]
 }) {
+  if (scholarships.length === 0) {
+    return <p className="text-sm text-muted">Bolsas internas por confirmar.</p>
+  }
+
   return (
     <div className="space-y-3">
       {scholarships.map((scholarship) => (

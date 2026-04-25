@@ -3,7 +3,7 @@ export type University = {
   name: string
   location: string
   country: string
-  type: 'Pública' | 'Privada'
+  type: 'Pública' | 'Privada' | 'Instituto' | 'Academia'
   modality: 'Campus' | 'Online' | 'Híbrida'
   fields: string[]
   tuitionRange: string

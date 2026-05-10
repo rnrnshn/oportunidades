@@ -49,3 +49,30 @@ export async function getOpportunities(): Promise<Opportunity[]> {
     degreeLevel: item.degree_level,
   }))
 }
+
+export async function getOpportunitiesByType(type: string): Promise<Opportunity[]> {
+  const response = await fetch(
+    `${API_URL}/v1/opportunities?type=${type}&active=true&verified=true&per_page=50`
+  )
+
+  if (!response.ok) {
+    throw new Error('Não foi possível carregar oportunidades.')
+  }
+
+  const body = await response.json()
+  const parsed = OpportunitiesResponseSchema.parse(body)
+
+  return parsed.data.map((item) => ({
+    id: item.id,
+    slug: item.slug,
+    title: item.title,
+    type: item.type,
+    entityName: item.entity_name,
+    deadline: item.deadline,
+    country: item.country,
+    location: item.location,
+    isRemote: item.is_remote,
+    area: item.area || item.program_area,
+    degreeLevel: item.degree_level,
+  }))
+}

@@ -13,6 +13,8 @@ import { Route as UniversidadesRouteImport } from './routes/universidades'
 import { Route as StyleguideRouteImport } from './routes/styleguide'
 import { Route as OportunidadesRouteImport } from './routes/oportunidades'
 import { Route as MentoriaRouteImport } from './routes/mentoria'
+import { Route as EstagiosRouteImport } from './routes/estagios'
+import { Route as EmpregosRouteImport } from './routes/empregos'
 import { Route as CursosRouteImport } from './routes/cursos'
 import { Route as BolsasRouteImport } from './routes/bolsas'
 import { Route as ArtigosRouteImport } from './routes/artigos'
@@ -45,6 +47,16 @@ const OportunidadesRoute = OportunidadesRouteImport.update({
 const MentoriaRoute = MentoriaRouteImport.update({
   id: '/mentoria',
   path: '/mentoria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EstagiosRoute = EstagiosRouteImport.update({
+  id: '/estagios',
+  path: '/estagios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmpregosRoute = EmpregosRouteImport.update({
+  id: '/empregos',
+  path: '/empregos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CursosRoute = CursosRouteImport.update({
@@ -120,6 +132,8 @@ export interface FileRoutesByFullPath {
   '/artigos': typeof ArtigosRouteWithChildren
   '/bolsas': typeof BolsasRouteWithChildren
   '/cursos': typeof CursosRoute
+  '/empregos': typeof EmpregosRoute
+  '/estagios': typeof EstagiosRoute
   '/mentoria': typeof MentoriaRoute
   '/oportunidades': typeof OportunidadesRouteWithChildren
   '/styleguide': typeof StyleguideRoute
@@ -137,6 +151,8 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/cursos': typeof CursosRoute
+  '/empregos': typeof EmpregosRoute
+  '/estagios': typeof EstagiosRoute
   '/mentoria': typeof MentoriaRoute
   '/styleguide': typeof StyleguideRoute
   '/universidades': typeof UniversidadesRoute
@@ -156,6 +172,8 @@ export interface FileRoutesById {
   '/artigos': typeof ArtigosRouteWithChildren
   '/bolsas': typeof BolsasRouteWithChildren
   '/cursos': typeof CursosRoute
+  '/empregos': typeof EmpregosRoute
+  '/estagios': typeof EstagiosRoute
   '/mentoria': typeof MentoriaRoute
   '/oportunidades': typeof OportunidadesRouteWithChildren
   '/styleguide': typeof StyleguideRoute
@@ -177,6 +195,8 @@ export interface FileRouteTypes {
     | '/artigos'
     | '/bolsas'
     | '/cursos'
+    | '/empregos'
+    | '/estagios'
     | '/mentoria'
     | '/oportunidades'
     | '/styleguide'
@@ -194,6 +214,8 @@ export interface FileRouteTypes {
     | '/about'
     | '/account'
     | '/cursos'
+    | '/empregos'
+    | '/estagios'
     | '/mentoria'
     | '/styleguide'
     | '/universidades'
@@ -212,6 +234,8 @@ export interface FileRouteTypes {
     | '/artigos'
     | '/bolsas'
     | '/cursos'
+    | '/empregos'
+    | '/estagios'
     | '/mentoria'
     | '/oportunidades'
     | '/styleguide'
@@ -232,6 +256,8 @@ export interface RootRouteChildren {
   ArtigosRoute: typeof ArtigosRouteWithChildren
   BolsasRoute: typeof BolsasRouteWithChildren
   CursosRoute: typeof CursosRoute
+  EmpregosRoute: typeof EmpregosRoute
+  EstagiosRoute: typeof EstagiosRoute
   MentoriaRoute: typeof MentoriaRoute
   OportunidadesRoute: typeof OportunidadesRouteWithChildren
   StyleguideRoute: typeof StyleguideRoute
@@ -267,6 +293,20 @@ declare module '@tanstack/react-router' {
       path: '/mentoria'
       fullPath: '/mentoria'
       preLoaderRoute: typeof MentoriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/estagios': {
+      id: '/estagios'
+      path: '/estagios'
+      fullPath: '/estagios'
+      preLoaderRoute: typeof EstagiosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/empregos': {
+      id: '/empregos'
+      path: '/empregos'
+      fullPath: '/empregos'
+      preLoaderRoute: typeof EmpregosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cursos': {
@@ -410,6 +450,8 @@ const rootRouteChildren: RootRouteChildren = {
   ArtigosRoute: ArtigosRouteWithChildren,
   BolsasRoute: BolsasRouteWithChildren,
   CursosRoute: CursosRoute,
+  EmpregosRoute: EmpregosRoute,
+  EstagiosRoute: EstagiosRoute,
   MentoriaRoute: MentoriaRoute,
   OportunidadesRoute: OportunidadesRouteWithChildren,
   StyleguideRoute: StyleguideRoute,

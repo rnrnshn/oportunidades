@@ -10,9 +10,12 @@ import { useCurrentUser } from '@/features/auth/use-current-user'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
-  { label: 'Bolsas de Estudo', to: '/bolsas' },
+  { label: 'Oportunidades', to: '/oportunidades' },
+  { label: 'Bolsas', to: '/bolsas' },
   { label: 'Universidades', to: '/universidades' },
-  { label: 'Sobre', to: '/about' },
+  { label: 'Cursos', to: '/cursos' },
+  { label: 'Artigos', to: '/artigos' },
+  { label: 'Mentoria', to: '/mentoria' },
 ]
 
 export default function Header({ transparent = false }: { transparent?: boolean }) {

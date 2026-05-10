@@ -1,9 +1,12 @@
 import { Link, useLocation } from '@tanstack/react-router'
+import { useQueryClient } from '@tanstack/react-query'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 
 import { AuthDialog } from '@/features/auth/AuthDialog'
 import { Button } from '@/components/ui/button'
+import { logout } from '@/features/auth/api'
+import { useCurrentUser } from '@/features/auth/use-current-user'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
@@ -13,10 +16,17 @@ const navLinks = [
 ]
 
 export default function Header({ transparent = false }: { transparent?: boolean }) {
+  const queryClient = useQueryClient()
+  const { data: user } = useCurrentUser()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [authMode, setAuthMode] = useState<'login' | 'signup' | null>(null)
   const location = useLocation()
   const isHome = location.pathname === '/'
+
+  async function handleLogout() {
+    await logout()
+    queryClient.clear()
+  }
 
   return (
     <header
@@ -54,21 +64,32 @@ export default function Header({ transparent = false }: { transparent?: boolean 
           ))}
         </nav>
 
-        <div className="hidden md:grid md:grid-cols-2 items-center gap-3">
-          <Button
-            variant="outline"
-            className="rounded-lg border-brand border-opacity-30 text-brand"
-            onClick={() => setAuthMode('login')}
-          >
-            Entrar
-          </Button>
-          <Button
-            className="rounded-lg bg-brand hover:bg-brand-dark"
-            onClick={() => setAuthMode('signup')}
-          >
-            Criar conta
-          </Button>
-        </div>
+        {user ? (
+          <div className="hidden items-center gap-3 md:flex">
+            <Link to="/account" className="max-w-[160px] truncate text-sm font-semibold text-navy hover:text-brand">
+              {user.name}
+            </Link>
+            <Button variant="outline" className="rounded-lg border-brand border-opacity-30 text-brand" onClick={() => void handleLogout()}>
+              Sair
+            </Button>
+          </div>
+        ) : (
+          <div className="hidden md:grid md:grid-cols-2 items-center gap-3">
+            <Button
+              variant="outline"
+              className="rounded-lg border-brand border-opacity-30 text-brand"
+              onClick={() => setAuthMode('login')}
+            >
+              Entrar
+            </Button>
+            <Button
+              className="rounded-lg bg-brand hover:bg-brand-dark"
+              onClick={() => setAuthMode('signup')}
+            >
+              Criar conta
+            </Button>
+          </div>
+        )}
 
         <Button
           variant="outline"
@@ -95,27 +116,38 @@ export default function Header({ transparent = false }: { transparent?: boolean 
               </Link>
             ))}
           </nav>
-          <div className="flex flex-col gap-2">
-            <Button
-              variant="outline"
-              className="rounded-md border-brand border-opacity-30 text-brand"
-              onClick={() => {
-                setMobileOpen(false)
-                setAuthMode('login')
-              }}
-            >
-              Entrar
-            </Button>
-            <Button
-              className="rounded-md bg-brand hover:bg-brand-dark"
-              onClick={() => {
-                setMobileOpen(false)
-                setAuthMode('signup')
-              }}
-            >
-              Criar conta
-            </Button>
-          </div>
+          {user ? (
+            <div className="flex flex-col gap-2">
+              <Link to="/account" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-sm font-semibold text-navy">
+                {user.name}
+              </Link>
+              <Button variant="outline" className="rounded-md border-brand border-opacity-30 text-brand" onClick={() => void handleLogout()}>
+                Sair
+              </Button>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-2">
+              <Button
+                variant="outline"
+                className="rounded-md border-brand border-opacity-30 text-brand"
+                onClick={() => {
+                  setMobileOpen(false)
+                  setAuthMode('login')
+                }}
+              >
+                Entrar
+              </Button>
+              <Button
+                className="rounded-md bg-brand hover:bg-brand-dark"
+                onClick={() => {
+                  setMobileOpen(false)
+                  setAuthMode('signup')
+                }}
+              >
+                Criar conta
+              </Button>
+            </div>
+          )}
         </div>
       )}
       <AuthDialog

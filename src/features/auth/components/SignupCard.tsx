@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useQueryClient } from '@tanstack/react-query'
 import { X } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -7,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { DialogHeader } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
+import { register as registerAccount } from '@/features/auth/api'
 
 import { AuthLogo, Divider, Field, GoogleButton } from './common'
 
@@ -26,6 +28,7 @@ type SignupCardProps = {
 }
 
 export function SignupCard({ onSwitchMode, onClose }: SignupCardProps) {
+  const queryClient = useQueryClient()
   const form = useForm<SignupForm>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
@@ -37,8 +40,14 @@ export function SignupCard({ onSwitchMode, onClose }: SignupCardProps) {
     },
   })
 
-  const onSubmit = (values: SignupForm) => {
-    console.log('signup', values)
+  const onSubmit = async (values: SignupForm) => {
+    try {
+      await registerAccount(`${values.firstName} ${values.lastName}`.trim(), values.email, values.password)
+      await queryClient.invalidateQueries({ queryKey: ['auth', 'current-user'] })
+      onClose()
+    } catch (error) {
+      form.setError('root', { message: error instanceof Error ? error.message : 'Não foi possível criar a conta.' })
+    }
   }
 
   return (
@@ -101,11 +110,15 @@ export function SignupCard({ onSwitchMode, onClose }: SignupCardProps) {
         {form.formState.errors.terms ? (
           <p className="text-xs text-danger">{form.formState.errors.terms.message}</p>
         ) : null}
+        {form.formState.errors.root ? (
+          <p className="text-xs text-danger">{form.formState.errors.root.message}</p>
+        ) : null}
         <Button
+          disabled={form.formState.isSubmitting}
           type="submit"
           className="w-full rounded-full bg-brand text-white hover:bg-brand-dark"
         >
-          Create account
+          {form.formState.isSubmitting ? 'Creating account...' : 'Create account'}
         </Button>
       </form>
 

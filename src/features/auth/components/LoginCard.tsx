@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useQueryClient } from '@tanstack/react-query'
 import { X } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -6,6 +7,7 @@ import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import { DialogHeader } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
+import { login } from '@/features/auth/api'
 
 import { AuthLogo, Divider, Field, GoogleButton } from './common'
 
@@ -22,6 +24,7 @@ type LoginCardProps = {
 }
 
 export function LoginCard({ onSwitchMode, onClose }: LoginCardProps) {
+  const queryClient = useQueryClient()
   const form = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -30,10 +33,16 @@ export function LoginCard({ onSwitchMode, onClose }: LoginCardProps) {
     },
   })
 
-  const hasError = Boolean(form.formState.errors.password)
+  const hasError = Boolean(form.formState.errors.password || form.formState.errors.root)
 
-  const onSubmit = (values: LoginForm) => {
-    console.log('login', values)
+  const onSubmit = async (values: LoginForm) => {
+    try {
+      await login(values.email, values.password)
+      await queryClient.invalidateQueries({ queryKey: ['auth', 'current-user'] })
+      onClose()
+    } catch (error) {
+      form.setError('root', { message: error instanceof Error ? error.message : 'Não foi possível iniciar sessão.' })
+    }
   }
 
   return (
@@ -66,10 +75,10 @@ export function LoginCard({ onSwitchMode, onClose }: LoginCardProps) {
           />
         </Field>
         {hasError ? (
-          <p className="text-xs text-danger">The password you entered is incorrect</p>
+          <p className="text-xs text-danger">{form.formState.errors.root?.message ?? 'The password you entered is incorrect'}</p>
         ) : null}
-        <Button type="submit" className="w-full rounded-full bg-brand text-white hover:bg-brand-dark">
-          Sign in
+        <Button disabled={form.formState.isSubmitting} type="submit" className="w-full rounded-full bg-brand text-white hover:bg-brand-dark">
+          {form.formState.isSubmitting ? 'Signing in...' : 'Sign in'}
         </Button>
       </form>
 

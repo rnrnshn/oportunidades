@@ -11,13 +11,21 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UniversidadesRouteImport } from './routes/universidades'
 import { Route as StyleguideRouteImport } from './routes/styleguide'
+import { Route as OportunidadesRouteImport } from './routes/oportunidades'
+import { Route as MentoriaRouteImport } from './routes/mentoria'
+import { Route as CursosRouteImport } from './routes/cursos'
 import { Route as BolsasRouteImport } from './routes/bolsas'
+import { Route as ArtigosRouteImport } from './routes/artigos'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as OportunidadesIndexRouteImport } from './routes/oportunidades/index'
 import { Route as BolsasIndexRouteImport } from './routes/bolsas/index'
+import { Route as ArtigosIndexRouteImport } from './routes/artigos/index'
 import { Route as UniversitiesSlugRouteImport } from './routes/universities/$slug'
+import { Route as OportunidadesSlugRouteImport } from './routes/oportunidades/$slug'
 import { Route as BolsasSlugRouteImport } from './routes/bolsas/$slug'
+import { Route as ArtigosSlugRouteImport } from './routes/artigos/$slug'
 
 const UniversidadesRoute = UniversidadesRouteImport.update({
   id: '/universidades',
@@ -29,9 +37,29 @@ const StyleguideRoute = StyleguideRouteImport.update({
   path: '/styleguide',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OportunidadesRoute = OportunidadesRouteImport.update({
+  id: '/oportunidades',
+  path: '/oportunidades',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentoriaRoute = MentoriaRouteImport.update({
+  id: '/mentoria',
+  path: '/mentoria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CursosRoute = CursosRouteImport.update({
+  id: '/cursos',
+  path: '/cursos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BolsasRoute = BolsasRouteImport.update({
   id: '/bolsas',
   path: '/bolsas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtigosRoute = ArtigosRouteImport.update({
+  id: '/artigos',
+  path: '/artigos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AccountRoute = AccountRouteImport.update({
@@ -49,54 +77,96 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OportunidadesIndexRoute = OportunidadesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => OportunidadesRoute,
+} as any)
 const BolsasIndexRoute = BolsasIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => BolsasRoute,
+} as any)
+const ArtigosIndexRoute = ArtigosIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ArtigosRoute,
 } as any)
 const UniversitiesSlugRoute = UniversitiesSlugRouteImport.update({
   id: '/universities/$slug',
   path: '/universities/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OportunidadesSlugRoute = OportunidadesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => OportunidadesRoute,
+} as any)
 const BolsasSlugRoute = BolsasSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => BolsasRoute,
+} as any)
+const ArtigosSlugRoute = ArtigosSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ArtigosRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
+  '/artigos': typeof ArtigosRouteWithChildren
   '/bolsas': typeof BolsasRouteWithChildren
+  '/cursos': typeof CursosRoute
+  '/mentoria': typeof MentoriaRoute
+  '/oportunidades': typeof OportunidadesRouteWithChildren
   '/styleguide': typeof StyleguideRoute
   '/universidades': typeof UniversidadesRoute
+  '/artigos/$slug': typeof ArtigosSlugRoute
   '/bolsas/$slug': typeof BolsasSlugRoute
+  '/oportunidades/$slug': typeof OportunidadesSlugRoute
   '/universities/$slug': typeof UniversitiesSlugRoute
+  '/artigos/': typeof ArtigosIndexRoute
   '/bolsas/': typeof BolsasIndexRoute
+  '/oportunidades/': typeof OportunidadesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
+  '/cursos': typeof CursosRoute
+  '/mentoria': typeof MentoriaRoute
   '/styleguide': typeof StyleguideRoute
   '/universidades': typeof UniversidadesRoute
+  '/artigos/$slug': typeof ArtigosSlugRoute
   '/bolsas/$slug': typeof BolsasSlugRoute
+  '/oportunidades/$slug': typeof OportunidadesSlugRoute
   '/universities/$slug': typeof UniversitiesSlugRoute
+  '/artigos': typeof ArtigosIndexRoute
   '/bolsas': typeof BolsasIndexRoute
+  '/oportunidades': typeof OportunidadesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
+  '/artigos': typeof ArtigosRouteWithChildren
   '/bolsas': typeof BolsasRouteWithChildren
+  '/cursos': typeof CursosRoute
+  '/mentoria': typeof MentoriaRoute
+  '/oportunidades': typeof OportunidadesRouteWithChildren
   '/styleguide': typeof StyleguideRoute
   '/universidades': typeof UniversidadesRoute
+  '/artigos/$slug': typeof ArtigosSlugRoute
   '/bolsas/$slug': typeof BolsasSlugRoute
+  '/oportunidades/$slug': typeof OportunidadesSlugRoute
   '/universities/$slug': typeof UniversitiesSlugRoute
+  '/artigos/': typeof ArtigosIndexRoute
   '/bolsas/': typeof BolsasIndexRoute
+  '/oportunidades/': typeof OportunidadesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -104,40 +174,66 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/account'
+    | '/artigos'
     | '/bolsas'
+    | '/cursos'
+    | '/mentoria'
+    | '/oportunidades'
     | '/styleguide'
     | '/universidades'
+    | '/artigos/$slug'
     | '/bolsas/$slug'
+    | '/oportunidades/$slug'
     | '/universities/$slug'
+    | '/artigos/'
     | '/bolsas/'
+    | '/oportunidades/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/account'
+    | '/cursos'
+    | '/mentoria'
     | '/styleguide'
     | '/universidades'
+    | '/artigos/$slug'
     | '/bolsas/$slug'
+    | '/oportunidades/$slug'
     | '/universities/$slug'
+    | '/artigos'
     | '/bolsas'
+    | '/oportunidades'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/account'
+    | '/artigos'
     | '/bolsas'
+    | '/cursos'
+    | '/mentoria'
+    | '/oportunidades'
     | '/styleguide'
     | '/universidades'
+    | '/artigos/$slug'
     | '/bolsas/$slug'
+    | '/oportunidades/$slug'
     | '/universities/$slug'
+    | '/artigos/'
     | '/bolsas/'
+    | '/oportunidades/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AccountRoute: typeof AccountRoute
+  ArtigosRoute: typeof ArtigosRouteWithChildren
   BolsasRoute: typeof BolsasRouteWithChildren
+  CursosRoute: typeof CursosRoute
+  MentoriaRoute: typeof MentoriaRoute
+  OportunidadesRoute: typeof OportunidadesRouteWithChildren
   StyleguideRoute: typeof StyleguideRoute
   UniversidadesRoute: typeof UniversidadesRoute
   UniversitiesSlugRoute: typeof UniversitiesSlugRoute
@@ -159,11 +255,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StyleguideRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/oportunidades': {
+      id: '/oportunidades'
+      path: '/oportunidades'
+      fullPath: '/oportunidades'
+      preLoaderRoute: typeof OportunidadesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentoria': {
+      id: '/mentoria'
+      path: '/mentoria'
+      fullPath: '/mentoria'
+      preLoaderRoute: typeof MentoriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cursos': {
+      id: '/cursos'
+      path: '/cursos'
+      fullPath: '/cursos'
+      preLoaderRoute: typeof CursosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/bolsas': {
       id: '/bolsas'
       path: '/bolsas'
       fullPath: '/bolsas'
       preLoaderRoute: typeof BolsasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artigos': {
+      id: '/artigos'
+      path: '/artigos'
+      fullPath: '/artigos'
+      preLoaderRoute: typeof ArtigosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/account': {
@@ -187,12 +311,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/oportunidades/': {
+      id: '/oportunidades/'
+      path: '/'
+      fullPath: '/oportunidades/'
+      preLoaderRoute: typeof OportunidadesIndexRouteImport
+      parentRoute: typeof OportunidadesRoute
+    }
     '/bolsas/': {
       id: '/bolsas/'
       path: '/'
       fullPath: '/bolsas/'
       preLoaderRoute: typeof BolsasIndexRouteImport
       parentRoute: typeof BolsasRoute
+    }
+    '/artigos/': {
+      id: '/artigos/'
+      path: '/'
+      fullPath: '/artigos/'
+      preLoaderRoute: typeof ArtigosIndexRouteImport
+      parentRoute: typeof ArtigosRoute
     }
     '/universities/$slug': {
       id: '/universities/$slug'
@@ -201,6 +339,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UniversitiesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/oportunidades/$slug': {
+      id: '/oportunidades/$slug'
+      path: '/$slug'
+      fullPath: '/oportunidades/$slug'
+      preLoaderRoute: typeof OportunidadesSlugRouteImport
+      parentRoute: typeof OportunidadesRoute
+    }
     '/bolsas/$slug': {
       id: '/bolsas/$slug'
       path: '/$slug'
@@ -208,8 +353,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BolsasSlugRouteImport
       parentRoute: typeof BolsasRoute
     }
+    '/artigos/$slug': {
+      id: '/artigos/$slug'
+      path: '/$slug'
+      fullPath: '/artigos/$slug'
+      preLoaderRoute: typeof ArtigosSlugRouteImport
+      parentRoute: typeof ArtigosRoute
+    }
   }
 }
+
+interface ArtigosRouteChildren {
+  ArtigosSlugRoute: typeof ArtigosSlugRoute
+  ArtigosIndexRoute: typeof ArtigosIndexRoute
+}
+
+const ArtigosRouteChildren: ArtigosRouteChildren = {
+  ArtigosSlugRoute: ArtigosSlugRoute,
+  ArtigosIndexRoute: ArtigosIndexRoute,
+}
+
+const ArtigosRouteWithChildren =
+  ArtigosRoute._addFileChildren(ArtigosRouteChildren)
 
 interface BolsasRouteChildren {
   BolsasSlugRoute: typeof BolsasSlugRoute
@@ -224,11 +389,29 @@ const BolsasRouteChildren: BolsasRouteChildren = {
 const BolsasRouteWithChildren =
   BolsasRoute._addFileChildren(BolsasRouteChildren)
 
+interface OportunidadesRouteChildren {
+  OportunidadesSlugRoute: typeof OportunidadesSlugRoute
+  OportunidadesIndexRoute: typeof OportunidadesIndexRoute
+}
+
+const OportunidadesRouteChildren: OportunidadesRouteChildren = {
+  OportunidadesSlugRoute: OportunidadesSlugRoute,
+  OportunidadesIndexRoute: OportunidadesIndexRoute,
+}
+
+const OportunidadesRouteWithChildren = OportunidadesRoute._addFileChildren(
+  OportunidadesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AccountRoute: AccountRoute,
+  ArtigosRoute: ArtigosRouteWithChildren,
   BolsasRoute: BolsasRouteWithChildren,
+  CursosRoute: CursosRoute,
+  MentoriaRoute: MentoriaRoute,
+  OportunidadesRoute: OportunidadesRouteWithChildren,
   StyleguideRoute: StyleguideRoute,
   UniversidadesRoute: UniversidadesRoute,
   UniversitiesSlugRoute: UniversitiesSlugRoute,

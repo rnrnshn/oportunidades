@@ -4,7 +4,7 @@ export const scholarshipsMock: Scholarship[] = [
   {
     id: 'horizonte-stem',
     title: 'Bolsa Horizonte STEM',
-    provider: 'Fundação Horizonte',
+    provider: 'ABC Foundation',
     location: 'Maputo, Moçambique',
     modality: 'Presencial',
     level: 'Licenciatura',
@@ -41,7 +41,7 @@ export const scholarshipsMock: Scholarship[] = [
   {
     id: 'impacto-comunitario',
     title: 'Bolsa Impacto Comunitário',
-    provider: 'Fundação Impacto+',
+    provider: "Fundação Impacto+",
     location: 'Beira, Moçambique',
     modality: 'Híbrido',
     level: 'Licenciatura',

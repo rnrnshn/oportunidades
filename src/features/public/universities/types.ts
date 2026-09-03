@@ -11,7 +11,32 @@ export type University = {
   deadline: string
   rating: number
   website?: string
+  email?: string
+  phone?: string
   tags?: string[]
+  i_applied?: boolean
+  courses?: Course[]
+  fees?: Fee[]
+}
+
+export type Fee = {
+  id?: string
+  label: string
+  value: string
+  sort_order: number
+}
+
+export type Course = {
+  id: string
+  slug: string
+  university_id: string
+  name: string
+  area: string
+  level: string
+  regime: string
+  duration_years?: number
+  annual_fee?: string
+  entry_requirements?: string
 }
 
 export type Filters = {

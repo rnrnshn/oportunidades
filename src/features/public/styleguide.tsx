@@ -1,3 +1,4 @@
+import { type ComponentPropsWithoutRef } from 'react'
 import SiteFooter from '@/components/SiteFooter'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -16,7 +17,12 @@ const palette = [
   { name: 'Gold', token: '--accent-gold', className: 'bg-gold text-white' },
 ]
 
-const buttons = [
+type StyleGuideButton = {
+  label: string
+  props: ComponentPropsWithoutRef<typeof Button>
+}
+
+const buttons: StyleGuideButton[] = [
   { label: 'Primary', props: { children: 'Criar conta', className: 'bg-brand hover:bg-brand-dark' } },
   { label: 'Outline', props: { children: 'Entrar', variant: 'outline', className: 'border border-brand text-brand' } },
   { label: 'Ghost', props: { children: 'Ver blog', variant: 'ghost', className: 'text-brand' } },

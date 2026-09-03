@@ -26,6 +26,7 @@ export function UniversitiesFilter({
   typeOptions,
   modalityOptions,
 }: UniversitiesFilterProps) {
+  void setFilters
   return (
     <aside className="space-y-4">
       <Card className="border-soft bg-white shadow-none">

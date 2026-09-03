@@ -22,13 +22,6 @@ const steps = [
   },
 ]
 
-const stats = [
-  { label: 'Oportunidades registadas', value: '1 000+' },
-  { label: 'Universidades no catálogo', value: '50+' },
-  { label: 'Jovens orientados', value: '4 000+' },
-]
-
-const partners = ['MaputoEdu', 'TechnoServe', 'MozLabs', 'STEM Network', 'Fundação Horizonte', 'Impacto+']
 
 const highlightStats = [
   { value: '+1 000', label: 'Oportunidades registadas' },
@@ -235,10 +228,6 @@ function PartnersSection() {
       </div>
     </section>
   )
-}
-
-function ImpactSection() {
-  return null
 }
 
 function JoinSection() {

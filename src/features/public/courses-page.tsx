@@ -106,17 +106,17 @@ function CourseFilters(props: FilterProps) {
   return (
     <FilterPanel activeCount={props.activeCount} onClear={props.onReset} bordered>
       <details open className="group border-b border-[var(--surface-border)]">
-        <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between font-semibold [&::-webkit-details-marker]:hidden">Universidade<ChevronDown className="size-4 transition-transform group-open:rotate-180" aria-hidden="true" /></summary>
+        <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between font-semibold [&::-webkit-details-marker]:hidden">Universidade<ChevronDown className="size-4 transition-transform duration-200 ease-out group-open:rotate-180" aria-hidden="true" /></summary>
         <div className="pb-4"><SearchableSelect label="Pesquisar universidade" value={props.university} query={props.search} options={props.universityOptions} placeholder="Nome da universidade" onQueryChange={props.onSearch} onChange={props.onUniversity} /></div>
       </details>
       <details open className="group border-b border-[var(--surface-border)]">
-        <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between font-semibold [&::-webkit-details-marker]:hidden">Área de estudo<ChevronDown className="size-4 transition-transform group-open:rotate-180" aria-hidden="true" /></summary>
+        <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between font-semibold [&::-webkit-details-marker]:hidden">Área de estudo<ChevronDown className="size-4 transition-transform duration-200 ease-out group-open:rotate-180" aria-hidden="true" /></summary>
         <fieldset className="space-y-1 pb-4"><legend className="sr-only">Selecionar área de estudo</legend>{props.subjectOptions.filter((option) => option.value).map((option) => <label key={option.value} className="flex min-h-11 cursor-pointer items-center gap-3 text-sm"><Checkbox checked={props.subject === option.value} onCheckedChange={() => props.onSubject(props.subject === option.value ? '' : option.value)} /><span className="truncate">{option.label}</span></label>)}</fieldset>
       </details>
       <FilterChecks title="Níveis" name="level" options={[['licenciatura', 'Licenciatura'], ['mestrado', 'Mestrado']]} value={props.level} onChange={props.onLevel} />
       <FilterChecks title="Modalidade" name="regime" options={[['presencial', 'Presencial'], ['online', 'A distância'], ['híbrida', 'Híbrida']]} value={props.regime} onChange={props.onRegime} />
       <details className="group border-b border-[var(--surface-border)]">
-      <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between font-semibold [&::-webkit-details-marker]:hidden">Idioma<ChevronDown className="size-4 transition-transform group-open:rotate-180" aria-hidden="true" /></summary>
+      <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between font-semibold [&::-webkit-details-marker]:hidden">Idioma<ChevronDown className="size-4 transition-transform duration-200 ease-out group-open:rotate-180" aria-hidden="true" /></summary>
         <div className="pb-4"><CustomSelect value={props.language} options={[{ value: '', label: 'Todos os idiomas' }, { value: 'pt', label: 'Português' }, { value: 'en', label: 'Inglês' }]} onChange={props.onLanguage} ariaLabel="Idioma de ensino" className="w-full" /></div>
       </details>
     </FilterPanel>
@@ -126,7 +126,7 @@ function CourseFilters(props: FilterProps) {
 function FilterChecks({ title, name, options, value, onChange }: { title: string; name: string; options: string[][]; value: string; onChange: (value: string) => void }) {
   return (
     <details className="group border-b border-[var(--surface-border)]">
-      <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between font-semibold [&::-webkit-details-marker]:hidden">{title}<ChevronDown className="size-4 transition-transform group-open:rotate-180" aria-hidden="true" /></summary>
+      <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between font-semibold [&::-webkit-details-marker]:hidden">{title}<ChevronDown className="size-4 transition-transform duration-200 ease-out group-open:rotate-180" aria-hidden="true" /></summary>
       <fieldset className="pb-4"><legend className="sr-only">{title}</legend><div className="space-y-2">{options.map(([option, label]) => <label key={option} className="flex min-h-11 cursor-pointer items-center gap-3"><Checkbox name={name} checked={value === option} onCheckedChange={() => onChange(value === option ? '' : option)} />{label}</label>)}</div></fieldset>
     </details>
   )

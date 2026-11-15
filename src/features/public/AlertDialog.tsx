@@ -60,7 +60,7 @@ export function AlertDialog({ open, onOpenChange }: AlertDialogProps) {
           </DialogHeader>
 
           {created ? (
-            <div role="status" className="mt-6 text-center">
+            <div role="status" className="mt-6 text-center animate-in fade-in-0 duration-150 ease-out">
               <CheckCircle2 className="mx-auto size-9 text-[#176b3a]" aria-hidden="true" />
               <p className="mt-3 text-sm text-[#525252]">Podes alterar estas preferências mais tarde na tua conta.</p>
               <Button type="button" className="mt-5 w-full" onClick={() => handleOpenChange(false)}>

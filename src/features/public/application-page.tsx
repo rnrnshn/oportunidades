@@ -16,7 +16,7 @@ export function ApplicationPage() {
   if (submitted) {
     return (
       <TaskPage title="Candidatura enviada" backTo="/empregos" backLabel="Voltar aos empregos">
-        <div role="status" className="max-w-xl rounded-2xl border border-[#b7dac7] bg-[#f0faf4] p-6">
+        <div role="status" className="max-w-xl rounded-2xl border border-[#b7dac7] bg-[#f0faf4] p-6 animate-in fade-in-0 duration-150 ease-out">
           <CheckCircle2 className="size-8 text-[#176b3a]" aria-hidden="true" />
           <h2 className="mt-4 text-xl font-bold text-navy">Recebemos a tua candidatura</h2>
           <p className="mt-2 leading-7 text-[#525252]">A candidatura para {opportunity.title} foi registada. Guarda uma cópia dos documentos enviados.</p>

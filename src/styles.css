@@ -254,6 +254,17 @@ code {
 
 /* Motion (docs/plans/motion.md): feedback 150ms, entrances 200ms, exits 150ms; transform/opacity only.
    Users who ask for less motion get none. */
+@keyframes disclosure-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Every <details> fades its content in when opened (no height animation). */
+details[open] > :not(summary) {
+  animation: disclosure-in 150ms ease-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

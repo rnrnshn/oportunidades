@@ -31,13 +31,12 @@ export function MentorDetailPage() {
           <section aria-labelledby="mentor-about"><h2 id="mentor-about" className="text-xl font-bold text-navy">Sobre {mentor.user_name?.split(' ')[0]}</h2><p className="mt-4 max-w-3xl leading-7 text-[#525252]">{mentor.bio}</p><p className="mt-3 text-sm font-semibold text-brand">{mentor.experience}</p></section>
           <section aria-labelledby="mentor-help"><h2 id="mentor-help" className="text-xl font-bold text-navy">Como pode ajudar</h2><ul className="mt-4 grid gap-3 sm:grid-cols-2">{mentor.topics.map((topic) => <li key={topic} className="flex items-center gap-3 rounded-xl border border-[var(--surface-border)] bg-white p-4"><MessageCircle className="size-5 shrink-0 text-brand" aria-hidden="true" /><span className="font-medium">{topic}</span></li>)}</ul></section>
           <section aria-labelledby="mentor-outcomes" className="rounded-2xl bg-[#edf4ff] p-6"><h2 id="mentor-outcomes" className="text-xl font-bold text-navy">O que vais levar da sessão</h2><ul className="mt-4 space-y-3">{mentor.outcomes.map((outcome) => <li key={outcome} className="flex gap-3 text-[#3f3f46]"><CheckCircle2 className="mt-0.5 size-5 shrink-0 text-brand" aria-hidden="true" />{outcome}</li>)}</ul></section>
-          <section aria-labelledby="mentor-expectations"><h2 id="mentor-expectations" className="text-xl font-bold text-navy">Antes de pedir mentoria</h2><p className="mt-4 leading-7 text-[#525252]">Prepara uma pergunta concreta, explica brevemente o teu contexto e indica o resultado que gostarias de alcançar. Isto ajuda o mentor a tornar a conversa mais útil desde o primeiro minuto.</p></section>
         </article>
 
         <aside aria-labelledby="mentor-request-title" className="h-fit rounded-2xl border border-[var(--surface-border)] bg-white p-5 shadow-sm lg:sticky lg:top-24">
           <p className="text-sm font-semibold text-brand">{mentor.availability}</p>
           <h2 id="mentor-request-title" className="mt-2 text-lg font-bold text-navy">Queres falar com {mentor.user_name?.split(' ')[0]}?</h2>
-          <p className="mt-2 text-sm leading-6 text-[#525252]">Cria o teu perfil, indica o objectivo da conversa e envia um pedido de mentoria.</p>
+          
           <Button asChild className="mt-5 w-full bg-brand text-white hover:bg-[#003b8f]"><Link to="/mentoria/pedir/$slug" params={{ slug: mentor.slug }}>Pedir mentoria</Link></Button>
           <p className="mt-4 text-center text-xs leading-5 text-[#525252]">A mentoria depende da disponibilidade e confirmação do mentor.</p>
         </aside>

@@ -12,7 +12,6 @@ export function StepsSection() {
         <SectionHeading
           id="steps-title"
           title="Entra, descobre e cresce"
-          description="Três passos simples para encontrares e acompanhares oportunidades."
           className="mb-6"
           divider={false}
         />

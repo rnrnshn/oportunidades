@@ -49,7 +49,6 @@ export function CoursesPage() {
     <ListingLayout
       category="Cursos e Programas"
       title="Explorar Cursos e Programas"
-      description="Compara áreas, modalidades e instituições para encontrares o curso certo."
       resultsCount={isLoading ? undefined : filtered.length}
       resultsLabel="cursos encontrados"
       activeFiltersCount={activeCount}

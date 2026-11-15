@@ -133,6 +133,21 @@ Use `linear.design.md` supplied by the product owner as the design-discipline re
 *   Keep operational screens dense enough for scanning while preserving 44px interactive targets.
 *   Accessibility, clarity for users with low digital literacy and established Oportunidades patterns override the reference when they conflict.
 
+### 12.2 Typography
+
+The type scale lives in `src/styles.css` (`@theme`) and is shared with `oportunidades-dashboard`. It is in `rem`, so text follows the browser's text size.
+
+*   Scale: `2xs` 12 · `xs` 13 · `sm` 14 · `md` 15 · `base` 16 · `lg` 18 · `xl` 20 · `2xl` 22 · `3xl` 24 · `4xl` 28 · `5xl` 32 · `6xl` 36 · `7xl` 48 (px at 100%).
+*   Do not use text below `text-xs` (13px). Do not use `text-[Npx]`; pick a step from the scale.
+*   Heading ladder:
+    *   Page `h1`: `text-2xl md:text-4xl`.
+    *   Display `h1` (home hero, article): `text-4xl md:text-6xl`.
+    *   Section `h2`: `text-2xl`.
+    *   Card or sub-section `h3`: `text-lg` (or `text-xl` for large cards).
+    *   Footer group titles: `text-sm`.
+*   Only the decorative, `aria-hidden` step numbers use sizes outside the scale (`text-[7rem]`, `text-[9rem]`).
+*   Do not add explanatory lines under titles, inputs or buttons, and do not use "Ex.:" placeholders. Keep functional text: errors, limits, consent, privacy and safety notices, statuses and empty states.
+
 ## 13. Testing
 
 *   Unit tests for utilities.

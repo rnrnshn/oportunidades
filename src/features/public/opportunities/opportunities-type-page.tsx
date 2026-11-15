@@ -16,10 +16,9 @@ interface Props {
   type: string
   category: string
   title: string
-  description: string
 }
 
-export function OpportunitiesTypePage({ type, category, title, description }: Props) {
+export function OpportunitiesTypePage({ type, category, title }: Props) {
   const routeSearch = useSearch({ strict: false }) as { q?: unknown }
   const initialSearch = typeof routeSearch.q === 'string' ? routeSearch.q : ''
   const { data: opportunities = [], isLoading, isError, refetch } = useQuery({ queryKey: ['opportunities', 'list', type], queryFn: () => getOpportunitiesByType(type) })
@@ -50,7 +49,6 @@ export function OpportunitiesTypePage({ type, category, title, description }: Pr
       icon={<Briefcase className="h-4 w-4 text-brand" />}
       category={category}
       title={title}
-      description={description}
       resultsCount={isLoading ? undefined : filtered.length}
       activeFiltersCount={activeFiltersCount}
       resultsLabel={isEmployment
@@ -93,8 +91,8 @@ export function OpportunitiesTypePage({ type, category, title, description }: Pr
 
 function EmploymentSearchBar({ search, location, onSearchChange, onLocationChange }: { search: string; location: string; onSearchChange: (value: string) => void; onLocationChange: (value: string) => void }) {
   return <section aria-label="Pesquisa de empregos" className="border-b border-[var(--surface-border)] bg-[#edf4ff]"><form className="mx-auto grid max-w-6xl gap-3 px-5 py-5 sm:px-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] md:items-end" onSubmit={(event) => event.preventDefault()}>
-    <label className="block text-sm font-semibold text-navy">Cargo, competência ou empresa<span className="relative mt-1.5 block"><Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-brand" aria-hidden="true" /><Input type="search" value={search} onChange={(event) => onSearchChange(event.target.value)} placeholder="Ex.: Programador ou MozTech" className="bg-white pl-10 font-normal" /></span></label>
-    <label className="block text-sm font-semibold text-navy">Cidade, distrito ou província<span className="relative mt-1.5 block"><MapPin className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-brand" aria-hidden="true" /><Input type="search" value={location} onChange={(event) => onLocationChange(event.target.value)} placeholder="Ex.: Maputo" className="bg-white pl-10 font-normal" /></span></label>
+    <label className="block text-sm font-semibold text-navy">Cargo, competência ou empresa<span className="relative mt-1.5 block"><Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-brand" aria-hidden="true" /><Input type="search" value={search} onChange={(event) => onSearchChange(event.target.value)} className="bg-white pl-10 font-normal" /></span></label>
+    <label className="block text-sm font-semibold text-navy">Cidade, distrito ou província<span className="relative mt-1.5 block"><MapPin className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-brand" aria-hidden="true" /><Input type="search" value={location} onChange={(event) => onLocationChange(event.target.value)} className="bg-white pl-10 font-normal" /></span></label>
     <Button type="submit" className="min-h-11 px-7">Pesquisar empregos</Button>
   </form></section>
 }

@@ -26,7 +26,6 @@ export function ApplicationPage() {
   return (
     <TaskPage
       title={`Candidatura: ${opportunity.title}`}
-      description={`Envia os teus dados para ${opportunity.entity_name}. Confirma tudo antes de concluir.`}
       backTo={`/oportunidades/${opportunity.slug}`}
       backLabel="Voltar à vaga"
       aside={<ApplicationSummary title={opportunity.title} entity={opportunity.entity_name} deadline={opportunity.deadline} />}
@@ -36,10 +35,10 @@ export function ApplicationPage() {
         <Field label="Nome completo" htmlFor="application-name"><Input id="application-name" autoComplete="name" required /></Field>
         <div className="grid gap-5 sm:grid-cols-2">
           <Field label="Email" htmlFor="application-email"><Input id="application-email" type="email" autoComplete="email" required /></Field>
-          <Field label="Telefone" htmlFor="application-phone"><Input id="application-phone" type="tel" autoComplete="tel" required placeholder="Ex.: 84 123 4567" /></Field>
+          <Field label="Telefone" htmlFor="application-phone"><Input id="application-phone" type="tel" autoComplete="tel" required /></Field>
         </div>
         <Field label="Currículo" htmlFor="application-cv"><Input id="application-cv" type="file" accept=".pdf,.doc,.docx" required /><p className="text-sm text-[#525252]">PDF ou Word, até 5 MB.</p></Field>
-        <Field label="Mensagem para a entidade" htmlFor="application-message"><Textarea id="application-message" rows={5} placeholder="Resume por que tens interesse e experiência adequada." /></Field>
+        <Field label="Mensagem para a entidade" htmlFor="application-message"><Textarea id="application-message" rows={5} /></Field>
         <label className="flex items-start gap-3 text-sm leading-6 text-[#525252]"><input type="checkbox" required className="mt-1 size-5 shrink-0 rounded border border-[#767676] accent-[var(--field-focus)] focus-visible:ring-2 focus-visible:ring-[var(--field-focus)] focus-visible:ring-offset-2" /><span>Confirmo que os dados enviados são correctos e autorizo o seu uso nesta candidatura.</span></label>
         <Button type="submit" className="w-full sm:w-auto">Enviar candidatura</Button>
       </form>

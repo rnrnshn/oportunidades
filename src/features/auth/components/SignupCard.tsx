@@ -62,7 +62,6 @@ export function SignupCard({ onSwitchMode, onClose }: SignupCardProps) {
       <DialogHeader>
         <AuthLogo />
         <h2 className="text-xl font-semibold">Criar conta</h2>
-        <p className="text-sm text-muted">Cria uma conta para guardar e acompanhar oportunidades.</p>
       </DialogHeader>
 
       <form className="mt-6 space-y-4" onSubmit={form.handleSubmit(onSubmit)}>

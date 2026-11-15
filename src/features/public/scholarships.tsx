@@ -28,7 +28,6 @@ export function ScholarshipsPage() {
       icon={<Sparkles className="h-4 w-4 text-brand" />}
       category="Bolsas de Estudo"
       title="Explorar Bolsas de Estudo"
-      description="Filtra por localização, modalidade e cobertura para encontrar a bolsa ideal."
       resultsCount={isLoading ? undefined : filteredScholarships.length}
       activeFiltersCount={activeFiltersCount}
       resultsLabel={filteredScholarships.length === 1 ? 'bolsa encontrada' : 'bolsas encontradas'}

@@ -25,16 +25,16 @@ export function ScholarshipCard({ scholarship, compact = false }: { scholarship:
   return (
     <Card className={`border-soft bg-white shadow-none transition-shadow hover:shadow-md ${compact ? 'p-4' : 'p-6'}`}>
       <div className="flex flex-col gap-6">
-        <div className="flex gap-4 flex-1">
+        <div className="flex min-w-0 flex-1 gap-4">
           <ImagePlaceholder
             label="Logo"
-            className={`${compact ? 'h-16 w-16' : 'h-24 w-24'} shrink-0 rounded-xl bg-canvas-soft`}
+            className={`${compact ? 'h-16 w-16' : 'h-16 w-16 sm:h-24 sm:w-24'} shrink-0 rounded-xl bg-canvas-soft`}
           />
 
-          <div className="flex flex-1 justify-between gap-6">
-            <div className="flex-1 space-y-2">
+          <div className="flex min-w-0 flex-1 justify-between gap-6">
+            <div className="min-w-0 flex-1 space-y-2">
               <div className="flex items-start justify-between gap-4">
-                <div>
+                <div className="min-w-0 break-words">
                   <h3 className={`${compact ? 'text-lg' : 'text-xl'} font-bold text-navy`}>
                     <Link
                       to="/bolsas/$slug"
@@ -53,16 +53,16 @@ export function ScholarshipCard({ scholarship, compact = false }: { scholarship:
                   aria-pressed={bookmarked}
                   aria-label={`${bookmarked ? 'Remover dos guardados' : 'Guardar'} ${scholarship.title}`}
                   onClick={toggleBookmark}
-                  className="inline-flex min-h-11 items-center rounded-lg px-2 text-brand hover:bg-[#edf4ff] hover:text-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af]"
+                  className="inline-flex min-h-11 shrink-0 items-center rounded-lg px-2 text-brand hover:bg-[#edf4ff] hover:text-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af]"
                 >
-                  <span className="mr-2 text-sm font-semibold">{bookmarked ? 'Guardado' : 'Guardar'}</span>
+                  <span className="mr-2 hidden text-sm font-semibold sm:inline">{bookmarked ? 'Guardado' : 'Guardar'}</span>
                   <Bookmark className={`inline h-5 w-5 ${bookmarked ? 'fill-current' : ''}`} aria-hidden="true" />
                 </button>
               </div>
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           <span className="inline-flex min-h-8 items-center rounded-lg bg-brand px-4 text-xs font-bold uppercase text-white">
             Aberto até {formattedDeadline}
           </span>

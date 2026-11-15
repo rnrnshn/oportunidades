@@ -17,7 +17,6 @@ export function ScholarshipSection() {
         <SectionHeading
           id="scholarships-title"
           title="Oportunidades com prazo próximo"
-          description="Candidaturas abertas que merecem a tua atenção agora."
         />
 
         <Carousel

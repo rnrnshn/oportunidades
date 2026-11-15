@@ -50,7 +50,6 @@ export function OpportunitiesPage() {
       icon={<Briefcase className="h-4 w-4 text-brand" />}
       category="Oportunidades"
       title="Explorar Oportunidades"
-      description="Encontra bolsas, estágios, empregos, intercâmbios, workshops e competições."
       resultsCount={isLoading ? undefined : filtered.length}
       activeFiltersCount={activeFiltersCount}
       resultsLabel="oportunidades encontradas"

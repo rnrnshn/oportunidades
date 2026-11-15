@@ -16,12 +16,11 @@ export function SavedPage() {
   const items = bookmarks.map(resolveBookmark).filter((item): item is SavedItem => item !== null)
 
   return (
-    <TaskPage title="Oportunidades guardadas" description="Consulta aqui os cursos, bolsas, instituições e vagas que marcaste." backTo="/account" backLabel="Voltar à conta">
+    <TaskPage title="Oportunidades guardadas" backTo="/account" backLabel="Voltar à conta">
       {items.length === 0 ? (
         <div className="max-w-2xl rounded-2xl border border-[var(--surface-border)] bg-[#f7f9fc] p-7 text-center">
           <Bookmark className="mx-auto size-8 text-brand" aria-hidden="true" />
           <h2 className="mt-4 text-xl font-bold text-navy">Ainda não guardaste nenhuma oportunidade</h2>
-          <p className="mt-2 text-[#525252]">Usa o botão Guardar nos cartões para voltares às oportunidades mais tarde.</p>
           <Button asChild className="mt-5"><Link to="/oportunidades">Encontrar oportunidades</Link></Button>
         </div>
       ) : (

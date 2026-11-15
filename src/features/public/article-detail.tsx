@@ -53,14 +53,12 @@ export function ArticleDetailPage() {
 
             <aside aria-labelledby="article-help-title" className="mt-10 rounded-xl bg-[#edf4ff] p-5 sm:p-6">
               <h2 id="article-help-title" className="text-lg font-bold text-navy">Transforma a leitura em acção</h2>
-              <p className="mt-2 leading-7 text-[#525252]">Explora oportunidades relacionadas e aplica estas ideias no teu próximo passo.</p>
               <Link to="/oportunidades" className="mt-4 inline-flex min-h-11 items-center gap-2 font-semibold text-brand underline-offset-4 hover:underline focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">Encontrar oportunidades <ArrowRight className="size-4" aria-hidden="true" /></Link>
             </aside>
 
             <section aria-labelledby="article-author" className="mt-10 border-y border-[var(--surface-border)] py-6">
               <p className="text-sm font-medium text-[#525252]">Sobre quem escreveu</p>
               <h2 id="article-author" className="mt-2 text-lg font-bold text-navy">{article.author_name || 'Equipa Oportunidades'}</h2>
-              <p className="mt-2 leading-7 text-[#525252]">Conteúdo preparado para ajudar estudantes e jovens profissionais a tomar decisões mais informadas.</p>
             </section>
           </div>
         </div>

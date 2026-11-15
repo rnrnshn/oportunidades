@@ -28,11 +28,11 @@ export function MentorRequestPage() {
   }
 
   return (
-    <TaskPage title={`Pedir mentoria a ${mentor.user_name}`} description="Explica o que precisas para o mentor preparar uma conversa útil." backTo={`/mentoria/${mentor.slug}`} backLabel="Voltar ao perfil">
+    <TaskPage title={`Pedir mentoria a ${mentor.user_name}`} backTo={`/mentoria/${mentor.slug}`} backLabel="Voltar ao perfil">
       <form className="max-w-2xl space-y-5 rounded-2xl border border-[var(--surface-border)] p-5 sm:p-7" onSubmit={(event) => { event.preventDefault(); if (format) setSubmitted(true) }}>
         <Field label="O teu nome" htmlFor="mentor-name"><Input id="mentor-name" autoComplete="name" required /></Field>
         <Field label="Email" htmlFor="mentor-email"><Input id="mentor-email" type="email" autoComplete="email" required /></Field>
-        <Field label="Em que precisas de ajuda?" htmlFor="mentor-goal"><Textarea id="mentor-goal" required rows={4} placeholder="Ex.: Quero melhorar o meu CV para procurar o primeiro emprego." /></Field>
+        <Field label="Em que precisas de ajuda?" htmlFor="mentor-goal"><Textarea id="mentor-goal" required rows={4} /></Field>
         <Field label="Como preferes conversar?" htmlFor="mentor-format"><CustomSelect value={format} onChange={setFormat} ariaLabel="Forma de conversa" className="w-full" options={[{ value: '', label: 'Seleccionar' }, { value: 'video', label: 'Videochamada' }, { value: 'voz', label: 'Chamada de voz' }, { value: 'mensagens', label: 'Mensagens' }]} /></Field>
         <Button type="submit" disabled={!format} className="w-full sm:w-auto">Enviar pedido</Button>
       </form>

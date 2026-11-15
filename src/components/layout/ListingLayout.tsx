@@ -11,7 +11,6 @@ interface ListingLayoutProps {
   icon?: ReactNode
   category: string
   title: string
-  description: string
   filterSlot: ReactNode
   listSlot: ReactNode
   resultsCount?: number
@@ -28,7 +27,6 @@ interface ListingLayoutProps {
 export function ListingLayout({
   category,
   title,
-  description,
   filterSlot,
   listSlot,
   resultsCount,
@@ -83,8 +81,7 @@ export function ListingLayout({
         <div className="grid gap-5 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-start">
           <header className="text-left lg:col-span-2 lg:row-start-1">
             <nav aria-label="Breadcrumb" className="mb-3"><ol className="flex flex-wrap items-center gap-2 text-sm text-[#525252]"><li><Link to="/" className="rounded text-[#0049af] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af]">Início</Link></li><li aria-hidden="true"><ChevronRight className="size-4" /></li><li className="font-medium text-navy" aria-current="page">{category}</li></ol></nav>
-            <h1 className="text-2xl md:text-4xl  font-bold leading-tight text-[#0049af]">{title}</h1>
-            <p className="mt-2 max-w-3xl text-base leading-7 text-subtle">{description}</p>
+            <h1 className="text-2xl md:text-4xl font-bold leading-tight text-[#0049af]">{title}</h1>
           </header>
 
           <aside

@@ -58,7 +58,6 @@ export function LoginCard({ onSwitchMode, onClose }: LoginCardProps) {
       <DialogHeader>
         <AuthLogo />
         <h2 className="text-xl font-semibold">Entrar na Oportunidades</h2>
-        <p className="text-sm text-muted">Usa o teu email e a tua palavra-passe.</p>
       </DialogHeader>
 
       <form className="mt-6 space-y-4" onSubmit={form.handleSubmit(onSubmit)}>

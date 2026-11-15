@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input'
 export function RecoverPasswordPage() {
   const [sent, setSent] = useState(false)
   return (
-    <TaskPage title="Recuperar palavra-passe" description="Indica o email da tua conta para receberes as instruções." backTo="/" backLabel="Voltar à página inicial">
+    <TaskPage title="Recuperar palavra-passe" backTo="/" backLabel="Voltar à página inicial">
       {sent ? (
         <div role="status" className="max-w-xl rounded-2xl border border-[#b7dac7] bg-[#f0faf4] p-6"><CheckCircle2 className="size-8 text-[#176b3a]" aria-hidden="true" /><h2 className="mt-4 text-xl font-bold text-navy">Verifica o teu email</h2><p className="mt-2 text-[#525252]">Se existir uma conta com este email, receberás as instruções para criar uma nova palavra-passe.</p></div>
       ) : (

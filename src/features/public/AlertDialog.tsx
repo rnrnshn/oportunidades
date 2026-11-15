@@ -52,11 +52,11 @@ export function AlertDialog({ open, onOpenChange }: AlertDialogProps) {
             >
               {created ? 'Alerta criado' : 'Criar alerta'}
             </h2>
-            <p id="alert-dialog-description" className="text-sm text-[#525252]">
-              {created
-                ? 'Vamos avisar quando surgirem oportunidades adequadas.'
-                : 'Escolhe o que procuras e onde queres receber o aviso.'}
-            </p>
+            {created ? (
+              <p id="alert-dialog-description" className="text-sm text-[#525252]">
+                Vamos avisar quando surgirem oportunidades adequadas.
+              </p>
+            ) : null}
           </DialogHeader>
 
           {created ? (

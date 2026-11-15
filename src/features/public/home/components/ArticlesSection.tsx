@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button'
 export function ArticlesSection() {
   return (
     <section className="mx-auto w-full max-w-6xl px-5 py-12 sm:px-6 md:py-16 xl:px-0" aria-labelledby="articles-title">
-      <SectionHeading id="articles-title" title="Conteúdo para decidires melhor" description="Guias curtos para preparares cada próximo passo." />
+      <SectionHeading id="articles-title" title="Conteúdo para decidires melhor" />
 
       <Carousel
         className="mt-6"

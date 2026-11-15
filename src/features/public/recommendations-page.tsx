@@ -6,9 +6,9 @@ import { TaskPage } from '@/components/layout/TaskPage'
 import { Button } from '@/components/ui/button'
 
 const GOALS = [
-  { value: 'estudar', label: 'Estudar', description: 'Cursos, universidades e bolsas' },
-  { value: 'trabalhar', label: 'Trabalhar', description: 'Empregos, estágios e programas' },
-  { value: 'orientacao', label: 'Receber orientação', description: 'Mentores e guias práticos' },
+  { value: 'estudar', label: 'Estudar' },
+  { value: 'trabalhar', label: 'Trabalhar' },
+  { value: 'orientacao', label: 'Receber orientação' },
 ] as const
 
 const AREAS = ['Tecnologia', 'Engenharia', 'Saúde', 'Negócios', 'Educação', 'Ainda não sei']
@@ -26,7 +26,6 @@ export function RecommendationsPage() {
   return (
     <TaskPage
       title="Encontrar a opção certa"
-      description="Responde a três perguntas. No fim, mostramos onde começar."
       backTo="/"
       backLabel="Voltar à página inicial"
       aside={<Progress step={step} />}
@@ -39,7 +38,7 @@ export function RecommendationsPage() {
 
         <div className="mt-6 grid gap-3" role="radiogroup" aria-labelledby="question-title">
           {step === 1
-            ? GOALS.map((item) => <Choice key={item.value} value={item.value} label={item.label} description={item.description} selected={goal === item.value} onSelect={setGoal} />)
+            ? GOALS.map((item) => <Choice key={item.value} value={item.value} label={item.label} selected={goal === item.value} onSelect={setGoal} />)
             : step === 2
               ? AREAS.map((item) => <Choice key={item} value={item} label={item} selected={area === item} onSelect={setArea} />)
               : LOCATIONS.map((item) => <Choice key={item} value={item} label={item} selected={location === item} onSelect={setLocation} />)}

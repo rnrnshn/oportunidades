@@ -6,6 +6,7 @@ import { AuthDialog } from '@/features/auth/AuthDialog'
 import { Button } from '@/components/ui/button'
 import { logout } from '@/features/auth/api'
 import { useCurrentUser } from '@/features/auth/use-current-user'
+import { subscribeToSignInRequests } from '@/lib/auth-store'
 import { cn } from '@/lib/utils'
 
 type MenuLink = { label: string; href: string; description?: string; icon?: ReactNode }
@@ -52,6 +53,8 @@ function MegaMenu({ label, links, onNavigate }: { label: string; links: MenuLink
 export default function Header({ transparent = false }: { transparent?: boolean }) {
   const queryClient = useQueryClient(); const { data: user } = useCurrentUser()
   const [mobileOpen, setMobileOpen] = useState(false); const [authMode, setAuthMode] = useState<'login' | 'signup' | null>(null)
+  // Save buttons, reports and mentoring requests ask for sign-in through the shared store.
+  useEffect(() => subscribeToSignInRequests((mode) => { setMobileOpen(false); setAuthMode(mode) }), [])
   const location = useLocation(); const isHome = location.pathname === '/'
   async function handleLogout() { await logout(); queryClient.clear() }
   return <header className={cn('z-40 w-full', (transparent || isHome) ? 'absolute inset-x-0 top-0 border-transparent bg-transparent' : 'sticky top-0 border-b border-[var(--surface-border)] bg-white')} data-home={isHome}>

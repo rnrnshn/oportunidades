@@ -33,9 +33,9 @@ export function ArticlesSection() {
                     width="416"
                     height="220"
                     loading="lazy"
-                    className="h-44 w-full object-cover"
+                    className="h-44 w-full shrink-0 object-cover"
                   />
-                  <div className="flex h-full flex-col gap-2.5 p-5">
+                  <div className="flex flex-1 flex-col gap-2.5 p-5">
                     <CardTitle className="text-base font-semibold leading-snug text-[#262626]">
                       {article.title}
                     </CardTitle>

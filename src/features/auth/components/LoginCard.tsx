@@ -9,7 +9,7 @@ import { DialogHeader } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { login } from '@/features/auth/api'
 
-import { AuthLogo, Divider, Field, GoogleButton } from './common'
+import { AuthLogo, Field } from './common'
 
 const loginSchema = z.object({
   email: z.string().email('Email inválido'),
@@ -28,8 +28,8 @@ export function LoginCard({ onSwitchMode, onClose }: LoginCardProps) {
   const form = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: 'sallystudent@gmail.com',
-      password: '12345678',
+      email: '',
+      password: '',
     },
   })
 
@@ -49,6 +49,7 @@ export function LoginCard({ onSwitchMode, onClose }: LoginCardProps) {
     <div className="rounded-[20px] bg-gradient-to-b from-[#e3f0ff] via-white to-white p-6 shadow-2xl">
       <button
         type="button"
+        aria-label="Fechar janela de entrada"
         className="ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-soft transition hover:text-brand"
         onClick={onClose}
       >
@@ -56,49 +57,49 @@ export function LoginCard({ onSwitchMode, onClose }: LoginCardProps) {
       </button>
       <DialogHeader>
         <AuthLogo />
-        <h2 className="text-2xl font-semibold">Sign in Oportunidades</h2>
-        <p className="text-sm text-muted">Enter your details to login.</p>
+        <h2 className="text-xl font-semibold">Entrar na Oportunidades</h2>
+        <p className="text-sm text-muted">Usa o teu email e a tua palavra-passe.</p>
       </DialogHeader>
 
       <form className="mt-6 space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-        <Field label="Email address" error={form.formState.errors.email?.message}>
+        <Field label="Email" htmlFor="login-email" error={form.formState.errors.email?.message}>
           <Input
+            id="login-email"
+            type="email"
+            autoComplete="email"
+            aria-invalid={Boolean(form.formState.errors.email)}
+            aria-describedby={form.formState.errors.email ? 'login-email-error' : undefined}
             {...form.register('email')}
-            className="rounded-[18px] border border-soft bg-white px-4 py-3 shadow-[inset_0_1px_2px_rgba(0,0,0,0.06)] focus-visible:ring-brand"
           />
         </Field>
-        <Field label="Password" error={form.formState.errors.password?.message}>
+        <Field label="Palavra-passe" htmlFor="login-password" error={form.formState.errors.password?.message}>
           <Input
+            id="login-password"
             type="password"
+            autoComplete="current-password"
+            aria-invalid={Boolean(form.formState.errors.password)}
+            aria-describedby={form.formState.errors.password ? 'login-password-error' : undefined}
             {...form.register('password')}
-            className="rounded-[18px] border border-soft bg-white px-4 py-3 shadow-[inset_0_1px_2px_rgba(0,0,0,0.06)] focus-visible:ring-brand"
           />
         </Field>
         {hasError ? (
-          <p className="text-xs text-danger">{form.formState.errors.root?.message ?? 'The password you entered is incorrect'}</p>
+          <p role="alert" className="text-sm text-danger">{form.formState.errors.root?.message ?? 'Não foi possível iniciar sessão.'}</p>
         ) : null}
         <Button disabled={form.formState.isSubmitting} type="submit" className="w-full rounded-full bg-brand text-white hover:bg-brand-dark">
-          {form.formState.isSubmitting ? 'Signing in...' : 'Sign in'}
+          {form.formState.isSubmitting ? 'A entrar…' : 'Entrar'}
         </Button>
       </form>
 
-      <div className="mt-4 flex items-center justify-between text-sm text-muted">
-        <span>Forgot password?</span>
-        <button className="font-semibold text-brand">Reset password</button>
-      </div>
-
-      <Divider label="OR" />
-
-      <GoogleButton label="Continue with Google" />
+      <a href="/recuperar-palavra-passe" className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-brand hover:underline">Esqueci a palavra-passe</a>
 
       <p className="mt-4 text-center text-sm text-muted">
-        New to Oportunidades?{' '}
+        Ainda não tens conta?{' '}
         <button
           className="font-semibold text-brand"
           type="button"
           onClick={() => onSwitchMode?.('signup')}
         >
-          Sign up
+          Criar conta
         </button>
       </p>
     </div>

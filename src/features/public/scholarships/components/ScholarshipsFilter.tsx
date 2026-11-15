@@ -1,6 +1,7 @@
-import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { MultiSelect } from '@/components/ui/multi-select'
+import { FilterDisclosure } from '@/components/ui/filter-disclosure'
+import { FilterPanel } from '@/components/ui/filter-panel'
 import { Filters, coverageOptions } from '../types'
 import { formatCurrency, RangeSlider, SelectField } from './ui-parts'
 
@@ -30,44 +31,27 @@ export function ScholarshipsFilter({
 }: ScholarshipsFilterProps) {
   void setFilters
   return (
-    <aside className="space-y-4">
-      <Card className="border-soft bg-white shadow-none">
-        <CardContent className="space-y-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-base font-semibold text-navy">Filtrar bolsas</p>
-            </div>
-            {activeFiltersCount > 0 && (
-              <button
-                type="button"
-                onClick={resetFilters}
-                className="text-sm font-semibold text-brand hover:underline"
-              >
-                Reset ({activeFiltersCount})
-              </button>
-            )}
-          </div>
-
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-navy">Pesquisa</label>
+    <FilterPanel activeCount={activeFiltersCount} onClear={resetFilters}>
+          <div>
+            <label className="block space-y-1.5 pb-4 text-sm font-semibold text-navy">
+              <span>Pesquisa</span>
               <Input
                 placeholder="Bolsa em Maputo ou programa online"
                 value={filters.search}
                 onChange={(event) => updateFilters({ search: event.target.value })}
-                className="h-11 rounded-lg border-soft text-sm"
+                className="text-sm"
               />
-            </div>
+            </label>
 
-            <SelectField
+            <FilterDisclosure title="Localização" inset={false}><SelectField
               label="Localização"
               placeholder="Seleciona uma localização"
               value={filters.location}
               options={options.location}
               onChange={(value) => updateFilters({ location: value })}
-            />
+            /></FilterDisclosure>
 
-            <SelectField
+            <FilterDisclosure title="Área de estudo" defaultOpen inset={false}><SelectField
               label="Área de estudo"
               placeholder="Seleciona a área"
               value={filters.field}
@@ -81,17 +65,17 @@ export function ScholarshipsFilter({
               value={filters.level}
               options={options.level}
               onChange={(value) => updateFilters({ level: value })}
-            />
+            /></FilterDisclosure>
 
-            <SelectField
+            <FilterDisclosure title="Modalidade" inset={false}><SelectField
               label="Modalidade"
               placeholder="Online, presencial ou híbrido"
               value={filters.modality}
               options={options.modality}
               onChange={(value) => updateFilters({ modality: value })}
-            />
+            /></FilterDisclosure>
 
-            <SelectField
+            <FilterDisclosure title="Cobertura e valor" inset={false}><SelectField
               label="Tipo de bolsa"
               placeholder="Mérito, necessidade..."
               value={filters.type}
@@ -99,17 +83,10 @@ export function ScholarshipsFilter({
               onChange={(value) => updateFilters({ type: value })}
             />
 
-            <SelectField
-              label="Idioma"
-              placeholder="Idioma do programa"
-              value={filters.language}
-              options={options.language}
-              onChange={(value) => updateFilters({ language: value })}
-            />
-
             <div className="space-y-2">
               <label className="text-sm font-semibold text-navy">Cobertura</label>
               <MultiSelect
+                ariaLabel="Cobertura"
                 options={coverageOptions}
                 value={filters.coverage}
                 onChange={(value) => updateFilters({ coverage: value })}
@@ -128,11 +105,19 @@ export function ScholarshipsFilter({
                 </span>
               </div>
               <RangeSlider
+                label="Valor mensal"
                 value={filters.amountRange}
                 onChange={(value) => updateFilters({ amountRange: value })}
               />
-            </div>
+            </div></FilterDisclosure>
 
+            <FilterDisclosure title="Idioma e prazo" inset={false}><SelectField
+              label="Idioma"
+              placeholder="Idioma do programa"
+              value={filters.language}
+              options={options.language}
+              onChange={(value) => updateFilters({ language: value })}
+            />
             <SelectField
               label="Prazo de candidatura"
               placeholder="Próximos 15/30/60 dias"
@@ -140,10 +125,8 @@ export function ScholarshipsFilter({
               options={['15', '30', '60']}
               formatOption={(value) => `Até ${value} dias`}
               onChange={(value) => updateFilters({ deadlineWindow: value })}
-            />
+            /></FilterDisclosure>
           </div>
-        </CardContent>
-      </Card>
-    </aside>
+    </FilterPanel>
   )
 }

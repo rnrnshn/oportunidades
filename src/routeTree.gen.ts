@@ -11,8 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UniversidadesRouteImport } from './routes/universidades'
 import { Route as StyleguideRouteImport } from './routes/styleguide'
+import { Route as RecuperarPalavraPasseRouteImport } from './routes/recuperar-palavra-passe'
+import { Route as RecomendacoesRouteImport } from './routes/recomendacoes'
 import { Route as OportunidadesRouteImport } from './routes/oportunidades'
 import { Route as MentoriaRouteImport } from './routes/mentoria'
+import { Route as GuardadosRouteImport } from './routes/guardados'
 import { Route as EstagiosRouteImport } from './routes/estagios'
 import { Route as EmpregosRouteImport } from './routes/empregos'
 import { Route as CursosRouteImport } from './routes/cursos'
@@ -22,12 +25,19 @@ import { Route as AccountRouteImport } from './routes/account'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as OportunidadesIndexRouteImport } from './routes/oportunidades/index'
+import { Route as MentoriaIndexRouteImport } from './routes/mentoria/index'
+import { Route as CursosIndexRouteImport } from './routes/cursos/index'
 import { Route as BolsasIndexRouteImport } from './routes/bolsas/index'
 import { Route as ArtigosIndexRouteImport } from './routes/artigos/index'
 import { Route as UniversitiesSlugRouteImport } from './routes/universities/$slug'
 import { Route as OportunidadesSlugRouteImport } from './routes/oportunidades/$slug'
+import { Route as MentoriaSlugRouteImport } from './routes/mentoria/$slug'
+import { Route as CursosSlugRouteImport } from './routes/cursos/$slug'
+import { Route as CandidaturasSlugRouteImport } from './routes/candidaturas/$slug'
 import { Route as BolsasSlugRouteImport } from './routes/bolsas/$slug'
 import { Route as ArtigosSlugRouteImport } from './routes/artigos/$slug'
+import { Route as AlertasNovoRouteImport } from './routes/alertas.novo'
+import { Route as MentoriaPedirSlugRouteImport } from './routes/mentoria/pedir.$slug'
 
 const UniversidadesRoute = UniversidadesRouteImport.update({
   id: '/universidades',
@@ -39,6 +49,16 @@ const StyleguideRoute = StyleguideRouteImport.update({
   path: '/styleguide',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RecuperarPalavraPasseRoute = RecuperarPalavraPasseRouteImport.update({
+  id: '/recuperar-palavra-passe',
+  path: '/recuperar-palavra-passe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecomendacoesRoute = RecomendacoesRouteImport.update({
+  id: '/recomendacoes',
+  path: '/recomendacoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OportunidadesRoute = OportunidadesRouteImport.update({
   id: '/oportunidades',
   path: '/oportunidades',
@@ -47,6 +67,11 @@ const OportunidadesRoute = OportunidadesRouteImport.update({
 const MentoriaRoute = MentoriaRouteImport.update({
   id: '/mentoria',
   path: '/mentoria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuardadosRoute = GuardadosRouteImport.update({
+  id: '/guardados',
+  path: '/guardados',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EstagiosRoute = EstagiosRouteImport.update({
@@ -94,6 +119,16 @@ const OportunidadesIndexRoute = OportunidadesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => OportunidadesRoute,
 } as any)
+const MentoriaIndexRoute = MentoriaIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MentoriaRoute,
+} as any)
+const CursosIndexRoute = CursosIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CursosRoute,
+} as any)
 const BolsasIndexRoute = BolsasIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -114,6 +149,21 @@ const OportunidadesSlugRoute = OportunidadesSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => OportunidadesRoute,
 } as any)
+const MentoriaSlugRoute = MentoriaSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => MentoriaRoute,
+} as any)
+const CursosSlugRoute = CursosSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => CursosRoute,
+} as any)
+const CandidaturasSlugRoute = CandidaturasSlugRouteImport.update({
+  id: '/candidaturas/$slug',
+  path: '/candidaturas/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BolsasSlugRoute = BolsasSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -124,6 +174,16 @@ const ArtigosSlugRoute = ArtigosSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ArtigosRoute,
 } as any)
+const AlertasNovoRoute = AlertasNovoRouteImport.update({
+  id: '/alertas/novo',
+  path: '/alertas/novo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentoriaPedirSlugRoute = MentoriaPedirSlugRouteImport.update({
+  id: '/pedir/$slug',
+  path: '/pedir/$slug',
+  getParentRoute: () => MentoriaRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -131,38 +191,56 @@ export interface FileRoutesByFullPath {
   '/account': typeof AccountRoute
   '/artigos': typeof ArtigosRouteWithChildren
   '/bolsas': typeof BolsasRouteWithChildren
-  '/cursos': typeof CursosRoute
+  '/cursos': typeof CursosRouteWithChildren
   '/empregos': typeof EmpregosRoute
   '/estagios': typeof EstagiosRoute
-  '/mentoria': typeof MentoriaRoute
+  '/guardados': typeof GuardadosRoute
+  '/mentoria': typeof MentoriaRouteWithChildren
   '/oportunidades': typeof OportunidadesRouteWithChildren
+  '/recomendacoes': typeof RecomendacoesRoute
+  '/recuperar-palavra-passe': typeof RecuperarPalavraPasseRoute
   '/styleguide': typeof StyleguideRoute
   '/universidades': typeof UniversidadesRoute
+  '/alertas/novo': typeof AlertasNovoRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
   '/bolsas/$slug': typeof BolsasSlugRoute
+  '/candidaturas/$slug': typeof CandidaturasSlugRoute
+  '/cursos/$slug': typeof CursosSlugRoute
+  '/mentoria/$slug': typeof MentoriaSlugRoute
   '/oportunidades/$slug': typeof OportunidadesSlugRoute
   '/universities/$slug': typeof UniversitiesSlugRoute
   '/artigos/': typeof ArtigosIndexRoute
   '/bolsas/': typeof BolsasIndexRoute
+  '/cursos/': typeof CursosIndexRoute
+  '/mentoria/': typeof MentoriaIndexRoute
   '/oportunidades/': typeof OportunidadesIndexRoute
+  '/mentoria/pedir/$slug': typeof MentoriaPedirSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
-  '/cursos': typeof CursosRoute
   '/empregos': typeof EmpregosRoute
   '/estagios': typeof EstagiosRoute
-  '/mentoria': typeof MentoriaRoute
+  '/guardados': typeof GuardadosRoute
+  '/recomendacoes': typeof RecomendacoesRoute
+  '/recuperar-palavra-passe': typeof RecuperarPalavraPasseRoute
   '/styleguide': typeof StyleguideRoute
   '/universidades': typeof UniversidadesRoute
+  '/alertas/novo': typeof AlertasNovoRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
   '/bolsas/$slug': typeof BolsasSlugRoute
+  '/candidaturas/$slug': typeof CandidaturasSlugRoute
+  '/cursos/$slug': typeof CursosSlugRoute
+  '/mentoria/$slug': typeof MentoriaSlugRoute
   '/oportunidades/$slug': typeof OportunidadesSlugRoute
   '/universities/$slug': typeof UniversitiesSlugRoute
   '/artigos': typeof ArtigosIndexRoute
   '/bolsas': typeof BolsasIndexRoute
+  '/cursos': typeof CursosIndexRoute
+  '/mentoria': typeof MentoriaIndexRoute
   '/oportunidades': typeof OportunidadesIndexRoute
+  '/mentoria/pedir/$slug': typeof MentoriaPedirSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -171,20 +249,30 @@ export interface FileRoutesById {
   '/account': typeof AccountRoute
   '/artigos': typeof ArtigosRouteWithChildren
   '/bolsas': typeof BolsasRouteWithChildren
-  '/cursos': typeof CursosRoute
+  '/cursos': typeof CursosRouteWithChildren
   '/empregos': typeof EmpregosRoute
   '/estagios': typeof EstagiosRoute
-  '/mentoria': typeof MentoriaRoute
+  '/guardados': typeof GuardadosRoute
+  '/mentoria': typeof MentoriaRouteWithChildren
   '/oportunidades': typeof OportunidadesRouteWithChildren
+  '/recomendacoes': typeof RecomendacoesRoute
+  '/recuperar-palavra-passe': typeof RecuperarPalavraPasseRoute
   '/styleguide': typeof StyleguideRoute
   '/universidades': typeof UniversidadesRoute
+  '/alertas/novo': typeof AlertasNovoRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
   '/bolsas/$slug': typeof BolsasSlugRoute
+  '/candidaturas/$slug': typeof CandidaturasSlugRoute
+  '/cursos/$slug': typeof CursosSlugRoute
+  '/mentoria/$slug': typeof MentoriaSlugRoute
   '/oportunidades/$slug': typeof OportunidadesSlugRoute
   '/universities/$slug': typeof UniversitiesSlugRoute
   '/artigos/': typeof ArtigosIndexRoute
   '/bolsas/': typeof BolsasIndexRoute
+  '/cursos/': typeof CursosIndexRoute
+  '/mentoria/': typeof MentoriaIndexRoute
   '/oportunidades/': typeof OportunidadesIndexRoute
+  '/mentoria/pedir/$slug': typeof MentoriaPedirSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -197,35 +285,53 @@ export interface FileRouteTypes {
     | '/cursos'
     | '/empregos'
     | '/estagios'
+    | '/guardados'
     | '/mentoria'
     | '/oportunidades'
+    | '/recomendacoes'
+    | '/recuperar-palavra-passe'
     | '/styleguide'
     | '/universidades'
+    | '/alertas/novo'
     | '/artigos/$slug'
     | '/bolsas/$slug'
+    | '/candidaturas/$slug'
+    | '/cursos/$slug'
+    | '/mentoria/$slug'
     | '/oportunidades/$slug'
     | '/universities/$slug'
     | '/artigos/'
     | '/bolsas/'
+    | '/cursos/'
+    | '/mentoria/'
     | '/oportunidades/'
+    | '/mentoria/pedir/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/account'
-    | '/cursos'
     | '/empregos'
     | '/estagios'
-    | '/mentoria'
+    | '/guardados'
+    | '/recomendacoes'
+    | '/recuperar-palavra-passe'
     | '/styleguide'
     | '/universidades'
+    | '/alertas/novo'
     | '/artigos/$slug'
     | '/bolsas/$slug'
+    | '/candidaturas/$slug'
+    | '/cursos/$slug'
+    | '/mentoria/$slug'
     | '/oportunidades/$slug'
     | '/universities/$slug'
     | '/artigos'
     | '/bolsas'
+    | '/cursos'
+    | '/mentoria'
     | '/oportunidades'
+    | '/mentoria/pedir/$slug'
   id:
     | '__root__'
     | '/'
@@ -236,17 +342,27 @@ export interface FileRouteTypes {
     | '/cursos'
     | '/empregos'
     | '/estagios'
+    | '/guardados'
     | '/mentoria'
     | '/oportunidades'
+    | '/recomendacoes'
+    | '/recuperar-palavra-passe'
     | '/styleguide'
     | '/universidades'
+    | '/alertas/novo'
     | '/artigos/$slug'
     | '/bolsas/$slug'
+    | '/candidaturas/$slug'
+    | '/cursos/$slug'
+    | '/mentoria/$slug'
     | '/oportunidades/$slug'
     | '/universities/$slug'
     | '/artigos/'
     | '/bolsas/'
+    | '/cursos/'
+    | '/mentoria/'
     | '/oportunidades/'
+    | '/mentoria/pedir/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -255,13 +371,18 @@ export interface RootRouteChildren {
   AccountRoute: typeof AccountRoute
   ArtigosRoute: typeof ArtigosRouteWithChildren
   BolsasRoute: typeof BolsasRouteWithChildren
-  CursosRoute: typeof CursosRoute
+  CursosRoute: typeof CursosRouteWithChildren
   EmpregosRoute: typeof EmpregosRoute
   EstagiosRoute: typeof EstagiosRoute
-  MentoriaRoute: typeof MentoriaRoute
+  GuardadosRoute: typeof GuardadosRoute
+  MentoriaRoute: typeof MentoriaRouteWithChildren
   OportunidadesRoute: typeof OportunidadesRouteWithChildren
+  RecomendacoesRoute: typeof RecomendacoesRoute
+  RecuperarPalavraPasseRoute: typeof RecuperarPalavraPasseRoute
   StyleguideRoute: typeof StyleguideRoute
   UniversidadesRoute: typeof UniversidadesRoute
+  AlertasNovoRoute: typeof AlertasNovoRoute
+  CandidaturasSlugRoute: typeof CandidaturasSlugRoute
   UniversitiesSlugRoute: typeof UniversitiesSlugRoute
 }
 
@@ -281,6 +402,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StyleguideRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/recuperar-palavra-passe': {
+      id: '/recuperar-palavra-passe'
+      path: '/recuperar-palavra-passe'
+      fullPath: '/recuperar-palavra-passe'
+      preLoaderRoute: typeof RecuperarPalavraPasseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recomendacoes': {
+      id: '/recomendacoes'
+      path: '/recomendacoes'
+      fullPath: '/recomendacoes'
+      preLoaderRoute: typeof RecomendacoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/oportunidades': {
       id: '/oportunidades'
       path: '/oportunidades'
@@ -293,6 +428,13 @@ declare module '@tanstack/react-router' {
       path: '/mentoria'
       fullPath: '/mentoria'
       preLoaderRoute: typeof MentoriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guardados': {
+      id: '/guardados'
+      path: '/guardados'
+      fullPath: '/guardados'
+      preLoaderRoute: typeof GuardadosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/estagios': {
@@ -358,6 +500,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OportunidadesIndexRouteImport
       parentRoute: typeof OportunidadesRoute
     }
+    '/mentoria/': {
+      id: '/mentoria/'
+      path: '/'
+      fullPath: '/mentoria/'
+      preLoaderRoute: typeof MentoriaIndexRouteImport
+      parentRoute: typeof MentoriaRoute
+    }
+    '/cursos/': {
+      id: '/cursos/'
+      path: '/'
+      fullPath: '/cursos/'
+      preLoaderRoute: typeof CursosIndexRouteImport
+      parentRoute: typeof CursosRoute
+    }
     '/bolsas/': {
       id: '/bolsas/'
       path: '/'
@@ -386,6 +542,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OportunidadesSlugRouteImport
       parentRoute: typeof OportunidadesRoute
     }
+    '/mentoria/$slug': {
+      id: '/mentoria/$slug'
+      path: '/$slug'
+      fullPath: '/mentoria/$slug'
+      preLoaderRoute: typeof MentoriaSlugRouteImport
+      parentRoute: typeof MentoriaRoute
+    }
+    '/cursos/$slug': {
+      id: '/cursos/$slug'
+      path: '/$slug'
+      fullPath: '/cursos/$slug'
+      preLoaderRoute: typeof CursosSlugRouteImport
+      parentRoute: typeof CursosRoute
+    }
+    '/candidaturas/$slug': {
+      id: '/candidaturas/$slug'
+      path: '/candidaturas/$slug'
+      fullPath: '/candidaturas/$slug'
+      preLoaderRoute: typeof CandidaturasSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/bolsas/$slug': {
       id: '/bolsas/$slug'
       path: '/$slug'
@@ -399,6 +576,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/artigos/$slug'
       preLoaderRoute: typeof ArtigosSlugRouteImport
       parentRoute: typeof ArtigosRoute
+    }
+    '/alertas/novo': {
+      id: '/alertas/novo'
+      path: '/alertas/novo'
+      fullPath: '/alertas/novo'
+      preLoaderRoute: typeof AlertasNovoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentoria/pedir/$slug': {
+      id: '/mentoria/pedir/$slug'
+      path: '/pedir/$slug'
+      fullPath: '/mentoria/pedir/$slug'
+      preLoaderRoute: typeof MentoriaPedirSlugRouteImport
+      parentRoute: typeof MentoriaRoute
     }
   }
 }
@@ -429,6 +620,35 @@ const BolsasRouteChildren: BolsasRouteChildren = {
 const BolsasRouteWithChildren =
   BolsasRoute._addFileChildren(BolsasRouteChildren)
 
+interface CursosRouteChildren {
+  CursosSlugRoute: typeof CursosSlugRoute
+  CursosIndexRoute: typeof CursosIndexRoute
+}
+
+const CursosRouteChildren: CursosRouteChildren = {
+  CursosSlugRoute: CursosSlugRoute,
+  CursosIndexRoute: CursosIndexRoute,
+}
+
+const CursosRouteWithChildren =
+  CursosRoute._addFileChildren(CursosRouteChildren)
+
+interface MentoriaRouteChildren {
+  MentoriaSlugRoute: typeof MentoriaSlugRoute
+  MentoriaIndexRoute: typeof MentoriaIndexRoute
+  MentoriaPedirSlugRoute: typeof MentoriaPedirSlugRoute
+}
+
+const MentoriaRouteChildren: MentoriaRouteChildren = {
+  MentoriaSlugRoute: MentoriaSlugRoute,
+  MentoriaIndexRoute: MentoriaIndexRoute,
+  MentoriaPedirSlugRoute: MentoriaPedirSlugRoute,
+}
+
+const MentoriaRouteWithChildren = MentoriaRoute._addFileChildren(
+  MentoriaRouteChildren,
+)
+
 interface OportunidadesRouteChildren {
   OportunidadesSlugRoute: typeof OportunidadesSlugRoute
   OportunidadesIndexRoute: typeof OportunidadesIndexRoute
@@ -449,13 +669,18 @@ const rootRouteChildren: RootRouteChildren = {
   AccountRoute: AccountRoute,
   ArtigosRoute: ArtigosRouteWithChildren,
   BolsasRoute: BolsasRouteWithChildren,
-  CursosRoute: CursosRoute,
+  CursosRoute: CursosRouteWithChildren,
   EmpregosRoute: EmpregosRoute,
   EstagiosRoute: EstagiosRoute,
-  MentoriaRoute: MentoriaRoute,
+  GuardadosRoute: GuardadosRoute,
+  MentoriaRoute: MentoriaRouteWithChildren,
   OportunidadesRoute: OportunidadesRouteWithChildren,
+  RecomendacoesRoute: RecomendacoesRoute,
+  RecuperarPalavraPasseRoute: RecuperarPalavraPasseRoute,
   StyleguideRoute: StyleguideRoute,
   UniversidadesRoute: UniversidadesRoute,
+  AlertasNovoRoute: AlertasNovoRoute,
+  CandidaturasSlugRoute: CandidaturasSlugRoute,
   UniversitiesSlugRoute: UniversitiesSlugRoute,
 }
 export const routeTree = rootRouteImport

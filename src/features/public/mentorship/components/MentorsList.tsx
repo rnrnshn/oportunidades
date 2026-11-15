@@ -1,8 +1,9 @@
 import { Card, CardContent } from '@/components/ui/card'
 import type { Mentor } from '../api'
 import { MentorCard } from './MentorCard'
+import type { ViewMode } from '@/components/layout/ListingLayout'
 
-export function MentorsList({ mentors }: { mentors: Mentor[] }) {
+export function MentorsList({ mentors, viewMode = 'grid' }: { mentors: Mentor[]; viewMode?: ViewMode }) {
   if (mentors.length === 0) {
     return (
       <Card className="border-soft bg-white shadow-none">
@@ -19,7 +20,7 @@ export function MentorsList({ mentors }: { mentors: Mentor[] }) {
   }
 
   return (
-    <div className="grid gap-4 lg:grid-cols-2">
+    <div className={viewMode === 'grid' ? 'grid gap-4 lg:grid-cols-2' : 'space-y-4'}>
       {mentors.map((mentor) => (
         <MentorCard key={mentor.id} mentor={mentor} />
       ))}

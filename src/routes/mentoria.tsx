@@ -1,9 +1,7 @@
-import { createFileRoute } from '@tanstack/react-router'
-
-import { MentorsPage } from '@/features/public/mentors-page'
+import { Outlet, createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/mentoria')({
-  component: MentorsPage,
+  component: MentoriaLayout,
   head: () => ({
     meta: [
       { title: 'Encontrar um Mentor | Oportunidades' },
@@ -15,3 +13,7 @@ export const Route = createFileRoute('/mentoria')({
     ],
   }),
 })
+
+function MentoriaLayout() {
+  return <Outlet />
+}

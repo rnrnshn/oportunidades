@@ -1,6 +1,6 @@
-import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
 import { Link } from '@tanstack/react-router'
+import { ArrowRight } from 'lucide-react'
 import type { Article } from '../api'
 
 export function ArticleCard({ article }: { article: Article }) {
@@ -13,26 +13,32 @@ export function ArticleCard({ article }: { article: Article }) {
     : null
 
   return (
-    <Card className="border-soft bg-white p-6 shadow-none transition-shadow hover:shadow-md">
-      <div className="space-y-3">
-        <div className="flex items-center gap-2">
-          <Badge variant="secondary">{article.type}</Badge>
-          {formattedDate && (
-            <span className="text-xs text-subtle">{formattedDate}</span>
-          )}
+    <Card className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--surface-border)] bg-white p-0 shadow-none transition duration-200 hover:-translate-y-0.5 hover:shadow-md">
+      <img
+        src={article.cover_image_url || '/graduation.png'}
+        alt=""
+        className="aspect-[16/9] w-full object-cover"
+      />
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-medium text-[#525252]">
+          <span>{article.type}</span>
+          {formattedDate && <><span aria-hidden="true">•</span><time dateTime={article.published_at}>{formattedDate}</time></>}
         </div>
-        <h3 className="text-lg font-bold text-navy">
+        <h3 className="mt-3 text-lg font-bold leading-snug text-navy">
           <Link
             to="/artigos/$slug"
             params={{ slug: article.slug }}
-            className="hover:text-brand hover:underline"
+            className="rounded hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
           >
             {article.title}
           </Link>
         </h3>
         {article.excerpt && (
-          <p className="text-sm text-subtle line-clamp-2">{article.excerpt}</p>
+          <p className="mt-3 line-clamp-3 text-sm leading-6 text-[#525252]">{article.excerpt}</p>
         )}
+        <Link to="/artigos/$slug" params={{ slug: article.slug }} className="mt-auto inline-flex min-h-11 items-center gap-2 self-start pt-5 font-semibold text-brand underline-offset-4 hover:underline focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+          Ler artigo <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+        </Link>
       </div>
     </Card>
   )

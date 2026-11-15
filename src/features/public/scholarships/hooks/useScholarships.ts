@@ -1,16 +1,17 @@
-import { useMemo, useState, useEffect } from 'react'
+import { useMemo, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { useSearch } from '@tanstack/react-router'
 import { getScholarships } from '../api/get-scholarships'
 import {
   MIN_AMOUNT,
   MAX_AMOUNT,
-  Scholarship,
   Filters,
   SortOption,
 } from '../types'
 
-function getInitialFilters(): Filters {
+function getInitialFilters(search = ''): Filters {
   return {
-    search: '',
+    search,
     location: '',
     field: '',
     level: '',
@@ -31,13 +32,11 @@ function getDaysLeft(deadline: string) {
 }
 
 export function useScholarships() {
-  const [filters, setFilters] = useState<Filters>(getInitialFilters)
+  const routeSearch = useSearch({ strict: false }) as { q?: unknown }
+  const initialSearch = typeof routeSearch.q === 'string' ? routeSearch.q : ''
+  const [filters, setFilters] = useState<Filters>(() => getInitialFilters(initialSearch))
   const [sortBy, setSortBy] = useState<SortOption>('relevance')
-  const [allScholarships, setAllScholarships] = useState<Scholarship[]>([])
-
-  useEffect(() => {
-    getScholarships().then(setAllScholarships)
-  }, [])
+  const { data: allScholarships = [], isLoading, isError, refetch } = useQuery({ queryKey: ['scholarships', 'list'], queryFn: getScholarships })
 
   const activeFiltersCount = useMemo(() => {
     const amountChanged =
@@ -179,5 +178,8 @@ export function useScholarships() {
     },
     // Expose helpers if needed by components
     getDaysLeft,
+    isLoading,
+    isError,
+    refetch,
   }
 }

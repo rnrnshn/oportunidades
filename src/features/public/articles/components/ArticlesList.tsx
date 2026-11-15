@@ -1,8 +1,9 @@
 import { Card, CardContent } from '@/components/ui/card'
 import type { Article } from '../api'
 import { ArticleCard } from './ArticleCard'
+import type { ViewMode } from '@/components/layout/ListingLayout'
 
-export function ArticlesList({ articles }: { articles: Article[] }) {
+export function ArticlesList({ articles, viewMode = 'grid' }: { articles: Article[]; viewMode?: ViewMode }) {
   if (articles.length === 0) {
     return (
       <Card className="border-soft bg-white shadow-none">
@@ -19,7 +20,7 @@ export function ArticlesList({ articles }: { articles: Article[] }) {
   }
 
   return (
-    <div className="grid gap-4 lg:grid-cols-2">
+    <div className={viewMode === 'grid' ? 'grid gap-5 sm:grid-cols-2 lg:grid-cols-3' : 'space-y-4'}>
       {articles.map((article) => (
         <ArticleCard key={article.id} article={article} />
       ))}

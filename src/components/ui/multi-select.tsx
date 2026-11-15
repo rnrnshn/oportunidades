@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 
 interface MultiSelectProps {
   label?: string
+  ariaLabel?: string
   options: string[]
   value: string[]
   onChange: (value: string[]) => void
@@ -15,6 +16,7 @@ interface MultiSelectProps {
 
 export function MultiSelect({
   label,
+  ariaLabel,
   options,
   value,
   onChange,
@@ -41,7 +43,8 @@ export function MultiSelect({
             variant="outline"
             role="combobox"
             aria-expanded={open}
-            className="h-11 w-full justify-between rounded-lg border-soft bg-white px-3 font-normal hover:bg-white"
+            aria-label={ariaLabel ?? label ?? placeholder}
+            className="h-[var(--field-height)] w-full justify-between rounded-[var(--field-radius)] border-[var(--field-border)] bg-[var(--field-background)] px-[var(--field-padding-x)] font-normal shadow-none hover:border-[var(--field-border-hover)] hover:bg-white focus-visible:border-[var(--field-focus)] focus-visible:bg-white focus-visible:ring-2 focus-visible:ring-[var(--field-focus)] focus-visible:ring-offset-1"
           >
             <span className={cn('truncate', activeCount === 0 && 'text-muted')}>
               {activeCount > 0
@@ -52,9 +55,8 @@ export function MultiSelect({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="min-w-full p-0"
+          className="w-[var(--radix-popover-trigger-width)] p-0"
           align="start"
-          style={{ width: 'var(--radix-popover-trigger-width)' }}
         >
           <div className="max-h-64 overflow-y-auto p-1">
             {options.map((option) => (

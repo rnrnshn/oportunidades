@@ -1,4 +1,5 @@
 import { MIN_TUITION, MAX_TUITION, TUITION_STEP } from '../types'
+import { CustomSelect } from '@/components/ui/custom-select'
 
 export function formatCurrency(value: number) {
   return new Intl.NumberFormat('pt-MZ', {
@@ -26,18 +27,16 @@ export function SelectField({
   return (
     <div className="space-y-2">
       <label className="text-sm font-semibold text-navy">{label}</label>
-      <select
+      <CustomSelect
         value={value}
-        onChange={(event) => onChange(event.target.value)}
-        className="h-11 w-full rounded-lg border border-soft bg-white px-3 text-sm text-navy outline-none focus:border-brand"
-      >
-        <option value="">{placeholder ?? 'Seleciona'}</option>
-        {options.map((option) => (
-          <option key={option} value={option}>
-            {formatOption ? formatOption(option) : option}
-          </option>
-        ))}
-      </select>
+        onChange={onChange}
+        ariaLabel={label}
+        className="w-full"
+        options={[
+          { value: '', label: placeholder ?? 'Seleciona' },
+          ...options.map((option) => ({ value: option, label: formatOption ? formatOption(option) : option })),
+        ]}
+      />
     </div>
   )
 }
@@ -45,33 +44,43 @@ export function SelectField({
 export function RangeSlider({
   value,
   onChange,
+  label = 'Valor',
 }: {
   value: [number, number]
   onChange: (value: [number, number]) => void
+  label?: string
 }) {
   const [minValue, maxValue] = value
   const minPercent = ((minValue - MIN_TUITION) / (MAX_TUITION - MIN_TUITION)) * 100
   const maxPercent = ((maxValue - MIN_TUITION) / (MAX_TUITION - MIN_TUITION)) * 100
 
   return (
-    <div className="space-y-2">
-      <div className="relative h-6">
-        <div className="absolute top-1/2 h-1 w-full -translate-y-1/2 rounded-full bg-[#e5e8f0]" />
+    <div className="space-y-1">
+      <div className="relative h-20" aria-hidden="true">
+        <div className="absolute inset-x-2 bottom-3 flex h-14 items-end gap-[2px]">
+          {[14, 20, 31, 26, 38, 46, 55, 51, 43, 36, 32, 28, 24, 21, 18, 15, 12, 10, 8, 6].map((height, index) => (
+            <span key={index} className="min-w-0 flex-1 rounded-t-sm bg-[#e5e7eb]" style={{ height: `${height}px` }} />
+          ))}
+        </div>
+        <div className="absolute inset-x-0 bottom-3 h-1.5 rounded-full bg-[#d3dae6]" />
         <div
-          className="absolute top-1/2 h-1 -translate-y-1/2 rounded-full bg-brand"
+          className="absolute bottom-3 h-1.5 rounded-full bg-brand"
           style={{ left: `${minPercent}%`, right: `${100 - maxPercent}%` }}
         />
+      </div>
+      <div className="relative -mt-9 h-11 [&_input]:pointer-events-none [&_input::-moz-range-thumb]:pointer-events-auto [&_input::-webkit-slider-thumb]:pointer-events-auto">
         <input
           type="range"
           min={MIN_TUITION}
           max={MAX_TUITION}
           step={TUITION_STEP}
           value={minValue}
+          aria-label={`${label} mínima`}
           onChange={(event) => {
             const nextValue = Math.min(Number(event.target.value), maxValue - TUITION_STEP)
             onChange([nextValue, maxValue])
           }}
-          className="absolute inset-0 h-6 w-full appearance-none bg-transparent [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-brand [&::-webkit-slider-thumb]:shadow [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-brand"
+          className="absolute inset-0 h-11 w-full appearance-none bg-transparent outline-none focus-visible:ring-2 focus-visible:ring-[#0049af] focus-visible:ring-offset-2 [&::-webkit-slider-runnable-track]:bg-transparent [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:bg-brand [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-track]:bg-transparent [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:bg-brand"
         />
         <input
           type="range"
@@ -79,11 +88,12 @@ export function RangeSlider({
           max={MAX_TUITION}
           step={TUITION_STEP}
           value={maxValue}
+          aria-label={`${label} máxima`}
           onChange={(event) => {
             const nextValue = Math.max(Number(event.target.value), minValue + TUITION_STEP)
             onChange([minValue, nextValue])
           }}
-          className="absolute inset-0 h-6 w-full appearance-none bg-transparent [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-brand [&::-webkit-slider-thumb]:shadow [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-brand"
+          className="absolute inset-0 h-11 w-full appearance-none bg-transparent outline-none focus-visible:ring-2 focus-visible:ring-[#0049af] focus-visible:ring-offset-2 [&::-webkit-slider-runnable-track]:bg-transparent [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:bg-brand [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-track]:bg-transparent [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:bg-brand"
         />
       </div>
       <div className="flex items-center justify-between text-xs font-semibold text-muted">

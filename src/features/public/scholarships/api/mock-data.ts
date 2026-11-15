@@ -1,4 +1,4 @@
-import { Scholarship } from '../types'
+import type { Scholarship } from '../types'
 
 export const scholarshipsMock: Scholarship[] = [
   {
@@ -13,10 +13,10 @@ export const scholarshipsMock: Scholarship[] = [
     coverage: ['Propina', 'Alojamento', 'Livros'],
     amountRange: 'MZN 8.000/mês + alojamento',
     maxAmount: 8000,
-    deadline: '2024-06-15',
+    deadline: '2026-11-15',
     language: 'Português',
     country: 'Moçambique',
-    publishedAt: '2024-04-05',
+    publishedAt: '2026-09-05',
     recommended: true,
     tags: ['Mulheres em STEM'],
   },
@@ -32,10 +32,10 @@ export const scholarshipsMock: Scholarship[] = [
     coverage: ['Propina', 'Bolsa mensal', 'Livros'],
     amountRange: 'MZN 6.500/mês',
     maxAmount: 6500,
-    deadline: '2024-05-28',
+    deadline: '2026-11-28',
     language: 'Português',
     country: 'Moçambique',
-    publishedAt: '2024-04-22',
+    publishedAt: '2026-09-22',
     tags: ['Programa intensivo', 'Mentoria'],
   },
   {
@@ -50,10 +50,10 @@ export const scholarshipsMock: Scholarship[] = [
     coverage: ['Propina', 'Alimentação', 'Transporte'],
     amountRange: 'MZN 7.200/mês',
     maxAmount: 7200,
-    deadline: '2024-07-05',
+    deadline: '2026-12-05',
     language: 'Português',
     country: 'Moçambique',
-    publishedAt: '2024-03-18',
+    publishedAt: '2026-08-18',
     recommended: true,
     tags: ['Serviço comunitário'],
   },
@@ -69,10 +69,10 @@ export const scholarshipsMock: Scholarship[] = [
     coverage: ['Propina', 'Bolsa mensal', 'Viagem', 'Livros'],
     amountRange: 'MZN 9.500/mês',
     maxAmount: 9500,
-    deadline: '2024-06-02',
+    deadline: '2026-12-12',
     language: 'Inglês',
     country: 'África do Sul',
-    publishedAt: '2024-04-10',
+    publishedAt: '2026-09-10',
     tags: ['Mobilidade', 'Laboratórios parceiros'],
   },
   {
@@ -87,10 +87,10 @@ export const scholarshipsMock: Scholarship[] = [
     coverage: ['Propina', 'Alojamento', 'Alimentação'],
     amountRange: 'MZN 6.800/mês',
     maxAmount: 6800,
-    deadline: '2024-08-12',
+    deadline: '2027-01-12',
     language: 'Português',
     country: 'Moçambique',
-    publishedAt: '2024-02-28',
+    publishedAt: '2026-08-28',
     tags: ['Equipa universitária'],
   },
   {
@@ -105,10 +105,10 @@ export const scholarshipsMock: Scholarship[] = [
     coverage: ['Propina', 'Livros'],
     amountRange: 'MZN 5.200/mês',
     maxAmount: 5200,
-    deadline: '2024-05-18',
+    deadline: '2027-02-18',
     language: 'Bilingue',
     country: 'Global',
-    publishedAt: '2024-04-30',
+    publishedAt: '2026-09-30',
     tags: ['Clima', 'Projecto aplicado'],
   },
 ]

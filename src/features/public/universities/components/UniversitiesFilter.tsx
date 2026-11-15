@@ -1,4 +1,6 @@
-import { Card, CardContent } from '@/components/ui/card'
+import { Checkbox } from '@/components/ui/checkbox'
+import { FilterDisclosure } from '@/components/ui/filter-disclosure'
+import { FilterPanel } from '@/components/ui/filter-panel'
 import { Input } from '@/components/ui/input'
 import { RangeSlider, SelectField, formatCurrency } from './ui-parts'
 import { Filters } from '../types'
@@ -28,68 +30,68 @@ export function UniversitiesFilter({
 }: UniversitiesFilterProps) {
   void setFilters
   return (
-    <aside className="space-y-4">
-      <Card className="border-soft bg-white shadow-none">
-        <CardContent className="space-y-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-base font-semibold text-navy">Filtrar universidades</p>
-            </div>
-            {activeFiltersCount > 0 && (
-              <button
-                type="button"
-                onClick={resetFilters}
-                className="text-sm font-semibold text-brand hover:underline"
-              >
-                Reset ({activeFiltersCount})
-              </button>
-            )}
-          </div>
-
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-navy">Pesquisa</label>
+    <FilterPanel activeCount={activeFiltersCount} onClear={resetFilters}>
+          <div>
+            <label className="block space-y-1.5 pb-4 text-sm font-semibold text-navy">
+              <span>Pesquisa</span>
               <Input
                 placeholder="Universidade em Maputo"
                 value={filters.search}
                 onChange={(event) => updateFilters({ search: event.target.value })}
-                className="h-11 rounded-lg border-soft text-sm"
+                className="text-sm"
               />
-            </div>
+            </label>
 
-            <SelectField
+            <FilterDisclosure title="Localização" inset={false}><SelectField
               label="Localização"
               placeholder="Seleciona uma localização"
               value={filters.location}
               options={locationOptions}
               onChange={(value) => updateFilters({ location: value })}
-            />
+            /></FilterDisclosure>
 
-            <SelectField
+            <FilterDisclosure title="Área de estudo" defaultOpen inset={false}><SelectField
               label="Área de estudo"
               placeholder="Seleciona a área"
               value={filters.field}
               options={fieldOptions}
               onChange={(value) => updateFilters({ field: value })}
-            />
+            /></FilterDisclosure>
 
-            <SelectField
+            <FilterDisclosure title="Universidade" inset={false}><SelectField
               label="Tipo de instituição"
               placeholder="Pública ou privada"
               value={filters.type}
               options={typeOptions}
               onChange={(value) => updateFilters({ type: value })}
-            />
+            /></FilterDisclosure>
 
-            <SelectField
+            <FilterDisclosure title="Modalidade" inset={false}><SelectField
               label="Modalidade"
               placeholder="Campus, online ou híbrida"
               value={filters.modality}
               options={modalityOptions}
               onChange={(value) => updateFilters({ modality: value })}
-            />
+            /></FilterDisclosure>
 
-            <div className="space-y-3">
+            <FilterDisclosure title="Avaliação" inset={false}><fieldset className="space-y-2">
+              <legend className="mb-2 text-sm font-semibold text-navy">Avaliação</legend>
+              {[5, 4, 3, 2, 1].map((rating) => (
+                <label key={rating} className="flex min-h-11 cursor-pointer items-center gap-3 rounded-lg px-1 text-sm text-[#262626] hover:bg-[#f5f5f5]">
+                  <Checkbox
+                    checked={filters.rating.includes(rating)}
+                    onCheckedChange={(checked) => updateFilters({
+                      rating: checked
+                        ? [...filters.rating, rating]
+                        : filters.rating.filter((value) => value !== rating),
+                    })}
+                  />
+                  <span>{rating} {rating === 1 ? 'estrela' : 'estrelas'}</span>
+                </label>
+              ))}
+            </fieldset></FilterDisclosure>
+
+            <FilterDisclosure title="Propinas" inset={false}><div className="space-y-3">
               <div className="flex items-center justify-between">
                 <label className="text-sm font-semibold text-navy">Propinas</label>
                 <span className="text-xs text-muted">
@@ -97,22 +99,21 @@ export function UniversitiesFilter({
                 </span>
               </div>
               <RangeSlider
+                label="Propina"
                 value={filters.tuitionRange}
                 onChange={(value) => updateFilters({ tuitionRange: value })}
               />
-            </div>
+            </div></FilterDisclosure>
 
-            <SelectField
+            <FilterDisclosure title="Período de admissão" inset={false}><SelectField
               label="Período de admissão"
               placeholder="Próximos 15/30/60 dias"
               value={filters.deadlineWindow}
               options={['15', '30', '60']}
               formatOption={(value) => `Até ${value} dias`}
               onChange={(value) => updateFilters({ deadlineWindow: value })}
-            />
+            /></FilterDisclosure>
           </div>
-        </CardContent>
-      </Card>
-    </aside>
+    </FilterPanel>
   )
 }

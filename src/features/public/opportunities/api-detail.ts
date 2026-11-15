@@ -37,12 +37,13 @@ const OpportunityDetailResponseSchema = z.object({
 export type OpportunityDetail = z.infer<typeof OpportunityDetailResponseSchema>['data']
 
 export async function fetchOpportunityDetail(slug: string): Promise<OpportunityDetail> {
-  const response = await fetch(`${API_URL}/v1/opportunities/${slug}`)
-
-  if (!response.ok) {
-    throw new Error('Não foi possível carregar a oportunidade.')
+  try {
+    const response = await fetch(`${API_URL}/v1/opportunities/${slug}`)
+    if (!response.ok) throw new Error('Não foi possível carregar a oportunidade.')
+    const body = await response.json()
+    return OpportunityDetailResponseSchema.parse(body).data
+  } catch {
+    const { getMockOpportunityDetail } = await import('./mock-details')
+    return getMockOpportunityDetail(slug)
   }
-
-  const body = await response.json()
-  return OpportunityDetailResponseSchema.parse(body).data
 }

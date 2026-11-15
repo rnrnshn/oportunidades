@@ -6,4 +6,5 @@ import { ArticleDetailPage } from '@/features/public/article-detail'
 export const Route = createFileRoute('/artigos/$slug')({
   loader: ({ params }) => fetchArticleDetail(params.slug),
   component: ArticleDetailPage,
+  head: ({ loaderData }) => ({ meta: [{ title: `${loaderData?.title ?? 'Artigo'} | Oportunidades` }, { name: 'description', content: loaderData?.excerpt ?? 'Conteúdo prático para estudar e trabalhar.' }] }),
 })

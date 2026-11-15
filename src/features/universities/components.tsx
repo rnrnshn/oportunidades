@@ -64,7 +64,7 @@ export function UniversitySummary({
             )}
 
             <div className="min-w-0 flex-1">
-              <h1 className="text-3xl font-semibold text-navy">{meta.name}</h1>
+              <h1 className="text-2xl font-semibold text-navy">{meta.name}</h1>
               <div className="mt-3 flex flex-wrap gap-2 text-sm text-muted">
                 {meta.founded ? <span>Fundada em {meta.founded}</span> : null}
                 <span>• {meta.type}</span>

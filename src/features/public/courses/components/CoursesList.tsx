@@ -19,7 +19,7 @@ export function CoursesList({ courses }: { courses: Course[] }) {
   }
 
   return (
-    <section className="grid gap-4 sm:grid-cols-2">
+    <section aria-label="Cursos encontrados" className="space-y-4">
       {courses.map((course) => (
         <CourseCard key={course.id} course={course} />
       ))}

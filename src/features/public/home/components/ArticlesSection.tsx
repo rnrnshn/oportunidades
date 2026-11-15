@@ -4,105 +4,48 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel'
 import { Card, CardContent, CardTitle, CardDescription } from '@/components/ui/card'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { ArrowRight } from 'lucide-react'
 import { articles } from '../data'
+import { Link } from '@tanstack/react-router'
+import { SectionHeading } from './SectionHeading'
+import { Button } from '@/components/ui/button'
 
 export function ArticlesSection() {
-  const [carouselApi, setCarouselApi] = useState<any>()
-  const [canScroll, setCanScroll] = useState({ prev: false, next: true })
-
-  const CarouselControls = ({ className = '' }: { className?: string }) => (
-    <div className={`flex items-center gap-4 ${className}`}>
-      <div className="flex items-center gap-2">
-        <button
-          type="button"
-          onClick={() => carouselApi?.scrollPrev()}
-          disabled={!canScroll.prev}
-          className="flex h-8 w-8 items-center justify-center rounded-full bg-orange text-white shadow-sm transition hover:bg-orange-dark disabled:cursor-not-allowed disabled:opacity-50"
-          aria-label="Artigos anteriores"
-        >
-          <ArrowLeft className="h-4 w-4" />
-        </button>
-        <button
-          type="button"
-          onClick={() => carouselApi?.scrollNext()}
-          disabled={!canScroll.next}
-          className="flex h-8 w-8 items-center justify-center rounded-full bg-orange text-white shadow-sm transition hover:bg-orange-dark disabled:cursor-not-allowed disabled:opacity-50"
-          aria-label="Mais artigos"
-        >
-          <ArrowRight className="h-4 w-4" />
-        </button>
-      </div>
-      <button
-        type="button"
-        className="text-sm font-semibold text-brand transition hover:underline"
-      >
-        Ver todas
-      </button>
-    </div>
-  )
-
-  useEffect(() => {
-    if (!carouselApi) return
-    const update = () => {
-      setCanScroll({
-        prev: carouselApi.canScrollPrev(),
-        next: carouselApi.canScrollNext(),
-      })
-    }
-
-    update()
-    carouselApi.on('select', update)
-    carouselApi.on('reInit', update)
-
-    return () => {
-      carouselApi.off('select', update)
-      carouselApi.off('reInit', update)
-    }
-  }, [carouselApi])
-
   return (
-    <section className="mx-auto max-w-6xl px-4 py-16">
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <h2 className="text-2xl font-semibold text-navy">
-          Artigos recomendados
-        </h2>
-        <CarouselControls className="hidden md:flex md:justify-normal" />
-      </div>
+    <section className="mx-auto w-full max-w-6xl px-5 py-12 sm:px-6 md:py-16 xl:px-0" aria-labelledby="articles-title">
+      <SectionHeading id="articles-title" title="Conteúdo para decidires melhor" description="Guias curtos para preparares cada próximo passo." />
 
       <Carousel
-        className="mt-8"
+        className="mt-6"
         opts={{ align: 'start', dragFree: true }}
-        setApi={setCarouselApi}
       >
         <CarouselContent className="pb-2">
           {articles.map((article, index) => (
             <CarouselItem
               key={`${article.title}-${index}`}
-              className="basis-[85%] sm:basis-1/2 lg:basis-1/3"
+              className="basis-[88%] sm:basis-1/2 lg:basis-1/3"
             >
-              <Card className="h-full overflow-hidden rounded-[22px] border border-soft shadow-none py-0">
+              <Card className="h-full overflow-hidden rounded-xl border border-soft py-0 shadow-none">
                 <CardContent className="flex h-full flex-col p-0">
                   <img
                     src={article.image}
                     alt={article.title}
-                    className="h-48 w-full object-cover"
+                    width="416"
+                    height="220"
+                    loading="lazy"
+                    className="h-44 w-full object-cover"
                   />
-                  <div className="flex h-full flex-col gap-3 px-5 py-5">
-                    <CardTitle className="text-lg font-semibold leading-snug text-navy">
+                  <div className="flex h-full flex-col gap-2.5 p-5">
+                    <CardTitle className="text-base font-semibold leading-snug text-[#262626]">
                       {article.title}
                     </CardTitle>
-                    <CardDescription className="text-sm leading-6 text-muted">
+                    <CardDescription className="line-clamp-3 text-sm leading-6 text-[#525252]">
                       {article.excerpt}
                     </CardDescription>
-                    <button
-                      type="button"
-                      className="mt-auto inline-flex items-center gap-2 text-[15px] font-semibold text-brand transition hover:underline"
-                    >
-                      Read article
+                    <Link to="/artigos/$slug" params={{ slug: article.slug }} className="mt-auto inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand transition hover:underline focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+                      Ler artigo
                       <ArrowRight className="h-4 w-4" />
-                    </button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>
@@ -110,7 +53,11 @@ export function ArticlesSection() {
           ))}
         </CarouselContent>
       </Carousel>
-      <CarouselControls className="mt-6 justify-center md:hidden" />
+      <div className="mt-6 flex justify-center">
+        <Button asChild className="bg-brand px-6 text-sm font-semibold text-white shadow-none hover:bg-brand-dark">
+          <Link to="/artigos">Ver todos os artigos</Link>
+        </Button>
+      </div>
     </section>
   )
 }

@@ -5,12 +5,11 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import { Button } from '@/components/ui/button'
-import { Checkbox } from '@/components/ui/checkbox'
 import { DialogHeader } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { register as registerAccount } from '@/features/auth/api'
 
-import { AuthLogo, Divider, Field, GoogleButton } from './common'
+import { AuthLogo, Field } from './common'
 
 const signupSchema = z.object({
   firstName: z.string().min(1, 'Obrigatório'),
@@ -32,7 +31,7 @@ export function SignupCard({ onSwitchMode, onClose }: SignupCardProps) {
   const form = useForm<SignupForm>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
-      firstName: 'Edson',
+      firstName: '',
       lastName: '',
       email: '',
       password: '',
@@ -54,6 +53,7 @@ export function SignupCard({ onSwitchMode, onClose }: SignupCardProps) {
     <div className="rounded-[20px] bg-gradient-to-b from-[#e3f0ff] via-white to-white p-6 shadow-2xl">
       <button
         type="button"
+        aria-label="Fechar janela de criação de conta"
         className="ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-soft transition hover:text-brand"
         onClick={onClose}
       >
@@ -61,54 +61,68 @@ export function SignupCard({ onSwitchMode, onClose }: SignupCardProps) {
       </button>
       <DialogHeader>
         <AuthLogo />
-        <h2 className="text-2xl font-semibold">Join Oportunidades</h2>
-        <p className="text-sm text-muted">Enter your details to login.</p>
+        <h2 className="text-xl font-semibold">Criar conta</h2>
+        <p className="text-sm text-muted">Cria uma conta para guardar e acompanhar oportunidades.</p>
       </DialogHeader>
 
       <form className="mt-6 space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
         <div className="grid gap-4 md:grid-cols-2">
           <Field
-            label="First name"
+            label="Nome"
+            htmlFor="signup-first-name"
             error={form.formState.errors.firstName?.message}
           >
             <Input
+              id="signup-first-name"
+              autoComplete="given-name"
+              aria-invalid={Boolean(form.formState.errors.firstName)}
+              aria-describedby={form.formState.errors.firstName ? 'signup-first-name-error' : undefined}
               {...form.register('firstName')}
-              className="rounded-[18px] border border-soft bg-white px-4 py-3 shadow-[inset_0_1px_2px_rgba(0,0,0,0.06)] focus-visible:ring-brand"
             />
           </Field>
           <Field
-            label="Last name"
+            label="Apelido"
+            htmlFor="signup-last-name"
             error={form.formState.errors.lastName?.message}
           >
             <Input
+              id="signup-last-name"
+              autoComplete="family-name"
+              aria-invalid={Boolean(form.formState.errors.lastName)}
+              aria-describedby={form.formState.errors.lastName ? 'signup-last-name-error' : undefined}
               {...form.register('lastName')}
-              className="rounded-[18px] border border-soft bg-white px-4 py-3 shadow-[inset_0_1px_2px_rgba(0,0,0,0.06)] focus-visible:ring-brand"
             />
           </Field>
         </div>
-        <Field label="Email address" error={form.formState.errors.email?.message}>
+        <Field label="Email" htmlFor="signup-email" error={form.formState.errors.email?.message}>
           <Input
+            id="signup-email"
             type="email"
+            autoComplete="email"
+            aria-invalid={Boolean(form.formState.errors.email)}
+            aria-describedby={form.formState.errors.email ? 'signup-email-error' : undefined}
             {...form.register('email')}
-            className="rounded-[18px] border border-soft bg-white px-4 py-3 shadow-[inset_0_1px_2px_rgba(0,0,0,0.06)] focus-visible:ring-brand"
           />
         </Field>
-        <Field label="Password" error={form.formState.errors.password?.message}>
+        <Field label="Palavra-passe" htmlFor="signup-password" error={form.formState.errors.password?.message}>
           <Input
+            id="signup-password"
             type="password"
+            autoComplete="new-password"
+            aria-invalid={Boolean(form.formState.errors.password)}
+            aria-describedby={form.formState.errors.password ? 'signup-password-error' : undefined}
             {...form.register('password')}
-            className="rounded-[18px] border border-soft bg-white px-4 py-3 shadow-[inset_0_1px_2px_rgba(0,0,0,0.06)] focus-visible:ring-brand"
           />
         </Field>
         <label className="flex items-center gap-2 text-sm text-muted">
-          <Checkbox {...form.register('terms')} className="h-5 w-5 rounded border-brand text-brand" />
+          <input type="checkbox" aria-invalid={Boolean(form.formState.errors.terms)} aria-describedby={form.formState.errors.terms ? 'signup-terms-error' : undefined} {...form.register('terms')} className="size-5 shrink-0 rounded border border-[#767676] accent-[var(--field-focus)] focus-visible:ring-2 focus-visible:ring-[var(--field-focus)] focus-visible:ring-offset-2" />
           <span>
-            I have read and agree to the{' '}
-            <button className="font-semibold text-brand">Terms and Conditions</button>
+            Li e aceito os{' '}
+            <a href="/about" className="font-semibold text-brand hover:underline">termos de utilização</a>
           </span>
         </label>
         {form.formState.errors.terms ? (
-          <p className="text-xs text-danger">{form.formState.errors.terms.message}</p>
+          <p id="signup-terms-error" className="text-xs text-danger">{form.formState.errors.terms.message}</p>
         ) : null}
         {form.formState.errors.root ? (
           <p className="text-xs text-danger">{form.formState.errors.root.message}</p>
@@ -118,22 +132,18 @@ export function SignupCard({ onSwitchMode, onClose }: SignupCardProps) {
           type="submit"
           className="w-full rounded-full bg-brand text-white hover:bg-brand-dark"
         >
-          {form.formState.isSubmitting ? 'Creating account...' : 'Create account'}
+          {form.formState.isSubmitting ? 'A criar conta…' : 'Criar conta'}
         </Button>
       </form>
 
-      <Divider label="OR" />
-
-      <GoogleButton label="Sign in with Google" />
-
       <p className="mt-4 text-center text-sm text-muted">
-        Already have an account?{' '}
+        Já tens conta?{' '}
         <button
           className="font-semibold text-brand"
           type="button"
           onClick={() => onSwitchMode?.('login')}
         >
-          Sign in
+          Entrar
         </button>
       </p>
     </div>

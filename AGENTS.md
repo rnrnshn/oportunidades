@@ -119,6 +119,20 @@ Use shared components from `src/components/ui` where possible.
 *   Avoid arbitrary values unless necessary.
 *   Dark mode support: clarify if required.
 
+### 12.1 Design Direction
+
+Use `linear.design.md` supplied by the product owner as the design-discipline reference, adapted to the Oportunidades brand and audience:
+
+*   Preserve the existing light canvas and Oportunidades blue; do not copy Linear's dark palette or lavender brand colour literally.
+*   Use a 4px-based spacing scale: 4, 8, 12, 16, 24, 32, 48 and 96px.
+*   Prefer compact typography, restrained weights and slightly tighter display tracking.
+*   Use one primary chromatic accent. Reserve semantic colours for status and feedback.
+*   Create hierarchy with background surfaces and spacing before adding borders or shadows.
+*   Default card radius is 12px; use 8px for fields and controls and 16px only for prominent feature surfaces.
+*   Avoid decorative gradients, excessive shadows, unnecessary borders and pill-shaped containers.
+*   Keep operational screens dense enough for scanning while preserving 44px interactive targets.
+*   Accessibility, clarity for users with low digital literacy and established Oportunidades patterns override the reference when they conflict.
+
 ## 13. Testing
 
 *   Unit tests for utilities.

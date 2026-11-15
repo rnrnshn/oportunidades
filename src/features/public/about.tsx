@@ -1,41 +1,44 @@
 import SiteFooter from '@/components/SiteFooter'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardTitle } from '@/components/ui/card'
-import { GraduationCap } from 'lucide-react'
+import { Link } from '@tanstack/react-router'
+import { GraduationCap, LibraryBig, Sparkles } from 'lucide-react'
+import { useEffect, useRef } from 'react'
 
 const steps = [
   {
-    title: 'Comprehensive information',
+    title: 'Informação completa',
     description:
-      'We curate and present comprehensive information about universities, courses, and scholarships, making it easy for students to find the information.',
+      'Reunimos universidades, cursos, bolsas, estágios e empregos num só lugar, com informação clara e fácil de comparar.',
   },
   {
-    title: 'Access to top universities',
+    title: 'Acesso às instituições',
     description:
-      'Our platform provides students with access to detailed insights into university programs, admission requirements, and more.',
+      'Aproximamos estudantes das instituições e explicamos requisitos, prazos e formas de candidatura sem complicações.',
   },
   {
-    title: 'Scholarship Opportunities',
+    title: 'Oportunidades relevantes',
     description:
-      'We offer students access to a wide range of scholarship opportunities along with details about eligibility criteria, application deadlines.',
+      'Organizamos programas por perfil e objetivo para ajudar cada pessoa a encontrar o próximo passo certo.',
   },
 ]
-
 
 const highlightStats = [
-  { value: '+1 000', label: 'Oportunidades registadas' },
-  { value: '+1 000', label: 'universidades no catálogo' },
-  { value: '+1 000', label: 'Oportunidades registadas' },
+  { value: '+1 000', label: 'oportunidades registadas', Icon: Sparkles },
+  { value: '+1 000', label: 'universidades no catálogo', Icon: LibraryBig },
+  { value: '+1 000', label: 'jovens alcançados', Icon: GraduationCap },
 ]
 
-const partnerPlaceholders = Array.from({ length: 8 })
-
 export function PublicAboutPage() {
+  const headingRef = useRef<HTMLHeadingElement>(null)
+
+  useEffect(() => {
+    headingRef.current?.focus()
+  }, [])
+
   return (
-    <main className="bg-soft text-navy">
+    <main className="overflow-hidden bg-white text-[#262626]">
       <HeroBanner />
-      <IntroSection />
+      <IntroSection headingRef={headingRef} />
       <VisionSection />
       <JourneySection />
       <HighlightsSection />
@@ -48,76 +51,111 @@ export function PublicAboutPage() {
 
 function HeroBanner() {
   return (
-    <section className="bg-white">
-      <img src="/categories/universidade.jpg" className="h-64 w-full rounded-none md:h-[420px] object-cover object-center" />
+    <section aria-label="Celebração de finalistas" className="bg-white">
+      <img
+        src="/about/figma-image-4.png"
+        alt="Finalistas reunidos numa cerimónia de graduação"
+        width={1024}
+        height={530}
+        className="h-48 w-full object-cover object-center sm:h-64 lg:h-[332px]"
+      />
     </section>
   )
 }
 
-function IntroSection() {
+function BrandMark() {
   return (
-    <section className="bg-white">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-2 md:items-center">
-        <div>
-          <Badge variant="outline" className="border-none px-0 text-xs font-semibold text-brand">
-            Oportunidades
-          </Badge>
-          <h1 className="mt-4 text-4xl font-bold leading-tight">Unlocking doors to brighter futures</h1>
-          <p className="mt-4 text-base text-subtle">
-            Conectamos jovens a bolsas de estudo, programas profissionais e universidades moçambicanas com
-            curadoria diária. O nosso time valida informações com instituições parceiras e traduz tudo para
-            planos práticos.
+    <div className="flex items-center gap-2 text-brand">
+      <img src="/logo-icon.png" alt="" width={26} height={30} className="h-7 w-auto" />
+      <span className="text-sm font-bold tracking-tight">Oportunidades.</span>
+    </div>
+  )
+}
+
+function IntroSection({ headingRef }: { headingRef: React.RefObject<HTMLHeadingElement | null> }) {
+  return (
+    <section id="about" aria-labelledby="about-heading" className="scroll-mt-24 bg-white">
+      <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 sm:px-6 md:grid-cols-2 md:items-center md:gap-12 lg:px-0 lg:py-[70px]">
+        <div className="max-w-xl">
+          <BrandMark />
+          <h1
+            id="about-heading"
+            ref={headingRef}
+            tabIndex={-1}
+            className="mt-7 text-balance text-[22px] font-semibold leading-tight text-[#262626] outline-none sm:text-2xl"
+          >
+            Abrimos portas para futuros mais brilhantes e possibilidades sem limites
+          </h1>
+          <p className="mt-5 text-base leading-7 text-[#525252]">
+            A nossa missão é simples e ambiciosa: ajudar estudantes e jovens profissionais a compreender e aproveitar oportunidades de educação, capacitação e trabalho em Moçambique.
           </p>
-          <div className="mt-8 space-y-6">
-            <div>
-              <h3 className="text-lg font-semibold">Nossa história</h3>
-              <p className="mt-2 text-sm text-muted">
-                Nasceu em Maputo em 2024 como uma iniciativa comunitária e hoje evolui para plataforma nacional
-                com apoio de educadores, mentores e especialistas em tecnologia.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold">Valores</h3>
-              <p className="mt-2 text-sm text-muted">
-                Transparência, equidade e impacto mensurável guiam as nossas decisões — desde o design do
-                produto até às parcerias que escolhemos.
-              </p>
-            </div>
+
+          <div className="mt-7 border-l-2 border-[#d6e7ff] pl-5">
+            <h2 className="text-lg font-semibold text-[#262626]">A nossa história</h2>
+            <p className="mt-3 text-base leading-7 text-[#525252]">
+              A Oportunidades nasceu para responder à falta de informação clara enfrentada por milhares de jovens. Juntamos experiência em educação, tecnologia e impacto comunitário para tornar decisões importantes mais simples e informadas.
+            </p>
           </div>
         </div>
-        <img src="/graduation.png" alt="Equipa" className="h-full w-full object-cover rounded-md" />
+
+        <img
+          src="/about/figma-image-5.jpeg"
+          alt="Jovem finalista sentado no campus após a graduação"
+          width={1365}
+          height={2048}
+          loading="lazy"
+          className="h-[360px] w-full rounded-xl object-cover object-[center_63%] shadow-sm sm:h-[440px] md:h-[405px]"
+        />
       </div>
     </section>
   )
 }
 
 function VisionSection() {
+  const principles = [
+    {
+      title: 'Visão',
+      description:
+        'Ser a plataforma mais confiável e dinâmica de Moçambique e da lusofonia africana para descobrir oportunidades de educação e carreira.',
+    },
+    {
+      title: 'Missão',
+      description:
+        'Empoderar jovens e profissionais através de informação acessível, orientação e ferramentas digitais que transformem oportunidades em carreiras.',
+    },
+    {
+      title: 'Propósito social',
+      description:
+        'Reduzir a desigualdade no acesso a oportunidades e promover mobilidade social através da tecnologia, do design e da colaboração.',
+    },
+  ]
+
   return (
-    <section className="bg-white">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 pb-16 md:grid-cols-2 md:items-center">
-        <img src="/about_university.jpg" alt="Visão" className="h-96 w-full object-cover rounded-md" />
-        <div className="space-y-6">
-          <div>
-            <h3 className="text-lg font-semibold">Missão</h3>
-            <p className="mt-2 text-sm text-muted">
-              Facilitar o acesso a bolsas, estágios, empregos e formação com informação fiável e suporte humano em
-              cada etapa do processo.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">Visão</h3>
-            <p className="mt-2 text-sm text-muted">
-              Ser a plataforma de referência em Moçambique, permitindo que cada jovem trace o seu caminho académico
-              e profissional com confiança.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">Propósito social</h3>
-            <p className="mt-2 text-sm text-muted">
-              Promover inclusão, orientação e oportunidades reais que ajudam a quebrar ciclos de desigualdade e
-              estimulam inovação local.
-            </p>
-          </div>
+    <section id="principles" aria-labelledby="principles-heading" className="scroll-mt-24 bg-white pb-14 lg:pb-[70px]">
+      <div className="mx-auto grid max-w-6xl gap-8 px-5 sm:px-6 md:grid-cols-2 md:items-center md:gap-12 lg:px-0">
+        <img
+          src="/about/figma-image-5.jpeg"
+          alt="Finalista sorridente com traje académico"
+          width={1365}
+          height={2048}
+          loading="lazy"
+          className="h-[360px] w-full rounded-xl object-cover object-[center_58%] shadow-sm sm:h-[405px]"
+        />
+
+        <div>
+          <h2 id="principles-heading" className="sr-only">
+            Visão, missão e propósito social
+          </h2>
+          <dl className="space-y-7">
+            {principles.map((principle) => (
+              <div key={principle.title}>
+                <dt className="text-lg font-semibold text-[#262626]">{principle.title}</dt>
+                <dd className="mt-3 text-base leading-7 text-[#525252]">
+                  {principle.description}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>
@@ -126,45 +164,34 @@ function VisionSection() {
 
 function JourneySection() {
   return (
-    <section className="relative overflow-hidden bg-[#fff6e9] py-16">
-      <div
-        className="pointer-events-none absolute inset-x-[-30%] bottom-[-140px] h-[230px] rotate-[-2.5deg] bg-white"
-        aria-hidden="true"
-      />
-      <div className="relative mx-auto max-w-6xl px-4">
-        <div className="space-y-2">
-          <h2 className="text-2xl font-semibold text-[#1f1f1f]">Entra, descobre e cresce</h2>
-          <p className="text-base text-[#5a5e66]">
-            Três passos simples para começares a usar a plataforma e transformares oportunidades em conquistas.
-          </p>
-        </div>
+    <section id="journey" aria-labelledby="journey-heading" className="relative scroll-mt-24 overflow-hidden bg-[#fff6e7] py-12 lg:py-16">
+      <div className="pointer-events-none absolute inset-x-[-12%] bottom-[-110px] h-40 -rotate-2 bg-white" aria-hidden="true" />
+      <div className="relative mx-auto max-w-6xl px-5 sm:px-6 lg:px-0">
+        <h2 id="journey-heading" className="text-[22px] font-semibold text-[#262626]">
+          Entra, descobre e cresce
+        </h2>
+        <p className="mt-3 max-w-3xl text-base leading-7 text-[#525252]">
+          Três passos simples para começares a usar a plataforma e transformares oportunidades em conquistas.
+        </p>
 
-        <div className="relative mt-10">
-          <div className="pointer-events-none absolute inset-x-4 top-8 hidden h-px border-t border-dashed border-[#b3b3b3] md:block" />
-          <div className="grid gap-6 md:grid-cols-3">
-            {steps.map((step, index) => (
-              <Card
-                key={step.title}
-                className="relative overflow-hidden rounded-2xl border-none bg-white shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
-              >
-                <CardContent className="space-y-4 p-6">
-                  <div className="relative flex items-center gap-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#b0b0b0] text-[#b0b0b0]" />
-                  </div>
-                  <CardTitle className="text-base font-semibold text-[#1f1f1f]">
-                    {step.title}
-                  </CardTitle>
-                  <CardDescription className="text-sm leading-6 text-[#5a5e66]">
-                    {step.description}
-                  </CardDescription>
-                  <div className="pointer-events-none absolute bottom-4 right-4 text-7xl font-black text-[#f1f1f1]">
-                    {index + 1}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
+        <ol className="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-5 md:grid md:grid-cols-3 md:overflow-visible md:pb-0">
+          {steps.map((step, index) => (
+            <li
+              key={step.title}
+              className="relative min-w-[82vw] snap-center overflow-hidden rounded-xl border border-[#e8e8e8] bg-white p-6 sm:min-w-[360px] md:min-w-0 md:p-8"
+            >
+              <div className="mb-8 flex items-center gap-4" aria-hidden="true">
+                <span className="h-5 w-5 shrink-0 rounded-full border-2 border-[#6b6b6b] bg-white" />
+                <span className="h-px flex-1 border-t border-dashed border-[#ababab]" />
+              </div>
+              <h3 className="relative z-10 text-lg font-semibold text-[#262626]">{step.title}</h3>
+              <p className="relative z-10 mt-3 text-base leading-7 text-[#525252]">{step.description}</p>
+              <span className="pointer-events-none absolute bottom-0 right-5 text-[112px] font-black leading-none text-[#262626]/[0.045]" aria-hidden="true">
+                {index + 1}
+              </span>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   )
@@ -172,30 +199,28 @@ function JourneySection() {
 
 function HighlightsSection() {
   return (
-    <section className="bg-white py-12">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="space-y-2">
-          <h3 className="text-xl font-semibold text-[#1f1f1f]">
-            Feita para jovens que querem mais
-          </h3>
-          <p className="text-sm text-[#5a5e66]">
-            A Oportunidades liga estudantes e jovens profissionais a programas que fazem a diferença.
-          </p>
-        </div>
+    <section id="impact" aria-labelledby="highlights-heading" className="scroll-mt-24 bg-white py-14 lg:py-16">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-0">
+        <h2 id="highlights-heading" className="text-[22px] font-semibold text-[#262626]">
+          Feita para jovens que querem mais
+        </h2>
+        <p className="mt-3 text-base leading-7 text-[#525252]">
+          A Oportunidades liga estudantes e jovens profissionais a programas que fazem a diferença.
+        </p>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {highlightStats.map((stat) => (
-            <div key={stat.label} className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#e8edff] text-[#2d3f85]">
-                <GraduationCap className="h-6 w-6" />
-              </div>
+        <dl className="mt-8 grid gap-5 sm:grid-cols-3">
+          {highlightStats.map(({ value, label, Icon }) => (
+            <div key={label} className="flex items-center gap-4 rounded-xl bg-[#f8faff] p-4 sm:bg-transparent sm:p-0">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#d6e7ff] text-[#0049af]" aria-hidden="true">
+                <Icon className="h-6 w-6" />
+              </span>
               <div>
-                <p className="text-lg font-semibold text-[#f58220]">{stat.value}</p>
-                <p className="text-base font-semibold text-[#1f1f1f]">{stat.label}</p>
+                <dt className="text-sm font-medium text-[#525252]">{label}</dt>
+                <dd className="order-first text-2xl font-black text-[#d85e00]">{value}</dd>
               </div>
             </div>
           ))}
-        </div>
+        </dl>
       </div>
     </section>
   )
@@ -203,28 +228,19 @@ function HighlightsSection() {
 
 function PartnersSection() {
   return (
-    <section className="bg-white pb-12">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="space-y-2">
-          <h3 className="text-lg font-semibold text-[#1f1f1f]">Our partners</h3>
-          <p className="text-sm text-[#5a5e66]">
-            We partner with universities, colleges, and educational organizations across Mozambique to provide students
-            with access to comprehensive information about courses, admission requirements, and campus life.
+    <section id="partners" aria-labelledby="partners-heading" className="scroll-mt-24 bg-white pb-14 lg:pb-16">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-0">
+        <div className="rounded-2xl bg-[#f5f7fb] p-6 sm:p-8">
+          <h2 id="partners-heading" className="text-[22px] font-semibold text-[#262626]">
+            Crescemos com os nossos parceiros
+          </h2>
+          <p className="mt-3 max-w-3xl text-base leading-7 text-[#525252]">
+            Trabalhamos com universidades, organizações educativas e comunidades para levar informação útil a mais jovens, em mais lugares.
+          </p>
+          <p className="mt-6 text-sm font-semibold text-[#0049af]">
+            Parcerias institucionais e educativas
           </p>
         </div>
-
-        <div className="mt-6 flex flex-wrap gap-4">
-          {partnerPlaceholders.map((_, index) => (
-            <div
-              key={index}
-              className="h-11 w-11 rounded-full bg-[#f0f0f0]"
-            />
-          ))}
-        </div>
-
-        <Button className="mt-6 rounded-md bg-[#0049AF] px-5 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-[#0a56c4]">
-          Inquire for partnership
-        </Button>
       </div>
     </section>
   )
@@ -232,29 +248,27 @@ function PartnersSection() {
 
 function JoinSection() {
   return (
-    <section className="bg-white pb-16">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="overflow-hidden rounded-2xl border border-[#e3e6eb] shadow-sm">
-          <div className="grid gap-0 md:grid-cols-[1.2fr_1fr] md:items-stretch">
-            <img
-              src="/graduation.png"
-              alt="Graduates"
-              className="h-full w-full min-h-[180px] object-cover"
-            />
-            <div className="flex h-full flex-col justify-center gap-3 px-5 py-6 sm:px-8 sm:py-8 bg-white">
-              <h3 className="text-xl font-semibold text-[#0049AF]">
-                Começa hoje a explorar o teu futuro
-              </h3>
-              <p className="text-base text-[#5a5e66]">
-                Cria a tua conta e recebe acesso a todas as oportunidades no teu perfil.
-              </p>
-              <p className="text-base text-[#5a5e66]">
-                Descobre oportunidades académicas e profissionais criadas especialmente para jovens como tu. Dá o primeiro passo para construir um caminho cheio de possibilidades.
-              </p>
-              <Button className="mt-1 w-fit rounded-md bg-[#0049AF] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0a56c4]">
-                Criar Conta Gratuitamente
-              </Button>
-            </div>
+    <section aria-labelledby="join-heading" className="bg-white pb-16">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-0">
+        <div className="grid overflow-hidden rounded-2xl border border-[#dcdcdc] bg-white md:grid-cols-2 md:items-stretch">
+          <img
+            src="/about/figma-image-4.png"
+            alt="Grupo de finalistas numa cerimónia de graduação"
+            width={1024}
+            height={530}
+            loading="lazy"
+            className="h-52 w-full object-cover md:h-full"
+          />
+          <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-12">
+            <h2 id="join-heading" className="text-2xl font-semibold text-[#0049af]">
+              Começa hoje a explorar o teu futuro
+            </h2>
+            <p className="mt-4 text-base leading-7 text-[#525252]">
+              Responde a três perguntas e encontra o melhor ponto de partida para estudar, trabalhar ou pedir orientação.
+            </p>
+            <Button asChild className="mt-6 h-12 w-fit rounded-xl bg-[#0049af] px-6 text-base font-semibold text-white hover:bg-[#00398b]">
+              <Link to="/recomendacoes">Receber recomendações</Link>
+            </Button>
           </div>
         </div>
       </div>

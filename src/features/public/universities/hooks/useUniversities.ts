@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { getUniversities } from '../api/get-universities'
-import { MIN_TUITION, MAX_TUITION, SortOption, University, Filters } from '../types'
-import { useEffect } from 'react'
+import { MIN_TUITION, MAX_TUITION, SortOption, Filters } from '../types'
 
 function getInitialFilters(): Filters {
   return {
@@ -26,12 +26,7 @@ function getDaysLeft(deadline: string) {
 export function useUniversities() {
   const [filters, setFilters] = useState<Filters>(getInitialFilters)
   const [sortBy, setSortBy] = useState<SortOption>('relevance')
-  const [allUniversities, setAllUniversities] = useState<University[]>([])
-
-  useEffect(() => {
-    // Simulate data fetching
-    getUniversities().then(setAllUniversities)
-  }, [])
+  const { data: allUniversities = [], isLoading, isError, refetch } = useQuery({ queryKey: ['universities', 'list'], queryFn: getUniversities })
 
   const activeFiltersCount = useMemo(() => {
     const tuitionChanged =
@@ -138,5 +133,8 @@ export function useUniversities() {
       type: typeOptions,
       modality: modalityOptions,
     },
+    isLoading,
+    isError,
+    refetch,
   }
 }

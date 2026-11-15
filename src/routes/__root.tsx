@@ -4,13 +4,8 @@ import {
   createRootRouteWithContext,
   Link,
 } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { TanStackDevtools } from '@tanstack/react-devtools'
-
 import Header from '../components/Header'
 import { Button } from '@/components/ui/button'
-
-import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 
 import appCss from '../styles.css?url'
 
@@ -106,24 +101,12 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-MZ">
       <head>
         <HeadContent />
       </head>
       <body>
         <BodyLayout>{children}</BodyLayout>
-        <TanStackDevtools
-          config={{
-            position: 'bottom-right',
-          }}
-          plugins={[
-            {
-              name: 'Tanstack Router',
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-            TanStackQueryDevtools,
-          ]}
-        />
         <Scripts />
       </body>
     </html>
@@ -133,8 +116,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 function BodyLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
+      <a href="#main-content" className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-lg bg-brand px-4 py-3 font-semibold text-white focus:translate-y-0">Saltar para o conteúdo principal</a>
       <Header />
-      {children}
+      <div id="main-content" tabIndex={-1}>{children}</div>
     </>
   )
 }
@@ -146,7 +130,7 @@ function NotFoundPage() {
         <span className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-strong">
           Página não encontrada
         </span>
-        <h1 className="text-4xl font-bold tracking-tight">
+        <h1 className="text-2xl font-bold tracking-tight">
           Não encontrámos essa página
         </h1>
         <p className="max-w-2xl text-base text-soft">
@@ -161,11 +145,7 @@ function NotFoundPage() {
           >
             Voltar
           </Button>
-          <Link to="/">
-            <Button className="rounded-md bg-brand px-6 py-2 font-semibold text-white hover:bg-brand-dark">
-              Ir para o início
-            </Button>
-          </Link>
+          <Button asChild className="rounded-md bg-brand px-6 py-2 font-semibold text-white hover:bg-brand-dark"><Link to="/">Ir para o início</Link></Button>
         </div>
       </div>
     </main>

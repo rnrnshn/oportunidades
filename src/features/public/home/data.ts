@@ -1,26 +1,28 @@
-export const categories = [
+export const journeys = [
   {
-    title: 'Bolsas de Estudos',
-    image: '/categories/universidade.jpg',
+    title: 'Quero estudar',
+    description: 'Compara cursos, instituições e formas de financiar os teus estudos.',
+    image: '/home-v2/asset-15.png',
+    imageAlt: 'Estudante a ler no campus',
+    to: '/cursos',
   },
   {
-    title: 'Universidades',
-    image: '/categories/universidadesss.jpg',
-  },
-  {
-    title: 'Empregos',
-    image: '/categories/jobs.jpg',
+    title: 'Quero trabalhar',
+    description: 'Descobre experiências que ajudam a entrar e a crescer no mercado de trabalho.',
+    image: '/home-v2/asset-19.png',
+    imageAlt: 'Profissional da construção a trabalhar com um tablet',
+    to: '/empregos',
   },
 ]
 
 export const steps = [
   {
-    title: 'Candidata-te e evolui',
-    description: 'Entra em contacto directo com instituições e empresas.',
+    title: 'Pesquisa o que te interessa',
+    description: 'Encontra bolsas, universidades, estágios e empregos de forma rápida.',
   },
   {
-    title: 'Candidata-te e evolui',
-    description: 'Entra em contacto directo com instituições e empresas.',
+    title: 'Guarda e acompanha',
+    description: 'Marca as tuas oportunidades favoritas e volta quando quiseres.',
   },
   {
     title: 'Candidata-te e evolui',
@@ -30,66 +32,69 @@ export const steps = [
 
 export const articles = [
   {
-    title: 'Como se preparar para entrevistas',
+    title: 'Como preparar uma candidatura que se destaca',
     excerpt:
-      'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,',
-    image: '/graduation.png',
+      'Organiza o teu perfil, adapta a carta de motivação e apresenta provas do que já fizeste.',
+    image: '/home-v2/asset-08.png',
+    slug: 'como-preparar-candidatura',
   },
   {
-    title: 'Como se preparar para entrevistas',
+    title: '5 perguntas antes de escolher um curso',
     excerpt:
-      'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,',
-    image: '/graduation.png',
+      'Compara saídas profissionais, propinas, localização e modalidade antes de decidires.',
+    image: '/home-v2/asset-15.png',
+    slug: 'escolher-curso-certo',
   },
   {
-    title: 'Como se preparar para entrevistas',
+    title: 'Do campus ao primeiro emprego',
     excerpt:
-      'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,',
-    image: '/graduation.png',
-  },
-  {
-    title: 'Como se preparar para entrevistas',
-    excerpt:
-      'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,',
-    image: '/graduation.png',
-  },
-  {
-    title: 'Como se preparar para entrevistas',
-    excerpt:
-      'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,',
-    image: '/graduation.png',
+      'Transforma experiências académicas em argumentos claros para recrutadores.',
+    image: '/home-v2/asset-18.png',
+    slug: 'primeiro-emprego',
   },
 ]
 
 export const scholarships = [
   {
-    name: 'STEM Excellence',
-    sponsor: 'Fundação Horizonte',
-    amount: '$2,500',
-    deadline: '15 Agosto',
+    id: 'horizonte-stem',
+    name: 'Bolsa Horizonte STEM',
+    sponsor: 'ABC Foundation',
+    amount: '8 mil MT/mês',
+    deadline: '15 Novembro',
+    deadlineIso: '2026-11-15',
+    image: '/home-v2/asset-08.png',
   },
   {
-    name: 'Mulheres na Tecnologia',
+    id: 'moztech-codigo',
+    name: 'Tech Mulheres em Código',
     sponsor: 'MozTech',
-    amount: '$2,500',
-    deadline: '28 Agosto',
+    amount: '6,5 mil MT/mês',
+    deadline: '28 Novembro',
+    deadlineIso: '2026-11-28',
+    image: '/home-v2/asset-15.png',
   },
   {
-    name: 'Talentos Empreendedores',
-    sponsor: 'Impacto+',
-    amount: '$2,500',
-    deadline: '05 Setembro',
+    id: 'impacto-comunitario',
+    name: 'Bolsa Impacto Comunitário',
+    sponsor: 'Fundação Impacto+',
+    amount: '7,2 mil MT/mês',
+    deadline: '05 Dezembro',
+    deadlineIso: '2026-12-05',
+    image: '/home-v2/asset-18.png',
   },
   {
-    name: 'Bolsa Comunidades PALOP',
-    sponsor: 'CPLP',
-    amount: '$2,500',
-    deadline: '20 Setembro',
+    id: 'pesquisa-africa',
+    name: 'Pesquisa para África',
+    sponsor: 'CPLP Labs',
+    amount: '9,5 mil MT/mês',
+    deadline: '20 Dezembro',
+    deadlineIso: '2026-12-20',
+    image: '/home-v2/asset-19.png',
   },
 ]
 
 export const stats = [
-  { value: '+1 000', label: 'Oportunidades registadas' },
-  { value: '+1 000', label: 'Universidades no catálogo' },
-  { value: '+1 000', label: 'Oportunidades registadas' },
+  { value: '6+', label: 'Bolsas abertas' },
+  { value: '8+', label: 'Cursos e programas' },
+  { value: '6+', label: 'Universidades no catálogo' },
 ]

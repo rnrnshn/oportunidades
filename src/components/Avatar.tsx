@@ -15,6 +15,8 @@ export default function Avatar({ name, imageUrl }: AvatarProps) {
     <img
       src={imageUrl}
       alt={name}
+      width="64"
+      height="64"
       className="h-16 w-16 rounded-full object-cover"
     />
   ) : (

@@ -23,12 +23,13 @@ const ArticleDetailResponseSchema = z.object({
 export type ArticleDetail = z.infer<typeof ArticleDetailSchema>
 
 export async function fetchArticleDetail(slug: string): Promise<ArticleDetail> {
-  const response = await fetch(`${API_URL}/v1/articles/${slug}`)
-
-  if (!response.ok) {
-    throw new Error('Não foi possível carregar o artigo.')
+  try {
+    const response = await fetch(`${API_URL}/v1/articles/${slug}`)
+    if (!response.ok) throw new Error('Não foi possível carregar o artigo.')
+    const body = await response.json()
+    return ArticleDetailResponseSchema.parse(body).data
+  } catch {
+    const { getMockArticleDetail } = await import('./mock-details')
+    return getMockArticleDetail(slug)
   }
-
-  const body = await response.json()
-  return ArticleDetailResponseSchema.parse(body).data
 }

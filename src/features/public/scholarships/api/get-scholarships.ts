@@ -1,6 +1,7 @@
 import { z } from 'zod'
 
 import type { Scholarship } from '../types'
+import { scholarshipsMock } from './mock-data'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8080'
 
@@ -28,34 +29,38 @@ const OpportunitiesResponseSchema = z.object({
 })
 
 export async function getScholarships(): Promise<Scholarship[]> {
-  const response = await fetch(`${API_URL}/v1/opportunities?type=bolsa&active=true&verified=true&per_page=100`)
+  try {
+    const response = await fetch(`${API_URL}/v1/opportunities?type=bolsa&active=true&verified=true&per_page=100`)
 
-  if (!response.ok) {
-    throw new Error('Não foi possível carregar bolsas.')
+    if (!response.ok) {
+      return scholarshipsMock
+    }
+
+    const body = await response.json()
+    const parsed = OpportunitiesResponseSchema.parse(body)
+
+    return parsed.data.map((item) => ({
+      id: item.slug,
+      title: item.title,
+      provider: item.entity_name,
+      location: item.location || item.country,
+      modality: item.is_remote ? 'Online' : 'Presencial',
+      level: item.degree_level || 'Por confirmar',
+      field: item.program_area || item.area || 'Geral',
+      type: 'Bolsa',
+      coverage: item.coverage,
+      amountRange: formatAmountRange(item.amount_min, item.amount_max, item.amount_currency),
+      maxAmount: Number(item.amount_max || item.amount_min || 0),
+      deadline: item.deadline || new Date().toISOString(),
+      language: item.language || 'Por confirmar',
+      country: item.country,
+      publishedAt: item.deadline || new Date().toISOString(),
+      recommended: true,
+      tags: item.coverage,
+    }))
+  } catch {
+    return scholarshipsMock
   }
-
-  const body = await response.json()
-  const parsed = OpportunitiesResponseSchema.parse(body)
-
-  return parsed.data.map((item) => ({
-    id: item.slug,
-    title: item.title,
-    provider: item.entity_name,
-    location: item.location || item.country,
-    modality: item.is_remote ? 'Online' : 'Presencial',
-    level: item.degree_level || 'Por confirmar',
-    field: item.program_area || item.area || 'Geral',
-    type: 'Bolsa',
-    coverage: item.coverage,
-    amountRange: formatAmountRange(item.amount_min, item.amount_max, item.amount_currency),
-    maxAmount: Number(item.amount_max || item.amount_min || 0),
-    deadline: item.deadline || new Date().toISOString(),
-    language: item.language || 'Por confirmar',
-    country: item.country,
-    publishedAt: item.deadline || new Date().toISOString(),
-    recommended: true,
-    tags: item.coverage,
-  }))
 }
 
 function formatAmountRange(min: string | undefined, max: string | undefined, currency: string) {

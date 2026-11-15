@@ -10,4 +10,8 @@ export type Opportunity = {
   isRemote: boolean
   area: string | undefined
   degreeLevel: string | undefined
+  workMode?: string
+  contractType?: string
+  experienceLevel?: string
+  publishedAt?: string
 }

@@ -1,718 +1,171 @@
-import ImagePlaceholder from '@/components/ImagePlaceholder'
-import SiteFooter from '@/components/SiteFooter'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
 import { useLoaderData } from '@tanstack/react-router'
-import { ArrowUpRight, Info } from 'lucide-react'
-import {
-  FeeTable,
-  ScholarshipList,
-  UniversitySummary,
-} from '@/features/universities/components'
-import { TuitionChart } from '@/features/universities/TuitionChart'
+import { ArrowUpRight, Bookmark, CalendarDays, FileText, Mail, MapPin, Phone } from 'lucide-react'
+import { useRef, useState, type KeyboardEvent, type ReactNode } from 'react'
+
+import SiteFooter from '@/components/SiteFooter'
+import { useBookmark } from '@/features/public/shared/use-bookmark'
 import type { UniversityDetail } from '@/features/universities/api'
-import { useState } from 'react'
-import { universitiesMock } from '@/features/public/universities/api/mock-data'
+import { UniversityCourseList } from '@/features/universities/components/UniversityCourseList'
+import { ReportInformationDialog } from '@/features/public/shared/ReportInformationDialog'
+
+const CAMPUS_FALLBACK = '/universities/uem/figma-image-2.jpeg'
+const tabs = [
+  { id: 'overview', label: 'Visão geral' },
+  { id: 'academics', label: 'Cursos' },
+  { id: 'tuition', label: 'Propinas' },
+] as const
+type TabId = (typeof tabs)[number]['id']
 
 export function UniversityDetailPage() {
   const university = useLoaderData({ from: '/universities/$slug' })
-  const [iApplied, setIApplied] = useState<boolean>(university.i_applied ?? false)
+  const [activeTab, setActiveTab] = useState<TabId>('overview')
+  const [iApplied, setIApplied] = useState(university.i_applied ?? false)
+  const { bookmarked: saved, toggleBookmark } = useBookmark(`university:${university.id}`)
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([])
 
-  const locationLabel = [university.city, university.province, university.country]
-    .filter(Boolean)
-    .join(', ')
+  function selectTab(index: number) {
+    const tab = tabs[index]
+    if (!tab) return
+    setActiveTab(tab.id)
+    tabRefs.current[index]?.focus()
+  }
 
-  const addressLine = university.address || locationLabel
+  function handleTabKeyDown(event: KeyboardEvent<HTMLButtonElement>, index: number) {
+    const destinations: Record<string, number> = {
+      ArrowRight: (index + 1) % tabs.length,
+      ArrowLeft: (index - 1 + tabs.length) % tabs.length,
+      Home: 0,
+      End: tabs.length - 1,
+    }
+    const destination = destinations[event.key]
+    if (destination === undefined) return
+    event.preventDefault()
+    selectTab(destination)
+  }
 
   return (
-    <main className="bg-soft text-navy">
-      <HeaderBanner university={university} />
+    <main className="bg-white text-[#262626]">
+      <section aria-label={`Campus da ${university.name}`} className="overflow-hidden bg-[#eef1ea]">
+        <img src={university.campus_image_url || CAMPUS_FALLBACK} alt={`Campus da ${university.name}`} width="1440" height="720" className="h-[260px] w-full object-cover sm:h-[340px] lg:h-[450px]" />
+      </section>
 
-      <UniversitySummary
-        meta={{
-          name: university.name,
-          founded: university.founded_year ? String(university.founded_year) : '',
-          type: university.type,
-          location: locationLabel,
-          email: university.email ?? '',
-          phone: university.phone ?? '',
-          logoURL: university.logo_url,
-          website: university.website,
-          tags: university.tags ?? [],
-          i_applied: iApplied,
-          address: addressLine,
-          admissionsDeadline: university.admissions_deadline,
-          studentCount: university.student_count,
-        }}
-        onAppliedToggle={() => {
-          const next = !iApplied
-          setIApplied(next)
-          setIApplied(next)
-          try {
-            const mock = universitiesMock.find((u) => u.id === university.id)
-            if (mock) mock.i_applied = next
-          } catch (e) {
-            // noop
-          }
-        }}
-      />
+      <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:px-6 lg:grid-cols-[minmax(0,705px)_minmax(280px,373px)] lg:gap-12 lg:py-12">
+        <div className="min-w-0">
+          <div className="flex min-h-11 items-center justify-between gap-4">
+            <label className="inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm font-medium">
+              <input type="checkbox" checked={iApplied} onChange={(event) => setIApplied(event.target.checked)} className="peer sr-only" />
+              <span className="relative h-7 w-12 rounded-full bg-[#767676] transition-colors peer-checked:bg-[#0049af] peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[#0049af] after:absolute after:left-1 after:top-1 after:size-5 after:rounded-full after:bg-white after:transition-transform peer-checked:after:translate-x-5" aria-hidden="true" />
+              Candidatei-me
+            </label>
+            <button type="button" aria-label={saved ? 'Remover universidade dos guardados' : 'Guardar universidade'} aria-pressed={saved} onClick={toggleBookmark} className="inline-flex min-h-11 items-center gap-2 rounded-lg px-2 text-sm font-medium hover:bg-[#f5f5f5] focus-visible:outline-2 focus-visible:outline-[#0049af]">
+              {saved ? 'Guardada' : 'Guardar'}<span className="flex size-8 items-center justify-center rounded-full bg-[#f5f5f5]"><Bookmark className={`size-4 ${saved ? 'fill-[#0049af] text-[#0049af]' : ''}`} aria-hidden="true" /></span>
+            </button>
+          </div>
 
-      <UniversityContent university={university} />
-      <ContactPanel university={university} />
+          <UniversityHeading university={university} />
+
+          <div role="tablist" aria-label="Secções da universidade" className="mt-8 grid grid-cols-3 overflow-hidden rounded-xl border border-[#8b93a1] bg-[#fcfcfc] p-1">
+            {tabs.map((tab, index) => (
+              <button key={tab.id} ref={(node) => { tabRefs.current[index] = node }} id={`tab-${tab.id}`} type="button" role="tab" aria-selected={activeTab === tab.id} aria-controls={`panel-${tab.id}`} tabIndex={activeTab === tab.id ? 0 : -1} onClick={() => setActiveTab(tab.id)} onKeyDown={(event) => handleTabKeyDown(event, index)} className={`min-h-12 rounded-lg px-3 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-3px] ${activeTab === tab.id ? 'bg-[#0049af] text-white focus-visible:outline-white' : 'hover:bg-[#eff6ff] focus-visible:outline-[#0049af]'}`}>
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          <div id={`panel-${activeTab}`} role="tabpanel" aria-labelledby={`tab-${activeTab}`} tabIndex={0} className="mt-10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0049af]">
+            {activeTab === 'overview' ? <OverviewContent university={university} /> : null}
+            {activeTab === 'academics' ? <AcademicsContent university={university} /> : null}
+            {activeTab === 'tuition' ? <CostsContent university={university} /> : null}
+          </div>
+        </div>
+
+        <UniversitySidebar university={university} />
+      </div>
       <SiteFooter />
     </main>
   )
 }
 
-/* =========================
-   HEADER
-========================= */
-function HeaderBanner({ university }: { university: UniversityDetail }) {
+function UniversityHeading({ university }: { university: UniversityDetail }) {
+  const address = university.address || [university.city, university.country].filter(Boolean).join(', ')
+  const mapsUrl = university.map_url || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
+  const initials = university.name.split(/\s+/).filter((word) => word.length > 2).slice(0, 3).map((word) => word[0]).join('').toUpperCase()
   return (
-    <section className="bg-white ">
-      {university.campus_image_url ? (
-        <img
-          src={university.campus_image_url}
-          alt={`${university.name} campus`}
-          className="h-60 w-full object-cover md:h-72"
-        />
-      ) : (
-        <ImagePlaceholder
-          label="Campus"
-          className="h-60 w-full rounded-none md:h-72"
-        />
-      )}
-    </section>
-  )
-}
-
-/* =========================
-   TAB CONTROLLER (CORE FIX)
-========================= */
-function UniversityContent({
-  university,
-}: {
-  university: UniversityDetail
-}) {
-  const tabs = [
-    { id: 'overview', label: 'Overview' },
-    { id: 'academics', label: 'Academics' },
-    { id: 'admissao', label: 'Admissão' },
-    { id: 'custos', label: 'Custos & Bolsas' },
-  ] as const
-
-  const [activeTab, setActiveTab] =
-    useState<(typeof tabs)[number]['id']>('overview')
-
-  return (
-    <section className="bg-white py-10">
-      <div className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-10">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
-          <div className="space-y-6">
-            <div className="flex flex-wrap gap-2 rounded-full border border-soft bg-white p-1 shadow-sm">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`
-                    rounded-full px-4 py-2 text-sm font-semibold transition
-                    ${
-                      activeTab === tab.id
-                        ? 'bg-brand text-white'
-                        : 'text-navy hover:bg-slate-100'
-                    }
-                  `}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-
-            <div className="space-y-6">
-              {activeTab === 'overview' && (
-                <OverviewContent university={university} />
-              )}
-
-              {activeTab === 'academics' && (
-                <ProgramsContent university={university} />
-              )}
-
-              {activeTab === 'admissao' && (
-                <TuitionContent university={university} />
-              )}
-
-              {activeTab === 'custos' && (
-                <ScholarshipsContent university={university} />
-              )}
-            </div>
-          </div>
-
-          <UniversitySidebar university={university} />
+    <header className="mt-7 flex items-center gap-4">
+      <div className="flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#e5e5e5] bg-white sm:size-20">
+        {university.logo_url ? <img src={university.logo_url} alt={`Logótipo da ${university.name}`} width="80" height="80" className="h-full w-full object-contain p-1" /> : <span aria-hidden="true" className="text-sm font-bold tracking-[0.08em] text-[#0049af]">{initials}</span>}
+      </div>
+      <div className="min-w-0">
+        <h1 className="text-xl font-semibold leading-tight sm:text-2xl">{university.name}</h1>
+        <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-[#525252]">
+          <span>{university.type}</span><span aria-hidden="true">·</span>
+          <a href={mapsUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-1.5 text-[#0049af] hover:underline focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af]"><MapPin className="size-4" aria-hidden="true" />{address}</a>
         </div>
       </div>
-    </section>
+    </header>
   )
 }
 
 function UniversitySidebar({ university }: { university: UniversityDetail }) {
+  const website = university.website || university.more_info_url
+  const deadline = university.admissions_deadline ? new Date(`${university.admissions_deadline}T12:00:00`).toLocaleDateString('pt-MZ', { day: 'numeric', month: 'long', year: 'numeric' }) : null
   return (
-    <aside className="space-y-6 lg:sticky lg:top-24">
-      <div className="rounded-3xl border border-soft bg-white p-5 shadow-sm">
-        <div className="space-y-4">
-          <div>
-            <p className="text-sm uppercase font-bold text-black">
-              Informação Geral
-            </p>
-            <div className="mt-4 space-y-3 text-sm text-navy">
-              {university.email ? (
-                <div>
-                  <p className="font-semibold">Email</p>
-                  <p className="text-muted">{university.email}</p>
-                </div>
-              ) : null}
-              {university.phone ? (
-                <div>
-                  <p className="font-semibold">Telefone</p>
-                  <p className="text-muted">{university.phone}</p>
-                </div>
-              ) : null}
-              {university.website ? (
-                <div>
-                  <p className="font-semibold">Website</p>
-                  <a
-                    href={university.website}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-brand hover:underline"
-                  >
-                    {new URL(university.website).hostname.replace('www.', '')}
-                  </a>
-                </div>
-              ) : null}
-            </div>
-          </div>
-
-          <Button asChild className="w-full rounded-lg bg-brand text-white hover:bg-brand-dark">
-            <a href={university.website || '#'} target="_blank" rel="noreferrer" className="inline-flex w-full items-center justify-center gap-2">
-              Ver website da universidade
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </Button>
-
-          {university.academic_calendar ? (
-            <div className="mt-3 rounded-3xl border border-soft bg-surface px-4 py-4">
-              <a
-                href={university.academic_calendar}
-                target="_blank"
-                rel="noreferrer"
-                className="text-sm font-semibold text-brand hover:underline"
-              >
-                Baixar edital
-              </a>
-            </div>
-          ) : null}
-
-          <button
-            type="button"
-            className="mt-3 inline-flex items-center gap-2 rounded-lg text-sm font-semibold text-brand hover:text-red-600"
-          >
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-red-100 text-red-600">
-              <Info className="h-4 w-4" />
-            </span>
-            <span>Reportar informação incorreta</span>
-          </button>
-        </div>
-      </div>
+    <aside aria-label="Informação essencial da instituição" className="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:self-start lg:overflow-y-auto">
+      <section className="rounded-xl border border-[#e5e5e5] bg-white p-5 shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
+        <h2 className="text-lg font-semibold">Informação essencial</h2>
+        <ul className="mt-4 space-y-3 text-sm text-[#525252]">
+          {deadline ? <li className="flex gap-2"><CalendarDays className="mt-0.5 size-4 shrink-0 text-[#0049af]" aria-hidden="true" /><span>Admissões até {deadline}</span></li> : null}
+          {university.email ? <li><a href={`mailto:${university.email}`} className="flex min-h-11 items-center gap-2 text-[#0049af] hover:underline"><Mail className="size-4 shrink-0" aria-hidden="true" />{university.email}</a></li> : null}
+          {university.phone ? <li><a href={`tel:${university.phone.replace(/\s/g, '')}`} className="flex min-h-11 items-center gap-2 text-[#0049af] hover:underline"><Phone className="size-4 shrink-0" aria-hidden="true" />{university.phone}</a></li> : null}
+        </ul>
+        {website ? <a href={website} target="_blank" rel="noreferrer" className="mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#0049af] px-4 text-center text-sm font-medium text-white hover:bg-[#003b8f] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Visitar website<ArrowUpRight className="size-4" aria-hidden="true" /></a> : null}
+        {university.academic_calendar ? <a href={university.academic_calendar} target="_blank" rel="noreferrer" className="mt-3 inline-flex min-h-11 w-full items-center gap-2 text-sm font-medium text-[#0049af] underline underline-offset-4"><FileText className="size-4" aria-hidden="true" />Consultar edital</a> : null}
+        <div className="mt-3 border-t border-[#e5e5e5] pt-3"><ReportInformationDialog entityName={university.name} entityType="esta instituição" /></div>
+      </section>
     </aside>
   )
 }
 
-/* =========================
-   OVERVIEW
-========================= */
-function OverviewContent({
-  university,
-}: {
-  university: UniversityDetail
-}) {
-  const popularCourses = (university.courses ?? []).slice(0, 5)
-  const levels = Array.from(
-    new Set((university.courses ?? []).map((course) => course.level).filter(Boolean))
-  )
-  const locationLabel = [university.city, university.province, university.country]
-    .filter(Boolean)
-    .join(', ')
-  const addressLine = university.address || locationLabel
-
+function OverviewContent({ university }: { university: UniversityDetail }) {
+  const courses = university.courses ?? []
   return (
-    <div className="space-y-8 text-left">
-      <section className="p-6 shadow-sm">
-        <h2 className="text-xl font-semibold text-navy">University Details</h2>
-        <p className="mt-4 text-sm text-muted">
-          {university.description ||
-            `Instituição de ensino superior com programas diversificados.`}
-        </p>
-      </section>
-
-      <section className="p-6 shadow-sm">
-        <h3 className="text-base font-semibold text-navy">Locations & Contacts</h3>
-        <div className="mt-4 space-y-4 text-sm text-muted">
-          <div className="rounded-3xl border border-soft bg-surface px-4 py-4">
-            <p className="font-semibold text-navy">Main campus</p>
-            <p>{addressLine}</p>
-          </div>
-          {university.email ? (
-            <div className="rounded-3xl border border-soft bg-surface px-4 py-4">
-              <p className="font-semibold text-navy">Email</p>
-              <p>{university.email}</p>
-            </div>
-          ) : null}
-          {university.phone ? (
-            <div className="rounded-3xl border border-soft bg-surface px-4 py-4">
-              <p className="font-semibold text-navy">Telefone</p>
-              <p>{university.phone}</p>
-            </div>
-          ) : null}
-        </div>
-      </section>
-
-      <section className=" p-6 shadow-sm">
-        <h3 className="text-[#000] font-roboto text-[22px] font-medium leading-normal">Faculdades e Escolas</h3>
-        <ul className="mt-4 space-y-2 text-sm text-muted">
-          {(university.fields ?? []).length > 0 ? (
-            (university.fields ?? []).map((field: string) => (
-              <ul key={field} className="text-[#000] font-roboto text-base font-normal leading-[150%] list-disc list-outside pl-6">
-               <li key = {field}> {field}</li>
-              </ul>
-            ))
-          ) : (
-            <li className="rounded-xl border border-soft bg-surface px-4 py-3">
-              Faculdades por confirmar.
-            </li>
-          )}
-        </ul>
-      </section>
-
-      <section className=" bg-white p-6 shadow-sm">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h3 className="text-[#000] font-roboto text-[22px] font-medium leading-normal">Cursos Populares</h3>
-          </div>
-        </div>
-        <ul className="text-[#000] font-roboto text-base font-normal leading-[150%] list-disc list-outside pl-6">
-          {popularCourses.length > 0 ? (
-            popularCourses.map((course) => (
-              <li key={course.id} >
-                <div className="font-semibold text-navy">{course.name}</div>
-                <div>{course.level} · {course.regime}</div>
-              </li>
-            ))
-          ) : (
-            <li className="rounded-xl border border-soft bg-surface px-4 py-3">
-              Programas populares não disponíveis.
-            </li>
-          )}
-        </ul>
-        <div className="mt-6 text-center">
-          <Button className="rounded-3xl border-2 border-orange-500 bg-white px-12 py-6 text-sm font-medium text-slate-800 shadow-sm transition hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
-            Explore study programmes
-          </Button>
-        </div>
-      </section>
-
-      <section className=" border border-soft bg-white p-6 shadow-sm">
-    <h5 className="text-[#000] font-roboto text-lg font-medium leading-normal">
-  Níveis de Ensino
-</h5>
-        <div className="mt-4 grid gap-3 text-sm text-muted sm:grid-cols-2">
-          {levels.length > 0 ? (
-          <ul className="mt-4 grid gap-3 sm:grid-cols-2 list-disc list-outside pl-6">
-          {levels.map((level) => (
-            <li 
-              key={level} 
-              className="text-[#000] font-roboto text-base font-normal leading-[150%]"
-            >
-              {level}
-            </li>
-          ))}
-        </ul>
-          ) : (
-            <div className="rounded-xl border border-soft bg-surface px-4 py-3">
-              Níveis por confirmar.
-            </div>
-          )}
-        </div>
-      </section>
-
-<section className="border border-soft bg-white p-6 shadow-sm">
-  <h5 className="text-[#000] font-roboto text-lg font-medium leading-normal">
-    Requisitos Gerais de Ingresso
-  </h5>
-  <div className="mt-4 text-sm">
-    {university.overview_admission ? (
-      <ul className="list-disc list-inside space-y-3">
-        {university.overview_admission.items.map((item) => (
-          <li key={item}>
-            {item}
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <div className="rounded-xl border border-soft bg-surface px-4 py-3">
-        Não há informações de admissão disponíveis.
-      </div>
-    )}
-  </div>
-</section>
-
-      <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-      {/* Main Section Header */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h3 className="text-xl font-semibold text-slate-900">Custos & Bolsas</h3>
-          <p className="mt-1 text-sm text-gray-500">
-            Estimativas e oportunidades de apoio financeiro.
-          </p>
-        </div>
-      </div>
-
-      <div className="mt-6 space-y-8">
-        {/* Fee Table Section */}
-        <FeeTable
-          fees={(university.fees ?? []).map((fee) => ({
-            item: fee.label,
-            value: fee.value,
-          }))}
-        />
-
-        {/* Scholarships Section */}
-        <div>
-          <h4 className="text-lg font-medium text-slate-800">
-            Bolsas Internas e Apoios
-          </h4>
-
-          <div className="mt-4 space-y-4">
-            {university.scholarships && university.scholarships.length > 0 ? (
-              university.scholarships.map((s, index) => (
-                <div
-                  key={s.id || index}
-                  className="relative flex flex-col justify-between rounded-2xl border border-gray-100 bg-[#f8f9fa] p-5 sm:flex-row sm:items-center"
-                >
-                  {/* Bookmark Icon */}
-                  <button
-                    type="button"
-                    className="absolute right-5 top-5 text-[#1e40af] hover:opacity-80 transition-opacity"
-                    aria-label="Save scholarship"
-                  >
-                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-                    </svg>
-                  </button>
-
-                  {/* Left Content */}
-                  <div className="space-y-4 pr-10 sm:pr-0">
-                    <div>
-                      <h5 className="text-lg font-bold text-slate-900">{s.name}</h5>
-                      <p className="mt-0.5 text-sm font-medium text-gray-500">
-                        Offered by: {s.provider ?? s.provider_name ?? 'N/A'}
-                      </p>
-                    </div>
-
-                    {/* Deadline Button */}
-                    {s.deadline ? (
-                      <button
-                        type="button"
-                        className="rounded-full bg-brand px-4 py-2 text-sm   font-bold uppercase tracking-[0.18em] text-white hover:bg-brand-dark"
-                      >
-                          OPEN UNTIL : {s.deadline}
-                      </button>
-                    ) : null}
-                  </div>
-
-                  {/* Right Content: Amount */}
-                    <div className="mt-4 flex flex-col gap-1 text-left sm:mt-0 sm:items-end sm:text-right">
-                      <span className="text-xs font-semibold text-gray-400">Up to</span>
-                      <span className="text-2xl font-bold text-[#1e40af]">
-                        {s.amount ? s.amount : 'N/A'}
-                      </span>
-                    </div>
-                  </div>
-              ))
-            ) : (
-              <div className="rounded-xl border border-gray-200 bg-[#f8f9fa] px-4 py-3 text-sm text-gray-500">
-                Não há bolsas disponíveis no momento.
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-      <section className="rounded-3xl border border-soft bg-canvas p-6 text-sm text-muted">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="font-semibold text-navy">Sem informação disponível</p>
-            <p className="mt-2">Algumas informações ainda não estão disponíveis. Ajude-nos a manter os dados atualizados.</p>
-          </div>
-          <Button className="rounded-full bg-brand px-5 text-white hover:bg-brand-dark">
-            Sugerir correção
-          </Button>
-        </div>
-      </section>
+    <div className="space-y-8">
+      <ContentSection title="Sobre a instituição">
+        <p className="leading-7 text-[#404040]">{university.description || 'Informação institucional em atualização.'}</p>
+        <h3 className="mt-7 font-semibold">Áreas de ensino</h3>
+        {university.fields?.length ? <ul className="mt-3 grid gap-x-8 gap-y-2 text-sm leading-6 text-[#525252] sm:grid-cols-2">{university.fields.map((field) => <li key={field} className="flex gap-2"><span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-[#0049af]" />{field}</li>)}</ul> : <p className="mt-3 text-sm text-[#525252]">Áreas por confirmar.</p>}
+      </ContentSection>
+      <ContentSection title="Cursos e programas"><UniversityCourseList courses={courses} /></ContentSection>
+      <ContentSection title="Propinas e taxas"><FeesList fees={university.fees ?? []} /></ContentSection>
+      {university.overview_admission ? <ContentSection title={university.overview_admission.title}><BulletList items={university.overview_admission.items} empty="Requisitos por confirmar." /></ContentSection> : null}
+      <ContentSection title="Bolsas disponíveis"><ScholarshipList scholarships={university.scholarships ?? []} /></ContentSection>
     </div>
   )
 }
 
-/* =========================
-   PROGRAMS
-========================= */
-function ProgramsContent({
-  university,
-}: {
-  university: UniversityDetail
-}) {
-  const overviewCosts = university.overview_costs ?? []
-  const admission = university.overview_admission
-  const details = university.program_details ?? []
-  const objectives = university.learning_objectives ?? []
-  const curriculum = university.curriculum ?? []
-  const locationDetails = university.location_details ?? []
-
-  return (
-    <div className="w-full max-w-3xl space-y-8 text-left">
-      <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h2 className="text-xl font-semibold text-slate-900">Visão Geral</h2>
-            <p className="mt-1 text-sm text-gray-500">
-              {university.description || 'Informações gerais sobre a universidade e os programas oferecidos.'}
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          <div className="rounded-2xl border border-gray-200 bg-slate-50 p-4">
-            <p className="text-sm font-semibold text-slate-900">Custos</p>
-            <div className="mt-4 space-y-3 text-sm text-slate-700">
-              {overviewCosts.length > 0 ? (
-                overviewCosts.map((cost) => (
-                  <div key={cost.title}>
-                    <p className="font-semibold text-slate-900">{cost.title}</p>
-                    {cost.subtitle ? (
-                      <p className="mt-1 text-sm text-slate-500">{cost.subtitle}</p>
-                    ) : null}
-                    <ul className="mt-3 list-disc space-y-1 pl-5 text-slate-700">
-                      {cost.items.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))
-              ) : (
-                <p className="text-sm text-slate-500">Custos por confirmar.</p>
-              )}
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-gray-200 bg-slate-50 p-4">
-            <p className="text-sm font-semibold text-slate-900">Requisitos de Admissão</p>
-            <div className="mt-4 space-y-3 text-sm text-slate-700">
-              {admission ? (
-                <>
-                  <p className="font-semibold text-slate-900">{admission.title}</p>
-                  <ul className="mt-3 list-disc space-y-1 pl-5 text-slate-700">
-                    {admission.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </>
-              ) : (
-                <p className="text-sm text-slate-500">Requisitos por confirmar.</p>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-        <div className="grid gap-4 sm:grid-cols-2">
-          {details.map((detail) => (
-            <div key={detail.label} className="rounded-2xl border border-gray-200 bg-slate-50 p-4">
-              <p className="text-sm text-slate-500">{detail.label}</p>
-              <p className="mt-1 text-sm font-semibold text-slate-900">{detail.value}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-        <h3 className="text-lg font-semibold text-slate-900">Objectivos de Aprendizagem</h3>
-        {objectives.length > 0 ? (
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-700">
-            {objectives.map((objective) => (
-              <li key={objective}>{objective}</li>
-            ))}
-          </ul>
-        ) : (
-          <p className="mt-3 text-sm text-slate-500">Nenhum objectivo disponível.</p>
-        )}
-      </section>
-
-      <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-        <h3 className="text-lg font-semibold text-slate-900">Estrutura Curricular</h3>
-        <div className="mt-4 space-y-4">
-          {curriculum.length > 0 ? (
-            curriculum.map((year) => (
-              <details
-                key={year.year}
-                className="rounded-2xl border border-gray-200 bg-slate-50 p-4"
-                open
-              >
-                <summary className="cursor-pointer text-sm font-semibold text-slate-900">
-                  {year.year}
-                </summary>
-                <div className="mt-4 space-y-4">
-                  {year.semesters.map((semester) => (
-                    <div key={semester.title} className="rounded-2xl border border-gray-200 bg-white p-4">
-                      <p className="font-semibold text-slate-900">{semester.title}</p>
-                      <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-700">
-                        {semester.courses.map((course) => (
-                          <li key={course}>{course}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </details>
-            ))
-          ) : (
-            <p className="text-sm text-slate-500">Currículo não disponível.</p>
-          )}
-        </div>
-      </section>
-
-      <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-        <h3 className="text-lg font-semibold text-slate-900">Requisitos de Admissão</h3>
-        {admission ? (
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-700">
-            {admission.items.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        ) : (
-          <p className="mt-3 text-sm text-slate-500">Sem informações adicionais.</p>
-        )}
-      </section>
-
-      <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-        <h3 className="text-lg font-semibold text-slate-900">Localização</h3>
-        {locationDetails.length > 0 ? (
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-700">
-            {locationDetails.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        ) : (
-          <p className="mt-3 text-sm text-slate-500">Localização por confirmar.</p>
-        )}
-      </section>
-
-      {university.more_info_url ? (
-        <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-          <h3 className="text-lg font-semibold text-slate-900">Mais informações</h3>
-          <a
-            href={university.more_info_url}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-4 inline-flex text-sm font-semibold text-brand hover:underline"
-          >
-            {university.name} - about the course/programme
-          </a>
-        </section>
-      ) : null}
-    </div>
-  )
+function AcademicsContent({ university }: { university: UniversityDetail }) {
+  return <div className="space-y-8"><ContentSection title="Cursos e programas"><UniversityCourseList courses={university.courses ?? []} /></ContentSection><ContentSection title="Objetivos de aprendizagem"><BulletList items={university.learning_objectives ?? []} empty="Objetivos por confirmar." /></ContentSection></div>
 }
 
-/* =========================
-   TUITION
-========================= */
-function TuitionContent({
-  university,
-}: {
-  university: UniversityDetail
-}) {
-  const fees = (university.fees ?? []).map((fee) => ({
-    item: fee.label,
-    value: fee.value,
-  }))
-
-  return (
-    <div className="w-full max-w-3xl text-left">
-      <h2 className="text-lg font-semibold">Tuition & Fees</h2>
-      <h3>Qual é o custo aproximado do {university.name}? </h3>
-      <FeeTable fees={fees} />
-      <TuitionChart fees={fees} />
-    </div>
-  )
+function CostsContent({ university }: { university: UniversityDetail }) {
+  return <div className="space-y-8"><ContentSection title="Propinas e taxas"><FeesList fees={university.fees ?? []} /></ContentSection><ContentSection title="Bolsas disponíveis"><ScholarshipList scholarships={university.scholarships ?? []} /></ContentSection></div>
 }
 
-/* =========================
-   SCHOLARSHIPS
-========================= */
-function ScholarshipsContent({
-  university,
-}: {
-  university: UniversityDetail
-}) {
-  const scholarships = (university.scholarships ?? []).map((s) => ({
-    name: s.name,
-    amount: s.amount ?? '',
-    status: s.status,
-  }))
-
-  return (
-    <div className="w-full max-w-3xl space-y-4 text-left">
-      <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold">Scholarships</h2>
-
-        <Button variant="outline" className="border-brand text-brand">
-          View all
-        </Button>
-      </div>
-
-      <ScholarshipList scholarships={scholarships} />
-    </div>
-  )
+function FeesList({ fees }: { fees: Array<{ label: string; value: string }> }) {
+  if (!fees.length) return <p className="text-sm text-[#525252]">Propinas e taxas por confirmar.</p>
+  return <dl className="divide-y divide-[#e5e5e5]">{fees.map((fee) => <div key={fee.label} className="flex min-h-14 items-center justify-between gap-4 py-3 text-sm"><dt className="text-[#525252]">{fee.label}</dt><dd className="text-right font-semibold">{fee.value}</dd></div>)}</dl>
 }
 
-/* =========================
-   CONTACT
-========================= */
-function ContactPanel({ university }: { university: UniversityDetail }) {
-  return (
-    <section className="bg-white pb-16">
-      <div className="mx-auto max-w-5xl px-4">
-        <Card className="border border-brand bg-info">
-          <CardContent className="flex flex-col gap-4 p-6 md:flex-row md:items-center md:justify-between">
-            <div className="flex-1 min-w-0">
-              <h3 className="text-lg font-semibold text-navy">
-                Need guidance?
-              </h3>
-              <p className="text-sm text-subtle">
-                We can help you understand requirements, deadlines, and scholarships
-                for {university.name}.
-              </p>
-            </div>
+function ScholarshipList({ scholarships }: { scholarships: NonNullable<UniversityDetail['scholarships']> }) {
+  if (!scholarships.length) return <p className="text-sm text-[#525252]">Bolsas por confirmar.</p>
+  return <ul className="divide-y divide-[#e5e5e5]">{scholarships.map((item, index) => <li key={item.id || index} className="flex flex-col gap-1 py-4 sm:flex-row sm:justify-between"><div><p className="font-semibold">{item.name}</p><p className="mt-1 text-sm text-[#525252]">{item.provider || item.provider_name || 'Entidade por confirmar'}</p></div>{item.amount ? <p className="text-sm font-semibold text-[#0049af]">{item.amount}</p> : null}</li>)}</ul>
+}
 
-            <Button className="ml-auto bg-brand text-white hover:bg-brand-dark">
-              Contact mentorship
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    </section>
-  )
+function ContentSection({ title, children }: { title: string; children: ReactNode }) {
+  return <section className="border-b-[6px] border-[#e5e5e5] pb-8 last:border-0 last:pb-0"><h2 className="mb-5 text-lg font-semibold">{title}</h2>{children}</section>
+}
+
+function BulletList({ items, empty }: { items: string[]; empty: string }) {
+  if (!items.length) return <p className="text-sm text-[#525252]">{empty}</p>
+  return <ul className="list-disc space-y-2 pl-5 text-sm leading-6 text-[#404040]">{items.map((item) => <li key={item}>{item}</li>)}</ul>
 }

@@ -1,11 +1,12 @@
 import ImagePlaceholder from '@/components/ImagePlaceholder'
-import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Link } from '@tanstack/react-router'
 import { Bookmark } from 'lucide-react'
+import { useBookmark } from '@/features/public/shared/use-bookmark'
 import type { Scholarship } from '../types'
 
-export function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
+export function ScholarshipCard({ scholarship, compact = false }: { scholarship: Scholarship; compact?: boolean }) {
+  const { bookmarked, toggleBookmark } = useBookmark(`scholarship:${scholarship.id}`)
   const formattedDeadline = new Date(scholarship.deadline)
     .toLocaleDateString('pt-PT', {
       day: 'numeric',
@@ -22,19 +23,19 @@ export function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
     })
 
   return (
-    <Card className="border-soft bg-white p-6 shadow-none transition-shadow hover:shadow-md">
+    <Card className={`border-soft bg-white shadow-none transition-shadow hover:shadow-md ${compact ? 'p-4' : 'p-6'}`}>
       <div className="flex flex-col gap-6">
         <div className="flex gap-4 flex-1">
           <ImagePlaceholder
             label="Logo"
-            className="h-24 w-24 shrink-0 rounded-xl bg-canvas-soft"
+            className={`${compact ? 'h-16 w-16' : 'h-24 w-24'} shrink-0 rounded-xl bg-canvas-soft`}
           />
 
           <div className="flex flex-1 justify-between gap-6">
             <div className="flex-1 space-y-2">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h3 className="text-2xl font-bold text-navy">
+                  <h3 className={`${compact ? 'text-lg' : 'text-2xl'} font-bold text-navy`}>
                     <Link
                       to="/bolsas/$slug"
                       params={{ slug: scholarship.id }}
@@ -49,21 +50,22 @@ export function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
                 </div>
                 <button
                   type="button"
-                  className="text-brand hover:text-brand-dark"
+                  aria-pressed={bookmarked}
+                  aria-label={`${bookmarked ? 'Remover dos guardados' : 'Guardar'} ${scholarship.title}`}
+                  onClick={toggleBookmark}
+                  className="inline-flex min-h-11 items-center rounded-lg px-2 text-brand hover:bg-[#edf4ff] hover:text-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af]"
                 >
-                  <span className="mr-2 text-sm font-semibold">Guardar</span>
-                  <Bookmark className="inline h-5 w-5" />
+                  <span className="mr-2 text-sm font-semibold">{bookmarked ? 'Guardado' : 'Guardar'}</span>
+                  <Bookmark className={`inline h-5 w-5 ${bookmarked ? 'fill-current' : ''}`} aria-hidden="true" />
                 </button>
               </div>
             </div>
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <Button asChild className="h-8 rounded-lg bg-brand text-xs font-bold uppercase text-white hover:bg-brand-dark">
-            <Link to="/bolsas/$slug" params={{ slug: scholarship.id }}>
-              Aberto até {formattedDeadline}
-            </Link>
-          </Button>
+          <span className="inline-flex min-h-8 items-center rounded-lg bg-brand px-4 text-xs font-bold uppercase text-white">
+            Aberto até {formattedDeadline}
+          </span>
           <span className="text-xs text-subtle">
             Publicado: {formattedPostedDate}
           </span>

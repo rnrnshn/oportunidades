@@ -2,6 +2,13 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+// Hover for cards: lift 2px + soft shadow (transform/shadow only, 200ms ease-out). See docs/plans/motion.md.
+export const interactiveCardClass =
+  "group/card transition-[translate,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md active:translate-y-0"
+
+// Cover photo inside an interactive card (the card must clip with overflow-hidden).
+export const cardImageZoomClass = "transition-transform duration-200 ease-out group-hover/card:scale-[1.03]"
+
 function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div

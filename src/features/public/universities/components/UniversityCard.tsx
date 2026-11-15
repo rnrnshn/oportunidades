@@ -1,5 +1,5 @@
 import ImagePlaceholder from '@/components/ImagePlaceholder'
-import { Card } from '@/components/ui/card'
+import { Card, interactiveCardClass } from '@/components/ui/card'
 import { Link } from '@tanstack/react-router'
 import { Bookmark, Building2, Globe2, MapPin } from 'lucide-react'
 import { useBookmark } from '@/features/public/shared/use-bookmark'
@@ -16,7 +16,7 @@ export function UniversityCard({ university }: { university: University; compact
     .toUpperCase()
 
   return (
-    <Card className="overflow-hidden rounded-xl border-[#dcdcdc]/80 bg-white p-4 shadow-none transition-shadow hover:shadow-md">
+    <Card className={`overflow-hidden rounded-xl border-[#dcdcdc]/80 bg-white p-4 shadow-none ${interactiveCardClass}`}>
       <div className="flex gap-3">
         <ImagePlaceholder
           label="Logo"

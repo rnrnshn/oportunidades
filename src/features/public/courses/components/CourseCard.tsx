@@ -4,6 +4,7 @@ import { Bookmark, CalendarDays, GraduationCap, MapPin } from 'lucide-react'
 import { useBookmark } from '@/features/public/shared/use-bookmark'
 import type { Course } from '../types'
 import { parseDate } from '@/lib/utils'
+import { interactiveCardClass } from '@/components/ui/card'
 
 interface CourseCardProps {
   course: Course
@@ -14,7 +15,7 @@ export function CourseCard({ course, showDescription = false }: CourseCardProps)
   const { bookmarked, toggleBookmark } = useBookmark(`course:${course.id}`)
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-xl border border-[#d9d9d9]/80 bg-white p-4 text-[#262626] transition-shadow hover:shadow-sm">
+    <article className={`flex h-full flex-col overflow-hidden rounded-xl border border-[#d9d9d9]/80 bg-white p-4 text-[#262626] ${interactiveCardClass}`}>
       <div className="flex flex-1 items-start gap-3">
         <img src="/universities/uem/figma-image-2.jpeg" width="64" height="64" alt="" className="size-16 shrink-0 rounded-md object-cover" loading="lazy" />
         <div className="min-w-0 flex-1">

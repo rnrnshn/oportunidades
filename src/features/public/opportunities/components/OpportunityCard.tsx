@@ -1,4 +1,4 @@
-import { Card } from '@/components/ui/card'
+import { Card, interactiveCardClass } from '@/components/ui/card'
 import { Link } from '@tanstack/react-router'
 import { Bookmark, Calendar, MapPin } from 'lucide-react'
 import { useBookmark } from '@/features/public/shared/use-bookmark'
@@ -32,7 +32,7 @@ export function OpportunityCard({ opportunity, compact = false }: { opportunity:
     : opportunity.location || opportunity.country
 
   return (
-    <Card className={`border-soft bg-white shadow-none transition-shadow hover:shadow-md ${compact ? 'p-4' : 'p-6'}`}>
+    <Card className={`border-soft bg-white shadow-none ${interactiveCardClass} ${compact ? 'p-4' : 'p-6'}`}>
       <div className="flex flex-col gap-3">
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-1">
@@ -80,7 +80,7 @@ function JobCard({ opportunity }: { opportunity: Opportunity }) {
   const newJob = isNewJob(opportunity.publishedAt)
 
   return (
-    <Card className="overflow-hidden rounded-xl border border-[#dcdcdc]/80 bg-white p-4 shadow-none transition-shadow hover:shadow-md">
+    <Card className={`overflow-hidden rounded-xl border border-[#dcdcdc]/80 bg-white p-4 shadow-none ${interactiveCardClass}`}>
       <article className="flex items-start gap-2.5">
         <div className="flex min-w-0 flex-1 flex-col gap-4">
           <div className="flex min-w-0 items-start gap-3">

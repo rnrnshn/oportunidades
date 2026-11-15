@@ -1,4 +1,4 @@
-import { Card } from '@/components/ui/card'
+import { Card, cardImageZoomClass, interactiveCardClass } from '@/components/ui/card'
 import { Link } from '@tanstack/react-router'
 import { ArrowRight } from 'lucide-react'
 import type { Article } from '../api'
@@ -13,11 +13,11 @@ export function ArticleCard({ article }: { article: Article }) {
     : null
 
   return (
-    <Card className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--surface-border)] bg-white p-0 shadow-none transition duration-200 hover:-translate-y-0.5 hover:shadow-md">
+    <Card className={`group flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--surface-border)] bg-white p-0 shadow-none ${interactiveCardClass}`}>
       <img
         src={article.cover_image_url || '/graduation.png'}
         alt=""
-        className="aspect-[16/9] w-full object-cover"
+        className={`aspect-[16/9] w-full object-cover ${cardImageZoomClass}`}
       />
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-medium text-[#525252]">

@@ -4,7 +4,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel'
-import { Card, CardContent } from '@/components/ui/card'
+import { Card, CardContent, cardImageZoomClass, interactiveCardClass } from '@/components/ui/card'
 import { ArrowRight } from 'lucide-react'
 import { scholarships } from '../data'
 import { Link } from '@tanstack/react-router'
@@ -29,14 +29,14 @@ export function ScholarshipSection() {
                 key={`${scholarship.name}-${index}`}
                 className="basis-[86%] sm:basis-1/2 lg:basis-1/4"
               >
-                <Card className="group h-full gap-0 overflow-hidden rounded-xl border border-[var(--surface-border)] bg-white p-0 shadow-none">
+                <Card className={`group h-full gap-0 overflow-hidden rounded-xl border border-[var(--surface-border)] bg-white p-0 shadow-none ${interactiveCardClass}`}>
                   <img
                     src={scholarship.image}
                     alt=""
                     width="640"
                     height="360"
                     loading="lazy"
-                    className="aspect-[16/7] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    className={`aspect-[16/7] w-full object-cover ${cardImageZoomClass}`}
                   />
                   <CardContent className="flex min-h-40 flex-col p-4">
                     <div className="flex items-center justify-between gap-3 text-xs font-medium text-[#525252]">

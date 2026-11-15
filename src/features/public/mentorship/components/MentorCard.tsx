@@ -1,12 +1,12 @@
 import { Badge } from '@/components/ui/badge'
-import { Card } from '@/components/ui/card'
+import { Card, interactiveCardClass } from '@/components/ui/card'
 import type { Mentor } from '../api'
 import { Link } from '@tanstack/react-router'
 import { ArrowRight } from 'lucide-react'
 
 export function MentorCard({ mentor }: { mentor: Mentor }) {
   return (
-    <Card className="border-soft bg-white p-6 shadow-none transition-shadow hover:shadow-md">
+    <Card className={`border-soft bg-white p-6 shadow-none ${interactiveCardClass}`}>
       <div className="space-y-3">
         <div className="flex items-center gap-3">
           {mentor.user_avatar_url && (

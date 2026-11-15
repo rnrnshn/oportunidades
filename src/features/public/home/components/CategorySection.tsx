@@ -2,6 +2,7 @@ import { journeys } from '../data'
 import { Link } from '@tanstack/react-router'
 import { ArrowRight } from 'lucide-react'
 import { SectionHeading } from './SectionHeading'
+import { cardImageZoomClass, interactiveCardClass } from '@/components/ui/card'
 
 export function CategorySection() {
   return (
@@ -11,8 +12,8 @@ export function CategorySection() {
         <SectionHeading id="categories-title" title="O que procuras hoje?" divider={false} />
         <div className="mt-6 grid gap-3 md:grid-cols-2">
           {journeys.map((journey) => (
-            <article key={journey.title} className="relative min-h-[202px] overflow-hidden rounded-2xl border border-[#f0f0f0] bg-white">
-              <img src={journey.image} alt={journey.imageAlt} width="512" height="352" loading="lazy" className="absolute inset-y-0 right-0 h-full w-[56%] object-cover" />
+            <article key={journey.title} className={`relative min-h-[202px] overflow-hidden rounded-2xl border border-[#f0f0f0] bg-white ${interactiveCardClass}`}>
+              <img src={journey.image} alt={journey.imageAlt} width="512" height="352" loading="lazy" className={`absolute inset-y-0 right-0 h-full w-[56%] object-cover ${cardImageZoomClass}`} />
               <div className="absolute inset-y-0 right-[28%] w-[40%] bg-gradient-to-r from-white via-white/95 to-transparent" aria-hidden="true" />
               <div className="relative z-10 flex min-h-[202px] max-w-[66%] flex-col justify-center p-6 sm:p-9">
                 <h3 className="text-xl font-bold text-brand">{journey.title}</h3>

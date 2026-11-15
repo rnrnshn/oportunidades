@@ -3,7 +3,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel'
-import { Card, CardContent, CardTitle, CardDescription } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, cardImageZoomClass, CardTitle, interactiveCardClass } from '@/components/ui/card'
 import { ArrowRight } from 'lucide-react'
 import { articles } from '../data'
 import { Link } from '@tanstack/react-router'
@@ -25,7 +25,7 @@ export function ArticlesSection() {
               key={`${article.title}-${index}`}
               className="basis-[88%] sm:basis-1/2 lg:basis-1/3"
             >
-              <Card className="h-full overflow-hidden rounded-xl border border-soft py-0 shadow-none">
+              <Card className={`h-full overflow-hidden rounded-xl border border-soft py-0 shadow-none ${interactiveCardClass}`}>
                 <CardContent className="flex h-full flex-col p-0">
                   <img
                     src={article.image}
@@ -33,7 +33,7 @@ export function ArticlesSection() {
                     width="416"
                     height="220"
                     loading="lazy"
-                    className="h-44 w-full shrink-0 object-cover"
+                    className={`h-44 w-full shrink-0 object-cover ${cardImageZoomClass}`}
                   />
                   <div className="flex flex-1 flex-col gap-2.5 p-5">
                     <CardTitle className="text-base font-semibold leading-snug text-[#262626]">

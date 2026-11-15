@@ -1,5 +1,5 @@
 import ImagePlaceholder from '@/components/ImagePlaceholder'
-import { Card } from '@/components/ui/card'
+import { Card, interactiveCardClass } from '@/components/ui/card'
 import { Link } from '@tanstack/react-router'
 import { Bookmark } from 'lucide-react'
 import { useBookmark } from '@/features/public/shared/use-bookmark'
@@ -23,7 +23,7 @@ export function ScholarshipCard({ scholarship, compact = false }: { scholarship:
     })
 
   return (
-    <Card className={`border-soft bg-white shadow-none transition-shadow hover:shadow-md ${compact ? 'p-4' : 'p-6'}`}>
+    <Card className={`border-soft bg-white shadow-none ${interactiveCardClass} ${compact ? 'p-4' : 'p-6'}`}>
       <div className="flex flex-col gap-6">
         <div className="flex min-w-0 flex-1 gap-4">
           <ImagePlaceholder

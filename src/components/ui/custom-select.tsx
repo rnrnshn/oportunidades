@@ -68,7 +68,7 @@ export function CustomSelect<T extends string>({
           <span className="truncate">{variant === 'sort' ? 'Ordenar' : selected?.label}</span>
           {variant === 'sort'
             ? <ArrowUpDown className="size-4 shrink-0" aria-hidden="true" />
-            : <ChevronDown className={cn('size-4 shrink-0 transition-transform', open && 'rotate-180')} aria-hidden="true" />}
+            : <ChevronDown className={cn('size-4 shrink-0 transition-transform duration-200 ease-out', open && 'rotate-180')} aria-hidden="true" />}
         </button>
       </PopoverTrigger>
       <PopoverContent align="start" sideOffset={6} className="w-[var(--radix-popover-trigger-width)] rounded-[var(--field-radius)] border border-[var(--field-line)] bg-white p-1 shadow-lg">

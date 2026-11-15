@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 
 import { LoginCard } from './components/LoginCard'
@@ -16,12 +18,16 @@ export function AuthDialog({
   onOpenChange,
   onSwitchMode,
 }: AuthDialogProps) {
-  if (!mode) return null
+  // Keep the last form on screen while the dialog plays its exit animation.
+  const [lastMode, setLastMode] = useState(mode)
+  if (mode && mode !== lastMode) setLastMode(mode)
+  const shownMode = mode ?? lastMode
+  if (!shownMode) return null
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="p-0">
-        {mode === 'login' ? (
+        {shownMode === 'login' ? (
           <LoginCard
             onClose={() => onOpenChange(false)}
             onSwitchMode={(m) => onSwitchMode?.(m)}

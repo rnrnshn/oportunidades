@@ -3,7 +3,6 @@ import { ArticlesSection } from './home/components/ArticlesSection'
 import { CategorySection } from './home/components/CategorySection'
 import { CommunitySection } from './home/components/CommunitySection'
 import { HeroSection } from './home/components/HeroSection'
-import { HomeCtaSection } from './home/components/HomeCtaSection'
 import { ScholarshipSection } from './home/components/ScholarshipSection'
 import { StepsSection } from './home/components/StepsSection'
 import { RecommendationSection } from './home/components/RecommendationSection'
@@ -18,7 +17,6 @@ export function PublicHomePage() {
       <RecommendationSection />
       <StepsSection />
       <ArticlesSection />
-      <HomeCtaSection />
       <SiteFooter variant="home" />
     </main>
   )

@@ -1,13 +1,14 @@
+import { useQuery } from '@tanstack/react-query'
 import { Link, useLoaderData } from '@tanstack/react-router'
 import type { ReactNode } from 'react'
-import { BriefcaseBusiness, CalendarDays, Clock3, GraduationCap, Laptop, MapPin } from 'lucide-react'
+import { BriefcaseBusiness, CalendarDays, Clock3, ExternalLink, GraduationCap, Laptop, MapPin } from 'lucide-react'
 
 import SiteFooter from '@/components/SiteFooter'
 import { OpportunityDetailLayout } from '@/components/layout/OpportunityDetailLayout'
 import { Button } from '@/components/ui/button'
 import { DetailBulletList, DetailSection, DetailSteps } from '@/components/ui/detail-content'
 import { OpportunityCard } from '@/features/public/opportunities/components/OpportunityCard'
-import { jobsMock } from '@/features/public/opportunities/mock-data'
+import { getOpportunitiesByType } from '@/features/public/opportunities/api'
 import { ReportInformationDialog } from '@/features/public/shared/ReportInformationDialog'
 import { useBookmark } from '@/features/public/shared/use-bookmark'
 import { parseDate } from '@/lib/utils'
@@ -31,8 +32,9 @@ export function OpportunityDetailPage() {
     { icon: <Laptop />, label: 'Modalidade', value: opportunity.coverage[1] },
     { icon: <GraduationCap />, label: 'Experiência', value: opportunity.coverage[2] },
   ].filter((item) => Boolean(item.value)) as Array<{ icon: ReactNode; label: string; value: string }> : []
+  const { data: jobs = [] } = useQuery({ queryKey: ['opportunities', 'emprego'], queryFn: () => getOpportunitiesByType('emprego'), enabled: opportunity.type === 'emprego' })
   const relatedJobs = opportunity.type === 'emprego'
-    ? jobsMock.filter((item) => item.slug !== opportunity.slug).sort((a, b) => Number(b.area === opportunity.area) - Number(a.area === opportunity.area)).slice(0, 3)
+    ? jobs.filter((item) => item.slug !== opportunity.slug).sort((a, b) => Number(b.area === opportunity.area) - Number(a.area === opportunity.area)).slice(0, 3)
     : []
 
   return (
@@ -52,8 +54,8 @@ export function OpportunityDetailPage() {
         actionLabel={opportunity.type === 'emprego' ? 'Informação essencial da vaga' : 'Próximo passo'}
         action={(
           <JobSummaryCard title={isClosed ? 'Candidatura encerrada' : 'Resumo da vaga'} facts={detailFacts} location={location} deadline={formattedDeadline}>
-            {isClosed ? <Button asChild variant="outline" className="w-full"><Link to={backPath}>Ver oportunidades abertas</Link></Button> : <Button asChild className="w-full"><Link to="/candidaturas/$slug" params={{ slug: opportunity.slug }}>{opportunity.external_url_label ?? 'Iniciar candidatura'}</Link></Button>}
-            <div className="mt-3"><ReportInformationDialog entityName={opportunity.title} entityType={`esta ${typeLabel(opportunity.type).toLowerCase()}`} /></div>
+            {isClosed ? <Button asChild variant="outline" className="w-full"><Link to={backPath}>Ver oportunidades abertas</Link></Button> : opportunity.apply_url ? <Button asChild className="w-full"><a href={opportunity.apply_url} target="_blank" rel="noopener noreferrer">{opportunity.external_url_label ?? 'Iniciar candidatura'}<ExternalLink aria-hidden="true" /><span className="sr-only"> (abre noutro separador)</span></a></Button> : null}
+            <div className="mt-3"><ReportInformationDialog entityName={opportunity.title} entityType={`esta ${typeLabel(opportunity.type).toLowerCase()}`} reportEntity={{ type: 'opportunity', id: opportunity.id }} /></div>
           </JobSummaryCard>
         )}
       >

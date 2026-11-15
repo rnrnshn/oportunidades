@@ -10,9 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UniversidadesRouteImport } from './routes/universidades'
+import { Route as TermosRouteImport } from './routes/termos'
 import { Route as StyleguideRouteImport } from './routes/styleguide'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RecuperarPalavraPasseRouteImport } from './routes/recuperar-palavra-passe'
 import { Route as RecomendacoesRouteImport } from './routes/recomendacoes'
+import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as OportunidadesRouteImport } from './routes/oportunidades'
 import { Route as MentoriaRouteImport } from './routes/mentoria'
 import { Route as GuardadosRouteImport } from './routes/guardados'
@@ -33,10 +36,10 @@ import { Route as UniversitiesSlugRouteImport } from './routes/universities/$slu
 import { Route as OportunidadesSlugRouteImport } from './routes/oportunidades/$slug'
 import { Route as MentoriaSlugRouteImport } from './routes/mentoria/$slug'
 import { Route as CursosSlugRouteImport } from './routes/cursos/$slug'
-import { Route as CandidaturasSlugRouteImport } from './routes/candidaturas/$slug'
 import { Route as BolsasSlugRouteImport } from './routes/bolsas/$slug'
+import { Route as AuthVerifyEmailRouteImport } from './routes/auth/verify-email'
+import { Route as AuthResetPasswordRouteImport } from './routes/auth/reset-password'
 import { Route as ArtigosSlugRouteImport } from './routes/artigos/$slug'
-import { Route as AlertasNovoRouteImport } from './routes/alertas.novo'
 import { Route as MentoriaPedirSlugRouteImport } from './routes/mentoria/pedir.$slug'
 
 const UniversidadesRoute = UniversidadesRouteImport.update({
@@ -44,9 +47,19 @@ const UniversidadesRoute = UniversidadesRouteImport.update({
   path: '/universidades',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermosRoute = TermosRouteImport.update({
+  id: '/termos',
+  path: '/termos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StyleguideRoute = StyleguideRouteImport.update({
   id: '/styleguide',
   path: '/styleguide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RecuperarPalavraPasseRoute = RecuperarPalavraPasseRouteImport.update({
@@ -57,6 +70,11 @@ const RecuperarPalavraPasseRoute = RecuperarPalavraPasseRouteImport.update({
 const RecomendacoesRoute = RecomendacoesRouteImport.update({
   id: '/recomendacoes',
   path: '/recomendacoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacidadeRoute = PrivacidadeRouteImport.update({
+  id: '/privacidade',
+  path: '/privacidade',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OportunidadesRoute = OportunidadesRouteImport.update({
@@ -159,25 +177,25 @@ const CursosSlugRoute = CursosSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => CursosRoute,
 } as any)
-const CandidaturasSlugRoute = CandidaturasSlugRouteImport.update({
-  id: '/candidaturas/$slug',
-  path: '/candidaturas/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const BolsasSlugRoute = BolsasSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => BolsasRoute,
 } as any)
+const AuthVerifyEmailRoute = AuthVerifyEmailRouteImport.update({
+  id: '/auth/verify-email',
+  path: '/auth/verify-email',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthResetPasswordRoute = AuthResetPasswordRouteImport.update({
+  id: '/auth/reset-password',
+  path: '/auth/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ArtigosSlugRoute = ArtigosSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => ArtigosRoute,
-} as any)
-const AlertasNovoRoute = AlertasNovoRouteImport.update({
-  id: '/alertas/novo',
-  path: '/alertas/novo',
-  getParentRoute: () => rootRouteImport,
 } as any)
 const MentoriaPedirSlugRoute = MentoriaPedirSlugRouteImport.update({
   id: '/pedir/$slug',
@@ -197,14 +215,17 @@ export interface FileRoutesByFullPath {
   '/guardados': typeof GuardadosRoute
   '/mentoria': typeof MentoriaRouteWithChildren
   '/oportunidades': typeof OportunidadesRouteWithChildren
+  '/privacidade': typeof PrivacidadeRoute
   '/recomendacoes': typeof RecomendacoesRoute
   '/recuperar-palavra-passe': typeof RecuperarPalavraPasseRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/styleguide': typeof StyleguideRoute
+  '/termos': typeof TermosRoute
   '/universidades': typeof UniversidadesRoute
-  '/alertas/novo': typeof AlertasNovoRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
+  '/auth/reset-password': typeof AuthResetPasswordRoute
+  '/auth/verify-email': typeof AuthVerifyEmailRoute
   '/bolsas/$slug': typeof BolsasSlugRoute
-  '/candidaturas/$slug': typeof CandidaturasSlugRoute
   '/cursos/$slug': typeof CursosSlugRoute
   '/mentoria/$slug': typeof MentoriaSlugRoute
   '/oportunidades/$slug': typeof OportunidadesSlugRoute
@@ -223,14 +244,17 @@ export interface FileRoutesByTo {
   '/empregos': typeof EmpregosRoute
   '/estagios': typeof EstagiosRoute
   '/guardados': typeof GuardadosRoute
+  '/privacidade': typeof PrivacidadeRoute
   '/recomendacoes': typeof RecomendacoesRoute
   '/recuperar-palavra-passe': typeof RecuperarPalavraPasseRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/styleguide': typeof StyleguideRoute
+  '/termos': typeof TermosRoute
   '/universidades': typeof UniversidadesRoute
-  '/alertas/novo': typeof AlertasNovoRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
+  '/auth/reset-password': typeof AuthResetPasswordRoute
+  '/auth/verify-email': typeof AuthVerifyEmailRoute
   '/bolsas/$slug': typeof BolsasSlugRoute
-  '/candidaturas/$slug': typeof CandidaturasSlugRoute
   '/cursos/$slug': typeof CursosSlugRoute
   '/mentoria/$slug': typeof MentoriaSlugRoute
   '/oportunidades/$slug': typeof OportunidadesSlugRoute
@@ -255,14 +279,17 @@ export interface FileRoutesById {
   '/guardados': typeof GuardadosRoute
   '/mentoria': typeof MentoriaRouteWithChildren
   '/oportunidades': typeof OportunidadesRouteWithChildren
+  '/privacidade': typeof PrivacidadeRoute
   '/recomendacoes': typeof RecomendacoesRoute
   '/recuperar-palavra-passe': typeof RecuperarPalavraPasseRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/styleguide': typeof StyleguideRoute
+  '/termos': typeof TermosRoute
   '/universidades': typeof UniversidadesRoute
-  '/alertas/novo': typeof AlertasNovoRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
+  '/auth/reset-password': typeof AuthResetPasswordRoute
+  '/auth/verify-email': typeof AuthVerifyEmailRoute
   '/bolsas/$slug': typeof BolsasSlugRoute
-  '/candidaturas/$slug': typeof CandidaturasSlugRoute
   '/cursos/$slug': typeof CursosSlugRoute
   '/mentoria/$slug': typeof MentoriaSlugRoute
   '/oportunidades/$slug': typeof OportunidadesSlugRoute
@@ -288,14 +315,17 @@ export interface FileRouteTypes {
     | '/guardados'
     | '/mentoria'
     | '/oportunidades'
+    | '/privacidade'
     | '/recomendacoes'
     | '/recuperar-palavra-passe'
+    | '/sitemap.xml'
     | '/styleguide'
+    | '/termos'
     | '/universidades'
-    | '/alertas/novo'
     | '/artigos/$slug'
+    | '/auth/reset-password'
+    | '/auth/verify-email'
     | '/bolsas/$slug'
-    | '/candidaturas/$slug'
     | '/cursos/$slug'
     | '/mentoria/$slug'
     | '/oportunidades/$slug'
@@ -314,14 +344,17 @@ export interface FileRouteTypes {
     | '/empregos'
     | '/estagios'
     | '/guardados'
+    | '/privacidade'
     | '/recomendacoes'
     | '/recuperar-palavra-passe'
+    | '/sitemap.xml'
     | '/styleguide'
+    | '/termos'
     | '/universidades'
-    | '/alertas/novo'
     | '/artigos/$slug'
+    | '/auth/reset-password'
+    | '/auth/verify-email'
     | '/bolsas/$slug'
-    | '/candidaturas/$slug'
     | '/cursos/$slug'
     | '/mentoria/$slug'
     | '/oportunidades/$slug'
@@ -345,14 +378,17 @@ export interface FileRouteTypes {
     | '/guardados'
     | '/mentoria'
     | '/oportunidades'
+    | '/privacidade'
     | '/recomendacoes'
     | '/recuperar-palavra-passe'
+    | '/sitemap.xml'
     | '/styleguide'
+    | '/termos'
     | '/universidades'
-    | '/alertas/novo'
     | '/artigos/$slug'
+    | '/auth/reset-password'
+    | '/auth/verify-email'
     | '/bolsas/$slug'
-    | '/candidaturas/$slug'
     | '/cursos/$slug'
     | '/mentoria/$slug'
     | '/oportunidades/$slug'
@@ -377,12 +413,15 @@ export interface RootRouteChildren {
   GuardadosRoute: typeof GuardadosRoute
   MentoriaRoute: typeof MentoriaRouteWithChildren
   OportunidadesRoute: typeof OportunidadesRouteWithChildren
+  PrivacidadeRoute: typeof PrivacidadeRoute
   RecomendacoesRoute: typeof RecomendacoesRoute
   RecuperarPalavraPasseRoute: typeof RecuperarPalavraPasseRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StyleguideRoute: typeof StyleguideRoute
+  TermosRoute: typeof TermosRoute
   UniversidadesRoute: typeof UniversidadesRoute
-  AlertasNovoRoute: typeof AlertasNovoRoute
-  CandidaturasSlugRoute: typeof CandidaturasSlugRoute
+  AuthResetPasswordRoute: typeof AuthResetPasswordRoute
+  AuthVerifyEmailRoute: typeof AuthVerifyEmailRoute
   UniversitiesSlugRoute: typeof UniversitiesSlugRoute
 }
 
@@ -395,11 +434,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UniversidadesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/termos': {
+      id: '/termos'
+      path: '/termos'
+      fullPath: '/termos'
+      preLoaderRoute: typeof TermosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/styleguide': {
       id: '/styleguide'
       path: '/styleguide'
       fullPath: '/styleguide'
       preLoaderRoute: typeof StyleguideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/recuperar-palavra-passe': {
@@ -414,6 +467,13 @@ declare module '@tanstack/react-router' {
       path: '/recomendacoes'
       fullPath: '/recomendacoes'
       preLoaderRoute: typeof RecomendacoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacidade': {
+      id: '/privacidade'
+      path: '/privacidade'
+      fullPath: '/privacidade'
+      preLoaderRoute: typeof PrivacidadeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/oportunidades': {
@@ -556,13 +616,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CursosSlugRouteImport
       parentRoute: typeof CursosRoute
     }
-    '/candidaturas/$slug': {
-      id: '/candidaturas/$slug'
-      path: '/candidaturas/$slug'
-      fullPath: '/candidaturas/$slug'
-      preLoaderRoute: typeof CandidaturasSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/bolsas/$slug': {
       id: '/bolsas/$slug'
       path: '/$slug'
@@ -570,19 +623,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BolsasSlugRouteImport
       parentRoute: typeof BolsasRoute
     }
+    '/auth/verify-email': {
+      id: '/auth/verify-email'
+      path: '/auth/verify-email'
+      fullPath: '/auth/verify-email'
+      preLoaderRoute: typeof AuthVerifyEmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/reset-password': {
+      id: '/auth/reset-password'
+      path: '/auth/reset-password'
+      fullPath: '/auth/reset-password'
+      preLoaderRoute: typeof AuthResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/artigos/$slug': {
       id: '/artigos/$slug'
       path: '/$slug'
       fullPath: '/artigos/$slug'
       preLoaderRoute: typeof ArtigosSlugRouteImport
       parentRoute: typeof ArtigosRoute
-    }
-    '/alertas/novo': {
-      id: '/alertas/novo'
-      path: '/alertas/novo'
-      fullPath: '/alertas/novo'
-      preLoaderRoute: typeof AlertasNovoRouteImport
-      parentRoute: typeof rootRouteImport
     }
     '/mentoria/pedir/$slug': {
       id: '/mentoria/pedir/$slug'
@@ -675,12 +735,15 @@ const rootRouteChildren: RootRouteChildren = {
   GuardadosRoute: GuardadosRoute,
   MentoriaRoute: MentoriaRouteWithChildren,
   OportunidadesRoute: OportunidadesRouteWithChildren,
+  PrivacidadeRoute: PrivacidadeRoute,
   RecomendacoesRoute: RecomendacoesRoute,
   RecuperarPalavraPasseRoute: RecuperarPalavraPasseRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   StyleguideRoute: StyleguideRoute,
+  TermosRoute: TermosRoute,
   UniversidadesRoute: UniversidadesRoute,
-  AlertasNovoRoute: AlertasNovoRoute,
-  CandidaturasSlugRoute: CandidaturasSlugRoute,
+  AuthResetPasswordRoute: AuthResetPasswordRoute,
+  AuthVerifyEmailRoute: AuthVerifyEmailRoute,
   UniversitiesSlugRoute: UniversitiesSlugRoute,
 }
 export const routeTree = rootRouteImport

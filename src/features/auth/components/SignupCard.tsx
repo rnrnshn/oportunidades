@@ -117,7 +117,9 @@ export function SignupCard({ onSwitchMode, onClose }: SignupCardProps) {
           <input type="checkbox" aria-invalid={Boolean(form.formState.errors.terms)} aria-describedby={form.formState.errors.terms ? 'signup-terms-error' : undefined} {...form.register('terms')} className="size-5 shrink-0 rounded border border-[#767676] accent-[var(--field-focus)] focus-visible:ring-2 focus-visible:ring-[var(--field-focus)] focus-visible:ring-offset-2" />
           <span>
             Li e aceito os{' '}
-            <a href="/about" className="font-semibold text-brand hover:underline">termos de utilização</a>
+            <a href="/termos" target="_blank" rel="noopener" className="font-semibold text-brand hover:underline">termos de utilização</a>
+            {' '}e a{' '}
+            <a href="/privacidade" target="_blank" rel="noopener" className="font-semibold text-brand hover:underline">política de privacidade</a>
           </span>
         </label>
         {form.formState.errors.terms ? (

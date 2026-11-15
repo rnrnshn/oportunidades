@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react'
 
-type FooterRoute = '/about' | '/artigos' | '/bolsas' | '/cursos' | '/empregos' | '/estagios' | '/mentoria' | '/oportunidades' | '/universidades'
+type FooterRoute = '/about' | '/artigos' | '/bolsas' | '/cursos' | '/empregos' | '/estagios' | '/mentoria' | '/oportunidades' | '/privacidade' | '/termos' | '/universidades'
 type FooterLink = { label: string; to: FooterRoute; hash?: string }
 type FooterSection = { title: string; links: FooterLink[] }
 
@@ -31,8 +31,8 @@ const footerSections: FooterSection[] = [
     links: [
       { label: 'Artigos e guias', to: '/artigos' },
       { label: 'Mentoria', to: '/mentoria' },
-      { label: 'Termos de utilização', to: '/about' },
-      { label: 'Política de privacidade', to: '/about' },
+      { label: 'Termos de utilização', to: '/termos' },
+      { label: 'Política de privacidade', to: '/privacidade' },
     ],
   },
 ]

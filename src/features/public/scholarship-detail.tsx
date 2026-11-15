@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { Link, useLoaderData } from '@tanstack/react-router'
-import { ArrowLeft, Bookmark, CalendarDays, CheckCircle2, CircleDollarSign, Clock3, MapPin, ShieldCheck } from 'lucide-react'
+import { ArrowLeft, Bookmark, CalendarDays, CheckCircle2, CircleDollarSign, Clock3, ExternalLink, MapPin, ShieldCheck } from 'lucide-react'
 
 import SiteFooter from '@/components/SiteFooter'
 import { Button } from '@/components/ui/button'
@@ -47,10 +47,10 @@ export function ScholarshipDetailPage() {
           <aside aria-label="Resumo e candidatura" className="order-first h-fit overflow-hidden rounded-xl bg-[#edf8f7] lg:order-none lg:sticky lg:top-24">
             <div className="space-y-5 p-5 sm:p-6">
               <SummaryFact icon={<CircleDollarSign />} label="Apoio financeiro" value={amount} />
-              {isClosed ? <Button asChild variant="outline" className="w-full bg-white"><Link to="/bolsas">Ver bolsas abertas</Link></Button> : <Button asChild className="w-full"><Link to="/candidaturas/$slug" params={{ slug: scholarship.slug }}>Iniciar candidatura</Link></Button>}
+              {isClosed ? <Button asChild variant="outline" className="w-full bg-white"><Link to="/bolsas">Ver bolsas abertas</Link></Button> : scholarship.apply_url ? <Button asChild className="w-full"><a href={scholarship.apply_url} target="_blank" rel="noopener noreferrer">Iniciar candidatura<ExternalLink aria-hidden="true" /><span className="sr-only"> (abre noutro separador)</span></a></Button> : null}
               <div className="space-y-4 border-t border-[#bfd8d5] pt-5"><SummaryFact icon={<CalendarDays />} label="Prazo" value={deadlineLabel || 'Por confirmar'} /><SummaryFact icon={<Clock3 />} label="Estado" value={deadlineStatus(isClosed, daysRemaining)} />{location ? <SummaryFact icon={<MapPin />} label="Localização" value={location} /> : null}</div>
               {criteria.length > 0 ? <div className="border-t border-[#bfd8d5] pt-5"><p className="text-sm font-bold text-navy">Critérios principais</p><ul className="mt-3 flex flex-wrap gap-2">{criteria.map((item) => <li key={item} className="rounded-lg bg-white px-3 py-2 text-xs font-medium text-[#3f4652]">{item}</li>)}</ul></div> : null}
-              <div className="border-t border-[#bfd8d5] pt-3"><ReportInformationDialog entityName={scholarship.title} entityType="esta bolsa" /></div>
+              <div className="border-t border-[#bfd8d5] pt-3"><ReportInformationDialog entityName={scholarship.title} entityType="esta bolsa" reportEntity={{ type: 'opportunity', id: scholarship.id }} /></div>
             </div>
           </aside>
         </div>

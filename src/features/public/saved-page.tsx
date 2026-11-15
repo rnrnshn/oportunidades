@@ -28,7 +28,7 @@ export function SavedPage() {
           {items.map((item) => (
             <li key={item.id} className="flex flex-col gap-4 rounded-2xl border border-[var(--surface-border)] bg-white p-5 sm:flex-row sm:items-center sm:justify-between">
               <div><p className="text-sm font-semibold text-brand">{item.category}</p><h2 className="mt-1 font-bold text-navy">{item.title}</h2><p className="mt-1 text-sm text-[#525252]">{item.detail}</p></div>
-              <div className="flex shrink-0 gap-2"><Button asChild variant="outline"><Link to={item.to}>Ver detalhes</Link></Button><button type="button" onClick={() => removeBookmark(item.id)} className="inline-flex min-h-11 items-center gap-2 rounded-lg px-3 text-sm font-semibold text-[#8a2c2c] hover:bg-[#fff1f1]"><Trash2 className="size-4" aria-hidden="true" />Remover</button></div>
+              <div className="flex shrink-0 gap-2"><Button asChild variant="outline"><Link to={item.to}>Ver detalhes</Link></Button><button type="button" onClick={() => removeBookmark(item.id)} className="inline-flex min-h-11 items-center gap-2 rounded-lg px-3 text-sm font-semibold text-[#8a2c2c] hover:bg-[#fff1f1] transition-colors duration-150 ease-out"><Trash2 className="size-4" aria-hidden="true" />Remover</button></div>
             </li>
           ))}
         </ul>

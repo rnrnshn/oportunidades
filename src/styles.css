@@ -252,6 +252,19 @@ code {
   }
 }
 
+/* Motion (docs/plans/motion.md): feedback 150ms, entrances 200ms, exits 150ms; transform/opacity only.
+   Users who ask for less motion get none. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @layer utilities {
   .text-navy {
     color: var(--navy);

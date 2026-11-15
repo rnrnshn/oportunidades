@@ -58,7 +58,7 @@ export function UniversityDetailPage() {
               <span className="relative h-7 w-12 rounded-full bg-[#767676] transition-colors peer-checked:bg-[#0049af] peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[#0049af] after:absolute after:left-1 after:top-1 after:size-5 after:rounded-full after:bg-white after:transition-transform peer-checked:after:translate-x-5" aria-hidden="true" />
               Candidatei-me
             </label>
-            <button type="button" aria-label={saved ? 'Remover universidade dos guardados' : 'Guardar universidade'} aria-pressed={saved} onClick={toggleBookmark} className="inline-flex min-h-11 items-center gap-2 rounded-lg px-2 text-sm font-medium hover:bg-[#f5f5f5] focus-visible:outline-2 focus-visible:outline-[#0049af]">
+            <button type="button" aria-label={saved ? 'Remover universidade dos guardados' : 'Guardar universidade'} aria-pressed={saved} onClick={toggleBookmark} className="inline-flex min-h-11 items-center gap-2 rounded-lg px-2 text-sm font-medium hover:bg-[#f5f5f5] focus-visible:outline-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out">
               {saved ? 'Guardada' : 'Guardar'}<span className="flex size-8 items-center justify-center rounded-full bg-[#f5f5f5]"><Bookmark className={`size-4 ${saved ? 'fill-[#0049af] text-[#0049af]' : ''}`} aria-hidden="true" /></span>
             </button>
           </div>
@@ -119,7 +119,7 @@ function UniversitySidebar({ university }: { university: UniversityDetail }) {
           {university.email ? <li><a href={`mailto:${university.email}`} className="flex min-h-11 items-center gap-2 text-[#0049af] hover:underline"><Mail className="size-4 shrink-0" aria-hidden="true" />{university.email}</a></li> : null}
           {university.phone ? <li><a href={`tel:${university.phone.replace(/\s/g, '')}`} className="flex min-h-11 items-center gap-2 text-[#0049af] hover:underline"><Phone className="size-4 shrink-0" aria-hidden="true" />{university.phone}</a></li> : null}
         </ul>
-        {website ? <a href={website} target="_blank" rel="noreferrer" className="mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#0049af] px-4 text-center text-sm font-medium text-white hover:bg-[#003b8f] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Visitar website<ArrowUpRight className="size-4" aria-hidden="true" /></a> : null}
+        {website ? <a href={website} target="_blank" rel="noreferrer" className="mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#0049af] px-4 text-center text-sm font-medium text-white hover:bg-[#003b8f] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors duration-150 ease-out">Visitar website<ArrowUpRight className="size-4" aria-hidden="true" /></a> : null}
         {university.academic_calendar ? <a href={university.academic_calendar} target="_blank" rel="noreferrer" className="mt-3 inline-flex min-h-11 w-full items-center gap-2 text-sm font-medium text-[#0049af] underline underline-offset-4"><FileText className="size-4" aria-hidden="true" />Consultar edital</a> : null}
         <div className="mt-3 border-t border-[#e5e5e5] pt-3"><ReportInformationDialog entityName={university.name} entityType="esta instituição" /></div>
       </section>

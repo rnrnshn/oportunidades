@@ -66,7 +66,7 @@ export function HeroSection() {
                       ref={index === 0 ? firstOptionRef : undefined}
                       type="button"
                       aria-pressed={selectedType.value === option.value}
-                      className="flex min-h-11 w-full items-center justify-between rounded-lg px-3 text-left text-sm text-[#262626] outline-none hover:bg-[#f5f5f5] focus-visible:bg-[#d6e7ff] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0049af]"
+                      className="flex min-h-11 w-full items-center justify-between rounded-lg px-3 text-left text-sm text-[#262626] outline-none hover:bg-[#f5f5f5] focus-visible:bg-[#d6e7ff] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0049af] transition-colors duration-150 ease-out"
                       onClick={() => {
                         setSelectedType(option)
                         setTypeOpen(false)

@@ -29,7 +29,7 @@ export function ScholarshipDetailPage() {
           <div className="flex flex-wrap items-center gap-3 text-sm font-semibold"><span className="uppercase tracking-wide text-brand">Bolsa de estudo</span>{scholarship.verified ? <span className="inline-flex items-center gap-1 text-[#176b3a]"><ShieldCheck className="size-4" aria-hidden="true" /> Verificada</span> : null}</div>
           <h1 className="text-2xl md:text-4xl mt-3 font-bold leading-tight tracking-tight text-navy">{scholarship.title}</h1>
           <p className="mt-3 text-base font-semibold text-[#4f5c7c] md:text-lg">{scholarship.entity_name}</p>
-          <button type="button" aria-pressed={bookmarked} onClick={toggleBookmark} className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#8793a5] px-4 text-sm font-semibold text-brand hover:bg-[#f7f9fc] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"><Bookmark className={`size-5 ${bookmarked ? 'fill-current' : ''}`} aria-hidden="true" />{bookmarked ? 'Bolsa guardada' : 'Guardar bolsa'}</button>
+          <button type="button" aria-pressed={bookmarked} onClick={toggleBookmark} className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#8793a5] px-4 text-sm font-semibold text-brand hover:bg-[#f7f9fc] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand transition-colors duration-150 ease-out"><Bookmark className={`size-5 ${bookmarked ? 'fill-current' : ''}`} aria-hidden="true" />{bookmarked ? 'Bolsa guardada' : 'Guardar bolsa'}</button>
         </header>
 
         <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">

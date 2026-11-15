@@ -28,7 +28,7 @@ export function ArticleCard({ article }: { article: Article }) {
           <Link
             to="/artigos/$slug"
             params={{ slug: article.slug }}
-            className="rounded hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+            className="rounded hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand transition-colors duration-150 ease-out"
           >
             {article.title}
           </Link>

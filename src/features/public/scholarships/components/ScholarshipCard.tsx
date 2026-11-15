@@ -39,7 +39,7 @@ export function ScholarshipCard({ scholarship, compact = false }: { scholarship:
                     <Link
                       to="/bolsas/$slug"
                       params={{ slug: scholarship.id }}
-                      className="hover:text-brand hover:underline"
+                      className="hover:text-brand hover:underline transition-colors duration-150 ease-out"
                     >
                       {scholarship.title}
                     </Link>
@@ -53,7 +53,7 @@ export function ScholarshipCard({ scholarship, compact = false }: { scholarship:
                   aria-pressed={bookmarked}
                   aria-label={`${bookmarked ? 'Remover dos guardados' : 'Guardar'} ${scholarship.title}`}
                   onClick={toggleBookmark}
-                  className="inline-flex min-h-11 shrink-0 items-center rounded-lg px-2 text-brand hover:bg-[#edf4ff] hover:text-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af]"
+                  className="inline-flex min-h-11 shrink-0 items-center rounded-lg px-2 text-brand hover:bg-[#edf4ff] hover:text-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out"
                 >
                   <span className="mr-2 hidden text-sm font-semibold sm:inline">{bookmarked ? 'Guardado' : 'Guardar'}</span>
                   <Bookmark className={`inline h-5 w-5 ${bookmarked ? 'fill-current' : ''}`} aria-hidden="true" />

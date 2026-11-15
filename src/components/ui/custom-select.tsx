@@ -80,7 +80,7 @@ export function CustomSelect<T extends string>({
               ref={(node) => { optionRefs.current[index] = node }}
               type="button"
               aria-pressed={option.value === value}
-              className="flex min-h-11 w-full items-center justify-between rounded-lg px-3 text-left text-sm text-[#262626] outline-none hover:bg-[#f5f5f5] focus-visible:bg-[#d6e7ff] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0049af]"
+              className="flex min-h-11 w-full items-center justify-between rounded-lg px-3 text-left text-sm text-[#262626] outline-none hover:bg-[#f5f5f5] focus-visible:bg-[#d6e7ff] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0049af] transition-colors duration-150 ease-out"
               onKeyDown={(event) => {
                 if (event.key === 'ArrowDown') {
                   event.preventDefault()

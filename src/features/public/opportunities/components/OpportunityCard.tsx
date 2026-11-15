@@ -40,7 +40,7 @@ export function OpportunityCard({ opportunity, compact = false }: { opportunity:
               <Link
                 to="/oportunidades/$slug"
                 params={{ slug: opportunity.slug }}
-                className="hover:text-brand hover:underline"
+                className="hover:text-brand hover:underline transition-colors duration-150 ease-out"
               >
                 {opportunity.title}
               </Link>
@@ -90,7 +90,7 @@ function JobCard({ opportunity }: { opportunity: Opportunity }) {
             <div className="min-w-0 flex-1 space-y-3">
               <div className="flex min-w-0 items-center gap-2">
               <h3 className="min-w-0 truncate text-base font-bold leading-none text-[#262626]">
-                <Link to="/oportunidades/$slug" params={{ slug: opportunity.slug }} className="rounded hover:text-[#0049af] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af]">
+                <Link to="/oportunidades/$slug" params={{ slug: opportunity.slug }} className="rounded hover:text-[#0049af] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out">
                   {opportunity.title}
                 </Link>
               </h3>
@@ -107,7 +107,7 @@ function JobCard({ opportunity }: { opportunity: Opportunity }) {
           )}
           <p className="text-base leading-6 text-[#656565]">{formatPublishedDate(opportunity.publishedAt)}</p>
         </div>
-        <button type="button" aria-pressed={bookmarked} aria-label={`${bookmarked ? 'Remover dos guardados' : 'Guardar'} ${opportunity.title}`} onClick={toggleBookmark} className="flex size-11 shrink-0 items-center justify-center rounded-lg text-[#c75100] hover:bg-[#fff2d3] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af]">
+        <button type="button" aria-pressed={bookmarked} aria-label={`${bookmarked ? 'Remover dos guardados' : 'Guardar'} ${opportunity.title}`} onClick={toggleBookmark} className="flex size-11 shrink-0 items-center justify-center rounded-lg text-[#c75100] hover:bg-[#fff2d3] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out">
           <Bookmark className={`size-5 ${bookmarked ? 'fill-current' : ''}`} aria-hidden="true" />
         </button>
       </article>

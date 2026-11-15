@@ -97,5 +97,5 @@ function EmploymentSearchBar({ search, location, onSearchChange, onLocationChang
 }
 
 function FilterCheckboxes({ label, values, options, onChange }: { label: string; values: string[]; options: Array<{ value: string; label: string }>; onChange: (values: string[]) => void }) {
-  return <fieldset><legend className="sr-only">{label}</legend><div className="space-y-1">{options.map((option) => <label key={option.value} className="flex min-h-11 cursor-pointer items-center gap-3 rounded-lg px-1 text-sm hover:bg-[#f7f9fc]"><Checkbox checked={values.includes(option.value)} onCheckedChange={() => onChange(values.includes(option.value) ? values.filter((value) => value !== option.value) : [...values, option.value])} /><span>{option.label}</span></label>)}</div></fieldset>
+  return <fieldset><legend className="sr-only">{label}</legend><div className="space-y-1">{options.map((option) => <label key={option.value} className="flex min-h-11 cursor-pointer items-center gap-3 rounded-lg px-1 text-sm hover:bg-[#f7f9fc] transition-colors duration-150 ease-out"><Checkbox checked={values.includes(option.value)} onCheckedChange={() => onChange(values.includes(option.value) ? values.filter((value) => value !== option.value) : [...values, option.value])} /><span>{option.label}</span></label>)}</div></fieldset>
 }

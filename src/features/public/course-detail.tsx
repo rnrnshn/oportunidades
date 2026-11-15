@@ -40,7 +40,7 @@ export function CourseDetailPage() {
         <div className="grid gap-8 lg:grid-cols-[minmax(0,705px)_minmax(280px,373px)] lg:gap-12">
           <div className="min-w-0">
             <div className="flex min-h-11 justify-end">
-              <button type="button" aria-label={saved ? 'Remover curso dos guardados' : 'Guardar curso'} aria-pressed={saved} onClick={toggleBookmark} className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-lg px-2 text-sm font-medium hover:bg-[#f5f5f5] focus-visible:outline-2 focus-visible:outline-[#0049af]">{saved ? 'Guardado' : 'Guardar'} <span className="flex size-8 items-center justify-center rounded-full bg-[#f5f5f5]"><Bookmark className={`size-4 ${saved ? 'fill-[#0049af] text-[#0049af]' : ''}`} aria-hidden="true" /></span></button>
+              <button type="button" aria-label={saved ? 'Remover curso dos guardados' : 'Guardar curso'} aria-pressed={saved} onClick={toggleBookmark} className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-lg px-2 text-sm font-medium hover:bg-[#f5f5f5] focus-visible:outline-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out">{saved ? 'Guardado' : 'Guardar'} <span className="flex size-8 items-center justify-center rounded-full bg-[#f5f5f5]"><Bookmark className={`size-4 ${saved ? 'fill-[#0049af] text-[#0049af]' : ''}`} aria-hidden="true" /></span></button>
             </div>
 
             <header className="mt-7 flex items-center gap-4">
@@ -73,7 +73,7 @@ export function CourseDetailPage() {
                 {course.annualFee ? <EssentialFact label="Propina anual" value={course.annualFee} /> : null}
               </dl>
               <a href="#admission" className="mt-4 inline-flex min-h-11 items-center text-sm font-medium text-[#0049af] underline underline-offset-4 focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af]">Consultar requisitos de admissão</a>
-              <Link to="/universities/$slug" params={{ slug: course.universityId }} className="mt-3 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#0049af] px-4 text-center text-sm font-medium text-white hover:bg-[#003b8f] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Visitar universidade <ExternalLink className="size-4" aria-hidden="true" /></Link>
+              <Link to="/universities/$slug" params={{ slug: course.universityId }} className="mt-3 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#0049af] px-4 text-center text-sm font-medium text-white hover:bg-[#003b8f] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors duration-150 ease-out">Visitar universidade <ExternalLink className="size-4" aria-hidden="true" /></Link>
               <div className="mt-3 border-t border-[#e5e5e5] pt-3"><ReportInformationDialog entityName={course.name} entityType="este curso" /></div>
             </section>
           </aside>

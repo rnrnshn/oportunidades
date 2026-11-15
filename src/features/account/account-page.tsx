@@ -31,7 +31,7 @@ export function AccountPageView() {
         <div className="mt-8 grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-start">
           <aside className="rounded-xl border border-[var(--surface-border)] bg-white p-5">
             <div className="flex items-center gap-3"><span className="flex size-12 items-center justify-center rounded-full bg-[#d6e7ff] text-brand" aria-hidden="true"><UserRound className="size-5" /></span><div className="min-w-0"><p className="truncate font-semibold text-navy">{user?.name || 'Utilizador'}</p><p className="truncate text-sm text-[#525252]">{user?.email || 'Email por confirmar'}</p></div></div>
-            <nav aria-label="Área pessoal" className="mt-5 border-t border-[var(--surface-border)] pt-3"><Link to="/guardados" className="flex min-h-11 items-center gap-3 rounded-lg px-2 font-medium text-brand hover:bg-[#edf4ff]"><Bookmark className="size-4" aria-hidden="true" />Ver oportunidades guardadas</Link></nav>
+            <nav aria-label="Área pessoal" className="mt-5 border-t border-[var(--surface-border)] pt-3"><Link to="/guardados" className="flex min-h-11 items-center gap-3 rounded-lg px-2 font-medium text-brand hover:bg-[#edf4ff] transition-colors duration-150 ease-out"><Bookmark className="size-4" aria-hidden="true" />Ver oportunidades guardadas</Link></nav>
           </aside>
 
           <div className="space-y-6">
@@ -57,5 +57,5 @@ export function AccountPageView() {
 }
 
 function PreferenceCheckbox({ label, checked, onChange }: { label: string; checked: boolean; onChange: (checked: boolean) => void }) {
-  return <label className="flex min-h-12 cursor-pointer items-center gap-3 rounded-lg px-2 hover:bg-[#f7f9fc]"><Checkbox checked={checked} onCheckedChange={(value) => onChange(value === true)} /><span className="text-sm text-[#262626]">{label}</span></label>
+  return <label className="flex min-h-12 cursor-pointer items-center gap-3 rounded-lg px-2 hover:bg-[#f7f9fc] transition-colors duration-150 ease-out"><Checkbox checked={checked} onCheckedChange={(value) => onChange(value === true)} /><span className="text-sm text-[#262626]">{label}</span></label>
 }

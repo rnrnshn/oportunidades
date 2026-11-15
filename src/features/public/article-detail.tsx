@@ -44,7 +44,7 @@ export function ArticleDetailPage() {
               {formattedDate && <time dateTime={article.published_at} className="inline-flex items-center gap-2"><CalendarDays className="size-4" aria-hidden="true" />{formattedDate}</time>}
               <span className="inline-flex items-center gap-2"><Clock3 className="size-4" aria-hidden="true" />{readingMinutes} min de leitura</span>
             </div>
-            <button type="button" onClick={() => void shareArticle()} className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#8793a5] px-4 text-sm font-semibold text-brand hover:bg-[#f7f9fc] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">{shared ? <Check className="size-4" aria-hidden="true" /> : <Share2 className="size-4" aria-hidden="true" />}{shared ? 'Ligação copiada' : 'Partilhar artigo'}</button>
+            <button type="button" onClick={() => void shareArticle()} className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#8793a5] px-4 text-sm font-semibold text-brand hover:bg-[#f7f9fc] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand transition-colors duration-150 ease-out">{shared ? <Check className="size-4" aria-hidden="true" /> : <Share2 className="size-4" aria-hidden="true" />}{shared ? 'Ligação copiada' : 'Partilhar artigo'}</button>
           </header>
 
           {article.cover_image_url && <img src={article.cover_image_url} alt={`Imagem de capa do artigo: ${article.title}`} width="960" height="540" className="mt-8 aspect-[16/9] w-full rounded-xl object-cover" />}
@@ -64,7 +64,7 @@ export function ArticleDetailPage() {
         </div>
 
         <aside aria-label="Conteúdo relacionado" className="space-y-8 lg:sticky lg:top-24">
-          {relatedArticles.length > 0 ? <section aria-labelledby="more-reading" className="rounded-xl bg-[#f7f9fc] p-5"><h2 id="more-reading" className="text-xl font-bold text-navy">Mais para ler</h2><ul className="mt-4 divide-y divide-[var(--surface-border)]">{relatedArticles.map((related) => <li key={related.id} className="py-4 first:pt-0 last:pb-0"><Link to="/artigos/$slug" params={{ slug: related.slug }} className="group flex gap-3 rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"><img src={related.cover_image_url || '/graduation.png'} alt="" width="72" height="72" className="size-[72px] shrink-0 rounded-lg object-cover" /><span><span className="line-clamp-3 text-sm font-bold leading-5 text-navy group-hover:text-brand">{related.title}</span><span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-brand">Ler artigo <ArrowRight className="size-3" aria-hidden="true" /></span></span></Link></li>)}</ul></section> : null}
+          {relatedArticles.length > 0 ? <section aria-labelledby="more-reading" className="rounded-xl bg-[#f7f9fc] p-5"><h2 id="more-reading" className="text-xl font-bold text-navy">Mais para ler</h2><ul className="mt-4 divide-y divide-[var(--surface-border)]">{relatedArticles.map((related) => <li key={related.id} className="py-4 first:pt-0 last:pb-0"><Link to="/artigos/$slug" params={{ slug: related.slug }} className="group flex gap-3 rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"><img src={related.cover_image_url || '/graduation.png'} alt="" width="72" height="72" className="size-[72px] shrink-0 rounded-lg object-cover" /><span><span className="line-clamp-3 text-sm font-bold leading-5 text-navy group-hover:text-brand transition-colors duration-150 ease-out">{related.title}</span><span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-brand">Ler artigo <ArrowRight className="size-3" aria-hidden="true" /></span></span></Link></li>)}</ul></section> : null}
           <section aria-labelledby="explore-resources" className="border-t border-[var(--surface-border)] pt-6"><h2 id="explore-resources" className="text-xl font-bold text-navy">Explorar</h2><ul className="mt-3 space-y-1"><ResourceLink to="/bolsas" label="Bolsas de estudo" /><ResourceLink to="/cursos" label="Cursos e programas" /><ResourceLink to="/mentoria" label="Orientação e mentoria" /></ul></section>
         </aside>
       </article>
@@ -74,7 +74,7 @@ export function ArticleDetailPage() {
 }
 
 function ResourceLink({ to, label }: { to: '/bolsas' | '/cursos' | '/mentoria'; label: string }) {
-  return <li><Link to={to} className="flex min-h-11 items-center justify-between gap-2 rounded-lg px-2 font-semibold text-brand hover:bg-[#f7f9fc] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">{label}<ArrowRight className="size-4" aria-hidden="true" /></Link></li>
+  return <li><Link to={to} className="flex min-h-11 items-center justify-between gap-2 rounded-lg px-2 font-semibold text-brand hover:bg-[#f7f9fc] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand transition-colors duration-150 ease-out">{label}<ArrowRight className="size-4" aria-hidden="true" /></Link></li>
 }
 
 function stripHtml(value: string) {

@@ -64,7 +64,7 @@ export function SearchableSelect({ label, value, query, options, placeholder, on
                   if (event.key === 'ArrowUp') { event.preventDefault(); index === 0 ? inputRef.current?.focus() : focusOption(index - 1) }
                 }}
                 onClick={() => { onChange(option.value); onQueryChange(option.value ? option.label : ''); setOpen(false) }}
-                className="flex min-h-11 w-full items-center justify-between rounded-md px-3 text-left text-sm text-[#262626] hover:bg-[#f5f5f5] focus-visible:bg-[#d6e7ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0049af]"
+                className="flex min-h-11 w-full items-center justify-between rounded-md px-3 text-left text-sm text-[#262626] hover:bg-[#f5f5f5] focus-visible:bg-[#d6e7ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0049af] transition-colors duration-150 ease-out"
               >
                 <span>{option.label}</span>
                 {option.value === value && <Check className="size-4 text-[#0049af]" aria-hidden="true" />}

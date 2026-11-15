@@ -102,7 +102,7 @@ export function ListingLayout({
               </div>
             )}
             {filterSlot}
-            {filtersOpen && <div className="sticky bottom-0 -mx-5 mt-5 border-t border-[var(--surface-border)] bg-white px-5 py-4 lg:hidden"><button type="button" onClick={closeFilters} className="min-h-12 w-full rounded-xl bg-brand px-4 font-semibold text-white hover:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">Ver {resultsCount ?? 0} {resultsCount === 1 ? 'resultado' : 'resultados'}</button></div>}
+            {filtersOpen && <div className="sticky bottom-0 -mx-5 mt-5 border-t border-[var(--surface-border)] bg-white px-5 py-4 lg:hidden"><button type="button" onClick={closeFilters} className="min-h-12 w-full rounded-xl bg-brand px-4 font-semibold text-white hover:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand transition-colors duration-150 ease-out">Ver {resultsCount ?? 0} {resultsCount === 1 ? 'resultado' : 'resultados'}</button></div>}
           </aside>
 
           <section aria-label="Resultados" className="min-w-0 space-y-5 lg:col-start-2 lg:row-start-2">

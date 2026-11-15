@@ -63,7 +63,7 @@ export function MultiSelect({
             {options.map((option) => (
               <label
                 key={option}
-                className="flex cursor-pointer items-center justify-start gap-2 rounded-sm px-2 py-2 text-sm text-navy hover:bg-canvas-soft hover:text-brand"
+                className="flex cursor-pointer items-center justify-start gap-2 rounded-sm px-2 py-2 text-sm text-navy hover:bg-canvas-soft hover:text-brand transition-colors duration-150 ease-out"
               >
                 <Checkbox
                   checked={value.includes(option)}

@@ -76,7 +76,7 @@ export function UniversitiesFilter({
             <FilterDisclosure title="Avaliação" inset={false}><fieldset className="space-y-2">
               <legend className="mb-2 text-sm font-semibold text-navy">Avaliação</legend>
               {[5, 4, 3, 2, 1].map((rating) => (
-                <label key={rating} className="flex min-h-11 cursor-pointer items-center gap-3 rounded-lg px-1 text-sm text-[#262626] hover:bg-[#f5f5f5]">
+                <label key={rating} className="flex min-h-11 cursor-pointer items-center gap-3 rounded-lg px-1 text-sm text-[#262626] hover:bg-[#f5f5f5] transition-colors duration-150 ease-out">
                   <Checkbox
                     checked={filters.rating.includes(rating)}
                     onCheckedChange={(checked) => updateFilters({

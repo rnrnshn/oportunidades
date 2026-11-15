@@ -17,7 +17,7 @@ export function FilterPanel({ children, activeCount, onClear, bordered = true, c
       <button
         type="button"
         onClick={onClear}
-        className="mt-2 min-h-11 w-full rounded-lg px-2 text-sm font-medium text-[#b42318] hover:bg-[#fff2f0] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af]"
+        className="mt-2 min-h-11 w-full rounded-lg px-2 text-sm font-medium text-[#b42318] hover:bg-[#fff2f0] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out"
       >
         Limpar filtros ({activeCount})
       </button>

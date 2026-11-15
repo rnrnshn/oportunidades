@@ -30,7 +30,7 @@ export function UniversityCard({ university }: { university: University; compact
                 <Link
                   to="/universities/$slug"
                   params={{ slug: university.id }}
-                  className="block truncate hover:text-brand hover:underline"
+                  className="block truncate hover:text-brand hover:underline transition-colors duration-150 ease-out"
                 >
                   {university.name}
                 </Link>
@@ -54,7 +54,7 @@ export function UniversityCard({ university }: { university: University; compact
                 </div>
               </div>
             </div>
-            <button type="button" aria-pressed={bookmarked} aria-label={`${bookmarked ? 'Remover dos guardados' : 'Guardar'} ${university.name}`} onClick={toggleBookmark} className="flex size-11 shrink-0 items-center justify-center rounded-lg text-[#c75100] hover:bg-[#fff2d3] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af]">
+            <button type="button" aria-pressed={bookmarked} aria-label={`${bookmarked ? 'Remover dos guardados' : 'Guardar'} ${university.name}`} onClick={toggleBookmark} className="flex size-11 shrink-0 items-center justify-center rounded-lg text-[#c75100] hover:bg-[#fff2d3] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out">
               <Bookmark className={`h-5 w-5 ${bookmarked ? 'fill-current' : ''}`} aria-hidden="true" />
             </button>
           </div>

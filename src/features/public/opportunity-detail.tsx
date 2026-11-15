@@ -10,11 +10,12 @@ import { OpportunityCard } from '@/features/public/opportunities/components/Oppo
 import { jobsMock } from '@/features/public/opportunities/mock-data'
 import { ReportInformationDialog } from '@/features/public/shared/ReportInformationDialog'
 import { useBookmark } from '@/features/public/shared/use-bookmark'
+import { parseDate } from '@/lib/utils'
 
 export function OpportunityDetailPage() {
   const opportunity = useLoaderData({ from: '/oportunidades/$slug' })
   const { bookmarked, toggleBookmark } = useBookmark(`opportunity:${opportunity.id}`)
-  const deadline = opportunity.deadline ? new Date(`${opportunity.deadline}T12:00:00`) : null
+  const deadline = opportunity.deadline ? parseDate(opportunity.deadline) : null
   const formattedDeadline = deadline?.toLocaleDateString('pt-MZ', { day: 'numeric', month: 'long', year: 'numeric' })
   const daysRemaining = deadline ? Math.ceil((deadline.getTime() - Date.now()) / 86_400_000) : null
   const isClosed = opportunity.is_active === false || (daysRemaining !== null && daysRemaining < 0)

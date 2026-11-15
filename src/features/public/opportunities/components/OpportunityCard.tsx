@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { Bookmark, Calendar, MapPin } from 'lucide-react'
 import { useBookmark } from '@/features/public/shared/use-bookmark'
 import type { Opportunity } from '../types'
+import { parseDate } from '@/lib/utils'
 
 const typeLabels: Record<string, string> = {
   bolsa: 'Bolsa',
@@ -129,11 +130,11 @@ function isNewJob(value?: string) {
 }
 
 function getDaysSincePublished(value: string) {
-  return Math.max(0, Math.floor((Date.now() - new Date(`${value}T12:00:00`).getTime()) / 86_400_000))
+  return Math.max(0, Math.floor((Date.now() - parseDate(value).getTime()) / 86_400_000))
 }
 
 function formatDeadline(value: string) {
-  const date = new Date(`${value}T12:00:00`)
+  const date = parseDate(value)
   const month = ['jan.', 'fev.', 'mar.', 'abr.', 'maio', 'jun.', 'jul.', 'ago.', 'set.', 'out.', 'nov.', 'dez.'][date.getMonth()]
   return `${date.getDate()} ${month} ${date.getFullYear()}`
 }

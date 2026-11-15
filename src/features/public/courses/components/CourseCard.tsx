@@ -3,6 +3,7 @@ import { Bookmark, CalendarDays, GraduationCap, MapPin } from 'lucide-react'
 
 import { useBookmark } from '@/features/public/shared/use-bookmark'
 import type { Course } from '../types'
+import { parseDate } from '@/lib/utils'
 
 interface CourseCardProps {
   course: Course
@@ -37,10 +38,10 @@ export function CourseCard({ course, showDescription = false }: CourseCardProps)
 }
 
 function formatDate(value: string) {
-  return new Intl.DateTimeFormat('pt-MZ', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(`${value}T12:00:00`))
+  return new Intl.DateTimeFormat('pt-MZ', { day: 'numeric', month: 'long', year: 'numeric' }).format(parseDate(value))
 }
 
 function deadlineLabel(value: string) {
-  const deadline = new Date(`${value}T23:59:59`)
+  const deadline = parseDate(value, '23:59:59')
   return deadline.getTime() < Date.now() ? `Prazo encerrado em ${formatDate(value)}` : `Candidaturas até ${formatDate(value)}`
 }

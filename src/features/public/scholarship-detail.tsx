@@ -7,11 +7,12 @@ import { Button } from '@/components/ui/button'
 import { DetailBulletList, DetailSection, DetailSteps } from '@/components/ui/detail-content'
 import { useBookmark } from '@/features/public/shared/use-bookmark'
 import { ReportInformationDialog } from '@/features/public/shared/ReportInformationDialog'
+import { parseDate } from '@/lib/utils'
 
 export function ScholarshipDetailPage() {
   const scholarship = useLoaderData({ from: '/bolsas/$slug' })
   const { bookmarked, toggleBookmark } = useBookmark(`scholarship:${scholarship.id}`)
-  const deadline = scholarship.deadline ? new Date(`${scholarship.deadline}T12:00:00`) : null
+  const deadline = scholarship.deadline ? parseDate(scholarship.deadline) : null
   const daysRemaining = deadline ? Math.ceil((deadline.getTime() - Date.now()) / 86_400_000) : null
   const isClosed = scholarship.is_active === false || (daysRemaining !== null && daysRemaining < 0)
   const deadlineLabel = deadline?.toLocaleDateString('pt-MZ', { day: 'numeric', month: 'long', year: 'numeric' })

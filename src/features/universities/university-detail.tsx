@@ -7,6 +7,7 @@ import { useBookmark } from '@/features/public/shared/use-bookmark'
 import type { UniversityDetail } from '@/features/universities/api'
 import { UniversityCourseList } from '@/features/universities/components/UniversityCourseList'
 import { ReportInformationDialog } from '@/features/public/shared/ReportInformationDialog'
+import { parseDate } from '@/lib/utils'
 
 const CAMPUS_FALLBACK = '/universities/uem/figma-image-2.jpeg'
 const tabs = [
@@ -108,7 +109,7 @@ function UniversityHeading({ university }: { university: UniversityDetail }) {
 
 function UniversitySidebar({ university }: { university: UniversityDetail }) {
   const website = university.website || university.more_info_url
-  const deadline = university.admissions_deadline ? new Date(`${university.admissions_deadline}T12:00:00`).toLocaleDateString('pt-MZ', { day: 'numeric', month: 'long', year: 'numeric' }) : null
+  const deadline = university.admissions_deadline ? parseDate(university.admissions_deadline).toLocaleDateString('pt-MZ', { day: 'numeric', month: 'long', year: 'numeric' }) : null
   return (
     <aside aria-label="Informação essencial da instituição" className="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:self-start lg:overflow-y-auto">
       <section className="rounded-xl border border-[#e5e5e5] bg-white p-5 shadow-[0_4px_12px_rgba(0,0,0,0.08)]">

@@ -6,6 +6,7 @@ import { TaskPage } from '@/components/layout/TaskPage'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { parseDate } from '@/lib/utils'
 
 export function ApplicationPage() {
   const opportunity = useLoaderData({ from: '/candidaturas/$slug' })
@@ -51,5 +52,5 @@ function Field({ label, htmlFor, children }: { label: string; htmlFor: string; c
 }
 
 function ApplicationSummary({ title, entity, deadline }: { title: string; entity: string; deadline?: string }) {
-  return <div className="rounded-2xl border border-[var(--surface-border)] bg-[#f7f9fc] p-5"><FileText className="size-6 text-brand" aria-hidden="true" /><h2 className="mt-3 font-bold text-navy">{title}</h2><p className="mt-1 text-sm text-[#525252]">{entity}</p>{deadline ? <p className="mt-4 border-t border-[var(--surface-border)] pt-4 text-sm"><span className="block text-[#525252]">Prazo</span><strong className="text-navy">{new Date(`${deadline}T12:00:00`).toLocaleDateString('pt-MZ', { day: 'numeric', month: 'long', year: 'numeric' })}</strong></p> : null}</div>
+  return <div className="rounded-2xl border border-[var(--surface-border)] bg-[#f7f9fc] p-5"><FileText className="size-6 text-brand" aria-hidden="true" /><h2 className="mt-3 font-bold text-navy">{title}</h2><p className="mt-1 text-sm text-[#525252]">{entity}</p>{deadline ? <p className="mt-4 border-t border-[var(--surface-border)] pt-4 text-sm"><span className="block text-[#525252]">Prazo</span><strong className="text-navy">{parseDate(deadline).toLocaleDateString('pt-MZ', { day: 'numeric', month: 'long', year: 'numeric' })}</strong></p> : null}</div>
 }

@@ -54,7 +54,7 @@ code {
   --text-hint: #9aa4c3;
   --text-hint-2: #8a95b8;
   --text-muted-strong: #6980b5;
-  --text-indigo-soft: #6c7aa7;
+  --text-indigo-soft: #5c6996; /* 4.9:1 on --bg-placeholder (AA) */
   --accent-gold: #ffa437;
   --accent-warm: #b16a1c;
   --accent-warm-dark: #815c32;

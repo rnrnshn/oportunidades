@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import { scholarshipsMock } from './mock-data'
+import { parseDate } from '@/lib/utils'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8080'
 
@@ -69,7 +70,7 @@ export async function fetchScholarshipDetail(slug: string): Promise<ScholarshipD
       degree_level: scholarship.level,
       program_area: scholarship.field,
       verified: true,
-      is_active: new Date(`${scholarship.deadline}T23:59:59`).getTime() >= Date.now(),
+      is_active: parseDate(scholarship.deadline, '23:59:59').getTime() >= Date.now(),
     }
   }
 }

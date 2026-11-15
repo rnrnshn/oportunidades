@@ -21,7 +21,7 @@ export function HomeCtaSection() {
           />
 
           <div className="max-w-xl text-center sm:text-left">
-            <h2 id="home-cta-title" className="text-[22px] font-semibold leading-snug text-navy md:text-2xl">
+            <h2 id="home-cta-title" className="text-2xl  font-semibold leading-snug text-navy">
               Não percas a próxima oportunidade
             </h2>
             <p className="mt-2 text-sm leading-6 text-[#4f5c7c]">

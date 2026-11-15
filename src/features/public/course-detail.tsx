@@ -47,7 +47,7 @@ export function CourseDetailPage() {
               <div className="flex size-16 shrink-0 items-center justify-center rounded-xl border border-[#e5e5e5] bg-white text-[#0049af] sm:size-20">
                 <GraduationCap className="size-8" aria-hidden="true" />
               </div>
-              <div className="min-w-0"><h1 className="text-xl font-semibold leading-tight sm:text-2xl">{course.name}</h1><p className="mt-2 text-sm text-[#525252]">{course.universityName} · {course.area}</p></div>
+              <div className="min-w-0"><h1 className="text-2xl md:text-4xl  font-semibold leading-tight">{course.name}</h1><p className="mt-2 text-sm text-[#525252]">{course.universityName} · {course.area}</p></div>
             </header>
 
             <nav aria-label="Secções do curso" className="mt-8 grid grid-cols-4 overflow-hidden rounded-xl border border-[#8b93a1] bg-[#fcfcfc] p-1">{sections.map((section, index) => <button key={section.id} type="button" onClick={() => goTo(section.id)} className={`min-h-12 rounded-lg px-1 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-3px] sm:px-3 sm:text-sm ${index === 0 ? 'bg-[#0049af] text-white focus-visible:outline-white' : 'hover:bg-[#eff6ff] focus-visible:outline-[#0049af]'}`}>{section.label}</button>)}</nav>

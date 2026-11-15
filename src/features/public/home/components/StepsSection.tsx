@@ -33,7 +33,7 @@ export function StepsSection() {
                   <h3 className="text-xl font-semibold text-navy">{step.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-[#525252]">{step.description}</p>
                 </div>
-                <span className="select-none text-[112px] font-black leading-[0.8] text-[#eeeeee] md:text-[144px]" aria-hidden="true">
+                <span className="select-none text-[7rem] font-black leading-[0.8] text-[#eeeeee] md:text-[9rem]" aria-hidden="true">
                   {index + 1}
                 </span>
               </div>

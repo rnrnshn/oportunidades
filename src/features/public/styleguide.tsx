@@ -33,7 +33,7 @@ export function PublicStyleGuidePage() {
     <main className="bg-soft text-navy">
       <header className="bg-canvas-soft border-b border-sand p-10 text-center">
         <p className="text-sm uppercase tracking-[0.3em] text-muted-strong">Design Tokens</p>
-        <h1 className="mt-3 text-2xl font-bold">Public Style Guide</h1>
+        <h1 className="mt-3 text-3xl font-bold">Public Style Guide</h1>
         <p className="mt-3 max-w-3xl mx-auto text-subtle">
           Referência rápida para designers e desenvolvedores aplicarem a identidade visual da Oportunidades sem copiar
           valores hexadecimais.

@@ -96,7 +96,7 @@ function UniversityHeading({ university }: { university: UniversityDetail }) {
         {university.logo_url ? <img src={university.logo_url} alt={`Logótipo da ${university.name}`} width="80" height="80" className="h-full w-full object-contain p-1" /> : <span aria-hidden="true" className="text-sm font-bold tracking-[0.08em] text-[#0049af]">{initials}</span>}
       </div>
       <div className="min-w-0">
-        <h1 className="text-xl font-semibold leading-tight sm:text-2xl">{university.name}</h1>
+        <h1 className="text-2xl md:text-4xl  font-semibold leading-tight">{university.name}</h1>
         <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-[#525252]">
           <span>{university.type}</span><span aria-hidden="true">·</span>
           <a href={mapsUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-1.5 text-[#0049af] hover:underline focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af]"><MapPin className="size-4" aria-hidden="true" />{address}</a>

@@ -35,7 +35,7 @@ export function ScholarshipCard({ scholarship, compact = false }: { scholarship:
             <div className="flex-1 space-y-2">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h3 className={`${compact ? 'text-lg' : 'text-2xl'} font-bold text-navy`}>
+                  <h3 className={`${compact ? 'text-lg' : 'text-xl'} font-bold text-navy`}>
                     <Link
                       to="/bolsas/$slug"
                       params={{ slug: scholarship.id }}

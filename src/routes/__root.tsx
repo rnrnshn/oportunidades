@@ -130,7 +130,7 @@ function NotFoundPage() {
         <span className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-strong">
           Página não encontrada
         </span>
-        <h1 className="text-2xl font-bold tracking-tight">
+        <h1 className="text-2xl md:text-4xl  font-bold tracking-tight">
           Não encontrámos essa página
         </h1>
         <p className="max-w-2xl text-base text-soft">

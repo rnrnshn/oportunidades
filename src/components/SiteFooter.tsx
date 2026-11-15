@@ -50,7 +50,7 @@ export default function SiteFooter({ variant = 'default' }: SiteFooterProps) {
         <div className="grid gap-7 sm:grid-cols-2 md:grid-cols-4 md:items-start">
           {footerSections.map((section) => (
             <nav key={section.title} aria-label={section.title} className="space-y-3">
-              <h2 className={`${isHome ? 'text-lg font-medium' : 'text-sm font-semibold'} text-[#262626]`}>{section.title}</h2>
+              <h2 className={`text-sm ${isHome ? 'font-medium' : 'font-semibold'} text-[#262626]`}>{section.title}</h2>
               <ul>
                 {section.links.map((link) => (
                   <li key={link.label}>
@@ -68,7 +68,7 @@ export default function SiteFooter({ variant = 'default' }: SiteFooterProps) {
           ))}
 
           <div className="space-y-3">
-            <h2 className={`${isHome ? 'text-lg font-medium' : 'text-sm font-semibold'} text-[#262626]`}>Acompanha-nos</h2>
+            <h2 className={`text-sm ${isHome ? 'font-medium' : 'font-semibold'} text-[#262626]`}>Acompanha-nos</h2>
             <p className={`max-w-xs leading-6 text-[#525252] ${isHome ? 'text-base' : 'text-sm'}`}>Encontra-nos nas redes sociais</p>
             <div className="flex flex-wrap gap-2" aria-hidden="true">
               {[

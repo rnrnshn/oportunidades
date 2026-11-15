@@ -10,7 +10,7 @@ export function CommunitySection() {
               <dt className="order-2 text-sm font-medium leading-5 text-[#4f5c7c] sm:text-base">
                 {stat.label}
               </dt>
-              <dd className="order-1 min-w-14 text-[28px] font-semibold leading-none tracking-tight text-brand md:text-[32px]">
+              <dd className="order-1 min-w-14 text-4xl font-semibold leading-none tracking-tight text-brand md:text-5xl">
                 {stat.value}
               </dd>
             </div>

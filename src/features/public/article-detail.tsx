@@ -37,7 +37,7 @@ export function ArticleDetailPage() {
 
           <header className="mt-8">
             <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand">{article.type}</p>
-            <h1 className="mt-3 text-3xl font-bold leading-tight tracking-tight text-navy md:text-5xl">{article.title}</h1>
+            <h1 className="text-4xl md:text-6xl mt-3 font-bold leading-tight tracking-tight text-navy">{article.title}</h1>
             {article.excerpt && <p className="mt-5 max-w-3xl text-lg leading-8 text-[#525252]">{article.excerpt}</p>}
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[#525252]">
               {article.author_name && <span className="inline-flex items-center gap-2"><BookOpen className="size-4" aria-hidden="true" />{article.author_name}</span>}

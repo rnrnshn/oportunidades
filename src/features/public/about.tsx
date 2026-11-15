@@ -82,7 +82,7 @@ function IntroSection({ headingRef }: { headingRef: React.RefObject<HTMLHeadingE
             id="about-heading"
             ref={headingRef}
             tabIndex={-1}
-            className="mt-7 text-balance text-[22px] font-semibold leading-tight text-[#262626] outline-none sm:text-2xl"
+            className="text-2xl md:text-4xl mt-7 text-balance font-semibold leading-tight text-[#262626] outline-none"
           >
             Abrimos portas para futuros mais brilhantes e possibilidades sem limites
           </h1>
@@ -167,7 +167,7 @@ function JourneySection() {
     <section id="journey" aria-labelledby="journey-heading" className="relative scroll-mt-24 overflow-hidden bg-[#fff6e7] py-12 lg:py-16">
       <div className="pointer-events-none absolute inset-x-[-12%] bottom-[-110px] h-40 -rotate-2 bg-white" aria-hidden="true" />
       <div className="relative mx-auto max-w-6xl px-5 sm:px-6 lg:px-0">
-        <h2 id="journey-heading" className="text-[22px] font-semibold text-[#262626]">
+        <h2 id="journey-heading" className="text-2xl  font-semibold text-[#262626]">
           Entra, descobre e cresce
         </h2>
         <p className="mt-3 max-w-3xl text-base leading-7 text-[#525252]">
@@ -186,7 +186,7 @@ function JourneySection() {
               </div>
               <h3 className="relative z-10 text-lg font-semibold text-[#262626]">{step.title}</h3>
               <p className="relative z-10 mt-3 text-base leading-7 text-[#525252]">{step.description}</p>
-              <span className="pointer-events-none absolute bottom-0 right-5 text-[112px] font-black leading-none text-[#262626]/[0.045]" aria-hidden="true">
+              <span className="pointer-events-none absolute bottom-0 right-5 text-[7rem] font-black leading-none text-[#262626]/[0.045]" aria-hidden="true">
                 {index + 1}
               </span>
             </li>
@@ -201,7 +201,7 @@ function HighlightsSection() {
   return (
     <section id="impact" aria-labelledby="highlights-heading" className="scroll-mt-24 bg-white py-14 lg:py-16">
       <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-0">
-        <h2 id="highlights-heading" className="text-[22px] font-semibold text-[#262626]">
+        <h2 id="highlights-heading" className="text-2xl  font-semibold text-[#262626]">
           Feita para jovens que querem mais
         </h2>
         <p className="mt-3 text-base leading-7 text-[#525252]">
@@ -216,7 +216,7 @@ function HighlightsSection() {
               </span>
               <div>
                 <dt className="text-sm font-medium text-[#525252]">{label}</dt>
-                <dd className="order-first text-2xl font-black text-[#d85e00]">{value}</dd>
+                <dd className="order-first text-3xl font-black text-[#d85e00]">{value}</dd>
               </div>
             </div>
           ))}
@@ -231,7 +231,7 @@ function PartnersSection() {
     <section id="partners" aria-labelledby="partners-heading" className="scroll-mt-24 bg-white pb-14 lg:pb-16">
       <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-0">
         <div className="rounded-2xl bg-[#f5f7fb] p-6 sm:p-8">
-          <h2 id="partners-heading" className="text-[22px] font-semibold text-[#262626]">
+          <h2 id="partners-heading" className="text-2xl  font-semibold text-[#262626]">
             Crescemos com os nossos parceiros
           </h2>
           <p className="mt-3 max-w-3xl text-base leading-7 text-[#525252]">
@@ -260,7 +260,7 @@ function JoinSection() {
             className="h-52 w-full object-cover md:h-full"
           />
           <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-12">
-            <h2 id="join-heading" className="text-2xl font-semibold text-[#0049af]">
+            <h2 id="join-heading" className="text-2xl  font-semibold text-[#0049af]">
               Começa hoje a explorar o teu futuro
             </h2>
             <p className="mt-4 text-base leading-7 text-[#525252]">

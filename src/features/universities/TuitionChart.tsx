@@ -45,7 +45,7 @@ export function TuitionChart({ fees }: TuitionChartProps) {
             textAnchor="end"
             height={120}
             interval={0}
-            tick={{ fontSize: 12 }}
+            tick={{ fontSize: '0.8125rem' }}
           />
           <YAxis
             label={{
@@ -54,7 +54,7 @@ export function TuitionChart({ fees }: TuitionChartProps) {
               position: 'insideLeft',
               offset: 10,
             }}
-            tick={{ fontSize: 12 }}
+            tick={{ fontSize: '0.8125rem' }}
           />
           <Tooltip
             formatter={(value) => `MZN ${Number(value).toLocaleString('pt-PT')}`}

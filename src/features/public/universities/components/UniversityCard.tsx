@@ -67,7 +67,7 @@ export function UniversityCard({ university }: { university: University; compact
             >
               Visitar página da universidade
             </Link>
-            <span className="inline-flex min-h-8 items-center rounded-lg bg-brand px-4 text-[11px] font-bold uppercase tracking-tight text-white">
+            <span className="inline-flex min-h-8 items-center rounded-lg bg-brand px-4 text-xs font-bold uppercase tracking-tight text-white">
               Admissões até {formattedDate}
             </span>
           </div>

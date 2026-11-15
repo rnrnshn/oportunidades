@@ -26,7 +26,7 @@ export function AccountPageView() {
     <main className="min-h-screen bg-[#f7f9fc] text-[#262626]">
       <div className="mx-auto max-w-6xl px-5 py-8 sm:px-6 md:py-12">
         <nav aria-label="Breadcrumb" className="mb-5"><ol className="flex items-center gap-2 text-sm text-[#525252]"><li><Link to="/" className="text-brand hover:underline">Início</Link></li><li aria-hidden="true"><ChevronRight className="size-4" /></li><li aria-current="page">Minha conta</li></ol></nav>
-        <header className="max-w-2xl"><h1 className="text-2xl font-bold text-navy md:text-3xl">Minha conta</h1><p className="mt-2 leading-7 text-[#525252]">Mantém os teus dados actualizados e escolhe os avisos que queres receber.</p></header>
+        <header className="max-w-2xl"><h1 className="text-2xl md:text-4xl  font-bold text-navy">Minha conta</h1><p className="mt-2 leading-7 text-[#525252]">Mantém os teus dados actualizados e escolhe os avisos que queres receber.</p></header>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-start">
           <aside className="rounded-xl border border-[var(--surface-border)] bg-white p-5">

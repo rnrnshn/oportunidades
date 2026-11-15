@@ -13,7 +13,7 @@ export function RecommendationSection() {
           <div className="relative z-10 max-w-xl">
             <h2
               id="recommendation-title"
-              className="text-[24px] font-semibold leading-tight text-navy md:text-[28px]"
+              className="text-2xl  font-semibold leading-tight text-navy"
             >
               Não sabes por onde começar?
             </h2>

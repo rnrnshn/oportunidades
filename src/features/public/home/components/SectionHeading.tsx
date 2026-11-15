@@ -10,7 +10,7 @@ export function SectionHeading({ id, title, description, className = '', divider
   return (
     <div className={className}>
       <div className="flex items-center gap-4">
-        <h2 id={id} className="min-w-0 text-[22px] font-semibold text-[#262626]">
+        <h2 id={id} className="min-w-0 text-2xl font-semibold text-[#262626]">
           {title}
         </h2>
         {divider ? <span className="h-px min-w-8 flex-1 bg-[#c7c7c7]" aria-hidden="true" /> : null}

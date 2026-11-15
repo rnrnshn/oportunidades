@@ -25,7 +25,7 @@ export function TaskPage({ title, description, backTo, backLabel, children, asid
             <ArrowLeft className="size-4" aria-hidden="true" />
             {backLabel}
           </Link>
-          <h1 className="mt-4 text-3xl font-bold leading-tight text-navy md:text-4xl">{title}</h1>
+          <h1 className="text-2xl md:text-4xl mt-4 font-bold leading-tight text-navy">{title}</h1>
           {description ? <p className="mt-3 max-w-2xl leading-7 text-[#525252]">{description}</p> : null}
         </div>
       </div>

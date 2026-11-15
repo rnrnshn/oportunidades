@@ -53,7 +53,7 @@ export function OpportunityDetailLayout({
                   </span>
                 ) : null}
               </div>
-              <h1 className="mt-3 max-w-4xl text-3xl font-bold leading-tight tracking-tight text-navy md:text-4xl">{title}</h1>
+              <h1 className="text-2xl md:text-4xl mt-3 max-w-4xl font-bold leading-tight tracking-tight text-navy">{title}</h1>
               <p className="mt-3 text-base font-semibold text-[#4f5c7c] md:text-lg">{organisation}</p>
             </div>
 

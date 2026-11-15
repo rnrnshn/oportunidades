@@ -1,6 +1,6 @@
 # Plan: transitions, animations and hover effects (public site)
 
-Status: **draft — waiting for approval**. Date: 2026-11-15.
+Status: **done** (approved and built 2026-11-15). Videos for review: `../review/motion/` (outside the repo).
 
 ## Decisions (product owner)
 

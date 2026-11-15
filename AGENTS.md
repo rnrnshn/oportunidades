@@ -149,7 +149,17 @@ The type scale lives in `src/styles.css` (`@theme`) and is shared with `oportuni
 *   Fields follow the dashboard's search field (Utilizadores): white, `#e5e5e5` border, focus changes only the border to site blue. Use `Input`, `Textarea`, `CustomSelect` or `fieldClass` (`src/components/ui/input.tsx`) and `Field`/`Label` (`src/components/ui/field.tsx`). Tokens are `--field-*` in `src/styles.css`. Do not override field size, colour or radius per page. Only exception: 44px height (site buttons). Use `--field-line` for menus and grouped controls.
 *   Do not add explanatory lines under titles, inputs or buttons, and do not use "Ex.:" placeholders. Keep functional text: errors, limits, consent, privacy and safety notices, statuses and empty states.
 
-## 13. Testing
+### 12.3 Motion
+
+Spec and per-component table: `docs/plans/motion.md`. Subtle: nothing moves unless the user acts.
+
+*   Feedback (hover, press, colour) 150ms; entrances (menus, dialogs) 200ms; exits 150ms. Never longer.
+*   Move with `transform`/`opacity` only; colour transitions only on small controls. Tailwind easings only (`ease-out` in, `ease-in` out).
+*   Cards: use `interactiveCardClass` and, for cover photos, `cardImageZoomClass` (`src/components/ui/card.tsx`).
+*   Any element with a `hover:` colour change needs `transition-colors duration-150 ease-out`.
+*   `prefers-reduced-motion` is handled globally in `src/styles.css`; do not add looping animations (except loading skeletons).
+
+
 
 *   Unit tests for utilities.
 *   Component tests for complex UI.

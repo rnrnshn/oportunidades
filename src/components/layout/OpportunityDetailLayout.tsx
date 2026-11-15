@@ -38,7 +38,7 @@ export function OpportunityDetailLayout({
     <main className="bg-white text-[#262626]">
       <header className="border-b border-[var(--surface-border)] bg-white">
         <div className="mx-auto max-w-6xl px-5 py-6 sm:px-6 md:py-8">
-          <div className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand hover:underline focus-within:rounded-lg focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-brand">
+          <div className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand hover:underline [&>a]:inline-flex [&>a]:min-h-11 [&>a]:items-center focus-within:rounded-lg focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-brand">
             <ArrowLeft className="size-4" aria-hidden="true" />
             {backLink}
           </div>

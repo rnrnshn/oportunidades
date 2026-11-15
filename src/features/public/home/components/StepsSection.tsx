@@ -16,7 +16,7 @@ export function StepsSection() {
           divider={false}
         />
 
-        <ol className="relative grid gap-8 md:grid-cols-3 md:gap-12">
+        <ol className="relative grid gap-8 lg:grid-cols-3 lg:gap-12">
           {steps.map((step, index) => (
             <li
               key={`${step.title}-${index}`}

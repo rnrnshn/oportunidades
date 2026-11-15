@@ -4,7 +4,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel'
-import { Card, CardContent, cardImageZoomClass, interactiveCardClass } from '@/components/ui/card'
+import { Card, CardContent, cardImageZoomClass, cardLinkClass, interactiveCardClass } from '@/components/ui/card'
 import { ArrowRight } from 'lucide-react'
 import { scholarships } from '../data'
 import { Link } from '@tanstack/react-router'
@@ -45,7 +45,7 @@ export function ScholarshipSection() {
                     </div>
                     <h3 className="mt-2 line-clamp-2 text-base font-semibold leading-snug text-navy">{scholarship.name}</h3>
                     <p className="mt-1 text-sm text-[#525252]">Por {scholarship.sponsor}</p>
-                    <Link to="/bolsas/$slug" params={{ slug: scholarship.id }} className="mt-auto inline-flex min-h-11 items-center gap-2 self-start text-sm font-semibold text-brand underline-offset-4 hover:underline focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+                    <Link to="/bolsas/$slug" params={{ slug: scholarship.id }} className={`${cardLinkClass} mt-auto inline-flex min-h-11 items-center gap-2 self-start text-sm font-semibold text-brand underline-offset-4 hover:underline focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand`}>
                       Ver e candidatar <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                     </Link>
                   </CardContent>

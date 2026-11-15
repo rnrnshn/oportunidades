@@ -1,4 +1,4 @@
-import { Card, interactiveCardClass } from '@/components/ui/card'
+import { Card, cardLinkClass, interactiveCardClass } from '@/components/ui/card'
 import { Link } from '@tanstack/react-router'
 import { Bookmark, Calendar, MapPin } from 'lucide-react'
 import { useBookmark } from '@/features/public/shared/use-bookmark'
@@ -40,7 +40,7 @@ export function OpportunityCard({ opportunity, compact = false }: { opportunity:
               <Link
                 to="/oportunidades/$slug"
                 params={{ slug: opportunity.slug }}
-                className="hover:text-brand hover:underline transition-colors duration-150 ease-out"
+                className={`hover:text-brand hover:underline transition-colors duration-150 ease-out ${cardLinkClass}`}
               >
                 {opportunity.title}
               </Link>
@@ -84,20 +84,20 @@ function JobCard({ opportunity }: { opportunity: Opportunity }) {
       <article className="flex items-start gap-2.5">
         <div className="flex min-w-0 flex-1 flex-col gap-4">
           <div className="flex min-w-0 items-start gap-3">
-            <div className="flex size-[60px] shrink-0 items-center justify-center rounded-lg bg-[#dcdcdc] text-lg font-bold text-[#525252]" aria-hidden="true">
+            <div className="flex size-12 shrink-0 items-center justify-center rounded-lg sm:size-[60px] bg-[#dcdcdc] text-lg font-bold text-[#525252]" aria-hidden="true">
               {opportunity.entityName.slice(0, 1)}
             </div>
-            <div className="min-w-0 flex-1 space-y-3">
-              <div className="flex min-w-0 items-center gap-2">
-              <h3 className="min-w-0 truncate text-base font-bold leading-none text-[#262626]">
-                <Link to="/oportunidades/$slug" params={{ slug: opportunity.slug }} className="rounded hover:text-[#0049af] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out">
+            <div className="min-w-0 flex-1 space-y-2">
+              <div className="flex min-w-0 items-start gap-2">
+              <h3 className="min-w-0 text-base font-bold leading-snug text-[#262626]">
+                <Link to="/oportunidades/$slug" params={{ slug: opportunity.slug }} className={`rounded hover:text-[#0049af] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out ${cardLinkClass}`}>
                   {opportunity.title}
                 </Link>
               </h3>
               {newJob ? <span className="shrink-0 rounded-md bg-[#e5f5ec] px-2 py-1 text-xs font-bold text-[#176b3a]">Nova</span> : null}
               </div>
-              <p className="truncate text-base leading-none text-[#656565]">{opportunity.entityName}</p>
-              <p className="truncate text-sm leading-none text-[#656565]">{location}</p>
+              <p className="text-base leading-snug text-[#656565]">{opportunity.entityName}</p>
+              <p className="text-sm leading-snug text-[#656565]">{location}</p>
             </div>
           </div>
           {formattedDeadline && (
@@ -107,7 +107,7 @@ function JobCard({ opportunity }: { opportunity: Opportunity }) {
           )}
           <p className="text-base leading-6 text-[#656565]">{formatPublishedDate(opportunity.publishedAt)}</p>
         </div>
-        <button type="button" aria-pressed={bookmarked} aria-label={`${bookmarked ? 'Remover dos guardados' : 'Guardar'} ${opportunity.title}`} onClick={toggleBookmark} className="flex size-11 shrink-0 items-center justify-center rounded-lg text-[#c75100] hover:bg-[#fff2d3] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out">
+        <button type="button" aria-pressed={bookmarked} aria-label={`${bookmarked ? 'Remover dos guardados' : 'Guardar'} ${opportunity.title}`} onClick={toggleBookmark} className="relative z-10 flex size-11 shrink-0 items-center justify-center rounded-lg text-[#c75100] hover:bg-[#fff2d3] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out">
           <Bookmark className={`size-5 ${bookmarked ? 'fill-current' : ''}`} aria-hidden="true" />
         </button>
       </article>

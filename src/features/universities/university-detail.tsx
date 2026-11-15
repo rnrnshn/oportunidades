@@ -65,9 +65,9 @@ export function UniversityDetailPage() {
 
           <UniversityHeading university={university} />
 
-          <div role="tablist" aria-label="Secções da universidade" className="mt-8 grid grid-cols-3 overflow-hidden rounded-xl border border-[#8b93a1] bg-[#fcfcfc] p-1">
+          <div role="tablist" aria-label="Secções da universidade" className="mt-8 flex gap-1 overflow-x-auto rounded-xl border border-[#8b93a1] bg-[#fcfcfc] p-1 sm:grid sm:grid-cols-3 sm:overflow-hidden">
             {tabs.map((tab, index) => (
-              <button key={tab.id} ref={(node) => { tabRefs.current[index] = node }} id={`tab-${tab.id}`} type="button" role="tab" aria-selected={activeTab === tab.id} aria-controls={`panel-${tab.id}`} tabIndex={activeTab === tab.id ? 0 : -1} onClick={() => setActiveTab(tab.id)} onKeyDown={(event) => handleTabKeyDown(event, index)} className={`min-h-12 rounded-lg px-3 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-3px] ${activeTab === tab.id ? 'bg-[#0049af] text-white focus-visible:outline-white' : 'hover:bg-[#eff6ff] focus-visible:outline-[#0049af]'}`}>
+              <button key={tab.id} ref={(node) => { tabRefs.current[index] = node }} id={`tab-${tab.id}`} type="button" role="tab" aria-selected={activeTab === tab.id} aria-controls={`panel-${tab.id}`} tabIndex={activeTab === tab.id ? 0 : -1} onClick={() => setActiveTab(tab.id)} onKeyDown={(event) => handleTabKeyDown(event, index)} className={`min-h-12 flex-1 shrink-0 whitespace-nowrap rounded-lg px-3 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-3px] ${activeTab === tab.id ? 'bg-[#0049af] text-white focus-visible:outline-white' : 'hover:bg-[#eff6ff] focus-visible:outline-[#0049af]'}`}>
                 {tab.label}
               </button>
             ))}

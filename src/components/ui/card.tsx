@@ -4,7 +4,14 @@ import { cn } from "@/lib/utils"
 
 // Hover for cards: lift 2px + soft shadow (transform/shadow only, 200ms ease-out). See docs/plans/motion.md.
 export const interactiveCardClass =
-  "group/card transition-[translate,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md active:translate-y-0"
+  "group/card relative transition-[translate,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md active:translate-y-0"
+
+// Put on the card's main link: its ::after covers the whole card, so the card is one large tap target.
+// The card must have no other positioned element between it and the link.
+export const cardLinkClass = "after:absolute after:inset-0 after:content-['']"
+
+// Put on other controls inside the card (save button, secondary links) so they stay clickable above cardLinkClass.
+export const aboveCardLinkClass = "relative z-10"
 
 // Cover photo inside an interactive card (the card must clip with overflow-hidden).
 export const cardImageZoomClass = "transition-transform duration-200 ease-out group-hover/card:scale-[1.03]"

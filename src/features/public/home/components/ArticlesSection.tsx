@@ -3,7 +3,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel'
-import { Card, CardContent, CardDescription, cardImageZoomClass, CardTitle, interactiveCardClass } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, cardImageZoomClass, cardLinkClass, CardTitle, interactiveCardClass } from '@/components/ui/card'
 import { ArrowRight } from 'lucide-react'
 import { articles } from '../data'
 import { Link } from '@tanstack/react-router'
@@ -42,7 +42,7 @@ export function ArticlesSection() {
                     <CardDescription className="line-clamp-3 text-sm leading-6 text-[#525252]">
                       {article.excerpt}
                     </CardDescription>
-                    <Link to="/artigos/$slug" params={{ slug: article.slug }} className="mt-auto inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand transition hover:underline focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+                    <Link to="/artigos/$slug" params={{ slug: article.slug }} className={`${cardLinkClass} mt-auto inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand transition hover:underline focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand`}>
                       Ler artigo
                       <ArrowRight className="h-4 w-4" />
                     </Link>

@@ -1,5 +1,5 @@
 import ImagePlaceholder from '@/components/ImagePlaceholder'
-import { Card, interactiveCardClass } from '@/components/ui/card'
+import { Card, cardLinkClass, interactiveCardClass } from '@/components/ui/card'
 import { Link } from '@tanstack/react-router'
 import { Bookmark, Building2, Globe2, MapPin } from 'lucide-react'
 import { useBookmark } from '@/features/public/shared/use-bookmark'
@@ -24,22 +24,22 @@ export function UniversityCard({ university }: { university: University; compact
         />
 
         <div className="flex min-w-0 flex-1 flex-col justify-between gap-3">
-          <div className="flex items-start justify-between gap-4">
-            <div className="space-y-1">
-              <h3 className="truncate text-base font-bold leading-tight text-[#262626]">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0 flex-1 space-y-1">
+              <h3 className="text-base font-bold leading-tight text-[#262626]">
                 <Link
                   to="/universities/$slug"
                   params={{ slug: university.id }}
-                  className="block truncate hover:text-brand hover:underline transition-colors duration-150 ease-out"
+                  className={`hover:text-brand hover:underline transition-colors duration-150 ease-out ${cardLinkClass}`}
                 >
                   {university.name}
                 </Link>
               </h3>
               <div className="min-w-0 text-sm text-subtle">
-                <div className="flex min-w-0 items-center gap-1.5">
-                  <MapPin className="size-4 shrink-0" aria-hidden="true" />
-                  <span className="truncate">
-                    {university.location}, {university.country}
+                <div className="flex min-w-0 items-start gap-1.5">
+                  <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+                  <span>
+                    {university.location?.toLowerCase().includes(university.country.toLowerCase()) ? university.location : [university.location, university.country].filter(Boolean).join(', ')}
                   </span>
                 </div>
               </div>
@@ -54,7 +54,7 @@ export function UniversityCard({ university }: { university: University; compact
                 </div>
               </div>
             </div>
-            <button type="button" aria-pressed={bookmarked} aria-label={`${bookmarked ? 'Remover dos guardados' : 'Guardar'} ${university.name}`} onClick={toggleBookmark} className="flex size-11 shrink-0 items-center justify-center rounded-lg text-[#c75100] hover:bg-[#fff2d3] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out">
+            <button type="button" aria-pressed={bookmarked} aria-label={`${bookmarked ? 'Remover dos guardados' : 'Guardar'} ${university.name}`} onClick={toggleBookmark} className="relative z-10 flex size-11 shrink-0 items-center justify-center rounded-lg text-[#c75100] hover:bg-[#fff2d3] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out">
               <Bookmark className={`h-5 w-5 ${bookmarked ? 'fill-current' : ''}`} aria-hidden="true" />
             </button>
           </div>
@@ -63,7 +63,7 @@ export function UniversityCard({ university }: { university: University; compact
             <Link
               to="/universities/$slug"
               params={{ slug: university.id }}
-              className="text-sm font-semibold text-brand hover:underline"
+              className="relative z-10 -my-3 inline-flex items-center py-3 text-sm font-semibold text-brand hover:underline"
             >
               Visitar página da universidade
             </Link>

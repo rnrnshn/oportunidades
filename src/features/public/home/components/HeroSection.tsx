@@ -18,7 +18,7 @@ export function HeroSection() {
   const firstOptionRef = useRef<HTMLButtonElement>(null)
 
   return (
-    <section className="relative overflow-hidden bg-[#fff2d3] pt-24 md:pt-28" aria-labelledby="home-title">
+    <section className="relative overflow-hidden bg-[#fff2d3] pt-24 lg:pt-28" aria-labelledby="home-title">
       <div
         className="pointer-events-none absolute bottom-0 left-0 h-[360px] w-[320px] bg-[url('/home-v2/asset-03.png')] bg-contain bg-left-bottom bg-no-repeat opacity-30"
         aria-hidden="true"
@@ -28,7 +28,7 @@ export function HeroSection() {
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto grid min-h-[462px] w-full max-w-6xl gap-10 px-5 pb-14 pt-8 sm:px-6 md:grid-cols-[1.05fr_0.95fr] md:items-center md:gap-20 md:pb-12 md:pt-10 xl:px-0">
+      <div className="relative mx-auto grid min-h-[462px] w-full max-w-6xl gap-10 px-5 pb-14 pt-8 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-20 lg:pb-12 lg:pt-10 xl:px-0">
         <div className="max-w-xl">
           <h1 id="home-title" className="text-4xl md:text-6xl font-bold leading-tight tracking-tight text-[#262626]">
             Encontra aqui a tua próxima oportunidade

@@ -1,5 +1,5 @@
 import { Badge } from '@/components/ui/badge'
-import { Card, interactiveCardClass } from '@/components/ui/card'
+import { Card, cardLinkClass, interactiveCardClass } from '@/components/ui/card'
 import type { Mentor } from '../api'
 import { Link } from '@tanstack/react-router'
 import { ArrowRight } from 'lucide-react'
@@ -31,7 +31,7 @@ export function MentorCard({ mentor }: { mentor: Mentor }) {
             <Badge variant="outline">{mentor.availability}</Badge>
           )}
         </div>
-        <Link to="/mentoria/$slug" params={{ slug: mentor.id }} className="inline-flex min-h-11 items-center gap-2 self-start font-semibold text-brand underline-offset-4 hover:underline focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">Ver perfil <ArrowRight className="size-4" aria-hidden="true" /></Link>
+        <Link to="/mentoria/$slug" params={{ slug: mentor.id }} className={`${cardLinkClass} inline-flex min-h-11 items-center gap-2 self-start font-semibold text-brand underline-offset-4 hover:underline focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand`}>Ver perfil <ArrowRight className="size-4" aria-hidden="true" /></Link>
       </div>
     </Card>
   )

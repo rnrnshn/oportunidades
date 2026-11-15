@@ -37,7 +37,7 @@ export function HeroSection() {
             Bolsas de estudo, universidades, estágios e empregos, tudo num só espaço pensado para estudantes e jovens profissionais.
           </p>
 
-                    <form action={selectedType.action} method="get" role="search" className="mt-2 flex min-h-[var(--field-height)] max-w-xl flex-wrap rounded-[var(--field-radius)] border border-[var(--field-line)] bg-white focus-within:border-[var(--field-focus)] focus-within:shadow-[0_0_0_4px_var(--field-halo)] sm:flex-nowrap">
+                    <form action={selectedType.action} method="get" role="search" className="mt-2 flex min-h-[var(--field-height)] max-w-xl flex-wrap rounded-[var(--field-radius)] border border-[var(--field-line)] bg-white focus-within:border-[var(--field-focus)] sm:flex-nowrap">
             <Popover open={typeOpen} onOpenChange={setTypeOpen}>
               <PopoverTrigger asChild>
                 <button

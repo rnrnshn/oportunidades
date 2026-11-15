@@ -69,21 +69,20 @@ code {
   --bg-placeholder: #f1f4ff;
   --accent-blue-dark: #00398b;
   --border-muted: #d4d4d4;
-  /* Fields — same spec as oportunidades-dashboard's form fields: filled, borderless until hover,
-     16px text, 4px focus halo. Only difference: 44px height (matches site buttons). */
-  --field-border: transparent;
+  /* Fields — same effect as the dashboard's search field (Utilizadores): white, 1px #e5e5e5 border,
+     focus changes only the border colour. Site blue for focus; 44px height to match site buttons. */
+  --field-border: #e5e5e5;
   --field-border-hover: #e5e5e5;
   --field-line: #e5e5e5; /* menus and grouped controls (dashboard --line) */
   --field-text: #262626;
-  --field-background: #f2f3f6;
-  --field-disabled: #e8eaef;
+  --field-background: #ffffff;
+  --field-disabled: #f2f3f6;
   --field-focus: #0049af;
-  --field-halo: rgb(0 73 175 / 0.1);
-  --field-invalid: #ff5e5e;
   --field-placeholder: #656565;
   --field-height: 2.75rem;
   --field-padding-x: 1rem;
   --field-radius: 0.5rem;
+  --field-invalid: #ff5e5e;
   --search-canvas: #f3f5f7;
   --surface-border: #dedede;
   --border-blue: #d4d4d4;

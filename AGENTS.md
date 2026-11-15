@@ -146,7 +146,7 @@ The type scale lives in `src/styles.css` (`@theme`) and is shared with `oportuni
     *   Card or sub-section `h3`: `text-lg` (or `text-xl` for large cards).
     *   Footer group titles: `text-sm`.
 *   Only the decorative, `aria-hidden` step numbers use sizes outside the scale (`text-[7rem]`, `text-[9rem]`).
-*   Fields follow the dashboard's form fields: use `Input`, `Textarea`, `CustomSelect` or `fieldClass` (`src/components/ui/input.tsx`) and `Field`/`Label` (`src/components/ui/field.tsx`). Tokens are `--field-*` in `src/styles.css`. Do not override field size, colour or radius per page. Only exception: 44px height (site buttons). Use `--field-line` for menus and grouped controls.
+*   Fields follow the dashboard's search field (Utilizadores): white, `#e5e5e5` border, focus changes only the border to site blue. Use `Input`, `Textarea`, `CustomSelect` or `fieldClass` (`src/components/ui/input.tsx`) and `Field`/`Label` (`src/components/ui/field.tsx`). Tokens are `--field-*` in `src/styles.css`. Do not override field size, colour or radius per page. Only exception: 44px height (site buttons). Use `--field-line` for menus and grouped controls.
 *   Do not add explanatory lines under titles, inputs or buttons, and do not use "Ex.:" placeholders. Keep functional text: errors, limits, consent, privacy and safety notices, statuses and empty states.
 
 ## 13. Testing

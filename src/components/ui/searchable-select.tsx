@@ -29,8 +29,8 @@ export function SearchableSelect({ label, value, query, options, placeholder, on
   }
 
   return (
-    <div className="space-y-2">
-      <label htmlFor={inputId} className="text-sm font-semibold text-[#262626]">{label}</label>
+    <div>
+      <label htmlFor={inputId} className="block text-xs font-medium leading-[1.7] text-navy">{label}</label>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Input
@@ -48,7 +48,6 @@ export function SearchableSelect({ label, value, query, options, placeholder, on
               onKeyDown={(event) => {
                 if (event.key === 'ArrowDown') { event.preventDefault(); setOpen(true); window.requestAnimationFrame(() => focusOption(0)) }
               }}
-              className="text-sm text-[#262626]"
             />
         </PopoverTrigger>
         <PopoverContent onOpenAutoFocus={(event) => event.preventDefault()} onCloseAutoFocus={(event) => event.preventDefault()} align="start" sideOffset={4} className="w-[var(--radix-popover-trigger-width)] rounded-[var(--field-radius)] border border-[var(--field-border)] bg-white p-1 shadow-lg">

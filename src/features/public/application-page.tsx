@@ -4,6 +4,7 @@ import { CheckCircle2, FileText } from 'lucide-react'
 
 import { TaskPage } from '@/components/layout/TaskPage'
 import { Button } from '@/components/ui/button'
+import { Field } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { parseDate } from '@/lib/utils'
@@ -38,7 +39,7 @@ export function ApplicationPage() {
           <Field label="Email" htmlFor="application-email"><Input id="application-email" type="email" autoComplete="email" required /></Field>
           <Field label="Telefone" htmlFor="application-phone"><Input id="application-phone" type="tel" autoComplete="tel" required /></Field>
         </div>
-        <Field label="Currículo" htmlFor="application-cv"><Input id="application-cv" type="file" accept=".pdf,.doc,.docx" required /><p className="text-sm text-[#525252]">PDF ou Word, até 5 MB.</p></Field>
+        <Field label="Currículo" htmlFor="application-cv" hint="PDF ou Word, até 5 MB."><Input id="application-cv" type="file" accept=".pdf,.doc,.docx" required aria-describedby="application-cv-hint" /></Field>
         <Field label="Mensagem para a entidade" htmlFor="application-message"><Textarea id="application-message" rows={5} /></Field>
         <label className="flex items-start gap-3 text-sm leading-6 text-[#525252]"><input type="checkbox" required className="mt-1 size-5 shrink-0 rounded border border-[#767676] accent-[var(--field-focus)] focus-visible:ring-2 focus-visible:ring-[var(--field-focus)] focus-visible:ring-offset-2" /><span>Confirmo que os dados enviados são correctos e autorizo o seu uso nesta candidatura.</span></label>
         <Button type="submit" className="w-full sm:w-auto">Enviar candidatura</Button>
@@ -47,9 +48,6 @@ export function ApplicationPage() {
   )
 }
 
-function Field({ label, htmlFor, children }: { label: string; htmlFor: string; children: React.ReactNode }) {
-  return <div className="space-y-2"><label htmlFor={htmlFor} className="block font-semibold text-navy">{label}</label>{children}</div>
-}
 
 function ApplicationSummary({ title, entity, deadline }: { title: string; entity: string; deadline?: string }) {
   return <div className="rounded-2xl border border-[var(--surface-border)] bg-[#f7f9fc] p-5"><FileText className="size-6 text-brand" aria-hidden="true" /><h2 className="mt-3 font-bold text-navy">{title}</h2><p className="mt-1 text-sm text-[#525252]">{entity}</p>{deadline ? <p className="mt-4 border-t border-[var(--surface-border)] pt-4 text-sm"><span className="block text-[#525252]">Prazo</span><strong className="text-navy">{parseDate(deadline).toLocaleDateString('pt-MZ', { day: 'numeric', month: 'long', year: 'numeric' })}</strong></p> : null}</div>

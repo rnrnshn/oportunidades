@@ -1,6 +1,7 @@
 import { ArrowUpDown, Check, ChevronDown } from 'lucide-react'
 import { useRef, useState } from 'react'
 
+import { fieldClass } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 
@@ -50,10 +51,10 @@ export function CustomSelect<T extends string>({
           aria-expanded={open}
           aria-label={`${ariaLabel}: ${selected?.label ?? ''}`}
           className={cn(
-            'flex h-[var(--field-height)] items-center justify-between gap-3 text-left text-sm font-medium outline-none transition-[border-color,box-shadow,background-color] focus-visible:ring-2 focus-visible:ring-[var(--field-focus)] focus-visible:ring-offset-1',
+            'flex h-[var(--field-height)] items-center justify-between gap-3 text-left outline-none',
             variant === 'sort'
-              ? 'rounded-md border border-transparent bg-transparent px-2 text-[#0049af] hover:bg-[#edf5ff]'
-              : 'rounded-[var(--field-radius)] border border-[var(--field-border)] bg-[var(--field-background)] px-[var(--field-padding-x)] text-[var(--field-text)] hover:border-[var(--field-border-hover)] focus-visible:border-[var(--field-focus)] focus-visible:bg-white',
+              ? 'rounded-md border border-transparent bg-transparent px-2 text-sm font-medium text-[#0049af] transition-colors hover:bg-[#edf5ff] focus-visible:ring-2 focus-visible:ring-[var(--field-focus)] focus-visible:ring-offset-1'
+              : fieldClass,
             className
           )}
           onKeyDown={(event) => {

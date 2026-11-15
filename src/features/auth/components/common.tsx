@@ -1,4 +1,3 @@
-import React from 'react'
 
 export function AuthLogo() {
   return (
@@ -13,22 +12,4 @@ export function AuthLogo() {
   )
 }
 
-export function Field({
-  label,
-  htmlFor,
-  error,
-  children,
-}: {
-  label: string
-  htmlFor: string
-  error?: string
-  children: React.ReactNode
-}) {
-  return (
-    <div className="space-y-2">
-      <label htmlFor={htmlFor} className="block text-sm font-semibold text-navy">{label}</label>
-      {children}
-      {error ? <p id={`${htmlFor}-error`} className="text-sm text-danger">{error}</p> : null}
-    </div>
-  )
-}
+export { Field } from '@/components/ui/field'

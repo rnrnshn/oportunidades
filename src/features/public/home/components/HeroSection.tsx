@@ -37,7 +37,7 @@ export function HeroSection() {
             Bolsas de estudo, universidades, estágios e empregos, tudo num só espaço pensado para estudantes e jovens profissionais.
           </p>
 
-                    <form action={selectedType.action} method="get" role="search" className="mt-2 flex min-h-[var(--field-height)] max-w-xl flex-wrap rounded-[var(--field-radius)] border border-[var(--field-border)] bg-white focus-within:border-[var(--field-focus)] focus-within:ring-2 focus-within:ring-[var(--field-focus)] focus-within:ring-offset-1 sm:flex-nowrap">
+                    <form action={selectedType.action} method="get" role="search" className="mt-2 flex min-h-[var(--field-height)] max-w-xl flex-wrap rounded-[var(--field-radius)] border border-[var(--field-border)] bg-white focus-within:border-[var(--field-focus)] focus-within:shadow-[0_0_0_4px_var(--field-halo)] sm:flex-nowrap">
             <Popover open={typeOpen} onOpenChange={setTypeOpen}>
               <PopoverTrigger asChild>
                 <button
@@ -80,7 +80,7 @@ export function HeroSection() {
               </PopoverContent>
             </Popover>
             <label htmlFor="home-search" className="sr-only">Pesquisar oportunidades</label>
-            <Input id="home-search" name="q" type="search" placeholder="Pesquisar" className="min-w-0 flex-1 basis-full rounded-none border-0 bg-white text-sm shadow-none focus-visible:ring-0 sm:basis-auto" />
+            <Input id="home-search" name="q" type="search" placeholder="Pesquisar" className="min-w-0 flex-1 basis-full rounded-none border-0 bg-white shadow-none hover:border-0 focus:shadow-none sm:basis-auto" />
             <Button type="submit" className="h-[var(--field-height)] w-full shrink-0 rounded-b-[var(--field-radius)] rounded-t-none bg-[#0049af] px-4 text-white hover:bg-[#00398b] focus-visible:ring-0 sm:w-auto sm:rounded-l-none sm:rounded-r-[var(--field-radius)]">
               <Search className="size-5" aria-hidden="true" />
               <span>Pesquisar</span>

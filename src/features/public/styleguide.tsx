@@ -98,11 +98,11 @@ export function PublicStyleGuidePage() {
         <SectionHeading title="Form inputs" description="Campos base com tokens aplicados." />
         <div className="grid gap-4 md:grid-cols-2">
           <div className="space-y-2">
-            <label className="text-sm font-semibold text-navy">Nome completo</label>
+            <label className="block text-xs font-medium leading-[1.7] text-navy">Nome completo</label>
             <Input placeholder="Edson Matola" />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-semibold text-navy">Email</label>
+            <label className="block text-xs font-medium leading-[1.7] text-navy">Email</label>
             <Input type="email" placeholder="tuemail@oportunidades.co.mz" />
           </div>
         </div>

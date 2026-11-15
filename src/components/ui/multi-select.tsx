@@ -3,6 +3,7 @@ import { ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Checkbox } from '@/components/ui/checkbox'
+import { fieldClass } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
 
 interface MultiSelectProps {
@@ -36,7 +37,7 @@ export function MultiSelect({
 
   return (
     <div className="space-y-2">
-      {label && <label className="text-sm font-semibold text-navy">{label}</label>}
+      {label && <label className="block text-xs font-medium leading-[1.7] text-navy">{label}</label>}
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -44,9 +45,9 @@ export function MultiSelect({
             role="combobox"
             aria-expanded={open}
             aria-label={ariaLabel ?? label ?? placeholder}
-            className="h-[var(--field-height)] w-full justify-between rounded-[var(--field-radius)] border-[var(--field-border)] bg-[var(--field-background)] px-[var(--field-padding-x)] font-normal shadow-none hover:border-[var(--field-border-hover)] hover:bg-white focus-visible:border-[var(--field-focus)] focus-visible:bg-white focus-visible:ring-2 focus-visible:ring-[var(--field-focus)] focus-visible:ring-offset-1"
+            className={cn(fieldClass, 'h-[var(--field-height)] justify-between font-normal hover:bg-[var(--field-background)]')}
           >
-            <span className={cn('truncate', activeCount === 0 && 'text-muted')}>
+            <span className={cn('truncate', activeCount === 0 && 'text-[var(--field-placeholder)]')}>
               {activeCount > 0
                 ? `${activeCount} selecionado${activeCount > 1 ? 's' : ''}`
                 : placeholder}

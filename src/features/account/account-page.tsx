@@ -38,8 +38,8 @@ export function AccountPageView() {
             <section aria-labelledby="profile-title" className="rounded-xl border border-[var(--surface-border)] bg-white p-5 sm:p-6">
               <h2 id="profile-title" className="text-lg font-bold text-navy">Dados pessoais</h2>
               <form className="mt-5 space-y-5" onSubmit={saveProfile}>
-                <div><label htmlFor="account-name" className="mb-2 block text-sm font-semibold text-navy">Nome completo</label><Input id="account-name" value={name} onChange={(event) => { setName(event.target.value); setSaved(false) }} placeholder="O teu nome" /></div>
-                <div><span className="mb-2 block text-sm font-semibold text-navy">Email da conta</span><p className="flex h-[var(--field-height)] items-center gap-2 rounded-[var(--field-radius)] border border-[var(--field-border)] bg-[var(--field-disabled)] px-[var(--field-padding-x)] text-sm text-[#525252]"><Mail className="size-4" aria-hidden="true" />{user?.email || 'Email por confirmar'}</p></div>
+                <div><label htmlFor="account-name" className="mb-2 block text-xs font-medium leading-[1.7] text-navy">Nome completo</label><Input id="account-name" value={name} onChange={(event) => { setName(event.target.value); setSaved(false) }} placeholder="O teu nome" /></div>
+                <div><span className="mb-2 block text-xs font-medium leading-[1.7] text-navy">Email da conta</span><p className="flex h-[var(--field-height)] items-center gap-2 rounded-[var(--field-radius)] border border-[var(--field-border)] bg-[var(--field-disabled)] px-[var(--field-padding-x)] text-base text-[#525252]"><Mail className="size-4" aria-hidden="true" />{user?.email || 'Email por confirmar'}</p></div>
                 <div className="flex flex-wrap items-center gap-3"><Button type="submit" className="bg-brand text-white hover:bg-brand-dark">Guardar dados</Button>{saved ? <p role="status" className="text-sm font-medium text-[#176b3a]">Dados guardados.</p> : null}</div>
               </form>
             </section>

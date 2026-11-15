@@ -32,13 +32,12 @@ export function UniversitiesFilter({
   return (
     <FilterPanel activeCount={activeFiltersCount} onClear={resetFilters}>
           <div>
-            <label className="block space-y-1.5 pb-4 text-sm font-semibold text-navy">
+            <label className="block space-y-2 pb-4 text-xs font-medium leading-[1.7] text-navy">
               <span>Pesquisa</span>
               <Input
                 placeholder="Universidade em Maputo"
                 value={filters.search}
                 onChange={(event) => updateFilters({ search: event.target.value })}
-                className="text-sm"
               />
             </label>
 
@@ -93,7 +92,7 @@ export function UniversitiesFilter({
 
             <FilterDisclosure title="Propinas" inset={false}><div className="space-y-3">
               <div className="flex items-center justify-between">
-                <label className="text-sm font-semibold text-navy">Propinas</label>
+                <label className="block text-xs font-medium leading-[1.7] text-navy">Propinas</label>
                 <span className="text-xs text-muted">
                   {formatCurrency(filters.tuitionRange[0])} - {formatCurrency(filters.tuitionRange[1])}
                 </span>

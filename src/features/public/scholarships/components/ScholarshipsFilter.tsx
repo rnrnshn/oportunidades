@@ -33,13 +33,12 @@ export function ScholarshipsFilter({
   return (
     <FilterPanel activeCount={activeFiltersCount} onClear={resetFilters}>
           <div>
-            <label className="block space-y-1.5 pb-4 text-sm font-semibold text-navy">
+            <label className="block space-y-2 pb-4 text-xs font-medium leading-[1.7] text-navy">
               <span>Pesquisa</span>
               <Input
                 placeholder="Bolsa em Maputo ou programa online"
                 value={filters.search}
                 onChange={(event) => updateFilters({ search: event.target.value })}
-                className="text-sm"
               />
             </label>
 
@@ -84,7 +83,7 @@ export function ScholarshipsFilter({
             />
 
             <div className="space-y-2">
-              <label className="text-sm font-semibold text-navy">Cobertura</label>
+              <label className="block text-xs font-medium leading-[1.7] text-navy">Cobertura</label>
               <MultiSelect
                 ariaLabel="Cobertura"
                 options={coverageOptions}
@@ -96,7 +95,7 @@ export function ScholarshipsFilter({
 
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <label className="text-sm font-semibold text-navy">
+                <label className="block text-xs font-medium leading-[1.7] text-navy">
                   Valor mensal
                 </label>
                 <span className="text-xs text-muted">

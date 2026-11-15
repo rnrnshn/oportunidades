@@ -69,15 +69,18 @@ code {
   --bg-placeholder: #f1f4ff;
   --accent-blue-dark: #00398b;
   --border-muted: #d4d4d4;
-  --field-border: #888888;
-  --field-border-hover: #6f6f6f;
-  --field-text: #525252;
-  --field-background: #ffffff;
-  --field-disabled: #f3f5f7;
+  /* Fields — same spec as oportunidades-dashboard's form fields (filled, 16px text, 4px focus halo).
+     Differences on purpose: 44px height (matches site buttons) and a visible 3:1 border (WCAG 1.4.11). */
+  --field-border: #7d8394;
+  --field-border-hover: #5f6577;
+  --field-text: #262626;
+  --field-background: #f2f3f6;
+  --field-disabled: #e8eaef;
   --field-focus: #0049af;
+  --field-halo: rgb(0 73 175 / 0.12);
   --field-placeholder: #656565;
   --field-height: 2.75rem;
-  --field-padding-x: 0.75rem;
+  --field-padding-x: 1rem;
   --field-radius: 0.5rem;
   --search-canvas: #f3f5f7;
   --surface-border: #dedede;

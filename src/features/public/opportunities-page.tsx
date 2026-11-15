@@ -64,14 +64,13 @@ export function OpportunitiesPage() {
       onSortChange={setSortBy}
       filterSlot={
         <FilterPanel activeCount={activeFiltersCount} onClear={() => { setSearch(''); setTypeFilter('') }}>
-          <label className="block space-y-2 pb-5 text-sm font-semibold text-navy">
+          <label className="block space-y-2 pb-5 text-xs font-medium leading-[1.7] text-navy">
             Pesquisar oportunidades
             <Input
               type="search"
               placeholder="Título ou organização"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="text-sm font-normal"
             />
           </label>
           <FilterDisclosure title="Tipo de oportunidade" defaultOpen inset={false}><div className="space-y-2">

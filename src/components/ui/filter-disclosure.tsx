@@ -6,6 +6,6 @@ export function FilterDisclosure({ title, children, defaultOpen = false, inset =
     <summary className={`flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 font-semibold text-[#262626] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand [&::-webkit-details-marker]:hidden ${inset ? 'px-4' : ''}`}>
       {title}<ChevronDown className="size-4 shrink-0 transition-transform group-open:rotate-180" aria-hidden="true" />
     </summary>
-    <div className={`${inset ? 'px-4' : ''} pb-4`}>{children}</div>
+    <div className={`${inset ? 'px-4' : ''} space-y-4 pb-4`}>{children}</div>
   </details>
 }

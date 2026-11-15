@@ -5,6 +5,7 @@ import { CheckCircle2 } from 'lucide-react'
 import { TaskPage } from '@/components/layout/TaskPage'
 import { Button } from '@/components/ui/button'
 import { CustomSelect } from '@/components/ui/custom-select'
+import { Field } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { getMockMentorProfile } from '@/features/public/mentorship/mock-data'
@@ -40,6 +41,3 @@ export function MentorRequestPage() {
   )
 }
 
-function Field({ label, htmlFor, children }: { label: string; htmlFor: string; children: React.ReactNode }) {
-  return <div className="space-y-2"><label htmlFor={htmlFor} className="block font-semibold text-navy">{label}</label>{children}</div>
-}

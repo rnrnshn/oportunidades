@@ -4,6 +4,7 @@ import { CheckCircle2 } from 'lucide-react'
 import { TaskPage } from '@/components/layout/TaskPage'
 import { Button } from '@/components/ui/button'
 import { CustomSelect } from '@/components/ui/custom-select'
+import { Field } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 
 export function AlertPage() {
@@ -36,7 +37,7 @@ export function AlertForm({ onCreated, className = '' }: { onCreated: () => void
       <form className={`space-y-5 ${className}`} onSubmit={(event) => { event.preventDefault(); if (!opportunityType) { setAttempted(true); return } onCreated() }}>
         <Field label="Tipo de oportunidade" htmlFor="alert-type">
           <CustomSelect id="alert-type" autoFocus value={opportunityType} onChange={setOpportunityType} ariaLabel="Tipo de oportunidade" className="w-full" options={[{ value: '', label: 'Seleccionar' }, { value: 'cursos', label: 'Cursos e programas' }, { value: 'bolsas', label: 'Bolsas de estudo' }, { value: 'empregos', label: 'Empregos' }, { value: 'estagios', label: 'Estágios' }]} />
-          {attempted && !opportunityType ? <p role="alert" className="text-sm text-danger">Escolhe uma opção antes de criar o alerta.</p> : null}
+          {attempted && !opportunityType ? <p role="alert" className="mt-1 text-xs text-danger">Escolhe uma opção antes de criar o alerta.</p> : null}
         </Field>
         <Field label="Área de interesse" htmlFor="alert-area"><Input id="alert-area" required /></Field>
         <Field label="Localização" htmlFor="alert-location"><Input id="alert-location" required /></Field>
@@ -46,6 +47,3 @@ export function AlertForm({ onCreated, className = '' }: { onCreated: () => void
   )
 }
 
-function Field({ label, htmlFor, children }: { label: string; htmlFor: string; children: React.ReactNode }) {
-  return <div className="space-y-2"><label htmlFor={htmlFor} className="block font-semibold text-navy">{label}</label>{children}</div>
-}

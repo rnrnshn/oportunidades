@@ -26,7 +26,7 @@ export function SelectField({
 }) {
   return (
     <div className="space-y-2">
-      <label className="text-sm font-semibold text-navy">{label}</label>
+      <label className="block text-xs font-medium leading-[1.7] text-navy">{label}</label>
       <CustomSelect
         value={value}
         onChange={onChange}

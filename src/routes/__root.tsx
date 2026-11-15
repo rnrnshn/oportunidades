@@ -3,6 +3,8 @@ import {
   Scripts,
   createRootRouteWithContext,
   Link,
+  useRouter,
+  type ErrorComponentProps,
 } from '@tanstack/react-router'
 import Header from '../components/Header'
 import { Button } from '@/components/ui/button'
@@ -97,6 +99,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 
   shellComponent: RootDocument,
   notFoundComponent: NotFoundPage,
+  errorComponent: ErrorPage,
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
@@ -120,6 +123,32 @@ function BodyLayout({ children }: { children: React.ReactNode }) {
       <Header />
       <div id="main-content" tabIndex={-1}>{children}</div>
     </>
+  )
+}
+
+// Shown when a page fails to load (API down, network error). Same layout as the not-found page.
+function ErrorPage({ reset }: ErrorComponentProps) {
+  const router = useRouter()
+  return (
+    <main className="bg-canvas-soft text-navy">
+      <div role="alert" className="mx-auto flex min-h-[70vh] max-w-4xl flex-col items-center justify-center gap-4 px-4 text-center">
+        <span className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-strong">Erro ao carregar</span>
+        <h1 className="text-2xl md:text-4xl font-bold tracking-tight">Não foi possível carregar esta página</h1>
+        <p className="max-w-2xl text-base text-soft">Verifica a ligação à internet e tenta novamente.</p>
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+          <Button
+            className="rounded-md bg-brand px-6 py-2 font-semibold text-white hover:bg-brand-dark"
+            onClick={() => {
+              reset()
+              void router.invalidate()
+            }}
+          >
+            Tentar novamente
+          </Button>
+          <Button asChild variant="outline" className="rounded-md border-sand-strong text-navy"><Link to="/">Ir para o início</Link></Button>
+        </div>
+      </div>
+    </main>
   )
 }
 

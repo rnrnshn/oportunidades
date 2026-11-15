@@ -38,9 +38,6 @@ export function UniversitiesPage() {
       sortOptions={[
         { value: 'relevance', label: 'Mais relevantes' },
         { value: 'deadline', label: 'Admissão mais próxima' },
-        { value: 'tuition', label: 'Menor propina' },
-        { value: 'rating', label: 'Melhor avaliação' },
-        { value: 'newest', label: 'Mais recentes' },
       ]}
       onSortChange={(value) => setSortBy(value as typeof sortBy)}
       filterSlot={

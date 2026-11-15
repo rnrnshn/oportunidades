@@ -3,18 +3,13 @@ export type University = {
   name: string
   location: string
   country: string
-  type: 'Pública' | 'Privada' | 'Instituto' | 'Academia'
-  modality: 'Campus' | 'Online' | 'Híbrida'
+  type: string
   fields: string[]
-  tuitionRange: string
-  maxTuition: number
-  deadline: string
-  rating: number
+  deadline?: string
   website?: string
   email?: string
   phone?: string
   tags?: string[]
-  i_applied?: boolean
   courses?: Course[]
   fees?: Fee[]
 }
@@ -44,13 +39,10 @@ export type Filters = {
   location: string
   field: string
   type: string
-  modality: string
-  rating: number[]
   deadlineWindow: string
-  tuitionRange: [number, number]
 }
 
-export type SortOption = 'relevance' | 'deadline' | 'tuition' | 'rating' | 'newest'
+export type SortOption = 'relevance' | 'deadline'
 
 export const MIN_TUITION = 2000
 export const MAX_TUITION = 10000

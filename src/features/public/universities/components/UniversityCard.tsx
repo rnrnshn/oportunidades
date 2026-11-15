@@ -1,19 +1,14 @@
 import ImagePlaceholder from '@/components/ImagePlaceholder'
 import { Card, cardLinkClass, interactiveCardClass } from '@/components/ui/card'
 import { Link } from '@tanstack/react-router'
-import { Bookmark, Building2, Globe2, MapPin } from 'lucide-react'
-import { useBookmark } from '@/features/public/shared/use-bookmark'
+import { Building2, MapPin } from 'lucide-react'
+import { parseDate } from '@/lib/utils'
 import type { University } from '../types'
 
 export function UniversityCard({ university }: { university: University; compact?: boolean }) {
-  const { bookmarked, toggleBookmark } = useBookmark(`university:${university.id}`)
-  const formattedDate = new Date(university.deadline)
-    .toLocaleDateString('pt-PT', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-    })
-    .toUpperCase()
+  const formattedDate = university.deadline
+    ? parseDate(university.deadline).toLocaleDateString('pt-PT', { day: 'numeric', month: 'long', year: 'numeric' }).toUpperCase()
+    : null
 
   return (
     <Card className={`overflow-hidden rounded-xl border-[#dcdcdc]/80 bg-white p-4 shadow-none ${interactiveCardClass}`}>
@@ -48,15 +43,8 @@ export function UniversityCard({ university }: { university: University; compact
                   <Building2 className="size-4 shrink-0" aria-hidden="true" />
                   <span>{university.type}</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <Globe2 className="size-4 shrink-0" aria-hidden="true" />
-                  <span>{university.modality}</span>
-                </div>
               </div>
             </div>
-            <button type="button" aria-pressed={bookmarked} aria-label={`${bookmarked ? 'Remover dos guardados' : 'Guardar'} ${university.name}`} onClick={toggleBookmark} className="relative z-10 flex size-11 shrink-0 items-center justify-center rounded-lg text-[#c75100] hover:bg-[#fff2d3] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out">
-              <Bookmark className={`h-5 w-5 ${bookmarked ? 'fill-current' : ''}`} aria-hidden="true" />
-            </button>
           </div>
 
           <div className="flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-center">
@@ -67,9 +55,11 @@ export function UniversityCard({ university }: { university: University; compact
             >
               Visitar página da universidade
             </Link>
-            <span className="inline-flex min-h-8 items-center rounded-lg bg-brand px-4 text-xs font-bold uppercase tracking-tight text-white">
-              Admissões até {formattedDate}
-            </span>
+            {formattedDate ? (
+              <span className="inline-flex min-h-8 items-center rounded-lg bg-brand px-4 text-xs font-bold uppercase tracking-tight text-white">
+                Admissões até {formattedDate}
+              </span>
+            ) : null}
           </div>
         </div>
       </div>

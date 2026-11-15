@@ -1,7 +1,6 @@
 import { z } from 'zod'
 
 import type { Opportunity } from './types'
-import { jobsMock } from './mock-data'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8080'
 
@@ -28,19 +27,10 @@ const OpportunitiesResponseSchema = z.object({
   data: z.array(OpportunitySchema),
 })
 
-export async function getOpportunities(): Promise<Opportunity[]> {
-  const response = await fetch(
-    `${API_URL}/v1/opportunities?active=true&verified=true&per_page=50`
-  )
+type ApiOpportunity = z.infer<typeof OpportunitySchema>
 
-  if (!response.ok) {
-    throw new Error('Não foi possível carregar oportunidades.')
-  }
-
-  const body = await response.json()
-  const parsed = OpportunitiesResponseSchema.parse(body)
-
-  return parsed.data.map((item) => ({
+function toOpportunity(item: ApiOpportunity): Opportunity {
+  return {
     id: item.id,
     slug: item.slug,
     title: item.title,
@@ -56,40 +46,19 @@ export async function getOpportunities(): Promise<Opportunity[]> {
     contractType: item.employment_type,
     experienceLevel: item.experience_level,
     publishedAt: item.published_at,
-  }))
+  }
 }
 
-export async function getOpportunitiesByType(type: string): Promise<Opportunity[]> {
-  try {
-    const response = await fetch(
-      `${API_URL}/v1/opportunities?type=${type}&active=true&verified=true&per_page=50`
-    )
+async function fetchOpportunities(query: string): Promise<Opportunity[]> {
+  const response = await fetch(`${API_URL}/v1/opportunities?${query}active=true&verified=true&per_page=50`)
+  if (!response.ok) throw new Error('Não foi possível carregar oportunidades.')
+  return OpportunitiesResponseSchema.parse(await response.json()).data.map(toOpportunity)
+}
 
-    if (!response.ok) {
-      return type === 'emprego' ? jobsMock : []
-    }
+export function getOpportunities(): Promise<Opportunity[]> {
+  return fetchOpportunities('')
+}
 
-    const body = await response.json()
-    const parsed = OpportunitiesResponseSchema.parse(body)
-
-    return parsed.data.map((item) => ({
-      id: item.id,
-      slug: item.slug,
-      title: item.title,
-      type: item.type,
-      entityName: item.entity_name,
-      deadline: item.deadline,
-      country: item.country,
-      location: item.location,
-      isRemote: item.is_remote,
-      area: item.area || item.program_area,
-      degreeLevel: item.degree_level,
-      workMode: item.work_mode || (item.is_remote ? 'Remoto' : 'Presencial'),
-      contractType: item.employment_type,
-      experienceLevel: item.experience_level,
-      publishedAt: item.published_at,
-    }))
-  } catch {
-    return type === 'emprego' ? jobsMock : []
-  }
+export function getOpportunitiesByType(type: string): Promise<Opportunity[]> {
+  return fetchOpportunities(`type=${encodeURIComponent(type)}&`)
 }

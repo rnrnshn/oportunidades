@@ -3,7 +3,6 @@ import { ChevronDown } from 'lucide-react'
 import { useMemo, useState } from 'react'
 
 import { ListingLayout } from '@/components/layout/ListingLayout'
-import { CustomSelect } from '@/components/ui/custom-select'
 import { Checkbox } from '@/components/ui/checkbox'
 import { FilterPanel } from '@/components/ui/filter-panel'
 import { ListingError, ListingLoading } from '@/components/ui/listing-state'
@@ -21,12 +20,11 @@ export function CoursesPage() {
   const [subject, setSubject] = useState('')
   const [level, setLevel] = useState('')
   const [regime, setRegime] = useState('')
-  const [language, setLanguage] = useState('')
   const [sortBy, setSortBy] = useState('relevance')
 
   const universityOptions = useMemo(() => [allOption, ...Array.from(new Set(courses.map((course) => course.universityName))).map((value) => ({ value, label: value }))], [courses])
   const subjectOptions = useMemo(() => [allOption, ...Array.from(new Set(courses.map((course) => course.area))).map((value) => ({ value, label: value }))], [courses])
-  const activeCount = [university || search, subject, level, regime, language].filter(Boolean).length
+  const activeCount = [university || search, subject, level, regime].filter(Boolean).length
   const filtered = courses.filter((course) => {
     if (university && course.universityName !== university) return false
     if (subject && course.area !== subject) return false
@@ -42,7 +40,6 @@ export function CoursesPage() {
     setSubject('')
     setLevel('')
     setRegime('')
-    setLanguage('')
   }
 
   return (
@@ -65,7 +62,6 @@ export function CoursesPage() {
           subject={subject}
           level={level}
           regime={regime}
-          language={language}
           universityOptions={universityOptions}
           subjectOptions={subjectOptions}
           activeCount={activeCount}
@@ -74,7 +70,6 @@ export function CoursesPage() {
           onSubject={setSubject}
           onLevel={setLevel}
           onRegime={setRegime}
-          onLanguage={setLanguage}
           onReset={resetFilters}
         />
       }
@@ -89,7 +84,6 @@ interface FilterProps {
   subject: string
   level: string
   regime: string
-  language: string
   activeCount: number
   universityOptions: Array<{ value: string; label: string }>
   subjectOptions: Array<{ value: string; label: string }>
@@ -98,7 +92,6 @@ interface FilterProps {
   onSubject: (value: string) => void
   onLevel: (value: string) => void
   onRegime: (value: string) => void
-  onLanguage: (value: string) => void
   onReset: () => void
 }
 
@@ -115,10 +108,6 @@ function CourseFilters(props: FilterProps) {
       </details>
       <FilterChecks title="Níveis" name="level" options={[['licenciatura', 'Licenciatura'], ['mestrado', 'Mestrado']]} value={props.level} onChange={props.onLevel} />
       <FilterChecks title="Modalidade" name="regime" options={[['presencial', 'Presencial'], ['online', 'A distância'], ['híbrida', 'Híbrida']]} value={props.regime} onChange={props.onRegime} />
-      <details className="group border-b border-[var(--surface-border)]">
-      <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between font-semibold [&::-webkit-details-marker]:hidden">Idioma<ChevronDown className="size-4 transition-transform duration-200 ease-out group-open:rotate-180" aria-hidden="true" /></summary>
-        <div className="pb-4"><CustomSelect value={props.language} options={[{ value: '', label: 'Todos os idiomas' }, { value: 'pt', label: 'Português' }, { value: 'en', label: 'Inglês' }]} onChange={props.onLanguage} ariaLabel="Idioma de ensino" className="w-full" /></div>
-      </details>
     </FilterPanel>
   )
 }

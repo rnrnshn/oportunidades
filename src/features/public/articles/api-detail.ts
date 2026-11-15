@@ -1,3 +1,4 @@
+import { notFound, rootRouteId } from '@tanstack/react-router'
 import { z } from 'zod'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8080'
@@ -23,13 +24,8 @@ const ArticleDetailResponseSchema = z.object({
 export type ArticleDetail = z.infer<typeof ArticleDetailSchema>
 
 export async function fetchArticleDetail(slug: string): Promise<ArticleDetail> {
-  try {
-    const response = await fetch(`${API_URL}/v1/articles/${slug}`)
-    if (!response.ok) throw new Error('Não foi possível carregar o artigo.')
-    const body = await response.json()
-    return ArticleDetailResponseSchema.parse(body).data
-  } catch {
-    const { getMockArticleDetail } = await import('./mock-details')
-    return getMockArticleDetail(slug)
-  }
+  const response = await fetch(`${API_URL}/v1/articles/${encodeURIComponent(slug)}`)
+  if (response.status === 404) throw notFound({ routeId: rootRouteId })
+  if (!response.ok) throw new Error('Não foi possível carregar o artigo.')
+  return ArticleDetailResponseSchema.parse(await response.json()).data
 }

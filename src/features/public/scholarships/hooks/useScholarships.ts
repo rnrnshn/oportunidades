@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useSearch } from '@tanstack/react-router'
 import { getScholarships } from '../api/get-scholarships'
+import { parseDate } from '@/lib/utils'
 import {
   MIN_AMOUNT,
   MAX_AMOUNT,
@@ -24,9 +25,11 @@ function getInitialFilters(search = ''): Filters {
   }
 }
 
-function getDaysLeft(deadline: string) {
+// No deadline sorts last and never matches a deadline filter.
+function getDaysLeft(deadline?: string) {
+  if (!deadline) return Number.POSITIVE_INFINITY
   const now = new Date()
-  const target = new Date(deadline)
+  const target = parseDate(deadline, '23:59:59')
   const diff = target.getTime() - now.getTime()
   return Math.ceil(diff / (1000 * 60 * 60 * 24))
 }
@@ -62,6 +65,9 @@ export function useScholarships() {
     const deadlineLimit = filters.deadlineWindow
       ? Number(filters.deadlineWindow)
       : null
+    const amountChanged =
+      filters.amountRange[0] !== MIN_AMOUNT ||
+      filters.amountRange[1] !== MAX_AMOUNT
 
     const filtered = allScholarships.filter((scholarship) => {
       if (
@@ -90,10 +96,10 @@ export function useScholarships() {
         return false
       }
 
+      // The slider range is a default, not a filter, until the user moves it.
       if (
-        (filters.amountRange[0] &&
-          scholarship.maxAmount < filters.amountRange[0]) ||
-        (filters.amountRange[1] &&
+        amountChanged &&
+        (scholarship.maxAmount < filters.amountRange[0] ||
           scholarship.maxAmount > filters.amountRange[1])
       ) {
         return false
@@ -118,12 +124,6 @@ export function useScholarships() {
 
       if (sortBy === 'coverage') {
         return b.coverage.length - a.coverage.length
-      }
-
-      if (sortBy === 'newest') {
-        return (
-          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-        )
       }
 
       return Number(b.recommended) - Number(a.recommended)

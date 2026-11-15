@@ -10,15 +10,14 @@ export type Scholarship = {
   coverage: string[]
   amountRange: string
   maxAmount: number
-  deadline: string
+  deadline?: string
   language: string
   country: string
-  publishedAt: string
   recommended?: boolean
   tags?: string[]
 }
 
-export type SortOption = 'relevance' | 'deadline' | 'amount' | 'coverage' | 'newest'
+export type SortOption = 'relevance' | 'deadline' | 'amount' | 'coverage'
 
 export type Filters = {
   search: string

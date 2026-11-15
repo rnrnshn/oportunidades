@@ -5,12 +5,19 @@ import {
 } from '@/components/ui/carousel'
 import { Card, CardContent, CardDescription, cardImageZoomClass, cardLinkClass, CardTitle, interactiveCardClass } from '@/components/ui/card'
 import { ArrowRight } from 'lucide-react'
-import { articles } from '../data'
+import { useQuery } from '@tanstack/react-query'
 import { Link } from '@tanstack/react-router'
+import { getArticles } from '@/features/public/articles/api'
+import { cardImages } from '../data'
 import { SectionHeading } from './SectionHeading'
 import { Button } from '@/components/ui/button'
 
 export function ArticlesSection() {
+  const { data = [] } = useQuery({ queryKey: ['articles'], queryFn: getArticles })
+  const articles = data.slice(0, 6)
+  // Hidden until there is published content.
+  if (articles.length === 0) return null
+
   return (
     <section className="mx-auto w-full max-w-6xl px-5 py-12 sm:px-6 md:py-16 xl:px-0" aria-labelledby="articles-title">
       <SectionHeading id="articles-title" title="Conteúdo para decidires melhor" />
@@ -22,14 +29,14 @@ export function ArticlesSection() {
         <CarouselContent className="pb-2">
           {articles.map((article, index) => (
             <CarouselItem
-              key={`${article.title}-${index}`}
+              key={article.id}
               className="basis-[88%] sm:basis-1/2 lg:basis-1/3"
             >
               <Card className={`h-full overflow-hidden rounded-xl border border-soft py-0 shadow-none ${interactiveCardClass}`}>
                 <CardContent className="flex h-full flex-col p-0">
                   <img
-                    src={article.image}
-                    alt={article.title}
+                    src={article.cover_image_url || cardImages[index % cardImages.length]}
+                    alt=""
                     width="416"
                     height="220"
                     loading="lazy"

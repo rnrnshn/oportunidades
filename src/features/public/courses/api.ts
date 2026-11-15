@@ -1,6 +1,7 @@
+import { notFound, rootRouteId } from '@tanstack/react-router'
 import { z } from 'zod'
 
-import { universitiesMock } from '@/features/public/universities/api/mock-data'
+import { getCatalogUniversities, type CatalogUniversity } from '@/features/public/universities/api/get-universities'
 import type { Course, CourseDetail } from './types'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8080'
@@ -15,77 +16,55 @@ const CourseSchema = z.object({
   regime: z.string(),
   duration_years: z.number().optional(),
   annual_fee: z.string().optional(),
+  entry_requirements: z.string().optional(),
 })
 
-const CoursesResponseSchema = z.object({
-  data: z.array(CourseSchema),
-})
+const CoursesResponseSchema = z.object({ data: z.array(CourseSchema) })
+const CourseResponseSchema = z.object({ data: CourseSchema })
 
-export async function getCourses(): Promise<Course[]> {
-  try {
-    const response = await fetch(`${API_URL}/v1/catalog/courses?per_page=100`)
-    if (!response.ok) throw new Error('Não foi possível carregar cursos.')
-    const parsed = CoursesResponseSchema.parse(await response.json())
-    return parsed.data.map((item) => {
-      const university = universitiesMock.find((entry) => entry.id === item.university_id)
-      return {
-        id: item.id,
-        slug: item.slug,
-        universityId: item.university_id,
-        universityName: university?.name ?? 'Universidade por confirmar',
-        location: university?.location,
-        deadline: university?.deadline,
-        name: item.name,
-        area: item.area,
-        level: item.level,
-        regime: item.regime,
-        durationYears: item.duration_years,
-        annualFee: item.annual_fee,
-      }
-    })
-  } catch {
-    return mockCourses
+type CatalogCourse = z.infer<typeof CourseSchema>
+
+const capitalize = (value: string) => (value ? value.charAt(0).toUpperCase() + value.slice(1) : value)
+
+// "45000.00" -> "45 000 MZN" (the catalog stores fees in meticais).
+export function formatAnnualFee(value?: string) {
+  if (!value) return undefined
+  const amount = Number(value)
+  if (!Number.isFinite(amount)) return value
+  return `${new Intl.NumberFormat('pt-MZ', { maximumFractionDigits: 0 }).format(amount)} MZN`
+}
+
+function toCourse(item: CatalogCourse, university?: CatalogUniversity): Course {
+  return {
+    id: item.id,
+    slug: item.slug,
+    universityId: item.university_id,
+    universitySlug: university?.slug,
+    universityName: university?.name ?? 'Universidade por confirmar',
+    location: university ? [university.city || university.province, university.country].filter(Boolean).join(', ') : undefined,
+    deadline: university?.admissions_deadline,
+    name: item.name,
+    area: item.area,
+    level: capitalize(item.level),
+    regime: capitalize(item.regime),
+    durationYears: item.duration_years,
+    annualFee: formatAnnualFee(item.annual_fee),
   }
 }
 
-export const mockCourses: Course[] = universitiesMock.flatMap((university) =>
-  (university.courses ?? []).map((course) => ({
-    id: course.id,
-    slug: course.slug,
-    universityId: university.id,
-    universityName: university.name,
-    location: university.location,
-    deadline: university.deadline,
-    name: course.name,
-    area: course.area,
-    level: course.level,
-    regime: course.regime,
-    durationYears: course.duration_years,
-    annualFee: course.annual_fee,
-  }))
-)
+export async function getCourses(): Promise<Course[]> {
+  const [response, universities] = await Promise.all([fetch(`${API_URL}/v1/catalog/courses?per_page=100`), getCatalogUniversities()])
+  if (!response.ok) throw new Error('Não foi possível carregar cursos.')
+  const parsed = CoursesResponseSchema.parse(await response.json())
+  const byId = new Map(universities.map((university) => [university.id, university]))
+  return parsed.data.map((item) => toCourse(item, byId.get(item.university_id)))
+}
 
 export async function getCourseDetail(slug: string): Promise<CourseDetail> {
-  const course = mockCourses.find((item) => item.slug === slug) ?? mockCourses[0]
-  if (!course) throw new Error('Curso não encontrado.')
-  const isTechnology = course.area === 'Tecnologia'
-  return {
-    ...course,
-    description: `O curso de ${course.name} prepara estudantes para responder a desafios profissionais da área de ${course.area}, combinando fundamentos teóricos, prática e projetos aplicados.`,
-    learningObjectives: isTechnology
-      ? ['Compreender os fundamentos da computação e da engenharia de software.', 'Aplicar métodos de programação, análise de sistemas, redes e bases de dados.', 'Desenvolver soluções tecnológicas adequadas às necessidades locais.', 'Promover inovação e trabalho colaborativo.']
-      : [`Dominar os fundamentos essenciais de ${course.area}.`, 'Aplicar conhecimentos em situações profissionais e projetos reais.', 'Desenvolver pensamento crítico, comunicação e trabalho colaborativo.'],
-    language: 'Português',
-    instructionalTime: 'Diurno',
-    faculty: course.area,
-    admissionRequirements: ['Conclusão do Ensino Secundário Geral ou equivalente', 'Aprovação nos exames de admissão aplicáveis'],
-    curriculum: Array.from({ length: course.durationYears ?? 3 }, (_, index) => ({
-      year: `${index + 1}º Ano`,
-      semesters: [
-        { title: 'Semestre I', subjects: index === 0 ? ['Introdução à área', 'Matemática', 'Comunicação e Expressão', 'Metodologia de estudo'] : ['Unidade curricular obrigatória', 'Laboratório ou prática aplicada', 'Projeto interdisciplinar'] },
-        { title: 'Semestre II', subjects: index === 0 ? ['Fundamentos profissionais', 'Métodos quantitativos', 'Tecnologias de informação', 'Projeto integrado'] : ['Unidade curricular avançada', 'Prática profissional', 'Seminário de investigação'] },
-      ],
-    })),
-    locationDetails: [course.area, course.universityName, course.location ?? 'Localização por confirmar'],
-  }
+  const response = await fetch(`${API_URL}/v1/catalog/courses/${encodeURIComponent(slug)}`)
+  if (response.status === 404) throw notFound({ routeId: rootRouteId })
+  if (!response.ok) throw new Error('Não foi possível carregar o curso.')
+  const item = CourseResponseSchema.parse(await response.json()).data
+  const universities = await getCatalogUniversities().catch(() => [])
+  return { ...toCourse(item, universities.find((university) => university.id === item.university_id)), entryRequirements: item.entry_requirements }
 }

@@ -3,24 +3,15 @@ import { aboveCardLinkClass, Card, cardLinkClass, interactiveCardClass } from '@
 import { Link } from '@tanstack/react-router'
 import { Bookmark } from 'lucide-react'
 import { useBookmark } from '@/features/public/shared/use-bookmark'
+import { parseDate } from '@/lib/utils'
 import type { Scholarship } from '../types'
 
 export function ScholarshipCard({ scholarship, compact = false }: { scholarship: Scholarship; compact?: boolean }) {
   const { bookmarked, toggleBookmark } = useBookmark(`scholarship:${scholarship.id}`)
-  const formattedDeadline = new Date(scholarship.deadline)
-    .toLocaleDateString('pt-PT', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-    })
-    .toUpperCase()
+  const formattedDeadline = scholarship.deadline
+    ? parseDate(scholarship.deadline).toLocaleDateString('pt-PT', { day: 'numeric', month: 'long', year: 'numeric' }).toUpperCase()
+    : null
 
-  const formattedPostedDate = new Date(scholarship.publishedAt)
-    .toLocaleDateString('pt-PT', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-    })
 
   return (
     <Card className={`border-soft bg-white shadow-none ${interactiveCardClass} ${compact ? 'p-4' : 'p-4 sm:p-6'}`}>
@@ -62,14 +53,11 @@ export function ScholarshipCard({ scholarship, compact = false }: { scholarship:
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-          <span className="inline-flex min-h-8 items-center rounded-lg bg-brand px-4 text-xs font-bold uppercase text-white">
+        {formattedDeadline ? (
+          <span className="inline-flex min-h-8 w-fit items-center rounded-lg bg-brand px-4 text-xs font-bold uppercase text-white">
             Aberto até {formattedDeadline}
           </span>
-          <span className="text-xs text-subtle">
-            Publicado: {formattedPostedDate}
-          </span>
-        </div>
+        ) : null}
       </div>
     </Card>
   )

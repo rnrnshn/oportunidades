@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { ArrowRight, BookOpen, CalendarDays, Check, ChevronRight, Clock3, Share2 } from 'lucide-react'
 
 import { getArticles } from '@/features/public/articles/api'
-import { getMockRelatedArticles } from '@/features/public/articles/mock-details'
 
 export function ArticleDetailPage() {
   const article = useLoaderData({ from: '/artigos/$slug' })
@@ -13,9 +12,9 @@ export function ArticleDetailPage() {
     ? new Date(article.published_at).toLocaleDateString('pt-PT', { day: 'numeric', month: 'long', year: 'numeric' })
     : null
   const readingMinutes = Math.max(3, Math.ceil(stripHtml(article.content).split(/\s+/).length / 180))
-  const { data: articles = [] } = useQuery({ queryKey: ['articles'], queryFn: async () => getArticles().catch(() => getMockRelatedArticles(article.slug)) })
-  const relatedSource = articles.length > 0 ? articles : getMockRelatedArticles(article.slug)
-  const relatedArticles = relatedSource.filter((item) => item.slug !== article.slug).slice(0, 3)
+  // Related reading is optional: if the list fails, the section is simply hidden.
+  const { data: articles = [] } = useQuery({ queryKey: ['articles'], queryFn: async () => getArticles().catch(() => []) })
+  const relatedArticles = articles.filter((item) => item.slug !== article.slug).slice(0, 3)
   const [shared, setShared] = useState(false)
 
   async function shareArticle() {

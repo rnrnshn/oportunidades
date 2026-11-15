@@ -39,7 +39,6 @@ export function ScholarshipsPage() {
         { value: 'deadline', label: 'Prazo mais próximo' },
         { value: 'amount', label: 'Maior valor' },
         { value: 'coverage', label: 'Cobertura completa' },
-        { value: 'newest', label: 'Mais recentes' },
       ]}
       onSortChange={(value) => setSortBy(value as typeof sortBy)}
       filterSlot={

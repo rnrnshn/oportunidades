@@ -3,7 +3,7 @@ import { MultiSelect } from '@/components/ui/multi-select'
 import { FilterDisclosure } from '@/components/ui/filter-disclosure'
 import { FilterPanel } from '@/components/ui/filter-panel'
 import { Filters, coverageOptions } from '../types'
-import { formatCurrency, RangeSlider, SelectField } from './ui-parts'
+import { SelectField } from './ui-parts'
 
 type ScholarshipsFilterProps = {
   filters: Filters
@@ -74,7 +74,7 @@ export function ScholarshipsFilter({
               onChange={(value) => updateFilters({ modality: value })}
             /></FilterDisclosure>
 
-            <FilterDisclosure title="Cobertura e valor" inset={false}><SelectField
+            <FilterDisclosure title="Cobertura" inset={false}><SelectField
               label="Tipo de bolsa"
               placeholder="Mérito, necessidade..."
               value={filters.type}
@@ -90,23 +90,6 @@ export function ScholarshipsFilter({
                 value={filters.coverage}
                 onChange={(value) => updateFilters({ coverage: value })}
                 placeholder="Seleciona a cobertura"
-              />
-            </div>
-
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <label className="block text-xs font-medium leading-[1.7] text-navy">
-                  Valor mensal
-                </label>
-                <span className="text-xs text-muted">
-                  {formatCurrency(filters.amountRange[0])} -{' '}
-                  {formatCurrency(filters.amountRange[1])}
-                </span>
-              </div>
-              <RangeSlider
-                label="Valor mensal"
-                value={filters.amountRange}
-                onChange={(value) => updateFilters({ amountRange: value })}
               />
             </div></FilterDisclosure>
 

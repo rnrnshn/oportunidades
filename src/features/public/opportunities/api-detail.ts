@@ -1,3 +1,4 @@
+import { notFound, rootRouteId } from '@tanstack/react-router'
 import { z } from 'zod'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8080'
@@ -37,13 +38,8 @@ const OpportunityDetailResponseSchema = z.object({
 export type OpportunityDetail = z.infer<typeof OpportunityDetailResponseSchema>['data']
 
 export async function fetchOpportunityDetail(slug: string): Promise<OpportunityDetail> {
-  try {
-    const response = await fetch(`${API_URL}/v1/opportunities/${slug}`)
-    if (!response.ok) throw new Error('Não foi possível carregar a oportunidade.')
-    const body = await response.json()
-    return OpportunityDetailResponseSchema.parse(body).data
-  } catch {
-    const { getMockOpportunityDetail } = await import('./mock-details')
-    return getMockOpportunityDetail(slug)
-  }
+  const response = await fetch(`${API_URL}/v1/opportunities/${encodeURIComponent(slug)}`)
+  if (response.status === 404) throw notFound({ routeId: rootRouteId })
+  if (!response.ok) throw new Error('Não foi possível carregar a oportunidade.')
+  return OpportunityDetailResponseSchema.parse(await response.json()).data
 }

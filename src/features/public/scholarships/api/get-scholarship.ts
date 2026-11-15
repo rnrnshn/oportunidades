@@ -1,6 +1,5 @@
 import { z } from 'zod'
-import { scholarshipsMock } from './mock-data'
-import { parseDate } from '@/lib/utils'
+import { notFound, rootRouteId } from '@tanstack/react-router'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8080'
 
@@ -39,38 +38,11 @@ const ScholarshipDetailResponseSchema = z.object({
 export type ScholarshipDetail = z.infer<typeof ScholarshipDetailResponseSchema>['data']
 
 export async function fetchScholarshipDetail(slug: string): Promise<ScholarshipDetail> {
-  try {
-    const response = await fetch(`${API_URL}/v1/opportunities/${slug}`)
-    if (!response.ok) throw new Error('Não foi possível carregar a bolsa.')
-    const parsed = ScholarshipDetailResponseSchema.parse(await response.json()).data
-    if (parsed.type !== 'bolsa') throw new Error('A oportunidade não é uma bolsa.')
-    return parsed
-  } catch {
-    const scholarship = scholarshipsMock.find((item) => item.id === slug) ?? scholarshipsMock[0]
-    if (!scholarship) throw new Error('Bolsa não encontrada.')
-    return {
-      id: scholarship.id,
-      slug: scholarship.id,
-      title: scholarship.title,
-      type: 'bolsa',
-      entity_name: scholarship.provider,
-      description: `Apoio para estudantes de ${scholarship.field} no nível de ${scholarship.level}.`,
-      requirements: `Estar matriculado ou em processo de admissão\nApresentar os documentos pedidos pela entidade\nCumprir os critérios da modalidade ${scholarship.type}`,
-      deadline: scholarship.deadline,
-      country: scholarship.country,
-      location: scholarship.location,
-      is_remote: scholarship.modality === 'Online',
-      language: scholarship.language,
-      area: scholarship.field,
-      amount_max: String(scholarship.maxAmount),
-      amount_currency: 'MZN',
-      coverage: scholarship.coverage,
-      eligibility: `Candidatos ao nível de ${scholarship.level}\nInteressados na área de ${scholarship.field}`,
-      application_process: 'Confirma os requisitos\nPrepara os documentos\nEnvia a candidatura antes do prazo',
-      degree_level: scholarship.level,
-      program_area: scholarship.field,
-      verified: true,
-      is_active: parseDate(scholarship.deadline, '23:59:59').getTime() >= Date.now(),
-    }
-  }
+  const response = await fetch(`${API_URL}/v1/opportunities/${encodeURIComponent(slug)}`)
+  if (response.status === 404) throw notFound({ routeId: rootRouteId })
+  if (!response.ok) throw new Error('Não foi possível carregar a bolsa.')
+  const parsed = ScholarshipDetailResponseSchema.parse(await response.json()).data
+  // A non-scholarship slug under /bolsas is a wrong address, not an error.
+  if (parsed.type !== 'bolsa') throw notFound({ routeId: rootRouteId })
+  return parsed
 }

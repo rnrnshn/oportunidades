@@ -1,4 +1,7 @@
+import { notFound, rootRouteId } from '@tanstack/react-router'
 import { z } from 'zod'
+
+import { displayUniversityType } from '@/features/public/universities/api/get-universities'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8080'
 
@@ -99,157 +102,15 @@ const UniversityDetailResponseSchema = z.object({
 
 export type UniversityDetail = z.infer<typeof UniversityDetailSchema>
 
-type UniversityDetailExtras = {
-  overview_costs?: Array<{ title: string; subtitle?: string; items: string[] }>
-  overview_admission?: { title: string; items: string[] }
-  program_details?: Array<{ label: string; value: string }>
-  learning_objectives?: string[]
-  curriculum?: Array<{ year: string; semesters: Array<{ title: string; courses: string[] }> }>
-  location_details?: string[]
-  more_info_url?: string
-}
-
-const universityDetailExtras: Record<string, UniversityDetailExtras> = {
-  isctem: {
-    overview_costs: [
-      {
-        title: 'Custos',
-        subtitle: 'Total tuition fee: 20,000 MZN*',
-        items: ['First tuition fee instalment: 20,000 MZN*'],
-      },
-    ],
-    overview_admission: {
-      title: 'Requisitos de Admissão',
-      items: ['Exames de Admissão: Matemática, Física', 'Ensino Secundário Geral ou equivalente'],
-    },
-    program_details: [
-      { label: 'Duração', value: '4 anos (8 semestres)' },
-      { label: 'Language of instruction', value: 'Português' },
-      { label: 'Teaching form', value: 'Course, On-campus' },
-      { label: 'Instructional time', value: 'Daytime' },
-      { label: 'Faculdade', value: 'Engineering' },
-    ],
-    learning_objectives: [
-      'Compreender os princípios fundamentais da computação e engenharia de software.',
-      'Aplicar métodos e técnicas de programação, análise de sistemas, redes e bases de dados.',
-      'Desenvolver soluções informáticas adequadas às necessidades locais e internacionais.',
-      'Promover a inovação e o empreendedorismo tecnológico.',
-    ],
-    curriculum: [
-      {
-        year: '1º Ano',
-        semesters: [
-          {
-            title: 'Semestre I',
-            courses: ['Introdução à Programação', 'Matemática Discreta', 'Álgebra Linear', 'Comunicação e Expressão'],
-          },
-          {
-            title: 'Semestre II',
-            courses: ['Introdução à Programação', 'Matemática Discreta', 'Álgebra Linear', 'Comunicação e Expressão'],
-          },
-        ],
-      },
-      {
-        year: '2º Ano',
-        semesters: [
-          {
-            title: 'Semestre I',
-            courses: ['Estruturas de Dados', 'Matemática Aplicada', 'Sistemas Digitais', 'Estatística'],
-          },
-          {
-            title: 'Semestre II',
-            courses: ['Algoritmos Avançados', 'Bases de Dados', 'Arquitetura de Computadores', 'Projeto Integrado'],
-          },
-        ],
-      },
-       {
-        year: '3º Ano',
-        semesters: [
-          {
-            title: 'Semestre I',
-            courses: ['Estruturas de Dados', 'Matemática Aplicada', 'Sistemas Digitais', 'Estatística'],
-          },
-          {
-            title: 'Semestre II',
-            courses: ['Algoritmos Avançados', 'Bases de Dados', 'Arquitetura de Computadores', 'Projeto Integrado'],
-          },
-        ],
-      },
-       {
-        year: '4º Ano',
-        semesters: [
-          {
-            title: 'Semestre I',
-            courses: ['Estruturas de Dados', 'Matemática Aplicada', 'Sistemas Digitais', 'Estatística'],
-          },
-          {
-            title: 'Semestre II',
-            courses: ['Algoritmos Avançados', 'Bases de Dados', 'Arquitetura de Computadores', 'Projeto Integrado'],
-          },
-        ],
-      },
-    ],
-    location_details: ['Faculdade de Engenharia', 'Campus Principal da UEM', 'Av. Julius Nyerere, Maputo – Moçambique'],
-    more_info_url: 'https://www.uem.mz',
-  },
-}
-
-import { universitiesMock } from '@/features/public/universities/api/mock-data'
-import { scholarshipsMock } from '@/features/public/scholarships/api/mock-data'
-
 export async function fetchUniversityDetail(slug: string): Promise<UniversityDetail> {
-  // Check mock data first for testing
-  const mockUniversity = universitiesMock.find((u) => u.id === slug)
-  if (mockUniversity) {
-    const relatedScholarships = scholarshipsMock
-      .filter((scholarship) =>
-        scholarship.country === mockUniversity.country ||
-        scholarship.location.includes(mockUniversity.country) ||
-        scholarship.location.includes(mockUniversity.location.split(',')[1]?.trim() ?? '') ||
-        scholarship.modality === 'Online'
-      )
-      .slice(0, 5)
-
-    const details = universityDetailExtras[mockUniversity.id]
-
-    return {
-      id: mockUniversity.id,
-      slug: mockUniversity.id,
-      name: mockUniversity.name,
-      type: mockUniversity.type,
-      province: 'Province',
-      city: mockUniversity.location.split(',')[0],
-      country: mockUniversity.country,
-      email: mockUniversity.email,
-      phone: mockUniversity.phone,
-      website: mockUniversity.website,
-      admissions_deadline: mockUniversity.deadline,
-      description: `${mockUniversity.name} é uma instituição ${mockUniversity.type.toLowerCase()} localizada em ${mockUniversity.location}. Consulta abaixo os cursos, custos e requisitos disponíveis.`,
-      tags: mockUniversity.tags ?? [],
-      fields: mockUniversity.fields ?? [],
-      courses: mockUniversity.courses ?? undefined,
-      fees: mockUniversity.fees ?? undefined,
-      scholarships: relatedScholarships.map((scholarship, index) => ({
-        id: scholarship.id,
-        name: scholarship.title,
-        amount: scholarship.amountRange,
-        status: scholarship.type,
-        provider: scholarship.provider,
-        deadline: scholarship.deadline,
-        sort_order: index + 1,
-      })),
-      verified: true,
-      i_applied: mockUniversity.i_applied ?? false,
-      ...(details ?? {}),
-    }
+  const response = await fetch(`${API_URL}/v1/catalog/universities/${encodeURIComponent(slug)}`)
+  if (response.status === 404) throw notFound({ routeId: rootRouteId })
+  if (!response.ok) throw new Error('Não foi possível carregar a universidade.')
+  const university = UniversityDetailResponseSchema.parse(await response.json()).data
+  return {
+    ...university,
+    type: displayUniversityType(university.type),
+    // The catalog has tags, not faculty names; they are the institution's teaching areas.
+    fields: university.fields?.length ? university.fields : university.tags,
   }
-
-  const response = await fetch(`${API_URL}/v1/catalog/universities/${slug}`)
-
-  if (!response.ok) {
-    throw new Error('Não foi possível carregar a universidade.')
-  }
-
-  const body = await response.json()
-  return UniversityDetailResponseSchema.parse(body).data
 }

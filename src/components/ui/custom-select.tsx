@@ -71,7 +71,7 @@ export function CustomSelect<T extends string>({
             : <ChevronDown className={cn('size-4 shrink-0 transition-transform', open && 'rotate-180')} aria-hidden="true" />}
         </button>
       </PopoverTrigger>
-      <PopoverContent align="start" sideOffset={6} className="w-[var(--radix-popover-trigger-width)] rounded-[var(--field-radius)] border border-[var(--field-border)] bg-white p-1 shadow-lg">
+      <PopoverContent align="start" sideOffset={6} className="w-[var(--radix-popover-trigger-width)] rounded-[var(--field-radius)] border border-[var(--field-line)] bg-white p-1 shadow-lg">
         <fieldset>
           <legend className="sr-only">{ariaLabel}</legend>
           {options.map((option, index) => (

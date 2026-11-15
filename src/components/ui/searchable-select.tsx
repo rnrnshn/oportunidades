@@ -50,7 +50,7 @@ export function SearchableSelect({ label, value, query, options, placeholder, on
               }}
             />
         </PopoverTrigger>
-        <PopoverContent onOpenAutoFocus={(event) => event.preventDefault()} onCloseAutoFocus={(event) => event.preventDefault()} align="start" sideOffset={4} className="w-[var(--radix-popover-trigger-width)] rounded-[var(--field-radius)] border border-[var(--field-border)] bg-white p-1 shadow-lg">
+        <PopoverContent onOpenAutoFocus={(event) => event.preventDefault()} onCloseAutoFocus={(event) => event.preventDefault()} align="start" sideOffset={4} className="w-[var(--radix-popover-trigger-width)] rounded-[var(--field-radius)] border border-[var(--field-line)] bg-white p-1 shadow-lg">
           <div id={optionsId} role="listbox" aria-label={label} className="max-h-64 overflow-y-auto">
             {filteredOptions.map((option, index) => (
               <button

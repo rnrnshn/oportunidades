@@ -110,7 +110,7 @@ export function ListingLayout({
             <button
               ref={filterButtonRef}
               type="button"
-              className="flex min-h-11 w-full items-center justify-center gap-2 rounded-[var(--field-radius)] border border-[var(--field-border)] bg-[var(--field-background)] px-4 font-semibold text-[#262626] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] lg:hidden"
+              className="flex min-h-11 w-full items-center justify-center gap-2 rounded-[var(--field-radius)] border border-[var(--field-line)] bg-[var(--field-background)] px-4 font-semibold text-[#262626] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] lg:hidden"
               aria-expanded={filtersOpen}
               aria-controls="search-filters"
               onClick={() => setFiltersOpen(true)}

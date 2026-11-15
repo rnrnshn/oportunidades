@@ -69,10 +69,11 @@ code {
   --bg-placeholder: #f1f4ff;
   --accent-blue-dark: #00398b;
   --border-muted: #d4d4d4;
-  /* Fields — same spec as oportunidades-dashboard's form fields (filled, 16px text, 4px focus halo).
-     Differences on purpose: 44px height (matches site buttons) and a visible 3:1 border (WCAG 1.4.11). */
-  --field-border: #7d8394;
-  --field-border-hover: #5f6577;
+  /* Fields — same spec as oportunidades-dashboard's form fields: filled, borderless until hover,
+     16px text, 4px focus halo. Only difference: 44px height (matches site buttons). */
+  --field-border: transparent;
+  --field-border-hover: #e5e5e5;
+  --field-line: #e5e5e5; /* menus and grouped controls (dashboard --line) */
   --field-text: #262626;
   --field-background: #f2f3f6;
   --field-disabled: #e8eaef;

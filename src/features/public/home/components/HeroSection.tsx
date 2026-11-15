@@ -37,12 +37,12 @@ export function HeroSection() {
             Bolsas de estudo, universidades, estágios e empregos, tudo num só espaço pensado para estudantes e jovens profissionais.
           </p>
 
-                    <form action={selectedType.action} method="get" role="search" className="mt-2 flex min-h-[var(--field-height)] max-w-xl flex-wrap rounded-[var(--field-radius)] border border-[var(--field-border)] bg-white focus-within:border-[var(--field-focus)] focus-within:shadow-[0_0_0_4px_var(--field-halo)] sm:flex-nowrap">
+                    <form action={selectedType.action} method="get" role="search" className="mt-2 flex min-h-[var(--field-height)] max-w-xl flex-wrap rounded-[var(--field-radius)] border border-[var(--field-line)] bg-white focus-within:border-[var(--field-focus)] focus-within:shadow-[0_0_0_4px_var(--field-halo)] sm:flex-nowrap">
             <Popover open={typeOpen} onOpenChange={setTypeOpen}>
               <PopoverTrigger asChild>
                 <button
                   type="button"
-                  className="flex h-[var(--field-height)] w-full shrink-0 items-center justify-between rounded-t-[var(--field-radius)] border-b border-[var(--field-border)] bg-[var(--field-disabled)] px-[var(--field-padding-x)] text-sm text-[#525252] outline-none transition hover:bg-[#e9edf2] sm:w-[116px] sm:rounded-l-[var(--field-radius)] sm:rounded-r-none sm:border-b-0 sm:border-r"
+                  className="flex h-[var(--field-height)] w-full shrink-0 items-center justify-between rounded-t-[var(--field-radius)] border-b border-[var(--field-line)] bg-[var(--field-disabled)] px-[var(--field-padding-x)] text-sm text-[#525252] outline-none transition hover:bg-[#e9edf2] sm:w-[116px] sm:rounded-l-[var(--field-radius)] sm:rounded-r-none sm:border-b-0 sm:border-r"
                   aria-expanded={typeOpen}
                   aria-label={`Tipo de oportunidade: ${selectedType.label}`}
                   onKeyDown={(event) => {
@@ -57,7 +57,7 @@ export function HeroSection() {
                   <ChevronDown className={`size-4 transition-transform ${typeOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
               </PopoverTrigger>
-              <PopoverContent align="start" sideOffset={8} className="w-[200px] rounded-[var(--field-radius)] border border-[var(--field-border)] bg-white p-1 shadow-lg">
+              <PopoverContent align="start" sideOffset={8} className="w-[200px] rounded-[var(--field-radius)] border border-[var(--field-line)] bg-white p-1 shadow-lg">
                 <fieldset>
                   <legend className="sr-only">Tipo de oportunidade</legend>
                   {opportunityTypes.map((option, index) => (

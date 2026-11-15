@@ -1,0 +1,107 @@
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useQueryClient } from '@tanstack/react-query'
+import { X } from 'lucide-react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+
+import { Button } from '@/components/ui/button'
+import { DialogHeader } from '@/components/ui/dialog'
+import { Input } from '@/components/ui/input'
+import { login } from '@/features/auth/api'
+
+import { AuthLogo, Field } from './common'
+
+const loginSchema = z.object({
+  email: z.string().email('Email inválido'),
+  password: z.string().min(1, 'Obrigatório'),
+})
+
+type LoginForm = z.infer<typeof loginSchema>
+
+type LoginCardProps = {
+  onSwitchMode?: (mode: 'login' | 'signup') => void
+  onClose: () => void
+}
+
+export function LoginCard({ onSwitchMode, onClose }: LoginCardProps) {
+  const queryClient = useQueryClient()
+  const form = useForm<LoginForm>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  })
+
+  const hasError = Boolean(form.formState.errors.password || form.formState.errors.root)
+
+  const onSubmit = async (values: LoginForm) => {
+    try {
+      await login(values.email, values.password)
+      await queryClient.invalidateQueries({ queryKey: ['auth', 'current-user'] })
+      onClose()
+    } catch (error) {
+      form.setError('root', { message: error instanceof Error ? error.message : 'Não foi possível iniciar sessão.' })
+    }
+  }
+
+  return (
+    <div className="rounded-[20px] bg-gradient-to-b from-[#e3f0ff] via-white to-white p-6 shadow-2xl">
+      <button
+        type="button"
+        aria-label="Fechar janela de entrada"
+        className="ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-soft transition hover:text-brand"
+        onClick={onClose}
+      >
+        <X className="h-4 w-4" />
+      </button>
+      <DialogHeader>
+        <AuthLogo />
+        <h2 className="text-xl font-semibold">Entrar na Oportunidades</h2>
+        <p className="text-sm text-muted">Usa o teu email e a tua palavra-passe.</p>
+      </DialogHeader>
+
+      <form className="mt-6 space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+        <Field label="Email" htmlFor="login-email" error={form.formState.errors.email?.message}>
+          <Input
+            id="login-email"
+            type="email"
+            autoComplete="email"
+            aria-invalid={Boolean(form.formState.errors.email)}
+            aria-describedby={form.formState.errors.email ? 'login-email-error' : undefined}
+            {...form.register('email')}
+          />
+        </Field>
+        <Field label="Palavra-passe" htmlFor="login-password" error={form.formState.errors.password?.message}>
+          <Input
+            id="login-password"
+            type="password"
+            autoComplete="current-password"
+            aria-invalid={Boolean(form.formState.errors.password)}
+            aria-describedby={form.formState.errors.password ? 'login-password-error' : undefined}
+            {...form.register('password')}
+          />
+        </Field>
+        {hasError ? (
+          <p role="alert" className="text-sm text-danger">{form.formState.errors.root?.message ?? 'Não foi possível iniciar sessão.'}</p>
+        ) : null}
+        <Button disabled={form.formState.isSubmitting} type="submit" className="w-full rounded-full bg-brand text-white hover:bg-brand-dark">
+          {form.formState.isSubmitting ? 'A entrar…' : 'Entrar'}
+        </Button>
+      </form>
+
+      <a href="/recuperar-palavra-passe" className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-brand hover:underline">Esqueci a palavra-passe</a>
+
+      <p className="mt-4 text-center text-sm text-muted">
+        Ainda não tens conta?{' '}
+        <button
+          className="font-semibold text-brand"
+          type="button"
+          onClick={() => onSwitchMode?.('signup')}
+        >
+          Criar conta
+        </button>
+      </p>
+    </div>
+  )
+}

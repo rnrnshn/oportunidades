@@ -1,0 +1,65 @@
+import { Link, useLocation } from '@tanstack/react-router'
+import { useQueryClient } from '@tanstack/react-query'
+import { BookOpen, BriefcaseBusiness, ChevronDown, GraduationCap, Handshake, Info, Menu, School, Sparkles, X } from 'lucide-react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { AuthDialog } from '@/features/auth/AuthDialog'
+import { Button } from '@/components/ui/button'
+import { logout } from '@/features/auth/api'
+import { useCurrentUser } from '@/features/auth/use-current-user'
+import { cn } from '@/lib/utils'
+
+type MenuLink = { label: string; href: string; description?: string; icon?: ReactNode }
+
+const aboutLinks: MenuLink[] = [
+  { label: 'Sobre nós', href: '/about#about', description: 'Conhece a missão da Oportunidades.', icon: <Info /> },
+  { label: 'Como trabalhamos', href: '/about#principles', description: 'Os princípios que orientam a plataforma.', icon: <Sparkles /> },
+  { label: 'Parceiros', href: '/about#partners', description: 'Organizações que constroem este projecto connosco.', icon: <Handshake /> },
+]
+const careerLinks: MenuLink[] = [
+  { label: 'Estágios', href: '/estagios', description: 'Experiência para começar a carreira.', icon: <BriefcaseBusiness /> },
+  { label: 'Oportunidades académicas', href: '/oportunidades', description: 'Programas para estudar, participar e crescer.', icon: <Sparkles /> },
+  { label: 'Intercâmbios', href: '/oportunidades?type=intercambio', description: 'Experiências de aprendizagem noutros contextos.', icon: <School /> },
+  { label: 'Workshops e competições', href: '/oportunidades?type=workshop', description: 'Actividades para desenvolver competências.', icon: <BookOpen /> },
+]
+const programmeLinks: MenuLink[] = [
+  { label: 'Cursos e Programas', href: '/cursos', description: 'Compara áreas, modalidades e instituições.', icon: <GraduationCap /> },
+  { label: 'Universidades', href: '/universidades', description: 'Explora instituições e os cursos disponíveis.', icon: <School /> },
+  { label: 'Bolsas de estudo', href: '/bolsas', description: 'Encontra apoio para financiar os estudos.', icon: <Sparkles /> },
+]
+const resourceLinks: MenuLink[] = [
+  { label: 'Artigos e guias', href: '/artigos', description: 'Conteúdo prático para tomar melhores decisões.', icon: <BookOpen /> },
+  { label: 'Mentoria', href: '/mentoria', description: 'Orientação de profissionais experientes.', icon: <Sparkles /> },
+]
+
+function MegaMenu({ label, links, onNavigate }: { label: string; links: MenuLink[]; onNavigate?: () => void }) {
+  const [open, setOpen] = useState(false)
+  const triggerRef = useRef<HTMLButtonElement>(null)
+  const firstLinkRef = useRef<HTMLAnchorElement>(null)
+  useEffect(() => {
+    if (!open) return
+    const close = (event: KeyboardEvent) => { if (event.key === 'Escape') { setOpen(false); triggerRef.current?.focus() } }
+    document.addEventListener('keydown', close)
+    return () => document.removeEventListener('keydown', close)
+  }, [open])
+  return <div className="md:static">
+    <button ref={triggerRef} type="button" aria-expanded={open} className="inline-flex min-h-11 w-full items-center justify-between gap-1 rounded-lg px-2 text-left font-medium text-navy hover:bg-[#f3f5f7] hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand md:w-auto" onClick={() => setOpen((value) => !value)} onKeyDown={(event) => { if (event.key === 'ArrowDown') { event.preventDefault(); setOpen(true); window.requestAnimationFrame(() => firstLinkRef.current?.focus()) } }}>
+      {label}<ChevronDown className={cn('size-4 transition-transform', open && 'rotate-180')} aria-hidden="true" />
+    </button>
+    {open && <><button type="button" aria-label={`Fechar menu ${label}`} className="fixed inset-0 z-40 hidden cursor-default bg-[#122045]/35 md:block" onClick={() => setOpen(false)} /><div className="z-50 mt-1 rounded-xl border border-[var(--surface-border)] bg-white p-3 shadow-xl md:absolute md:inset-x-0 md:top-full md:mt-0 md:rounded-none md:border-x-0 md:p-0"><nav aria-label={label} className="mx-auto w-full max-w-6xl px-5 py-5 sm:px-6 xl:px-0"><ul className="grid gap-2 md:grid-cols-3 md:gap-x-6">{links.map((link, index) => <li key={link.href}><a ref={index === 0 ? firstLinkRef : undefined} href={link.href} onClick={() => { setOpen(false); onNavigate?.() }} className="group flex min-h-14 items-start gap-3 rounded-lg p-3 hover:bg-[#f3f5f7] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand">{link.icon && <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#edf4ff] text-brand [&>svg]:size-4" aria-hidden="true">{link.icon}</span>}<span><span className="block text-sm font-semibold text-navy group-hover:text-brand">{link.label}</span>{link.description && <span className="mt-1 block text-xs leading-5 text-[#525252]">{link.description}</span>}</span></a></li>)}</ul></nav></div></>}
+  </div>
+}
+
+export default function Header({ transparent = false }: { transparent?: boolean }) {
+  const queryClient = useQueryClient(); const { data: user } = useCurrentUser()
+  const [mobileOpen, setMobileOpen] = useState(false); const [authMode, setAuthMode] = useState<'login' | 'signup' | null>(null)
+  const location = useLocation(); const isHome = location.pathname === '/'
+  async function handleLogout() { await logout(); queryClient.clear() }
+  return <header className={cn('z-40 w-full', (transparent || isHome) ? 'absolute inset-x-0 top-0 border-transparent bg-transparent' : 'sticky top-0 border-b border-[var(--surface-border)] bg-white')} data-home={isHome}>
+    <div className="relative mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-3 sm:px-6 xl:px-0"><Link to="/" className="rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"><img src="/logo.png" alt="Oportunidades" width="164" height="44" className="hidden h-11 w-auto md:block" /><img src="/logo-mobile.png" alt="Oportunidades" width="40" height="40" className="block h-10 w-auto md:hidden" /></Link>
+      <nav aria-label="Navegação principal" className="hidden items-center gap-1 text-sm md:flex"><MegaMenu label="Estudar" links={programmeLinks} /><Link to="/empregos" className="inline-flex min-h-11 items-center rounded-lg px-2 font-medium text-navy hover:bg-[#f3f5f7] hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">Encontrar emprego</Link><MegaMenu label="Estágios e programas" links={careerLinks} /><MegaMenu label="Guias e mentoria" links={resourceLinks} /><MegaMenu label="Sobre" links={aboutLinks} /></nav>
+      {user ? <div className="hidden items-center gap-3 md:flex"><Link to="/account" className="max-w-[130px] truncate text-sm font-semibold">{user.name}</Link><Button variant="outline" onClick={() => void handleLogout()}>Sair</Button></div> : <div className="hidden items-center gap-2 md:flex"><Button variant="ghost" onClick={() => setAuthMode('login')}>Entrar</Button><Button className="bg-brand" onClick={() => setAuthMode('signup')}>Criar conta</Button></div>}
+      <Button variant="outline" size="icon" className="ml-auto size-11 md:hidden" onClick={() => setMobileOpen((value) => !value)} aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={mobileOpen} aria-controls="mobile-navigation">{mobileOpen ? <X /> : <Menu />}</Button></div>
+    {mobileOpen && <div className="border-t border-[var(--surface-border)] bg-white px-4 pb-5 md:hidden"><nav id="mobile-navigation" aria-label="Navegação móvel" className="flex flex-col gap-1 py-3"><Link to="/cursos" onClick={() => setMobileOpen(false)} className="flex min-h-11 items-center rounded-lg px-2 font-medium text-navy hover:bg-[#f3f5f7]">Encontrar curso</Link><Link to="/bolsas" onClick={() => setMobileOpen(false)} className="flex min-h-11 items-center rounded-lg px-2 font-medium text-navy hover:bg-[#f3f5f7]">Encontrar bolsa</Link><Link to="/empregos" onClick={() => setMobileOpen(false)} className="flex min-h-11 items-center rounded-lg px-2 font-medium text-navy hover:bg-[#f3f5f7]">Encontrar emprego</Link><Link to="/mentoria" onClick={() => setMobileOpen(false)} className="flex min-h-11 items-center rounded-lg px-2 font-medium text-navy hover:bg-[#f3f5f7]">Pedir orientação</Link><MegaMenu label="Mais opções" links={[...careerLinks, ...resourceLinks, ...aboutLinks]} onNavigate={() => setMobileOpen(false)} /></nav><div className="grid gap-2">{user ? <Button variant="outline" onClick={() => void handleLogout()}>Sair</Button> : <><Button variant="outline" onClick={() => { setMobileOpen(false); setAuthMode('login') }}>Entrar</Button><Button className="bg-brand" onClick={() => { setMobileOpen(false); setAuthMode('signup') }}>Criar conta</Button></>}</div></div>}
+    <AuthDialog mode={authMode} open={Boolean(authMode)} onOpenChange={(open) => { if (!open) setAuthMode(null) }} onSwitchMode={setAuthMode} />
+  </header>
+}

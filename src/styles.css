@@ -78,7 +78,8 @@ code {
   --field-background: #f2f3f6;
   --field-disabled: #e8eaef;
   --field-focus: #0049af;
-  --field-halo: rgb(0 73 175 / 0.12);
+  --field-halo: rgb(0 73 175 / 0.1);
+  --field-invalid: #ff5e5e;
   --field-placeholder: #656565;
   --field-height: 2.75rem;
   --field-padding-x: 1rem;

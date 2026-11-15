@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 
 // One field style for inputs, textareas and select triggers. Mirrors the dashboard's form fields.
 export const fieldClass =
-  "w-full min-w-0 rounded-[var(--field-radius)] border border-[var(--field-border)] bg-[var(--field-background)] px-[var(--field-padding-x)] text-base text-[var(--field-text)] shadow-none outline-none transition-[border-color,box-shadow,background-color] placeholder:text-[var(--field-placeholder)] hover:border-[var(--field-border-hover)] focus:border-[var(--field-focus)] focus:bg-white focus:shadow-[0_0_0_4px_var(--field-halo)] aria-invalid:border-danger disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-[var(--field-disabled)] disabled:text-[#656565]"
+  "w-full min-w-0 rounded-[var(--field-radius)] border border-[var(--field-border)] bg-[var(--field-background)] px-[var(--field-padding-x)] text-base text-[var(--field-text)] shadow-none outline-none transition-[border-color,box-shadow,background-color] placeholder:text-[var(--field-placeholder)] hover:border-[var(--field-border-hover)] focus:border-[var(--field-focus)] focus:bg-white focus:shadow-[0_0_0_4px_var(--field-halo)] aria-invalid:border-[var(--field-invalid)] aria-invalid:hover:border-[var(--field-invalid)] disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-[var(--field-disabled)] disabled:text-[#656565]"
 
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   return (

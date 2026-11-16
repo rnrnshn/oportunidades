@@ -10,5 +10,7 @@ export const SOCIAL_LINKS: Array<{ label: 'Facebook' | 'LinkedIn' | 'Instagram' 
 ]
 
 export const SITE_URL = (import.meta.env.VITE_SITE_URL ?? 'https://oportunidades.social').replace(/\/$/, '')
+export const DASHBOARD_URL = (import.meta.env.VITE_DASHBOARD_URL ?? 'https://admin.oportunidades.social').replace(/\/$/, '')
+export const DASHBOARD_ACCOUNT_URL = `${DASHBOARD_URL}/account`
 export const SITE_NAME = 'Oportunidades'
 export const DEFAULT_SHARE_IMAGE = '/hero-image.png'

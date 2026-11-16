@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import { DialogHeader } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { login } from '@/features/auth/api'
+import { DASHBOARD_URL } from '@/lib/site'
 
 import { AuthLogo, Field } from './common'
 
@@ -40,6 +41,7 @@ export function LoginCard({ onSwitchMode, onClose }: LoginCardProps) {
       await login(values.email, values.password)
       await queryClient.invalidateQueries({ queryKey: ['auth', 'current-user'] })
       onClose()
+      window.location.assign(DASHBOARD_URL)
     } catch (error) {
       form.setError('root', { message: error instanceof Error ? error.message : 'Não foi possível iniciar sessão.' })
     }

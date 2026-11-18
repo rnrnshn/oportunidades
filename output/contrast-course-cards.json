@@ -1,0 +1,9 @@
+{
+  "pairs": [
+    { "name": "Card primary text", "foreground": "#262626", "background": "#fcfcfc", "type": "normal-text" },
+    { "name": "Card secondary text", "foreground": "#656565", "background": "#fcfcfc", "type": "normal-text" },
+    { "name": "Card blue link", "foreground": "#0049af", "background": "#fcfcfc", "type": "normal-text" },
+    { "name": "Bookmark icon", "foreground": "#c75100", "background": "#fcfcfc", "type": "ui" },
+    { "name": "Focus ring", "foreground": "#0049af", "background": "#fcfcfc", "type": "ui" }
+  ]
+}

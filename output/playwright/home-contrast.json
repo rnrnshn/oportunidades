@@ -1,0 +1,46 @@
+{
+  "pairs": [
+    {
+      "name": "Texto principal sobre branco",
+      "type": "normal-text",
+      "foreground": "#262626",
+      "background": "#FFFFFF"
+    },
+    {
+      "name": "Texto secundário sobre branco",
+      "type": "normal-text",
+      "foreground": "#606C8F",
+      "background": "#FFFFFF"
+    },
+    {
+      "name": "Metadados dos cartões sobre branco",
+      "type": "normal-text",
+      "foreground": "#525252",
+      "background": "#FFFFFF"
+    },
+    {
+      "name": "Texto de apoio no card de recomendação",
+      "type": "normal-text",
+      "foreground": "#4F5C7C",
+      "background": "#E6F0FF"
+    },
+    {
+      "name": "Texto branco no botão primário",
+      "type": "normal-text",
+      "foreground": "#FFFFFF",
+      "background": "#0049AF"
+    },
+    {
+      "name": "Indicador laranja sobre branco",
+      "type": "normal-text",
+      "foreground": "#B94700",
+      "background": "#FFFFFF"
+    },
+    {
+      "name": "Foco azul sobre branco",
+      "type": "ui",
+      "foreground": "#0049AF",
+      "background": "#FFFFFF"
+    }
+  ]
+}

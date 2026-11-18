@@ -1,0 +1,53 @@
+{
+  "pairs": [
+    {
+      "name": "Article body on white",
+      "type": "normal-text",
+      "foreground": "#3F3F46",
+      "background": "#FFFFFF",
+      "context": "Long-form article content"
+    },
+    {
+      "name": "Supporting text on white",
+      "type": "normal-text",
+      "foreground": "#525252",
+      "background": "#FFFFFF",
+      "context": "Excerpt, metadata and author description"
+    },
+    {
+      "name": "Navy headings on white",
+      "type": "normal-text",
+      "foreground": "#1F2A42",
+      "background": "#FFFFFF",
+      "context": "Article and section headings"
+    },
+    {
+      "name": "Brand links on white",
+      "type": "normal-text",
+      "foreground": "#0049AF",
+      "background": "#FFFFFF",
+      "context": "Navigation and related content links"
+    },
+    {
+      "name": "Brand links on blue tint",
+      "type": "normal-text",
+      "foreground": "#0049AF",
+      "background": "#EDF4FF",
+      "context": "Inline article action"
+    },
+    {
+      "name": "Focus ring on white",
+      "type": "ui",
+      "foreground": "#0049AF",
+      "background": "#FFFFFF",
+      "context": "Keyboard focus indicator"
+    },
+    {
+      "name": "Share button border",
+      "type": "ui",
+      "foreground": "#8793A5",
+      "background": "#FFFFFF",
+      "context": "Share article control boundary"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "pairs": [
+    {
+      "name": "Hero heading on warm canvas",
+      "type": "normal-text",
+      "foreground": "#262626",
+      "background": "#FFF2D3",
+      "context": "Homepage title"
+    },
+    {
+      "name": "Hero body on warm canvas",
+      "type": "normal-text",
+      "foreground": "#525252",
+      "background": "#FFF2D3",
+      "context": "Homepage supporting copy"
+    },
+    {
+      "name": "Statistic value on light blue surface",
+      "type": "large-text",
+      "foreground": "#0049AF",
+      "background": "#F5F9FF",
+      "context": "Catalogue numbers"
+    },
+    {
+      "name": "Statistic label on light blue surface",
+      "type": "normal-text",
+      "foreground": "#4F5C7C",
+      "background": "#F5F9FF",
+      "context": "Catalogue labels"
+    },
+    {
+      "name": "Steps body on warm canvas",
+      "type": "normal-text",
+      "foreground": "#525252",
+      "background": "#FCEFD5",
+      "context": "Step descriptions"
+    },
+    {
+      "name": "Steps progress marker on warm canvas",
+      "type": "ui",
+      "foreground": "#737373",
+      "background": "#FCEFD5",
+      "context": "Progress dots"
+    },
+    {
+      "name": "Primary button text",
+      "type": "normal-text",
+      "foreground": "#FFFFFF",
+      "background": "#0049AF",
+      "context": "Primary action labels"
+    },
+    {
+      "name": "Focus ring on white",
+      "type": "ui",
+      "foreground": "#0049AF",
+      "background": "#FFFFFF",
+      "context": "Keyboard focus indicator"
+    }
+  ]
+}

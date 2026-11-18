@@ -1,0 +1,126 @@
+- generic [active] [ref=f4e1]:
+  - banner [ref=f4e2]:
+    - generic [ref=f4e3]:
+      - link [ref=f4e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=f4e5]
+      - navigation "Navegação principal" [ref=f4e6]:
+        - button "Oportunidades" [ref=f4e8]
+        - button "Cursos e Programas" [ref=f4e12]
+        - link "Universidades" [ref=f4e15] [cursor=pointer]:
+          - /url: /universidades
+        - button "Recursos" [ref=f4e17]
+      - generic [ref=f4e20]:
+        - button "Entrar" [ref=f4e21]
+        - button "Criar conta" [ref=f4e22]
+  - main [ref=f4e23]:
+    - generic [ref=f4e24]:
+      - region [ref=f4e25]:
+        - generic [ref=f4e26]:
+          - paragraph [ref=f4e27]: Orientação personalizada
+          - heading "Ainda não sabes qual opção escolher?" [level=2] [ref=f4e28]
+          - paragraph [ref=f4e29]: Responde a algumas perguntas e recebe sugestões adequadas aos teus interesses e objetivos.
+        - button "Obter recomendações" [ref=f4e30]
+      - generic [ref=f4e34]:
+        - generic [ref=f4e35]:
+          - navigation "Breadcrumb" [ref=f4e36]:
+            - list [ref=f4e37]:
+              - listitem [ref=f4e38]:
+                - link "Início" [ref=f4e39] [cursor=pointer]:
+                  - /url: /
+              - listitem [aria-hidden] [ref=f4e40]
+              - listitem [ref=f4e43]: Universidades
+          - heading "Explorar Universidades" [level=1] [ref=f4e44]
+          - paragraph [ref=f4e45]: Compara modalidades, propinas e cursos para escolher o campus certo.
+          - navigation "Tipos de resultados" [ref=f4e46]:
+            - list [ref=f4e47]:
+              - listitem [ref=f4e48]:
+                - link "Cursos e Programas" [ref=f4e49] [cursor=pointer]:
+                  - /url: /cursos
+              - listitem [ref=f4e50]:
+                - link "Universidades" [ref=f4e51] [cursor=pointer]:
+                  - /url: /universidades
+              - listitem [ref=f4e52]:
+                - link "Bolsas" [ref=f4e53] [cursor=pointer]:
+                  - /url: /bolsas
+        - complementary "Filtros de pesquisa" [ref=f4e54]:
+          - generic [ref=f4e57]:
+            - paragraph [ref=f4e60]: Filtrar universidades
+            - generic [ref=f4e61]:
+              - generic [ref=f4e62]:
+                - text: Pesquisa
+                - textbox "Pesquisa" [ref=f4e63]:
+                  - /placeholder: Universidade em Maputo
+              - group [ref=f4e64]:
+                - generic "Localização" [ref=f4e65] [cursor=pointer]
+              - group [ref=f4e68]:
+                - generic "Área de estudo" [ref=f4e69] [cursor=pointer]
+                - generic [ref=f4e73]:
+                  - text: Área de estudo
+                  - 'button "Área de estudo: Seleciona a área" [ref=f4e74]':
+                    - generic [ref=f4e75]: Seleciona a área
+              - group [ref=f4e78]:
+                - generic "Universidade" [ref=f4e79] [cursor=pointer]
+              - group [ref=f4e82]:
+                - generic "Modalidade" [ref=f4e83] [cursor=pointer]
+              - group [ref=f4e86]:
+                - generic "Avaliação" [ref=f4e87] [cursor=pointer]
+              - group [ref=f4e90]:
+                - generic "Propinas" [ref=f4e91] [cursor=pointer]
+              - group [ref=f4e94]:
+                - generic "Período de admissão" [ref=f4e95] [cursor=pointer]
+        - region "Resultados" [ref=f4e98]:
+          - generic [ref=f4e99]:
+            - paragraph [ref=f4e100]: 0 universidades encontradas
+            - 'button "Ordenar resultados: Mais relevantes" [ref=f4e101]':
+              - generic [ref=f4e102]: Mais relevantes
+          - generic [ref=f4e108]:
+            - generic [ref=f4e109]:
+              - paragraph [ref=f4e110]: Nenhuma universidade encontrada
+              - paragraph [ref=f4e111]: Ajusta os filtros ou aumenta o período de admissões para veres mais opções.
+            - button "Limpar filtros" [ref=f4e112]
+    - generic [ref=f4e113]:
+      - generic [ref=f4e115]:
+        - navigation "Sobre a Oportunidades" [ref=f4e116]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=f4e117]
+          - list [ref=f4e118]:
+            - listitem [ref=f4e119]:
+              - link "Sobre nós" [ref=f4e120] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f4e121]:
+              - link "Oportunidades" [ref=f4e122] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=f4e123]:
+              - link "Mentoria" [ref=f4e124] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=f4e125]:
+          - heading "Explorar" [level=2] [ref=f4e126]
+          - list [ref=f4e127]:
+            - listitem [ref=f4e128]:
+              - link "Universidades" [ref=f4e129] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=f4e130]:
+              - link "Cursos e Programas" [ref=f4e131] [cursor=pointer]:
+                - /url: /cursos
+            - listitem [ref=f4e132]:
+              - link "Bolsas" [ref=f4e133] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=f4e134]:
+              - link "Estágios" [ref=f4e135] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=f4e136]:
+              - link "Artigos" [ref=f4e137] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=f4e138]:
+          - heading "Links úteis" [level=2] [ref=f4e139]
+          - list [ref=f4e140]:
+            - listitem [ref=f4e141]:
+              - link "Termos de utilização" [ref=f4e142] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f4e143]:
+              - link "Política de privacidade" [ref=f4e144] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=f4e145]:
+          - heading "Acompanha-nos" [level=2] [ref=f4e146]
+          - paragraph [ref=f4e147]: Encontra-nos nas redes sociais
+      - paragraph [ref=f4e167]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.

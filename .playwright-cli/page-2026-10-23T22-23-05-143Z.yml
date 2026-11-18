@@ -1,0 +1,123 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=e5]
+      - navigation "Navegação principal" [ref=e6]:
+        - button "Oportunidades" [ref=e8]
+        - button "Cursos e Programas" [ref=e12]
+        - link "Universidades" [ref=e15] [cursor=pointer]:
+          - /url: /universidades
+        - button "Recursos" [ref=e17]
+      - generic [ref=e20]:
+        - button "Entrar" [ref=e21]
+        - button "Criar conta" [ref=e22]
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - region [ref=e25]:
+        - generic [ref=e26]:
+          - paragraph [ref=e27]: Orientação personalizada
+          - heading "Ainda não sabes que curso escolher?" [level=2] [ref=e28]
+          - paragraph [ref=e29]: Responde a algumas perguntas e recebe sugestões de cursos adequadas aos teus interesses e objetivos.
+        - button "Obter recomendações" [ref=e30]
+      - generic [ref=e34]:
+        - complementary "Filtros de cursos e programas" [ref=e35]:
+          - generic [ref=e36]:
+            - button "Limpar filtros (0)" [ref=e38]
+            - generic [ref=e39]:
+              - text: Pesquisa
+              - searchbox "Pesquisa" [ref=e44]
+            - group [ref=e45]:
+              - generic "Universidade" [ref=e46] [cursor=pointer]
+            - group [ref=e49]:
+              - generic "Área de estudo" [ref=e50] [cursor=pointer]
+              - group "Selecionar área de estudo" [ref=e58]
+            - group [ref=e60]:
+              - generic "Níveis" [ref=e61] [cursor=pointer]
+            - group [ref=e64]:
+              - generic "Mostrar apenas cursos" [ref=e65] [cursor=pointer]
+            - group [ref=e68]:
+              - generic "Horário" [ref=e69] [cursor=pointer]
+            - group [ref=e72]:
+              - generic "Idioma" [ref=e73] [cursor=pointer]
+            - button "Aplicar filtros" [ref=e76]
+        - region [ref=e79]:
+          - generic [ref=e80]:
+            - navigation "Breadcrumb" [ref=e81]:
+              - list [ref=e82]:
+                - listitem [ref=e83]:
+                  - link "Início" [ref=e84] [cursor=pointer]:
+                    - /url: /
+                - listitem [aria-hidden] [ref=e85]
+                - listitem [ref=e88]: Cursos e Programas
+            - heading "Pesquisar cursos e programas" [level=1] [ref=e89]
+            - paragraph [ref=e90]: Compara áreas, modalidades e instituições para encontrares o curso certo.
+            - navigation "Tipos de resultados" [ref=e91]:
+              - list [ref=e92]:
+                - listitem [ref=e93]:
+                  - link "Cursos e Programas" [ref=e94] [cursor=pointer]:
+                    - /url: /cursos
+                - listitem [ref=e95]:
+                  - link "Universidades" [ref=e96] [cursor=pointer]:
+                    - /url: /universidades
+                - listitem [ref=e97]:
+                  - link "Bolsas" [ref=e98] [cursor=pointer]:
+                    - /url: /bolsas
+          - generic [ref=e99]:
+            - paragraph [ref=e100]: 0 cursos encontrados
+            - 'button "Ordenar cursos: Mais relevantes" [ref=e101]':
+              - generic [ref=e102]: Ordenar
+          - paragraph [ref=e106]: A carregar cursos…
+          - navigation "Paginação dos cursos" [ref=e107]:
+            - button "Anterior" [ref=e108]
+            - button "1" [ref=e109]
+            - button "2" [ref=e110]
+            - generic [ref=e111]: …
+            - button "5" [ref=e112]
+            - button "Seguinte" [ref=e113]
+    - generic [ref=e114]:
+      - generic [ref=e116]:
+        - navigation "Sobre a Oportunidades" [ref=e117]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=e118]
+          - list [ref=e119]:
+            - listitem [ref=e120]:
+              - link "Sobre nós" [ref=e121] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e122]:
+              - link "Oportunidades" [ref=e123] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=e124]:
+              - link "Mentoria" [ref=e125] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=e126]:
+          - heading "Explorar" [level=2] [ref=e127]
+          - list [ref=e128]:
+            - listitem [ref=e129]:
+              - link "Universidades" [ref=e130] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=e131]:
+              - link "Cursos e Programas" [ref=e132] [cursor=pointer]:
+                - /url: /cursos
+            - listitem [ref=e133]:
+              - link "Bolsas" [ref=e134] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=e135]:
+              - link "Estágios" [ref=e136] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=e137]:
+              - link "Artigos" [ref=e138] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=e139]:
+          - heading "Links úteis" [level=2] [ref=e140]
+          - list [ref=e141]:
+            - listitem [ref=e142]:
+              - link "Termos de utilização" [ref=e143] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e144]:
+              - link "Política de privacidade" [ref=e145] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e146]:
+          - heading "Acompanha-nos" [level=2] [ref=e147]
+          - paragraph [ref=e148]: Encontra-nos nas redes sociais
+      - paragraph [ref=e168]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.

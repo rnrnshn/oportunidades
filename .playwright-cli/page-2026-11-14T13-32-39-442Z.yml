@@ -1,0 +1,240 @@
+- generic [ref=e1]:
+  - link "Saltar para o conteúdo principal" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=e288]
+      - button "Abrir menu" [ref=e289]
+  - main [ref=e29]:
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - navigation "Breadcrumb" [ref=e33]:
+          - list [ref=e34]:
+            - listitem [ref=e35]:
+              - link "Início" [ref=e36] [cursor=pointer]:
+                - /url: /
+            - listitem [aria-hidden] [ref=e37]
+            - listitem [ref=e40]: Empregos
+        - heading "Explorar Empregos" [level=1] [ref=e41]
+        - paragraph [ref=e42]: Encontra oportunidades de emprego em Moçambique e no mundo.
+        - paragraph [ref=e43]:
+          - text: Não sabes por onde começar?
+          - link "Receber orientação passo a passo" [ref=e44] [cursor=pointer]:
+            - /url: /recomendacoes
+        - navigation "Tipos de resultados" [ref=e45]:
+          - list [ref=e46]:
+            - listitem [ref=e47]:
+              - link "Empregos" [ref=e48] [cursor=pointer]:
+                - /url: /empregos
+            - listitem [ref=e49]:
+              - link "Estágios" [ref=e50] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=e51]:
+              - link "Académicas" [ref=e290] [cursor=pointer]:
+                - /url: /oportunidades
+      - button "Mostrar filtros" [expanded] [ref=e291]
+      - dialog "Filtros de pesquisa" [ref=e293]:
+        - generic [ref=e294]:
+          - heading "Filtros" [level=2] [ref=e295]
+          - button "Fechar filtros" [active] [ref=e296]
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - text: Cargo ou empresa
+            - searchbox "Cargo ou empresa" [ref=e56]
+          - group [ref=e57]:
+            - generic "Localização" [ref=e58] [cursor=pointer]
+            - group "Localização" [ref=e62]:
+              - generic [ref=e64]:
+                - generic [ref=e65] [cursor=pointer]:
+                  - checkbox "Maputo" [ref=e66]
+                  - generic [ref=e67]: Maputo
+                - generic [ref=e68] [cursor=pointer]:
+                  - checkbox "Beira" [ref=e69]
+                  - generic [ref=e70]: Beira
+                - generic [ref=e71] [cursor=pointer]:
+                  - checkbox "Nampula" [ref=e72]
+                  - generic [ref=e73]: Nampula
+          - group [ref=e74]:
+            - generic "Modalidade" [ref=e75] [cursor=pointer]
+            - group "Modalidade" [ref=e79]:
+              - generic [ref=e81]:
+                - generic [ref=e82] [cursor=pointer]:
+                  - checkbox "Presencial" [ref=e83]
+                  - generic [ref=e84]: Presencial
+                - generic [ref=e85] [cursor=pointer]:
+                  - checkbox "Híbrido" [ref=e86]
+                  - generic [ref=e87]: Híbrido
+                - generic [ref=e88] [cursor=pointer]:
+                  - checkbox "Remoto" [ref=e89]
+                  - generic [ref=e90]: Remoto
+          - group [ref=e91]:
+            - generic "Tipo de contrato" [ref=e92] [cursor=pointer]
+            - group "Tipo de contrato" [ref=e96]:
+              - generic [ref=e98]:
+                - generic [ref=e99] [cursor=pointer]:
+                  - checkbox "Tempo inteiro" [ref=e100]
+                  - generic [ref=e101]: Tempo inteiro
+                - generic [ref=e102] [cursor=pointer]:
+                  - checkbox "Contrato" [ref=e103]
+                  - generic [ref=e104]: Contrato
+                - generic [ref=e105] [cursor=pointer]:
+                  - checkbox "Tempo parcial" [ref=e106]
+                  - generic [ref=e107]: Tempo parcial
+          - group [ref=e108]:
+            - generic "Experiência" [ref=e109] [cursor=pointer]
+            - group "Experiência" [ref=e113]:
+              - generic [ref=e115]:
+                - generic [ref=e116] [cursor=pointer]:
+                  - checkbox "Júnior" [ref=e117]
+                  - generic [ref=e118]: Júnior
+                - generic [ref=e119] [cursor=pointer]:
+                  - checkbox "Intermédio" [ref=e120]
+                  - generic [ref=e121]: Intermédio
+                - generic [ref=e122] [cursor=pointer]:
+                  - checkbox "Sénior" [ref=e123]
+                  - generic [ref=e124]: Sénior
+          - button "Limpar filtros (0)" [ref=e125]
+        - button "Ver 6 resultados" [ref=e301]
+      - region "Resultados" [ref=e126]:
+        - generic [ref=e127]:
+          - paragraph [ref=e128]: 6 empregos encontrados
+          - 'button "Ordenar resultados: Mais relevantes" [ref=e129]':
+            - generic [ref=e130]: Ordenar
+        - generic [ref=e134]:
+          - article [ref=e136]:
+            - generic [ref=e137]:
+              - generic [ref=e138]:
+                - generic [aria-hidden] [ref=e139]: C
+                - generic [ref=e140]:
+                  - heading [level=3] [ref=e141]:
+                    - link "Quality Assurance Officer" [ref=e142] [cursor=pointer]:
+                      - /url: /oportunidades/quality-assurance-officer
+                  - paragraph [ref=e143]: Contact Moçambique
+                  - paragraph [ref=e144]: Maputo
+              - generic [ref=e145]: Candidaturas até 24 fev. 2027
+              - paragraph [ref=e146]: Publicado há 2 dias
+            - button "Guardar Quality Assurance Officer" [ref=e147]
+          - article [ref=e151]:
+            - generic [ref=e152]:
+              - generic [ref=e153]:
+                - generic [aria-hidden] [ref=e154]: M
+                - generic [ref=e155]:
+                  - heading [level=3] [ref=e156]:
+                    - link "Supervisor de Construção" [ref=e157] [cursor=pointer]:
+                      - /url: /oportunidades/supervisor-de-construcao
+                  - paragraph [ref=e158]: Mota-Engil Moçambique
+                  - paragraph [ref=e159]: Maputo
+              - generic [ref=e160]: Candidaturas até 10 mar. 2027
+              - paragraph [ref=e161]: Publicado há 3 dias
+            - button "Guardar Supervisor de Construção" [ref=e162]
+          - article [ref=e166]:
+            - generic [ref=e167]:
+              - generic [ref=e168]:
+                - generic [aria-hidden] [ref=e169]: M
+                - generic [ref=e170]:
+                  - heading [level=3] [ref=e171]:
+                    - link "Programador Front-end Júnior" [ref=e172] [cursor=pointer]:
+                      - /url: /oportunidades/programador-frontend-junior
+                  - paragraph [ref=e173]: MozTech Solutions
+                  - paragraph [ref=e174]: Maputo · Remoto
+              - generic [ref=e175]: Candidaturas até 18 jan. 2027
+              - paragraph [ref=e176]: Publicado há 4 dias
+            - button "Guardar Programador Front-end Júnior" [ref=e177]
+          - article [ref=e181]:
+            - generic [ref=e182]:
+              - generic [ref=e183]:
+                - generic [aria-hidden] [ref=e184]: F
+                - generic [ref=e185]:
+                  - heading [level=3] [ref=e186]:
+                    - link "Assistente de Comunicação" [ref=e187] [cursor=pointer]:
+                      - /url: /oportunidades/assistente-de-comunicacao
+                  - paragraph [ref=e188]: Fundação Horizonte
+                  - paragraph [ref=e189]: Beira
+              - generic [ref=e190]: Candidaturas até 12 fev. 2027
+              - paragraph [ref=e191]: Publicado há 5 dias
+            - button "Guardar Assistente de Comunicação" [ref=e192]
+          - article [ref=e196]:
+            - generic [ref=e197]:
+              - generic [ref=e198]:
+                - generic [aria-hidden] [ref=e199]: B
+                - generic [ref=e200]:
+                  - heading [level=3] [ref=e201]:
+                    - link "Analista Financeiro" [ref=e202] [cursor=pointer]:
+                      - /url: /oportunidades/analista-financeiro
+                  - paragraph [ref=e203]: Banco de Desenvolvimento
+                  - paragraph [ref=e204]: Maputo
+              - generic [ref=e205]: Candidaturas até 28 jan. 2027
+              - paragraph [ref=e206]: Publicado há 6 dias
+            - button "Guardar Analista Financeiro" [ref=e207]
+          - article [ref=e211]:
+            - generic [ref=e212]:
+              - generic [ref=e213]:
+                - generic [aria-hidden] [ref=e214]: A
+                - generic [ref=e215]:
+                  - heading [level=3] [ref=e216]:
+                    - link "Técnico de Campo Agrícola" [ref=e217] [cursor=pointer]:
+                      - /url: /oportunidades/tecnico-de-campo-agricola
+                  - paragraph [ref=e218]: AgroNorte
+                  - paragraph [ref=e219]: Nampula
+              - generic [ref=e220]: Candidaturas até 22 mar. 2027
+              - paragraph [ref=e221]: Publicado há 8 dias
+            - button "Guardar Técnico de Campo Agrícola" [ref=e222]
+    - generic [ref=e225]:
+      - generic [ref=e227]:
+        - navigation "Sobre a Oportunidades" [ref=e228]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=e229]
+          - list [ref=e230]:
+            - listitem [ref=e231]:
+              - link "Sobre nós" [ref=e232] [cursor=pointer]:
+                - /url: /about#about
+            - listitem [ref=e233]:
+              - link "Como trabalhamos" [ref=e234] [cursor=pointer]:
+                - /url: /about#principles
+            - listitem [ref=e235]:
+              - link "Impacto" [ref=e236] [cursor=pointer]:
+                - /url: /about#impact
+            - listitem [ref=e237]:
+              - link "Parceiros" [ref=e238] [cursor=pointer]:
+                - /url: /about#partners
+        - navigation "Explorar" [ref=e239]:
+          - heading "Explorar" [level=2] [ref=e240]
+          - list [ref=e241]:
+            - listitem [ref=e242]:
+              - link "Universidades" [ref=e243] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=e244]:
+              - link "Cursos e Programas" [ref=e245] [cursor=pointer]:
+                - /url: /cursos
+            - listitem [ref=e246]:
+              - link "Bolsas" [ref=e247] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=e248]:
+              - link "Empregos" [ref=e249] [cursor=pointer]:
+                - /url: /empregos
+            - listitem [ref=e250]:
+              - link "Estágios" [ref=e251] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=e252]:
+              - link "Oportunidades académicas" [ref=e253] [cursor=pointer]:
+                - /url: /oportunidades
+        - navigation "Recursos e apoio" [ref=e254]:
+          - heading "Recursos e apoio" [level=2] [ref=e255]
+          - list [ref=e256]:
+            - listitem [ref=e257]:
+              - link "Artigos e guias" [ref=e258] [cursor=pointer]:
+                - /url: /artigos
+            - listitem [ref=e259]:
+              - link "Mentoria" [ref=e260] [cursor=pointer]:
+                - /url: /mentoria
+            - listitem [ref=e261]:
+              - link "Termos de utilização" [ref=e262] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e263]:
+              - link "Política de privacidade" [ref=e264] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e265]:
+          - heading "Acompanha-nos" [level=2] [ref=e266]
+          - paragraph [ref=e267]: Encontra-nos nas redes sociais
+      - paragraph [ref=e287]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.

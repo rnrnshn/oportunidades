@@ -1,0 +1,136 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - generic [ref=f3e3]:
+      - link [ref=f3e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=f3e5]
+      - navigation "Navegação principal" [ref=f3e6]:
+        - button "Oportunidades" [ref=f3e7]
+        - link "Bolsas" [ref=f3e10] [cursor=pointer]:
+          - /url: /bolsas
+        - link "Universidades" [ref=f3e11] [cursor=pointer]:
+          - /url: /universidades
+        - link "Cursos" [ref=f3e12] [cursor=pointer]:
+          - /url: /cursos
+        - link "Artigos" [ref=f3e13] [cursor=pointer]:
+          - /url: /artigos
+        - link "Mentoria" [ref=f3e14] [cursor=pointer]:
+          - /url: /mentoria
+        - link "Sobre" [ref=f3e15] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=f3e16]:
+        - button "Entrar" [ref=f3e17]
+        - button "Criar conta" [ref=f3e18]
+  - main [ref=f3e19]:
+    - generic [ref=f3e20]:
+      - heading "Pesquisar cursos e programas" [level=1] [ref=f3e23]
+      - generic [ref=f3e24]:
+        - complementary "Filtros de cursos" [ref=f3e25]:
+          - generic [ref=f3e26]:
+            - paragraph [ref=f3e27]: Queres recomendações?
+            - button "Obter recomendações" [ref=f3e28]
+          - generic [ref=f3e33]:
+            - generic [ref=f3e34]:
+              - heading "Filtrar cursos" [level=2] [ref=f3e35]
+              - button "Limpar (0)" [ref=f3e36]
+            - generic [ref=f3e37]:
+              - text: Pesquisa
+              - searchbox "Pesquisa" [ref=f3e38]
+            - heading "Universidade e área" [level=3] [ref=f3e40]
+            - generic [ref=f3e41]:
+              - 'button "Universidades: Todas" [ref=f3e42]':
+                - generic [ref=f3e43]: Todas
+              - 'button "Áreas de estudo: Todas" [ref=f3e46]':
+                - generic [ref=f3e47]: Todas
+            - group "Níveis" [ref=f3e50]:
+              - generic [ref=f3e52]:
+                - generic [ref=f3e53] [cursor=pointer]:
+                  - checkbox "Licenciatura" [ref=f3e54]
+                  - text: Licenciatura
+                - generic [ref=f3e55] [cursor=pointer]:
+                  - checkbox "Mestrado" [ref=f3e56]
+                  - text: Mestrado
+            - group "Mostrar apenas cursos" [ref=f3e57]:
+              - generic [ref=f3e59]:
+                - generic [ref=f3e60] [cursor=pointer]:
+                  - checkbox "Presenciais" [ref=f3e61]
+                  - text: Presenciais
+                - generic [ref=f3e62] [cursor=pointer]:
+                  - checkbox "A distância" [ref=f3e63]
+                  - text: A distância
+                - generic [ref=f3e64] [cursor=pointer]:
+                  - checkbox "Híbridos" [ref=f3e65]
+                  - text: Híbridos
+            - group "Horário" [ref=f3e66]:
+              - generic [ref=f3e68]:
+                - generic [ref=f3e69] [cursor=pointer]:
+                  - checkbox "Diurno" [ref=f3e70]
+                  - text: Diurno
+                - generic [ref=f3e71] [cursor=pointer]:
+                  - checkbox "Pós-laboral" [ref=f3e72]
+                  - text: Pós-laboral
+                - generic [ref=f3e73] [cursor=pointer]:
+                  - checkbox "Fim de semana" [ref=f3e74]
+                  - text: Fim de semana
+            - heading "Idioma" [level=3] [ref=f3e76]
+            - 'button "Idioma de ensino: Todos os idiomas" [ref=f3e78]':
+              - generic [ref=f3e79]: Todos os idiomas
+            - button "Aplicar filtros" [ref=f3e82]
+        - region [ref=f3e85]:
+          - heading "Resultados de cursos" [level=2] [ref=f3e86]
+          - generic [ref=f3e87]:
+            - paragraph [ref=f3e88]: 0 cursos encontrados
+            - 'button "Ordenar cursos: A–Z, curso" [ref=f3e89]':
+              - generic [ref=f3e90]: A–Z, curso
+          - generic [ref=f3e94]:
+            - paragraph [ref=f3e95]: Nenhum curso encontrado
+            - paragraph [ref=f3e96]: De momento não existem cursos disponíveis.
+          - navigation "Paginação dos cursos" [ref=f3e97]:
+            - button "Anterior" [ref=f3e98]
+            - button "1" [ref=f3e99]
+            - button "2" [ref=f3e100]
+            - generic [ref=f3e101]: …
+            - button "5" [ref=f3e102]
+            - button "Seguinte" [ref=f3e103]
+    - generic [ref=f3e104]:
+      - generic [ref=f3e106]:
+        - navigation "Sobre a Oportunidades" [ref=f3e107]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=f3e108]
+          - list [ref=f3e109]:
+            - listitem [ref=f3e110]:
+              - link "Sobre nós" [ref=f3e111] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f3e112]:
+              - link "Oportunidades" [ref=f3e113] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=f3e114]:
+              - link "Mentoria" [ref=f3e115] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=f3e116]:
+          - heading "Explorar" [level=2] [ref=f3e117]
+          - list [ref=f3e118]:
+            - listitem [ref=f3e119]:
+              - link "Universidades" [ref=f3e120] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=f3e121]:
+              - link "Bolsas" [ref=f3e122] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=f3e123]:
+              - link "Estágios" [ref=f3e124] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=f3e125]:
+              - link "Artigos" [ref=f3e126] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=f3e127]:
+          - heading "Links úteis" [level=2] [ref=f3e128]
+          - list [ref=f3e129]:
+            - listitem [ref=f3e130]:
+              - link "Termos de utilização" [ref=f3e131] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f3e132]:
+              - link "Política de privacidade" [ref=f3e133] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=f3e134]:
+          - heading "Acompanha-nos" [level=2] [ref=f3e135]
+          - paragraph [ref=f3e136]: Encontra-nos nas redes sociais
+      - paragraph [ref=f3e156]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.

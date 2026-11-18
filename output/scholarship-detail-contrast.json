@@ -1,0 +1,12 @@
+{
+  "pairs": [
+    { "name": "Body text on white", "type": "normal-text", "foreground": "#525252", "background": "#FFFFFF", "context": "Scholarship description and supporting content" },
+    { "name": "Navy headings on white", "type": "normal-text", "foreground": "#1F2A42", "background": "#FFFFFF", "context": "Page and section headings" },
+    { "name": "Brand links on white", "type": "normal-text", "foreground": "#0049AF", "background": "#FFFFFF", "context": "Back link and bookmark action" },
+    { "name": "Bookmark border on white", "type": "ui", "foreground": "#8793A5", "background": "#FFFFFF", "context": "Bookmark control boundary" },
+    { "name": "Navy text on summary", "type": "normal-text", "foreground": "#1F2A42", "background": "#EDF8F7", "context": "Summary values" },
+    { "name": "Supporting text on summary", "type": "normal-text", "foreground": "#525252", "background": "#EDF8F7", "context": "Summary labels" },
+    { "name": "Primary button text", "type": "normal-text", "foreground": "#FFFFFF", "background": "#0049AF", "context": "Application button" },
+    { "name": "Focus ring on white", "type": "ui", "foreground": "#0049AF", "background": "#FFFFFF", "context": "Keyboard focus indicator" }
+  ]
+}

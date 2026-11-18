@@ -1,0 +1,11 @@
+{
+  "pairs": [
+    {
+      "name": "New job badge",
+      "type": "normal-text",
+      "foreground": "#176B3A",
+      "background": "#E5F5EC",
+      "context": "Nova job status badge"
+    }
+  ]
+}

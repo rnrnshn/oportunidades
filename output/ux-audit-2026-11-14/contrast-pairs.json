@@ -1,0 +1,10 @@
+{
+  "pairs": [
+    { "name": "Texto principal em branco", "type": "normal-text", "foreground": "#262626", "background": "#ffffff", "context": "Títulos e texto principal" },
+    { "name": "Texto secundário em branco", "type": "normal-text", "foreground": "#525252", "background": "#ffffff", "context": "Descrições e metadados" },
+    { "name": "Texto branco em azul", "type": "normal-text", "foreground": "#ffffff", "background": "#0049af", "context": "Botões primários" },
+    { "name": "Azul em branco", "type": "normal-text", "foreground": "#0049af", "background": "#ffffff", "context": "Links e títulos" },
+    { "name": "Borda de formulário", "type": "ui", "foreground": "#8b93a1", "background": "#ffffff", "context": "Inputs e controlos" },
+    { "name": "Texto secundário em superfície", "type": "normal-text", "foreground": "#525252", "background": "#f7f9fc", "context": "Cartões e áreas informativas" }
+  ]
+}

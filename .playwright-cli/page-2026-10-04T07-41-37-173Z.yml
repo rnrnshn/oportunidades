@@ -1,0 +1,148 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=e5]
+      - navigation "Navegação principal" [ref=e6]:
+        - button "Oportunidades" [ref=e7]
+        - link "Bolsas" [ref=e10] [cursor=pointer]:
+          - /url: /bolsas
+        - link "Universidades" [ref=e11] [cursor=pointer]:
+          - /url: /universidades
+        - link "Cursos" [ref=e12] [cursor=pointer]:
+          - /url: /cursos
+        - link "Artigos" [ref=e13] [cursor=pointer]:
+          - /url: /artigos
+        - link "Mentoria" [ref=e14] [cursor=pointer]:
+          - /url: /mentoria
+        - link "Sobre" [ref=e15] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=e16]:
+        - button "Entrar" [ref=e17]
+        - button "Criar conta" [ref=e18]
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - navigation "Breadcrumb" [ref=e22]:
+          - list [ref=e23]:
+            - listitem [ref=e24]:
+              - link "Início" [ref=e25] [cursor=pointer]:
+                - /url: /
+            - listitem [aria-hidden] [ref=e26]
+            - listitem [ref=e29]: Universidades
+        - heading "Explorar Universidades" [level=1] [ref=e30]
+        - paragraph [ref=e31]: Compara modalidades, propinas e cursos para escolher o campus certo.
+      - generic [ref=e32]:
+        - complementary "Filtros de pesquisa" [ref=e33]:
+          - generic [ref=e36]:
+            - paragraph [ref=e39]: Filtrar universidades
+            - generic [ref=e40]:
+              - generic [ref=e41]:
+                - text: Pesquisa
+                - textbox "Pesquisa" [ref=e42]:
+                  - /placeholder: Universidade em Maputo
+              - generic [ref=e43]:
+                - text: Localização
+                - 'button "Localização: Seleciona uma localização" [ref=e44]':
+                  - generic [ref=e45]: Seleciona uma localização
+              - generic [ref=e48]:
+                - text: Área de estudo
+                - 'button "Área de estudo: Seleciona a área" [ref=e49]':
+                  - generic [ref=e50]: Seleciona a área
+              - generic [ref=e53]:
+                - text: Tipo de instituição
+                - 'button "Tipo de instituição: Pública ou privada" [ref=e54]':
+                  - generic [ref=e55]: Pública ou privada
+              - generic [ref=e58]:
+                - text: Modalidade
+                - 'button "Modalidade: Campus, online ou híbrida" [ref=e59]':
+                  - generic [ref=e60]: Campus, online ou híbrida
+              - group "Avaliação" [ref=e63]:
+                - generic [ref=e65] [cursor=pointer]:
+                  - checkbox "5 estrelas" [ref=e66]
+                  - checkbox [aria-hidden]
+                  - generic [ref=e67]: 5 estrelas
+                - generic [ref=e68] [cursor=pointer]:
+                  - checkbox "4 estrelas" [ref=e69]
+                  - checkbox [aria-hidden]
+                  - generic [ref=e70]: 4 estrelas
+                - generic [ref=e71] [cursor=pointer]:
+                  - checkbox "3 estrelas" [ref=e72]
+                  - checkbox [aria-hidden]
+                  - generic [ref=e73]: 3 estrelas
+                - generic [ref=e74] [cursor=pointer]:
+                  - checkbox "2 estrelas" [ref=e75]
+                  - checkbox [aria-hidden]
+                  - generic [ref=e76]: 2 estrelas
+                - generic [ref=e77] [cursor=pointer]:
+                  - checkbox "1 estrela" [ref=e78]
+                  - checkbox [aria-hidden]
+                  - generic [ref=e79]: 1 estrela
+              - generic [ref=e80]:
+                - generic [ref=e81]:
+                  - generic [ref=e82]: Propinas
+                  - generic [ref=e83]: 2000 MTn - 10 000 MTn
+                - generic [ref=e84]:
+                  - generic [ref=e109]:
+                    - slider "Propina mínima": "2000"
+                    - slider "Propina máxima": "10000"
+                  - generic [ref=e110]:
+                    - generic [ref=e111]: 2000 MTn
+                    - generic [ref=e112]: 10 000 MTn
+              - generic [ref=e113]:
+                - text: Período de admissão
+                - 'button "Período de admissão: Próximos 15/30/60 dias" [ref=e114]':
+                  - generic [ref=e115]: Próximos 15/30/60 dias
+        - region "Resultados" [ref=e118]:
+          - generic [ref=e119]:
+            - paragraph [ref=e120]: 0 universidades encontradas
+            - 'button "Ordenar resultados: Mais relevantes" [ref=e121]':
+              - generic [ref=e122]: Mais relevantes
+          - generic [ref=e128]:
+            - generic [ref=e129]:
+              - paragraph [ref=e130]: Nenhuma universidade encontrada
+              - paragraph [ref=e131]: Ajusta os filtros ou aumenta o período de admissões para veres mais opções.
+            - button "Limpar filtros" [ref=e132]
+    - generic [ref=e133]:
+      - generic [ref=e135]:
+        - navigation "Sobre a Oportunidades" [ref=e136]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=e137]
+          - list [ref=e138]:
+            - listitem [ref=e139]:
+              - link "Sobre nós" [ref=e140] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e141]:
+              - link "Oportunidades" [ref=e142] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=e143]:
+              - link "Mentoria" [ref=e144] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=e145]:
+          - heading "Explorar" [level=2] [ref=e146]
+          - list [ref=e147]:
+            - listitem [ref=e148]:
+              - link "Universidades" [ref=e149] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=e150]:
+              - link "Bolsas" [ref=e151] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=e152]:
+              - link "Estágios" [ref=e153] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=e154]:
+              - link "Artigos" [ref=e155] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=e156]:
+          - heading "Links úteis" [level=2] [ref=e157]
+          - list [ref=e158]:
+            - listitem [ref=e159]:
+              - link "Termos de utilização" [ref=e160] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e161]:
+              - link "Política de privacidade" [ref=e162] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e163]:
+          - heading "Acompanha-nos" [level=2] [ref=e164]
+          - paragraph [ref=e165]: Encontra-nos nas redes sociais
+      - paragraph [ref=e185]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.

@@ -1,0 +1,6 @@
+[    2032ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/node_modules/.vite/deps/react-dom_client.js?v=30f9f87d:20102
+[    2533ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/account/me:0
+[    2714ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?active=true&verified=true&per_page=50:0
+[    3725ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?active=true&verified=true&per_page=50:0
+[    5748ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?active=true&verified=true&per_page=50:0
+[    9850ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?active=true&verified=true&per_page=50:0

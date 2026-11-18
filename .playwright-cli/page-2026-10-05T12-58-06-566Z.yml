@@ -1,0 +1,85 @@
+- generic [active] [ref=f2e1]:
+  - banner [ref=f2e2]:
+    - generic [ref=f2e3]:
+      - link [ref=f2e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=f2e5]
+      - navigation "Navegação principal" [ref=f2e6]:
+        - button "Oportunidades" [ref=f2e8]
+        - button "Cursos e Programas" [ref=f2e12]
+        - link "Universidades" [ref=f2e15] [cursor=pointer]:
+          - /url: /universidades
+        - button "Recursos" [ref=f2e17]
+      - generic [ref=f2e20]:
+        - button "Entrar" [ref=f2e21]
+        - button "Criar conta" [ref=f2e22]
+  - main [ref=f2e23]:
+    - generic [ref=f2e24]:
+      - navigation "Breadcrumb" [ref=f2e25]:
+        - list [ref=f2e26]:
+          - listitem [ref=f2e27]:
+            - link "Início" [ref=f2e28] [cursor=pointer]:
+              - /url: /
+          - listitem [aria-hidden] [ref=f2e29]
+          - listitem [ref=f2e32]: Mentoria
+      - generic [ref=f2e33]:
+        - generic [ref=f2e34]:
+          - paragraph [ref=f2e35]: Mentoria
+          - heading "Aprende com quem já percorreu o caminho" [level=1] [ref=f2e36]
+          - paragraph [ref=f2e37]: Histórias, perspectivas e orientação de profissionais que ajudam jovens a tomar decisões académicas e profissionais mais informadas.
+        - generic [ref=f2e38]:
+          - generic [ref=f2e39]: Percursos e decisões reais
+          - generic [ref=f2e46]: Conselhos práticos e claros
+          - generic [ref=f2e51]: Rede de profissionais
+      - region [ref=f2e59]:
+        - generic [ref=f2e60]:
+          - heading "Conhece os mentores" [level=2] [ref=f2e61]
+          - paragraph [ref=f2e62]: Explora perfis e áreas de experiência. O foco aqui é conhecer pessoas e perspectivas, não filtrar um catálogo.
+        - generic [ref=f2e65]:
+          - paragraph [ref=f2e66]: Nenhum mentor encontrado
+          - paragraph [ref=f2e67]: De momento não existem mentores disponíveis.
+    - generic [ref=f2e68]:
+      - generic [ref=f2e70]:
+        - navigation "Sobre a Oportunidades" [ref=f2e71]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=f2e72]
+          - list [ref=f2e73]:
+            - listitem [ref=f2e74]:
+              - link "Sobre nós" [ref=f2e75] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f2e76]:
+              - link "Oportunidades" [ref=f2e77] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=f2e78]:
+              - link "Mentoria" [ref=f2e79] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=f2e80]:
+          - heading "Explorar" [level=2] [ref=f2e81]
+          - list [ref=f2e82]:
+            - listitem [ref=f2e83]:
+              - link "Universidades" [ref=f2e84] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=f2e85]:
+              - link "Cursos e Programas" [ref=f2e86] [cursor=pointer]:
+                - /url: /cursos
+            - listitem [ref=f2e87]:
+              - link "Bolsas" [ref=f2e88] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=f2e89]:
+              - link "Estágios" [ref=f2e90] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=f2e91]:
+              - link "Artigos" [ref=f2e92] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=f2e93]:
+          - heading "Links úteis" [level=2] [ref=f2e94]
+          - list [ref=f2e95]:
+            - listitem [ref=f2e96]:
+              - link "Termos de utilização" [ref=f2e97] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f2e98]:
+              - link "Política de privacidade" [ref=f2e99] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=f2e100]:
+          - heading "Acompanha-nos" [level=2] [ref=f2e101]
+          - paragraph [ref=f2e102]: Encontra-nos nas redes sociais
+      - paragraph [ref=f2e122]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.

@@ -1,0 +1,46 @@
+{
+  "pairs": [
+    {
+      "name": "Input text on field background",
+      "type": "normal-text",
+      "foreground": "#262626",
+      "background": "#FFFFFF",
+      "context": "Text, email, password, search, select and textarea values"
+    },
+    {
+      "name": "Placeholder on field background",
+      "type": "normal-text",
+      "foreground": "#656565",
+      "background": "#FFFFFF",
+      "context": "Placeholder and empty selection copy"
+    },
+    {
+      "name": "Field border on white",
+      "type": "ui",
+      "foreground": "#8B93A1",
+      "background": "#FFFFFF",
+      "context": "Default field and checkbox boundary"
+    },
+    {
+      "name": "Focus indicator on white",
+      "type": "ui",
+      "foreground": "#0049AF",
+      "background": "#FFFFFF",
+      "context": "Keyboard focus ring and focused field border"
+    },
+    {
+      "name": "Disabled text on disabled field",
+      "type": "normal-text",
+      "foreground": "#656565",
+      "background": "#F3F5F7",
+      "context": "Read-only and disabled fields"
+    },
+    {
+      "name": "Checked checkbox icon on brand",
+      "type": "graphic",
+      "foreground": "#FFFFFF",
+      "background": "#0049AF",
+      "context": "Checkbox selected state"
+    }
+  ]
+}

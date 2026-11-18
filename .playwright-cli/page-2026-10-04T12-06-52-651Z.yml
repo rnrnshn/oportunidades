@@ -1,0 +1,166 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - generic [ref=f1e3]:
+      - link [ref=f1e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=f1e5]
+      - button "Abrir menu" [ref=f1e6]
+  - main [ref=f1e7]:
+    - region "Campus da Instituto Superior de Ciências e Tecnologia de Moçambique" [ref=f1e8]:
+      - img "Campus da Instituto Superior de Ciências e Tecnologia de Moçambique" [ref=f1e9]
+    - generic [ref=f1e10]:
+      - generic [ref=f1e11]:
+        - generic [ref=f1e12]:
+          - generic [ref=f1e13] [cursor=pointer]:
+            - checkbox "Candidatei-me" [ref=f1e14]
+            - text: Candidatei-me
+          - button "Guardar universidade" [ref=f1e16]: Guardar
+        - generic [ref=f1e20]:
+          - generic [aria-hidden] [ref=f1e22]: ISC
+          - generic [ref=f1e23]:
+            - heading "Instituto Superior de Ciências e Tecnologia de Moçambique" [level=1] [ref=f1e24]
+            - paragraph [ref=f1e25]: Pública · Maputo
+        - tablist "Secções da universidade" [ref=f1e26]:
+          - tab "Visão geral" [selected] [ref=f1e27]
+          - tab "Cursos" [ref=f1e28]
+          - tab "Propinas" [ref=f1e29]
+        - tabpanel "Visão geral" [ref=f1e30]:
+          - generic [ref=f1e31]:
+            - generic [ref=f1e32]:
+              - heading "Detalhes da universidade" [level=2] [ref=f1e33]
+              - paragraph [ref=f1e34]: Instituição de ensino superior com programas em Faculdade de Engenharia, Faculdade de Medicina, Faculdade de Ciências, Faculdade de Letras e Ciências Sociais, Faculdade de Economia, Faculdade de Direito, Faculdade de Agronomia e Engenharia Florestal, Escola Superior de Ciências do Desporto.
+            - generic [ref=f1e35]:
+              - heading "Localizações" [level=2] [ref=f1e36]
+              - img "Mapa de localização do campus" [ref=f1e37]
+              - generic [ref=f1e38]:
+                - heading "Campus principal" [level=3] [ref=f1e39]
+                - paragraph [ref=f1e40]: Maputo, Province, Moçambique
+                - link "+258 21 334 050" [ref=f1e41] [cursor=pointer]:
+                  - /url: tel:+25821334050
+            - generic [ref=f1e42]:
+              - heading "Cursos" [level=2] [ref=f1e43]
+              - 'button "Filtrar cursos por área: Todas as áreas" [ref=f1e45]':
+                - generic [ref=f1e46]: Todas as áreas
+              - generic [ref=f1e49]:
+                - article [ref=f1e50]:
+                  - generic [ref=f1e51]:
+                    - heading "Engenharia Civil" [level=3] [ref=f1e52]
+                    - paragraph [ref=f1e53]: Licenciatura · Presencial · 4 anos
+                    - paragraph [ref=f1e54]: Instituto Superior de Ciências e Tecnologia de Moçambique
+                  - generic [ref=f1e55]:
+                    - button "Guardar curso Engenharia Civil" [ref=f1e56]
+                    - paragraph [ref=f1e59]: MZN 7.000/ano
+                - article [ref=f1e60]:
+                  - generic [ref=f1e61]:
+                    - heading "Engenharia Informática" [level=3] [ref=f1e62]
+                    - paragraph [ref=f1e63]: Licenciatura · Presencial · 4 anos
+                    - paragraph [ref=f1e64]: Instituto Superior de Ciências e Tecnologia de Moçambique
+                  - generic [ref=f1e65]:
+                    - button "Guardar curso Engenharia Informática" [ref=f1e66]
+                    - paragraph [ref=f1e69]: MZN 8.000/ano
+              - button "Explorar todos os cursos" [ref=f1e71]
+            - generic [ref=f1e72]:
+              - heading "Propinas" [level=2] [ref=f1e73]
+              - generic [ref=f1e74]:
+                - generic [ref=f1e75]:
+                  - generic [ref=f1e76]:
+                    - text: Propina (Tuição)
+                    - generic [ref=f1e77]: Valor indicativo
+                  - generic [ref=f1e78]: MZN 6.000/semestre
+                - generic [ref=f1e79]:
+                  - generic [ref=f1e80]:
+                    - text: Livros e Materiais
+                    - generic [ref=f1e81]: Valor indicativo
+                  - generic [ref=f1e82]: MZN 600
+                - generic [ref=f1e83]:
+                  - generic [ref=f1e84]:
+                    - text: Taxas Administrativas
+                    - generic [ref=f1e85]: Valor indicativo
+                  - generic [ref=f1e86]: MZN 400
+                - generic [ref=f1e87]:
+                  - generic [ref=f1e88]:
+                    - text: Taxa de Candidatura
+                    - generic [ref=f1e89]: Valor indicativo
+                  - generic [ref=f1e90]: MZN 150
+                - generic [ref=f1e91]:
+                  - generic [ref=f1e92]:
+                    - text: Inscrição
+                    - generic [ref=f1e93]: Valor indicativo
+                  - generic [ref=f1e94]: MZN 800
+                - generic [ref=f1e95]:
+                  - generic [ref=f1e96]:
+                    - text: Alojamento
+                    - generic [ref=f1e97]: Valor indicativo
+                  - generic [ref=f1e98]: MZN 2.500/mês
+              - heading "Bolsas internas" [level=3] [ref=f1e99]
+              - generic [ref=f1e100]:
+                - article [ref=f1e101]:
+                  - generic [ref=f1e102]:
+                    - heading "Bolsa Horizonte STEM" [level=4] [ref=f1e103]
+                    - paragraph [ref=f1e104]: "Oferecida por: ABC Foundation"
+                    - paragraph [ref=f1e105]: Aberta até 2024-06-15
+                  - generic [ref=f1e106]:
+                    - button "Guardar bolsa Bolsa Horizonte STEM" [ref=f1e107]
+                    - generic [ref=f1e110]:
+                      - text: Até
+                      - paragraph [ref=f1e111]: MZN 8.000/mês + alojamento
+                - article [ref=f1e112]:
+                  - generic [ref=f1e113]:
+                    - heading "Tech Mulheres em Código" [level=4] [ref=f1e114]
+                    - paragraph [ref=f1e115]: "Oferecida por: MozTech"
+                    - paragraph [ref=f1e116]: Aberta até 2024-05-28
+                  - generic [ref=f1e117]:
+                    - button "Guardar bolsa Tech Mulheres em Código" [ref=f1e118]
+                    - generic [ref=f1e121]:
+                      - text: Até
+                      - paragraph [ref=f1e122]: MZN 6.500/mês
+            - generic [ref=f1e123]:
+              - heading "Partilha oportunidades académicas" [level=2] [ref=f1e128]
+              - paragraph [ref=f1e129]: Tens uma bolsa, curso ou artigo para partilhar? Envia a tua proposta e ajuda outros estudantes a descobrir novas oportunidades.
+              - button "Contribuir" [ref=f1e130]
+      - complementary "Informação geral" [ref=f1e131]:
+        - generic [ref=f1e132]:
+          - heading "Instituto Superior de Ciências e Tecnologia de Moçambique" [level=2] [ref=f1e133]
+          - button "Reportar informação incorreta" [ref=f1e134]
+    - generic [ref=f1e137]:
+      - generic [ref=f1e139]:
+        - navigation "Sobre a Oportunidades" [ref=f1e140]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=f1e141]
+          - list [ref=f1e142]:
+            - listitem [ref=f1e143]:
+              - link "Sobre nós" [ref=f1e144] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f1e145]:
+              - link "Oportunidades" [ref=f1e146] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=f1e147]:
+              - link "Mentoria" [ref=f1e148] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=f1e149]:
+          - heading "Explorar" [level=2] [ref=f1e150]
+          - list [ref=f1e151]:
+            - listitem [ref=f1e152]:
+              - link "Universidades" [ref=f1e153] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=f1e154]:
+              - link "Bolsas" [ref=f1e155] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=f1e156]:
+              - link "Estágios" [ref=f1e157] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=f1e158]:
+              - link "Artigos" [ref=f1e159] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=f1e160]:
+          - heading "Links úteis" [level=2] [ref=f1e161]
+          - list [ref=f1e162]:
+            - listitem [ref=f1e163]:
+              - link "Termos de utilização" [ref=f1e164] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f1e165]:
+              - link "Política de privacidade" [ref=f1e166] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=f1e167]:
+          - heading "Acompanha-nos" [level=2] [ref=f1e168]
+          - paragraph [ref=f1e169]: Encontra-nos nas redes sociais
+      - paragraph [ref=f1e189]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.

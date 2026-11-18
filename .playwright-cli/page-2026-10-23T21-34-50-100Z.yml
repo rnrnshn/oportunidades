@@ -1,0 +1,248 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=e5]
+      - navigation "Navegação principal" [ref=e6]:
+        - button "Oportunidades" [ref=e8]
+        - button "Cursos e Programas" [ref=e12]
+        - link "Universidades" [ref=e15] [cursor=pointer]:
+          - /url: /universidades
+        - button "Recursos" [ref=e17]
+      - generic [ref=e20]:
+        - button "Entrar" [ref=e21]
+        - button "Criar conta" [ref=e22]
+  - main [ref=e23]:
+    - region [ref=e24]:
+      - generic [ref=e25]:
+        - generic [ref=e26]:
+          - heading "Encontra aqui a tua próxima oportunidade" [level=1] [ref=e27]
+          - paragraph [ref=e28]: Bolsas de estudo, universidades, estágios e empregos, tudo num só espaço pensado para estudantes e jovens profissionais.
+          - search [ref=e29]:
+            - generic [ref=e30]: Tipo de oportunidade
+            - 'button "Tipo de oportunidade: Todo" [ref=e31]': Todo
+            - generic [ref=e34]: Pesquisar oportunidades
+            - searchbox "Pesquisar oportunidades" [ref=e35]
+            - button "Pesquisar oportunidades" [ref=e36]
+        - generic [ref=e37]:
+          - img "Dois jovens recém-graduados" [ref=e38]
+          - img "Bolsa STEM Excellence aberta até 15 de maio, com apoio até 2.500 dólares" [ref=e39]
+    - region "Catálogo da Oportunidades" [ref=e40]:
+      - generic [ref=e42]:
+        - generic [ref=e47]:
+          - paragraph [ref=e48]: 6+
+          - paragraph [ref=e49]: Bolsas com candidatura aberta
+        - generic [ref=e55]:
+          - paragraph [ref=e56]: 8+
+          - paragraph [ref=e57]: Cursos e programas no catálogo
+        - generic [ref=e65]:
+          - paragraph [ref=e66]: 6+
+          - paragraph [ref=e67]: Universidades para comparar
+    - region [ref=e68]:
+      - generic [ref=e69]:
+        - heading "O que procuras hoje?" [level=2] [ref=e70]
+        - generic [ref=e71]:
+          - article [ref=e72]:
+            - img "Estudante a ler no campus" [ref=e73]
+            - generic [ref=e75]:
+              - heading "Quero estudar" [level=3] [ref=e76]
+              - paragraph [ref=e77]: Compara cursos, instituições e formas de financiar os teus estudos.
+              - link "Ver mais" [ref=e78] [cursor=pointer]:
+                - /url: /cursos
+          - article [ref=e81]:
+            - img "Profissional da construção a trabalhar com um tablet" [ref=e82]
+            - generic [ref=e84]:
+              - heading "Quero trabalhar" [level=3] [ref=e85]
+              - paragraph [ref=e86]: Descobre experiências que ajudam a entrar e a crescer no mercado de trabalho.
+              - link "Ver mais" [ref=e87] [cursor=pointer]:
+                - /url: /empregos
+    - generic [ref=e91]:
+      - generic [ref=e92]:
+        - heading "Entra, descobre e cresce" [level=2] [ref=e93]
+        - paragraph [ref=e94]: Três passos simples para começares a usar a plataforma e transformares oportunidades em conquistas.
+      - generic [ref=e95]:
+        - generic [ref=e99]:
+          - generic [ref=e100]:
+            - heading "Pesquisa o que te interessa" [level=3] [ref=e101]
+            - paragraph [ref=e102]: Encontra bolsas, universidades, estágios e empregos de forma rápida.
+          - generic [aria-hidden]: "1"
+        - generic [ref=e106]:
+          - generic [ref=e107]:
+            - heading "Guarda e acompanha" [level=3] [ref=e108]
+            - paragraph [ref=e109]: Marca as tuas oportunidades favoritas e volta quando quiseres.
+          - generic [aria-hidden]: "2"
+        - generic [ref=e113]:
+          - generic [ref=e114]:
+            - heading "Candidata-te e evolui" [level=3] [ref=e115]
+            - paragraph [ref=e116]: Entra em contacto directo com instituições e empresas.
+          - generic [aria-hidden]: "3"
+    - region [ref=e117]:
+      - generic [ref=e118]:
+        - generic [ref=e119]:
+          - heading "Conteúdo para decidires melhor" [level=2] [ref=e120]
+          - paragraph [ref=e121]: Guias curtos para preparares cada próximo passo.
+        - generic [ref=e122]:
+          - generic [ref=e123]:
+            - button "Artigos anteriores" [disabled] [ref=e124]
+            - button "Mais artigos" [disabled] [ref=e127]
+          - link "Ver todas" [ref=e130] [cursor=pointer]:
+            - /url: /artigos
+      - region [ref=e131]:
+        - generic [ref=e133]:
+          - group [ref=e134]:
+            - generic [ref=e136]:
+              - img "Como preparar uma candidatura que se destaca" [ref=e137]
+              - generic [ref=e138]:
+                - generic [ref=e139]: Como preparar uma candidatura que se destaca
+                - generic [ref=e140]: Organiza o teu perfil, adapta a carta de motivação e apresenta provas do que já fizeste.
+                - link "Ler artigo" [ref=e141] [cursor=pointer]:
+                  - /url: /artigos
+          - group [ref=e144]:
+            - generic [ref=e146]:
+              - img "5 perguntas antes de escolher um curso" [ref=e147]
+              - generic [ref=e148]:
+                - generic [ref=e149]: 5 perguntas antes de escolher um curso
+                - generic [ref=e150]: Compara saídas profissionais, propinas, localização e modalidade antes de decidires.
+                - link "Ler artigo" [ref=e151] [cursor=pointer]:
+                  - /url: /artigos
+          - group [ref=e154]:
+            - generic [ref=e156]:
+              - img "Como encontrar uma bolsa adequada ao teu perfil" [ref=e157]
+              - generic [ref=e158]:
+                - generic [ref=e159]: Como encontrar uma bolsa adequada ao teu perfil
+                - generic [ref=e160]: Aprende a ler os requisitos e a concentrar o teu esforço nas melhores candidaturas.
+                - link "Ler artigo" [ref=e161] [cursor=pointer]:
+                  - /url: /artigos
+    - region [ref=e164]:
+      - generic [ref=e165]:
+        - generic [ref=e166]:
+          - heading "Oportunidades com prazo próximo" [level=2] [ref=e167]
+          - paragraph [ref=e168]: Candidaturas abertas que merecem a tua atenção agora.
+        - region [ref=e169]:
+          - generic [ref=e171]:
+            - group [ref=e172]:
+              - generic [ref=e174]:
+                - generic [ref=e180]:
+                  - generic [ref=e181]: STEM Excellence
+                  - generic [ref=e182]: "Oferecido por: Fundação Horizonte"
+                - generic [ref=e185]:
+                  - generic [ref=e186]: Aberto até 15 Novembro
+                  - generic [ref=e187]:
+                    - paragraph [ref=e188]: Apoio
+                    - paragraph [ref=e189]: 150 mil MT
+            - group [ref=e190]:
+              - generic [ref=e192]:
+                - generic [ref=e198]:
+                  - generic [ref=e199]: Mulheres na Tecnologia
+                  - generic [ref=e200]: "Oferecido por: MozTech"
+                - generic [ref=e203]:
+                  - generic [ref=e204]: Aberto até 28 Novembro
+                  - generic [ref=e205]:
+                    - paragraph [ref=e206]: Apoio
+                    - paragraph [ref=e207]: 120 mil MT
+            - group [ref=e208]:
+              - generic [ref=e210]:
+                - generic [ref=e216]:
+                  - generic [ref=e217]: Talentos Empreendedores
+                  - generic [ref=e218]: "Oferecido por: Impacto+"
+                - generic [ref=e221]:
+                  - generic [ref=e222]: Aberto até 05 Dezembro
+                  - generic [ref=e223]:
+                    - paragraph [ref=e224]: Apoio
+                    - paragraph [ref=e225]: Cobertura total
+            - group [ref=e226]:
+              - generic [ref=e228]:
+                - generic [ref=e234]:
+                  - generic [ref=e235]: Bolsa Comunidades PALOP
+                  - generic [ref=e236]: "Oferecido por: CPLP"
+                - generic [ref=e239]:
+                  - generic [ref=e240]: Aberto até 20 Dezembro
+                  - generic [ref=e241]:
+                    - paragraph [ref=e242]: Apoio
+                    - paragraph [ref=e243]: 80 mil MT
+        - generic [ref=e244]:
+          - button "Bolsas anteriores" [disabled] [ref=e245]
+          - button "Mais bolsas" [ref=e248]
+        - link "Mais oportunidades" [ref=e252] [cursor=pointer]:
+          - /url: /oportunidades
+    - region [ref=e253]:
+      - generic [ref=e254]:
+        - generic [ref=e255]:
+          - heading "Não sabes por onde começar?" [level=2] [ref=e260]
+          - paragraph [ref=e261]: Começa pelos teus interesses e usa os filtros para reduzires as opções até encontrares uma oportunidade adequada ao teu momento.
+          - generic [ref=e262]:
+            - link "Encontrar oportunidades" [ref=e263] [cursor=pointer]:
+              - /url: /oportunidades
+            - link "Explorar mentoria" [ref=e266] [cursor=pointer]:
+              - /url: /mentoria
+        - generic [ref=e267]:
+          - paragraph [ref=e268]: Três decisões para orientar a pesquisa
+          - list [ref=e269]:
+            - listitem [ref=e270]:
+              - generic [ref=e274]:
+                - generic [ref=e275]: "Passo 1:"
+                - text: O que queres alcançar
+            - listitem [ref=e276]:
+              - generic [ref=e280]:
+                - generic [ref=e281]: "Passo 2:"
+                - text: Que área te interessa
+            - listitem [ref=e282]:
+              - generic [ref=e286]:
+                - generic [ref=e287]: "Passo 3:"
+                - text: Onde e como queres participar
+    - region [ref=e288]:
+      - generic [ref=e289]:
+        - generic [ref=e290]:
+          - heading "Ainda não encontraste a oportunidade certa?" [level=2] [ref=e291]
+          - paragraph [ref=e292]: Cria um alerta e recebe oportunidades relacionadas com os teus interesses.
+        - generic [ref=e293]:
+          - button "Criar alerta" [ref=e294]
+          - button "Criar Conta Gratuitamente" [ref=e295]
+    - generic [ref=e296]:
+      - generic [ref=e298]:
+        - navigation "Sobre a Oportunidades" [ref=e299]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=e300]
+          - list [ref=e301]:
+            - listitem [ref=e302]:
+              - link "Sobre nós" [ref=e303] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e304]:
+              - link "Oportunidades" [ref=e305] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=e306]:
+              - link "Mentoria" [ref=e307] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=e308]:
+          - heading "Explorar" [level=2] [ref=e309]
+          - list [ref=e310]:
+            - listitem [ref=e311]:
+              - link "Universidades" [ref=e312] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=e313]:
+              - link "Cursos e Programas" [ref=e314] [cursor=pointer]:
+                - /url: /cursos
+            - listitem [ref=e315]:
+              - link "Bolsas" [ref=e316] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=e317]:
+              - link "Estágios" [ref=e318] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=e319]:
+              - link "Artigos" [ref=e320] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=e321]:
+          - heading "Links úteis" [level=2] [ref=e322]
+          - list [ref=e323]:
+            - listitem [ref=e324]:
+              - link "Termos de utilização" [ref=e325] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e326]:
+              - link "Política de privacidade" [ref=e327] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e328]:
+          - heading "Acompanha-nos" [level=2] [ref=e329]
+          - paragraph [ref=e330]: Encontra-nos nas redes sociais
+      - paragraph [ref=e350]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.
+  - button "Open TanStack Devtools" [ref=e351] [cursor=pointer]:
+    - img "TanStack Devtools" [ref=e352]

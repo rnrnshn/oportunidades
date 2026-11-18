@@ -1,0 +1,116 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=e5]
+      - navigation "Navegação principal" [ref=e6]:
+        - button "Oportunidades" [ref=e8]
+        - button "Cursos e Programas" [ref=e12]
+        - link "Universidades" [ref=e15] [cursor=pointer]:
+          - /url: /universidades
+        - button "Recursos" [ref=e17]
+      - generic [ref=e20]:
+        - button "Entrar" [ref=e21]
+        - button "Criar conta" [ref=e22]
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - region [ref=e25]:
+        - generic [ref=e26]:
+          - paragraph [ref=e27]: Orientação personalizada
+          - heading "Ainda não sabes qual opção escolher?" [level=2] [ref=e28]
+          - paragraph [ref=e29]: Responde a algumas perguntas e recebe sugestões adequadas aos teus interesses e objetivos.
+        - button "Obter recomendações" [ref=e30]
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - navigation "Breadcrumb" [ref=e36]:
+            - list [ref=e37]:
+              - listitem [ref=e38]:
+                - link "Início" [ref=e39] [cursor=pointer]:
+                  - /url: /
+              - listitem [aria-hidden] [ref=e40]
+              - listitem [ref=e43]: Empregos
+          - heading "Explorar Empregos" [level=1] [ref=e44]
+          - paragraph [ref=e45]: Encontra oportunidades de emprego em Moçambique e no mundo.
+          - navigation "Tipos de resultados" [ref=e46]:
+            - list [ref=e47]:
+              - listitem [ref=e48]:
+                - link "Empregos" [ref=e49] [cursor=pointer]:
+                  - /url: /empregos
+              - listitem [ref=e50]:
+                - link "Estágios" [ref=e51] [cursor=pointer]:
+                  - /url: /estagios
+              - listitem [ref=e52]:
+                - link "Oportunidades académicas" [ref=e53] [cursor=pointer]:
+                  - /url: /oportunidades
+        - complementary "Filtros de pesquisa" [ref=e54]:
+          - generic [ref=e55]:
+            - generic [ref=e56]:
+              - text: Cargo ou empresa
+              - searchbox "Cargo ou empresa" [ref=e57]
+            - group [ref=e58]:
+              - generic "Localização" [ref=e59] [cursor=pointer]
+              - generic [ref=e63]:
+                - paragraph [ref=e64]: Selecionar localização
+                - 'button "Selecionar localização: Todas as localizações" [ref=e65]':
+                  - generic [ref=e66]: Todas as localizações
+            - group [ref=e69]:
+              - generic "Modalidade" [ref=e70] [cursor=pointer]
+            - group [ref=e73]:
+              - generic "Tipo de contrato" [ref=e74] [cursor=pointer]
+            - group [ref=e77]:
+              - generic "Experiência" [ref=e78] [cursor=pointer]
+            - button "Limpar filtros (0)" [ref=e81]
+        - region "Resultados" [ref=e82]:
+          - generic [ref=e83]:
+            - paragraph [ref=e84]: 0 empregos encontrados
+            - 'button "Ordenar resultados: Mais relevantes" [ref=e85]':
+              - generic [ref=e86]: Ordenar
+          - generic [ref=e91]:
+            - paragraph [ref=e92]: Nenhuma oportunidade encontrada
+            - paragraph [ref=e93]: De momento não existem oportunidades disponíveis. Volta mais tarde.
+    - generic [ref=e94]:
+      - generic [ref=e96]:
+        - navigation "Sobre a Oportunidades" [ref=e97]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=e98]
+          - list [ref=e99]:
+            - listitem [ref=e100]:
+              - link "Sobre nós" [ref=e101] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e102]:
+              - link "Oportunidades" [ref=e103] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=e104]:
+              - link "Mentoria" [ref=e105] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=e106]:
+          - heading "Explorar" [level=2] [ref=e107]
+          - list [ref=e108]:
+            - listitem [ref=e109]:
+              - link "Universidades" [ref=e110] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=e111]:
+              - link "Cursos e Programas" [ref=e112] [cursor=pointer]:
+                - /url: /cursos
+            - listitem [ref=e113]:
+              - link "Bolsas" [ref=e114] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=e115]:
+              - link "Estágios" [ref=e116] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=e117]:
+              - link "Artigos" [ref=e118] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=e119]:
+          - heading "Links úteis" [level=2] [ref=e120]
+          - list [ref=e121]:
+            - listitem [ref=e122]:
+              - link "Termos de utilização" [ref=e123] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e124]:
+              - link "Política de privacidade" [ref=e125] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e126]:
+          - heading "Acompanha-nos" [level=2] [ref=e127]
+          - paragraph [ref=e128]: Encontra-nos nas redes sociais
+      - paragraph [ref=e148]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.

@@ -1,0 +1,178 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=e5]
+      - navigation "Navegação principal" [ref=e6]:
+        - button "Oportunidades" [ref=e8]
+        - button "Cursos e Programas" [ref=e12]
+        - link "Universidades" [ref=e15] [cursor=pointer]:
+          - /url: /universidades
+        - button "Recursos" [ref=e17]
+      - generic [ref=e20]:
+        - button "Entrar" [ref=e21]
+        - button "Criar conta" [ref=e22]
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - region [ref=e25]:
+        - generic [ref=e26]:
+          - paragraph [ref=e27]: Orientação personalizada
+          - heading "Ainda não sabes que curso escolher?" [level=2] [ref=e28]
+          - paragraph [ref=e29]: Responde a algumas perguntas e recebe sugestões de cursos adequadas aos teus interesses e objetivos.
+        - button "Obter recomendações" [ref=e30]
+      - generic [ref=e34]:
+        - complementary "Filtros de cursos e programas" [ref=e35]:
+          - generic [ref=e36]:
+            - group [ref=e37]:
+              - generic "Universidade" [ref=e38] [cursor=pointer]
+              - generic [ref=e42]:
+                - text: Pesquisar universidade
+                - combobox "Pesquisar universidade" [ref=e43]: Universidade Lúrio
+            - group [ref=e44]:
+              - generic "Área de estudo" [ref=e45] [cursor=pointer]
+              - group "Selecionar área de estudo" [ref=e53]:
+                - generic [ref=e55] [cursor=pointer]:
+                  - checkbox "Engenharia" [ref=e56]
+                  - generic [ref=e57]: Engenharia
+                - generic [ref=e58] [cursor=pointer]:
+                  - checkbox "Tecnologia" [ref=e59]
+                  - generic [ref=e60]: Tecnologia
+                - generic [ref=e61] [cursor=pointer]:
+                  - checkbox "Saúde" [ref=e62]
+                  - generic [ref=e63]: Saúde
+                - generic [ref=e64] [cursor=pointer]:
+                  - checkbox "Agrárias" [ref=e65]
+                  - generic [ref=e66]: Agrárias
+                - generic [ref=e67] [cursor=pointer]:
+                  - checkbox "Direito" [ref=e68]
+                  - generic [ref=e69]: Direito
+                - generic [ref=e70] [cursor=pointer]:
+                  - checkbox "Gestão" [ref=e71]
+                  - generic [ref=e72]: Gestão
+                - generic [ref=e73] [cursor=pointer]:
+                  - checkbox "Comunicação" [ref=e74]
+                  - generic [ref=e75]: Comunicação
+            - group [ref=e76]:
+              - generic "Níveis" [ref=e77] [cursor=pointer]
+            - group [ref=e80]:
+              - generic "Mostrar apenas cursos" [ref=e81] [cursor=pointer]
+            - group [ref=e84]:
+              - generic "Horário" [ref=e85] [cursor=pointer]
+            - group [ref=e88]:
+              - generic "Idioma" [ref=e89] [cursor=pointer]
+            - button "Aplicar filtros" [ref=e92]
+            - button "Limpar filtros (1)" [ref=e380]
+        - region [ref=e96]:
+          - generic [ref=e97]:
+            - navigation "Breadcrumb" [ref=e98]:
+              - list [ref=e99]:
+                - listitem [ref=e100]:
+                  - link "Início" [ref=e101] [cursor=pointer]:
+                    - /url: /
+                - listitem [aria-hidden] [ref=e102]
+                - listitem [ref=e105]: Cursos e Programas
+            - heading "Pesquisar cursos e programas" [level=1] [ref=e106]
+            - paragraph [ref=e107]: Compara áreas, modalidades e instituições para encontrares o curso certo.
+            - navigation "Tipos de resultados" [ref=e108]:
+              - list [ref=e109]:
+                - listitem [ref=e110]:
+                  - link "Cursos e Programas" [ref=e111] [cursor=pointer]:
+                    - /url: /cursos
+                - listitem [ref=e112]:
+                  - link "Universidades" [ref=e113] [cursor=pointer]:
+                    - /url: /universidades
+                - listitem [ref=e114]:
+                  - link "Bolsas" [ref=e115] [cursor=pointer]:
+                    - /url: /bolsas
+          - generic [ref=e116]:
+            - paragraph [ref=e117]: 2 cursos encontrados
+            - 'button "Ordenar cursos: Mais relevantes" [ref=e118]':
+              - generic [ref=e119]: Ordenar
+          - region "Cursos encontrados" [ref=e123]:
+            - article [ref=e172]:
+              - generic [ref=e173]:
+                - generic [ref=e174]:
+                  - paragraph [ref=e175]: Universidade Lúrio
+                  - link "Medicina" [ref=e176] [cursor=pointer]:
+                    - /url: /cursos/medicina
+                  - paragraph [ref=e177]: Formação em Saúde, com percurso orientado para competências académicas e profissionais.
+                  - generic [ref=e178]:
+                    - generic [ref=e179]: Nampula, Moçambique
+                    - generic [ref=e183]: Licenciatura
+                    - generic [ref=e187]: Híbrida · 6 anos
+                - button "Guardar Medicina" [ref=e190]
+              - generic [ref=e193]:
+                - link "Ver detalhes do curso" [ref=e194] [cursor=pointer]:
+                  - /url: /cursos/medicina
+                - generic [ref=e195]: Prazo encerrado em 1 de junho de 2024
+            - article [ref=e196]:
+              - generic [ref=e197]:
+                - generic [ref=e198]:
+                  - paragraph [ref=e199]: Universidade Lúrio
+                  - link "Agronomia" [ref=e200] [cursor=pointer]:
+                    - /url: /cursos/agronomia
+                  - paragraph [ref=e201]: Formação em Agrárias, com percurso orientado para competências académicas e profissionais.
+                  - generic [ref=e202]:
+                    - generic [ref=e203]: Nampula, Moçambique
+                    - generic [ref=e207]: Licenciatura
+                    - generic [ref=e211]: Híbrida · 4 anos
+                - button "Guardar Agronomia" [ref=e214]
+              - generic [ref=e217]:
+                - link "Ver detalhes do curso" [ref=e218] [cursor=pointer]:
+                  - /url: /cursos/agronomia
+                - generic [ref=e219]: Prazo encerrado em 1 de junho de 2024
+          - navigation "Paginação dos cursos" [ref=e316]:
+            - button "Anterior" [ref=e317]
+            - button "1" [ref=e318]
+            - button "2" [ref=e319]
+            - generic [ref=e320]: …
+            - button "5" [ref=e321]
+            - button "Seguinte" [ref=e322]
+    - generic [ref=e323]:
+      - generic [ref=e325]:
+        - navigation "Sobre a Oportunidades" [ref=e326]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=e327]
+          - list [ref=e328]:
+            - listitem [ref=e329]:
+              - link "Sobre nós" [ref=e330] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e331]:
+              - link "Oportunidades" [ref=e332] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=e333]:
+              - link "Mentoria" [ref=e334] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=e335]:
+          - heading "Explorar" [level=2] [ref=e336]
+          - list [ref=e337]:
+            - listitem [ref=e338]:
+              - link "Universidades" [ref=e339] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=e340]:
+              - link "Cursos e Programas" [ref=e341] [cursor=pointer]:
+                - /url: /cursos
+            - listitem [ref=e342]:
+              - link "Bolsas" [ref=e343] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=e344]:
+              - link "Estágios" [ref=e345] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=e346]:
+              - link "Artigos" [ref=e347] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=e348]:
+          - heading "Links úteis" [level=2] [ref=e349]
+          - list [ref=e350]:
+            - listitem [ref=e351]:
+              - link "Termos de utilização" [ref=e352] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e353]:
+              - link "Política de privacidade" [ref=e354] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e355]:
+          - heading "Acompanha-nos" [level=2] [ref=e356]
+          - paragraph [ref=e357]: Encontra-nos nas redes sociais
+      - paragraph [ref=e377]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.
+  - button "Open TanStack Devtools" [ref=e378] [cursor=pointer]:
+    - img "TanStack Devtools" [ref=e379]

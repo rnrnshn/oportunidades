@@ -1,0 +1,12 @@
+{
+  "pairs": [
+    { "name": "Texto principal", "type": "normal-text", "foreground": "#262626", "background": "#ffffff" },
+    { "name": "Texto secundário", "type": "normal-text", "foreground": "#525252", "background": "#ffffff" },
+    { "name": "Texto secundário em superfície", "type": "normal-text", "foreground": "#525252", "background": "#f7f9fc" },
+    { "name": "Texto branco em marca", "type": "normal-text", "foreground": "#ffffff", "background": "#0049af" },
+    { "name": "Marca em branco", "type": "normal-text", "foreground": "#0049af", "background": "#ffffff" },
+    { "name": "Contorno de controlo", "type": "ui", "foreground": "#8b93a1", "background": "#ffffff" },
+    { "name": "Estado verificado", "type": "normal-text", "foreground": "#176b3a", "background": "#e8f5ee" },
+    { "name": "Informação de prazo", "type": "normal-text", "foreground": "#815c32", "background": "#fff7e6" }
+  ]
+}

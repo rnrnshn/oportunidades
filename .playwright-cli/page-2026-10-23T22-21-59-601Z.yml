@@ -1,0 +1,226 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=e5]
+      - navigation "Navegação principal" [ref=e6]:
+        - button "Oportunidades" [ref=e8]
+        - button "Cursos e Programas" [ref=e12]
+        - link "Universidades" [ref=e15] [cursor=pointer]:
+          - /url: /universidades
+        - button "Recursos" [ref=e17]
+      - generic [ref=e20]:
+        - button "Entrar" [ref=e21]
+        - button "Criar conta" [ref=e22]
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - region [ref=e25]:
+        - generic [ref=e26]:
+          - paragraph [ref=e27]: Orientação personalizada
+          - heading "Ainda não sabes qual opção escolher?" [level=2] [ref=e28]
+          - paragraph [ref=e29]: Responde a algumas perguntas e recebe sugestões adequadas aos teus interesses e objetivos.
+        - button "Obter recomendações" [ref=e30]
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - navigation "Breadcrumb" [ref=e36]:
+            - list [ref=e37]:
+              - listitem [ref=e38]:
+                - link "Início" [ref=e39] [cursor=pointer]:
+                  - /url: /
+              - listitem [aria-hidden] [ref=e40]
+              - listitem [ref=e43]: Universidades
+          - heading "Explorar Universidades" [level=1] [ref=e44]
+          - paragraph [ref=e45]: Compara modalidades, propinas e cursos para escolher o campus certo.
+          - navigation "Tipos de resultados" [ref=e46]:
+            - list [ref=e47]:
+              - listitem [ref=e48]:
+                - link "Cursos e Programas" [ref=e49] [cursor=pointer]:
+                  - /url: /cursos
+              - listitem [ref=e50]:
+                - link "Universidades" [ref=e51] [cursor=pointer]:
+                  - /url: /universidades
+              - listitem [ref=e52]:
+                - link "Bolsas" [ref=e53] [cursor=pointer]:
+                  - /url: /bolsas
+        - complementary "Filtros de pesquisa" [ref=e54]:
+          - generic [ref=e55]:
+            - button "Limpar filtros (0)" [ref=e57]
+            - generic [ref=e58]:
+              - generic [ref=e59]:
+                - text: Pesquisa
+                - textbox "Pesquisa" [ref=e60]:
+                  - /placeholder: Universidade em Maputo
+              - group [ref=e61]:
+                - generic "Localização" [ref=e62] [cursor=pointer]
+              - group [ref=e65]:
+                - generic "Área de estudo" [ref=e66] [cursor=pointer]
+                - generic [ref=e70]:
+                  - text: Área de estudo
+                  - 'button "Área de estudo: Seleciona a área" [ref=e71]':
+                    - generic [ref=e72]: Seleciona a área
+              - group [ref=e75]:
+                - generic "Universidade" [ref=e76] [cursor=pointer]
+              - group [ref=e79]:
+                - generic "Modalidade" [ref=e80] [cursor=pointer]
+              - group [ref=e83]:
+                - generic "Avaliação" [ref=e84] [cursor=pointer]
+              - group [ref=e87]:
+                - generic "Propinas" [ref=e88] [cursor=pointer]
+              - group [ref=e91]:
+                - generic "Período de admissão" [ref=e92] [cursor=pointer]
+        - region "Resultados" [ref=e95]:
+          - generic [ref=e96]:
+            - paragraph [ref=e97]: 6 universidades encontradas
+            - 'button "Ordenar resultados: Mais relevantes" [ref=e98]':
+              - generic [ref=e99]: Ordenar
+          - generic [ref=e104]:
+            - generic [ref=e106]:
+              - generic [ref=e107]: Logo
+              - generic [ref=e108]:
+                - generic [ref=e109]:
+                  - generic [ref=e110]:
+                    - heading [level=3] [ref=e111]:
+                      - link "Instituto Superior de Ciências e Tecnologia de Moçambique" [ref=e112] [cursor=pointer]:
+                        - /url: /universities/isctem
+                    - generic [ref=e113]: Maputo, Moçambique, Moçambique
+                    - generic [ref=e119]:
+                      - generic [ref=e120]: Pública
+                      - generic [ref=e126]: Campus
+                  - button "Guardar Instituto Superior de Ciências e Tecnologia de Moçambique" [ref=e133]
+                - generic [ref=e136]:
+                  - link "Visitar página da universidade" [ref=e137] [cursor=pointer]:
+                    - /url: /universities/isctem
+                  - button "Admissões até 15 DE MAIO DE 2024" [ref=e138]
+            - generic [ref=e140]:
+              - generic [ref=e141]: Logo
+              - generic [ref=e142]:
+                - generic [ref=e143]:
+                  - generic [ref=e144]:
+                    - heading [level=3] [ref=e145]:
+                      - link "Universidade Lúrio" [ref=e146] [cursor=pointer]:
+                        - /url: /universities/unilurio
+                    - generic [ref=e147]: Nampula, Moçambique, Moçambique
+                    - generic [ref=e153]:
+                      - generic [ref=e154]: Pública
+                      - generic [ref=e160]: Híbrida
+                  - button "Guardar Universidade Lúrio" [ref=e167]
+                - generic [ref=e170]:
+                  - link "Visitar página da universidade" [ref=e171] [cursor=pointer]:
+                    - /url: /universities/unilurio
+                  - button "Admissões até 1 DE JUNHO DE 2024" [ref=e172]
+            - generic [ref=e174]:
+              - generic [ref=e175]: Logo
+              - generic [ref=e176]:
+                - generic [ref=e177]:
+                  - generic [ref=e178]:
+                    - heading [level=3] [ref=e179]:
+                      - link "Universidade Zambeze" [ref=e180] [cursor=pointer]:
+                        - /url: /universities/unizambeze
+                    - generic [ref=e181]: Beira, Moçambique, Moçambique
+                    - generic [ref=e187]:
+                      - generic [ref=e188]: Pública
+                      - generic [ref=e194]: Campus
+                  - button "Guardar Universidade Zambeze" [ref=e201]
+                - generic [ref=e204]:
+                  - link "Visitar página da universidade" [ref=e205] [cursor=pointer]:
+                    - /url: /universities/unizambeze
+                  - button "Admissões até 28 DE MAIO DE 2024" [ref=e206]
+            - generic [ref=e208]:
+              - generic [ref=e209]: Logo
+              - generic [ref=e210]:
+                - generic [ref=e211]:
+                  - generic [ref=e212]:
+                    - heading [level=3] [ref=e213]:
+                      - link "Universidade Autónoma de Moçambique" [ref=e214] [cursor=pointer]:
+                        - /url: /universities/uam
+                    - generic [ref=e215]: Maputo, Moçambique, Moçambique
+                    - generic [ref=e221]:
+                      - generic [ref=e222]: Privada
+                      - generic [ref=e228]: Online
+                  - button "Guardar Universidade Autónoma de Moçambique" [ref=e235]
+                - generic [ref=e238]:
+                  - link "Visitar página da universidade" [ref=e239] [cursor=pointer]:
+                    - /url: /universities/uam
+                  - button "Admissões até 20 DE JUNHO DE 2024" [ref=e240]
+            - generic [ref=e242]:
+              - generic [ref=e243]: Logo
+              - generic [ref=e244]:
+                - generic [ref=e245]:
+                  - generic [ref=e246]:
+                    - heading [level=3] [ref=e247]:
+                      - link "Universidade São Tomás de Moçambique" [ref=e248] [cursor=pointer]:
+                        - /url: /universities/ustm
+                    - generic [ref=e249]: Maputo, Moçambique, Moçambique
+                    - generic [ref=e255]:
+                      - generic [ref=e256]: Privada
+                      - generic [ref=e262]: Campus
+                  - button "Guardar Universidade São Tomás de Moçambique" [ref=e269]
+                - generic [ref=e272]:
+                  - link "Visitar página da universidade" [ref=e273] [cursor=pointer]:
+                    - /url: /universities/ustm
+                  - button "Admissões até 5 DE JULHO DE 2024" [ref=e274]
+            - generic [ref=e276]:
+              - generic [ref=e277]: Logo
+              - generic [ref=e278]:
+                - generic [ref=e279]:
+                  - generic [ref=e280]:
+                    - heading [level=3] [ref=e281]:
+                      - link "Universidade Púnguè" [ref=e282] [cursor=pointer]:
+                        - /url: /universities/upungue
+                    - generic [ref=e283]: Chimoio, Moçambique, Moçambique
+                    - generic [ref=e289]:
+                      - generic [ref=e290]: Pública
+                      - generic [ref=e296]: Híbrida
+                  - button "Guardar Universidade Púnguè" [ref=e303]
+                - generic [ref=e306]:
+                  - link "Visitar página da universidade" [ref=e307] [cursor=pointer]:
+                    - /url: /universities/upungue
+                  - button "Admissões até 10 DE MAIO DE 2024" [ref=e308]
+    - generic [ref=e309]:
+      - generic [ref=e311]:
+        - navigation "Sobre a Oportunidades" [ref=e312]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=e313]
+          - list [ref=e314]:
+            - listitem [ref=e315]:
+              - link "Sobre nós" [ref=e316] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e317]:
+              - link "Oportunidades" [ref=e318] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=e319]:
+              - link "Mentoria" [ref=e320] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=e321]:
+          - heading "Explorar" [level=2] [ref=e322]
+          - list [ref=e323]:
+            - listitem [ref=e324]:
+              - link "Universidades" [ref=e325] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=e326]:
+              - link "Cursos e Programas" [ref=e327] [cursor=pointer]:
+                - /url: /cursos
+            - listitem [ref=e328]:
+              - link "Bolsas" [ref=e329] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=e330]:
+              - link "Estágios" [ref=e331] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=e332]:
+              - link "Artigos" [ref=e333] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=e334]:
+          - heading "Links úteis" [level=2] [ref=e335]
+          - list [ref=e336]:
+            - listitem [ref=e337]:
+              - link "Termos de utilização" [ref=e338] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e339]:
+              - link "Política de privacidade" [ref=e340] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e341]:
+          - heading "Acompanha-nos" [level=2] [ref=e342]
+          - paragraph [ref=e343]: Encontra-nos nas redes sociais
+      - paragraph [ref=e363]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.
+  - button "Open TanStack Devtools" [ref=e364] [cursor=pointer]:
+    - img "TanStack Devtools" [ref=e365]

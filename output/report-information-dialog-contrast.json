@@ -1,0 +1,11 @@
+{
+  "pairs": [
+    { "name": "Dialog body text", "type": "normal-text", "foreground": "#525252", "background": "#FFFFFF", "context": "Instructions, hints and labels" },
+    { "name": "Dialog headings", "type": "normal-text", "foreground": "#1F2A42", "background": "#FFFFFF", "context": "Dialog title and fieldset legend" },
+    { "name": "Report trigger", "type": "normal-text", "foreground": "#0049AF", "background": "#FFFFFF", "context": "Report information button" },
+    { "name": "Field border", "type": "ui", "foreground": "#888888", "background": "#FFFFFF", "context": "Text fields and textarea boundaries" },
+    { "name": "Focus ring", "type": "ui", "foreground": "#0049AF", "background": "#FFFFFF", "context": "Keyboard focus indicator" },
+    { "name": "Primary button text", "type": "normal-text", "foreground": "#FFFFFF", "background": "#0049AF", "context": "Submit report button" },
+    { "name": "Success icon", "type": "ui", "foreground": "#176B3A", "background": "#FFFFFF", "context": "Report received confirmation" }
+  ]
+}

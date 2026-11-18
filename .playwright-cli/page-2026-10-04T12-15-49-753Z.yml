@@ -1,0 +1,76 @@
+- generic [active] [ref=f4e1]:
+  - banner [ref=f4e2]:
+    - generic [ref=f4e3]:
+      - link [ref=f4e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=f4e5]
+      - button "Abrir menu" [ref=f4e6]
+  - main [ref=f4e7]:
+    - generic [ref=f4e8]:
+      - generic [ref=f4e10]:
+        - heading "Pesquisar cursos e programas" [level=1] [ref=f4e11]
+        - generic [ref=f4e12]:
+          - 'button "Semestre: Semestre" [ref=f4e13]':
+            - generic [ref=f4e14]: Semestre
+          - generic [ref=f4e17]:
+            - text: Cursos e programas
+            - searchbox "Cursos e programas" [ref=f4e22]
+          - button "Encontrar cursos" [ref=f4e23]
+      - generic [ref=f4e24]:
+        - 'button "Ordenar cursos: A–Z, curso" [ref=f4e25]':
+          - generic [ref=f4e26]: A–Z, curso
+        - button "Filtros" [ref=f4e29]
+      - region "Resultados de cursos" [ref=f4e33]:
+        - paragraph [ref=f4e35]: 0 cursos encontrados
+        - generic [ref=f4e37]:
+          - paragraph [ref=f4e38]: Nenhum curso encontrado
+          - paragraph [ref=f4e39]: De momento não existem cursos disponíveis.
+        - navigation "Paginação dos cursos" [ref=f4e40]:
+          - button "Anterior" [ref=f4e41]
+          - button "1" [ref=f4e42]
+          - button "2" [ref=f4e43]
+          - generic [ref=f4e44]: …
+          - button "5" [ref=f4e45]
+          - button "Seguinte" [ref=f4e46]
+    - generic [ref=f4e47]:
+      - generic [ref=f4e49]:
+        - navigation "Sobre a Oportunidades" [ref=f4e50]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=f4e51]
+          - list [ref=f4e52]:
+            - listitem [ref=f4e53]:
+              - link "Sobre nós" [ref=f4e54] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f4e55]:
+              - link "Oportunidades" [ref=f4e56] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=f4e57]:
+              - link "Mentoria" [ref=f4e58] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=f4e59]:
+          - heading "Explorar" [level=2] [ref=f4e60]
+          - list [ref=f4e61]:
+            - listitem [ref=f4e62]:
+              - link "Universidades" [ref=f4e63] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=f4e64]:
+              - link "Bolsas" [ref=f4e65] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=f4e66]:
+              - link "Estágios" [ref=f4e67] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=f4e68]:
+              - link "Artigos" [ref=f4e69] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=f4e70]:
+          - heading "Links úteis" [level=2] [ref=f4e71]
+          - list [ref=f4e72]:
+            - listitem [ref=f4e73]:
+              - link "Termos de utilização" [ref=f4e74] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f4e75]:
+              - link "Política de privacidade" [ref=f4e76] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=f4e77]:
+          - heading "Acompanha-nos" [level=2] [ref=f4e78]
+          - paragraph [ref=f4e79]: Encontra-nos nas redes sociais
+      - paragraph [ref=f4e99]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.

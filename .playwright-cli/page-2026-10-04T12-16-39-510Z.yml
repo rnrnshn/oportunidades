@@ -1,0 +1,153 @@
+- generic [active] [ref=f5e1]:
+  - banner [ref=f5e2]:
+    - generic [ref=f5e3]:
+      - link [ref=f5e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=f5e5]
+      - button "Abrir menu" [ref=f5e6]
+  - main [ref=f5e7]:
+    - region "Campus da Instituto Superior de Ciências e Tecnologia de Moçambique" [ref=f5e8]:
+      - img "Campus da Instituto Superior de Ciências e Tecnologia de Moçambique" [ref=f5e9]
+    - generic [ref=f5e10]:
+      - navigation "Breadcrumb" [ref=f5e11]:
+        - list [ref=f5e12]:
+          - listitem [ref=f5e13]:
+            - link "Cursos" [ref=f5e14] [cursor=pointer]:
+              - /url: /cursos
+          - listitem [aria-hidden] [ref=f5e15]
+          - listitem [ref=f5e18]: Tecnologia
+          - listitem [aria-hidden] [ref=f5e19]
+          - listitem [ref=f5e22]: Engenharia Informática
+      - generic [ref=f5e23]:
+        - generic [ref=f5e24]:
+          - generic [ref=f5e25]:
+            - generic [ref=f5e26]:
+              - heading "Engenharia Informática" [level=1] [ref=f5e27]
+              - paragraph [ref=f5e28]: Instituto Superior de Ciências e Tecnologia de Moçambique
+            - button "Guardar curso" [ref=f5e29]: Guardar
+          - navigation "Secções do curso" [ref=f5e33]:
+            - button "Visão geral" [ref=f5e34]
+            - button "Currículo" [ref=f5e35]
+            - button "Admissão" [ref=f5e36]
+            - button "Contactos" [ref=f5e37]
+          - generic [ref=f5e38]:
+            - heading "Visão geral" [level=2] [ref=f5e39]
+            - paragraph [ref=f5e40]: O curso de Engenharia Informática prepara estudantes para responder a desafios profissionais da área de Tecnologia, combinando fundamentos teóricos, prática e projetos aplicados.
+            - heading "Objetivos de aprendizagem" [level=3] [ref=f5e41]
+            - list [ref=f5e42]:
+              - listitem [ref=f5e43]: Compreender os fundamentos da computação e da engenharia de software.
+              - listitem [ref=f5e44]: Aplicar métodos de programação, análise de sistemas, redes e bases de dados.
+              - listitem [ref=f5e45]: Desenvolver soluções tecnológicas adequadas às necessidades locais.
+              - listitem [ref=f5e46]: Promover inovação e trabalho colaborativo.
+          - generic [ref=f5e48]:
+            - generic [ref=f5e49]:
+              - term [ref=f5e50]: Duração
+              - definition [ref=f5e51]: 4 anos
+            - generic [ref=f5e52]:
+              - term [ref=f5e53]: Idioma de ensino
+              - definition [ref=f5e54]: Português
+            - generic [ref=f5e55]:
+              - term [ref=f5e56]: Modalidade
+              - definition [ref=f5e57]: Presencial
+            - generic [ref=f5e58]:
+              - term [ref=f5e59]: Horário
+              - definition [ref=f5e60]: Diurno
+            - generic [ref=f5e61]:
+              - term [ref=f5e62]: Faculdade
+              - definition [ref=f5e63]: Tecnologia
+          - generic [ref=f5e64]:
+            - heading "Estrutura curricular" [level=2] [ref=f5e65]
+            - generic [ref=f5e66]:
+              - generic [ref=f5e67]:
+                - heading [level=3] [ref=f5e68]:
+                  - button "1º Ano" [expanded] [ref=f5e69]
+                - generic [ref=f5e72]:
+                  - generic [ref=f5e73]:
+                    - heading "Semestre I" [level=4] [ref=f5e74]
+                    - list [ref=f5e75]:
+                      - listitem [ref=f5e76]: Introdução à área
+                      - listitem [ref=f5e77]: Matemática
+                      - listitem [ref=f5e78]: Comunicação e Expressão
+                      - listitem [ref=f5e79]: Metodologia de estudo
+                  - generic [ref=f5e80]:
+                    - heading "Semestre II" [level=4] [ref=f5e81]
+                    - list [ref=f5e82]:
+                      - listitem [ref=f5e83]: Fundamentos profissionais
+                      - listitem [ref=f5e84]: Métodos quantitativos
+                      - listitem [ref=f5e85]: Tecnologias de informação
+                      - listitem [ref=f5e86]: Projeto integrado
+              - heading [level=3] [ref=f5e88]:
+                - button "2º Ano" [ref=f5e89]
+              - heading [level=3] [ref=f5e93]:
+                - button "3º Ano" [ref=f5e94]
+              - heading [level=3] [ref=f5e98]:
+                - button "4º Ano" [ref=f5e99]
+          - generic [ref=f5e102]:
+            - heading "Admissão" [level=2] [ref=f5e103]
+            - list [ref=f5e104]:
+              - listitem [ref=f5e105]: Conclusão do Ensino Secundário Geral ou equivalente
+              - listitem [ref=f5e106]: Aprovação nos exames de admissão aplicáveis
+          - generic [ref=f5e107]:
+            - heading "Localização e contactos" [level=2] [ref=f5e108]
+            - generic [ref=f5e109]:
+              - paragraph [ref=f5e110]: Tecnologia
+              - paragraph [ref=f5e111]: Instituto Superior de Ciências e Tecnologia de Moçambique
+              - paragraph [ref=f5e112]: Maputo, Moçambique
+            - link "Ver universidade" [ref=f5e113] [cursor=pointer]:
+              - /url: /universities/isctem
+        - complementary "Informação do curso" [ref=f5e118]:
+          - generic [ref=f5e119]:
+            - heading "Engenharia Informática" [level=2] [ref=f5e120]
+            - link "Visitar universidade" [ref=f5e121] [cursor=pointer]:
+              - /url: /universities/isctem
+            - button "Reportar informação incorreta" [ref=f5e126]
+          - generic [ref=f5e129]:
+            - heading "Requisitos de admissão" [level=2] [ref=f5e130]
+            - list [ref=f5e131]:
+              - listitem [ref=f5e132]: Conclusão do Ensino Secundário Geral ou equivalente
+              - listitem [ref=f5e133]: Aprovação nos exames de admissão aplicáveis
+          - generic [ref=f5e134]:
+            - heading "Custos" [level=2] [ref=f5e135]
+            - paragraph [ref=f5e136]: "Propina anual indicativa: MZN 8.000"
+    - generic [ref=f5e137]:
+      - generic [ref=f5e139]:
+        - navigation "Sobre a Oportunidades" [ref=f5e140]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=f5e141]
+          - list [ref=f5e142]:
+            - listitem [ref=f5e143]:
+              - link "Sobre nós" [ref=f5e144] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f5e145]:
+              - link "Oportunidades" [ref=f5e146] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=f5e147]:
+              - link "Mentoria" [ref=f5e148] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=f5e149]:
+          - heading "Explorar" [level=2] [ref=f5e150]
+          - list [ref=f5e151]:
+            - listitem [ref=f5e152]:
+              - link "Universidades" [ref=f5e153] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=f5e154]:
+              - link "Bolsas" [ref=f5e155] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=f5e156]:
+              - link "Estágios" [ref=f5e157] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=f5e158]:
+              - link "Artigos" [ref=f5e159] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=f5e160]:
+          - heading "Links úteis" [level=2] [ref=f5e161]
+          - list [ref=f5e162]:
+            - listitem [ref=f5e163]:
+              - link "Termos de utilização" [ref=f5e164] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f5e165]:
+              - link "Política de privacidade" [ref=f5e166] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=f5e167]:
+          - heading "Acompanha-nos" [level=2] [ref=f5e168]
+          - paragraph [ref=f5e169]: Encontra-nos nas redes sociais
+      - paragraph [ref=f5e189]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.

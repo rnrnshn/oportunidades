@@ -1,0 +1,10 @@
+{
+  "pairs": [
+    { "name": "Search labels on blue surface", "type": "normal-text", "foreground": "#1F2A42", "background": "#EDF4FF", "context": "Visible field labels" },
+    { "name": "Search icons on white", "type": "ui", "foreground": "#0049AF", "background": "#FFFFFF", "context": "Search and location icons" },
+    { "name": "Input border on white", "type": "ui", "foreground": "#888888", "background": "#FFFFFF", "context": "Search field boundaries" },
+    { "name": "Input text on white", "type": "normal-text", "foreground": "#525252", "background": "#FFFFFF", "context": "Search values" },
+    { "name": "Primary search button", "type": "normal-text", "foreground": "#FFFFFF", "background": "#0049AF", "context": "Search action label" },
+    { "name": "Focus ring on white", "type": "ui", "foreground": "#0049AF", "background": "#FFFFFF", "context": "Keyboard focus indicator" }
+  ]
+}

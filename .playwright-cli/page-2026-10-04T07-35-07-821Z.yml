@@ -1,0 +1,145 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=e5]
+      - navigation "Navegação principal" [ref=e6]:
+        - button "Oportunidades" [ref=e7]
+        - link "Bolsas" [ref=e10] [cursor=pointer]:
+          - /url: /bolsas
+        - link "Universidades" [ref=e11] [cursor=pointer]:
+          - /url: /universidades
+        - link "Cursos" [ref=e12] [cursor=pointer]:
+          - /url: /cursos
+        - link "Artigos" [ref=e13] [cursor=pointer]:
+          - /url: /artigos
+        - link "Mentoria" [ref=e14] [cursor=pointer]:
+          - /url: /mentoria
+        - link "Sobre" [ref=e15] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=e16]:
+        - button "Entrar" [ref=e17]
+        - button "Criar conta" [ref=e18]
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - navigation "Breadcrumb" [ref=e21]:
+        - list [ref=e22]:
+          - listitem [ref=e23]:
+            - link "Início" [ref=e24] [cursor=pointer]:
+              - /url: /
+          - listitem [aria-hidden] [ref=e25]
+          - listitem [ref=e28]: Bolsas de Estudo
+      - generic [ref=e29]:
+        - heading "Explorar Bolsas de Estudo" [level=1] [ref=e30]
+        - paragraph [ref=e31]: Filtra por localização, modalidade e cobertura para encontrar a bolsa ideal.
+      - generic [ref=e32]:
+        - complementary "Filtros de pesquisa" [ref=e33]:
+          - generic [ref=e36]:
+            - paragraph [ref=e39]: Filtrar bolsas
+            - generic [ref=e40]:
+              - generic [ref=e41]:
+                - text: Pesquisa
+                - textbox "Pesquisa" [ref=e42]:
+                  - /placeholder: Bolsa em Maputo ou programa online
+              - generic [ref=e43]:
+                - text: Localização
+                - 'button "Localização: Seleciona uma localização" [ref=e44]':
+                  - generic [ref=e45]: Seleciona uma localização
+              - generic [ref=e48]:
+                - text: Área de estudo
+                - 'button "Área de estudo: Seleciona a área" [ref=e49]':
+                  - generic [ref=e50]: Seleciona a área
+              - generic [ref=e53]:
+                - text: Nível
+                - 'button "Nível: Seleciona o nível" [ref=e54]':
+                  - generic [ref=e55]: Seleciona o nível
+              - generic [ref=e58]:
+                - text: Modalidade
+                - 'button "Modalidade: Online, presencial ou híbrido" [ref=e59]':
+                  - generic [ref=e60]: Online, presencial ou híbrido
+              - generic [ref=e63]:
+                - text: Tipo de bolsa
+                - 'button "Tipo de bolsa: Mérito, necessidade..." [ref=e64]':
+                  - generic [ref=e65]: Mérito, necessidade...
+              - generic [ref=e68]:
+                - text: Idioma
+                - 'button "Idioma: Idioma do programa" [ref=e69]':
+                  - generic [ref=e70]: Idioma do programa
+              - generic [ref=e73]:
+                - text: Cobertura
+                - combobox "Cobertura" [ref=e75]:
+                  - generic [ref=e76]: Seleciona a cobertura
+              - generic [ref=e77]:
+                - generic [ref=e78]:
+                  - generic [ref=e79]: Valor mensal
+                  - generic [ref=e80]: 2000 MTn - 10 000 MTn
+                - generic [ref=e81]:
+                  - generic [ref=e108]:
+                    - slider "Valor mensal mínimo": "2000"
+                    - slider "Valor mensal máximo": "10000"
+                  - generic [ref=e109]:
+                    - generic [ref=e110]: 2000 MTn
+                    - generic [ref=e111]: 10 000 MTn
+              - generic [ref=e112]:
+                - text: Prazo de candidatura
+                - 'button "Prazo de candidatura: Próximos 15/30/60 dias" [ref=e113]':
+                  - generic [ref=e114]: Próximos 15/30/60 dias
+        - region "Resultados" [ref=e117]:
+          - generic [ref=e118]:
+            - paragraph [ref=e119]: 0 bolsas encontradas
+            - generic [ref=e120]:
+              - 'button "Ordenar resultados: Mais relevantes" [ref=e121]':
+                - generic [ref=e122]: Mais relevantes
+              - generic "Modo de visualização" [ref=e125]:
+                - button "Lista" [pressed] [ref=e126]
+                - button "Grelha" [ref=e128]
+          - generic [ref=e134]:
+            - generic [ref=e135]:
+              - paragraph [ref=e136]: Nenhuma bolsa encontrada
+              - paragraph [ref=e137]: Ajusta os filtros ou aumenta o intervalo de datas para veres mais opções.
+            - button "Limpar filtros" [ref=e138]
+    - generic [ref=e139]:
+      - generic [ref=e141]:
+        - navigation "Sobre a Oportunidades" [ref=e142]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=e143]
+          - list [ref=e144]:
+            - listitem [ref=e145]:
+              - link "Sobre nós" [ref=e146] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e147]:
+              - link "Oportunidades" [ref=e148] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=e149]:
+              - link "Mentoria" [ref=e150] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=e151]:
+          - heading "Explorar" [level=2] [ref=e152]
+          - list [ref=e153]:
+            - listitem [ref=e154]:
+              - link "Universidades" [ref=e155] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=e156]:
+              - link "Bolsas" [ref=e157] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=e158]:
+              - link "Estágios" [ref=e159] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=e160]:
+              - link "Artigos" [ref=e161] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=e162]:
+          - heading "Links úteis" [level=2] [ref=e163]
+          - list [ref=e164]:
+            - listitem [ref=e165]:
+              - link "Termos de utilização" [ref=e166] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e167]:
+              - link "Política de privacidade" [ref=e168] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e169]:
+          - heading "Acompanha-nos" [level=2] [ref=e170]
+          - paragraph [ref=e171]: Encontra-nos nas redes sociais
+      - paragraph [ref=e191]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.
+  - button "Open TanStack Devtools" [ref=e192] [cursor=pointer]:
+    - img "TanStack Devtools" [ref=e193]

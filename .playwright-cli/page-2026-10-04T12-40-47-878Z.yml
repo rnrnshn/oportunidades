@@ -1,0 +1,264 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=e5]
+      - navigation "Navegação principal" [ref=e6]:
+        - button "Oportunidades" [ref=e7]
+        - link "Bolsas" [ref=e10] [cursor=pointer]:
+          - /url: /bolsas
+        - link "Universidades" [ref=e11] [cursor=pointer]:
+          - /url: /universidades
+        - link "Cursos" [ref=e12] [cursor=pointer]:
+          - /url: /cursos
+        - link "Artigos" [ref=e13] [cursor=pointer]:
+          - /url: /artigos
+        - link "Mentoria" [ref=e14] [cursor=pointer]:
+          - /url: /mentoria
+        - link "Sobre" [ref=e15] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=e16]:
+        - button "Entrar" [ref=e17]
+        - button "Criar conta" [ref=e18]
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - heading "Pesquisar cursos e programas" [level=1] [ref=e23]
+      - generic [ref=e24]:
+        - complementary "Filtros de cursos" [ref=e25]:
+          - generic [ref=e26]:
+            - paragraph [ref=e27]: Queres recomendações?
+            - button "Obter recomendações" [ref=e28]
+          - generic [ref=e33]:
+            - generic [ref=e34]:
+              - heading "Filtrar cursos" [level=2] [ref=e35]
+              - button "Limpar (0)" [ref=e36]
+            - generic [ref=e37]:
+              - text: Pesquisa
+              - searchbox "Pesquisa" [ref=e38]
+            - heading "Universidade e área" [level=3] [ref=e40]
+            - generic [ref=e41]:
+              - 'button "Universidades: Todas" [ref=e42]':
+                - generic [ref=e43]: Todas
+              - 'button "Áreas de estudo: Todas" [ref=e46]':
+                - generic [ref=e47]: Todas
+            - group "Níveis" [ref=e50]:
+              - generic [ref=e52]:
+                - generic [ref=e53] [cursor=pointer]:
+                  - checkbox "Licenciatura" [ref=e54]
+                  - text: Licenciatura
+                - generic [ref=e55] [cursor=pointer]:
+                  - checkbox "Mestrado" [ref=e56]
+                  - text: Mestrado
+            - group "Mostrar apenas cursos" [ref=e57]:
+              - generic [ref=e59]:
+                - generic [ref=e60] [cursor=pointer]:
+                  - checkbox "Presenciais" [ref=e61]
+                  - text: Presenciais
+                - generic [ref=e62] [cursor=pointer]:
+                  - checkbox "A distância" [ref=e63]
+                  - text: A distância
+                - generic [ref=e64] [cursor=pointer]:
+                  - checkbox "Híbridos" [ref=e65]
+                  - text: Híbridos
+            - group "Horário" [ref=e66]:
+              - generic [ref=e68]:
+                - generic [ref=e69] [cursor=pointer]:
+                  - checkbox "Diurno" [ref=e70]
+                  - text: Diurno
+                - generic [ref=e71] [cursor=pointer]:
+                  - checkbox "Pós-laboral" [ref=e72]
+                  - text: Pós-laboral
+                - generic [ref=e73] [cursor=pointer]:
+                  - checkbox "Fim de semana" [ref=e74]
+                  - text: Fim de semana
+            - heading "Idioma" [level=3] [ref=e76]
+            - 'button "Idioma de ensino: Todos os idiomas" [ref=e78]':
+              - generic [ref=e79]: Todos os idiomas
+            - button "Aplicar filtros" [ref=e82]
+        - region [ref=e85]:
+          - heading "Resultados de cursos" [level=2] [ref=e86]
+          - generic [ref=e87]:
+            - paragraph [ref=e88]: 8 cursos encontrados
+            - 'button "Ordenar cursos: A–Z, curso" [ref=e89]':
+              - generic [ref=e90]: A–Z, curso
+          - region "Cursos encontrados" [ref=e93]:
+            - article [ref=e94]:
+              - generic [ref=e95]:
+                - generic [ref=e96]:
+                  - link "Agricultura e Recursos Naturais" [ref=e97] [cursor=pointer]:
+                    - /url: /cursos/agricultura
+                  - generic [ref=e98]:
+                    - paragraph [ref=e99]: Licenciatura / Híbrida
+                    - paragraph [ref=e100]:
+                      - generic [aria-hidden] [ref=e101]: U
+                      - generic [ref=e102]: Universidade Púnguè
+                - generic [ref=e103]:
+                  - button "Guardar Agricultura e Recursos Naturais" [ref=e104]
+                  - generic [ref=e107]:
+                    - text: Até
+                    - paragraph [ref=e108]: MZN 4.500/ano
+              - button "Mostrar mais" [ref=e109]
+            - article [ref=e112]:
+              - generic [ref=e113]:
+                - generic [ref=e114]:
+                  - link "Agronomia" [ref=e115] [cursor=pointer]:
+                    - /url: /cursos/agronomia
+                  - generic [ref=e116]:
+                    - paragraph [ref=e117]: Licenciatura / Híbrida
+                    - paragraph [ref=e118]:
+                      - generic [aria-hidden] [ref=e119]: U
+                      - generic [ref=e120]: Universidade Lúrio
+                - generic [ref=e121]:
+                  - button "Guardar Agronomia" [ref=e122]
+                  - generic [ref=e125]:
+                    - text: Até
+                    - paragraph [ref=e126]: MZN 6.000/ano
+              - button "Mostrar mais" [ref=e127]
+            - article [ref=e130]:
+              - generic [ref=e131]:
+                - generic [ref=e132]:
+                  - link "Comunicação Social" [ref=e133] [cursor=pointer]:
+                    - /url: /cursos/comunicacao-social
+                  - generic [ref=e134]:
+                    - paragraph [ref=e135]: Licenciatura / Presencial
+                    - paragraph [ref=e136]:
+                      - generic [aria-hidden] [ref=e137]: U
+                      - generic [ref=e138]: Universidade São Tomás de Moçambique
+                - generic [ref=e139]:
+                  - button "Guardar Comunicação Social" [ref=e140]
+                  - generic [ref=e143]:
+                    - text: Até
+                    - paragraph [ref=e144]: MZN 5.000/ano
+              - button "Mostrar mais" [ref=e145]
+            - article [ref=e148]:
+              - generic [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Direito" [ref=e151] [cursor=pointer]:
+                    - /url: /cursos/direito
+                  - generic [ref=e152]:
+                    - paragraph [ref=e153]: Licenciatura / Presencial
+                    - paragraph [ref=e154]:
+                      - generic [aria-hidden] [ref=e155]: U
+                      - generic [ref=e156]: Universidade Zambeze
+                - generic [ref=e157]:
+                  - button "Guardar Direito" [ref=e158]
+                  - generic [ref=e161]:
+                    - text: Até
+                    - paragraph [ref=e162]: MZN 6.000/ano
+              - button "Mostrar mais" [ref=e163]
+            - article [ref=e166]:
+              - generic [ref=e167]:
+                - generic [ref=e168]:
+                  - link "Engenharia Civil" [ref=e169] [cursor=pointer]:
+                    - /url: /cursos/engenharia-civil
+                  - generic [ref=e170]:
+                    - paragraph [ref=e171]: Licenciatura / Presencial
+                    - paragraph [ref=e172]:
+                      - generic [aria-hidden] [ref=e173]: I
+                      - generic [ref=e174]: Instituto Superior de Ciências e Tecnologia de Moçambique
+                - generic [ref=e175]:
+                  - button "Guardar Engenharia Civil" [ref=e176]
+                  - generic [ref=e179]:
+                    - text: Até
+                    - paragraph [ref=e180]: MZN 7.000/ano
+              - button "Mostrar mais" [ref=e181]
+            - article [ref=e184]:
+              - generic [ref=e185]:
+                - generic [ref=e186]:
+                  - link "Engenharia Informática" [ref=e187] [cursor=pointer]:
+                    - /url: /cursos/engenharia-informatica
+                  - generic [ref=e188]:
+                    - paragraph [ref=e189]: Licenciatura / Presencial
+                    - paragraph [ref=e190]:
+                      - generic [aria-hidden] [ref=e191]: I
+                      - generic [ref=e192]: Instituto Superior de Ciências e Tecnologia de Moçambique
+                - generic [ref=e193]:
+                  - button "Guardar Engenharia Informática" [ref=e194]
+                  - generic [ref=e197]:
+                    - text: Até
+                    - paragraph [ref=e198]: MZN 8.000/ano
+              - button "Mostrar mais" [ref=e199]
+            - article [ref=e202]:
+              - generic [ref=e203]:
+                - generic [ref=e204]:
+                  - link "Gestão Empresarial" [ref=e205] [cursor=pointer]:
+                    - /url: /cursos/gestao-empresarial
+                  - generic [ref=e206]:
+                    - paragraph [ref=e207]: Licenciatura / Online
+                    - paragraph [ref=e208]:
+                      - generic [aria-hidden] [ref=e209]: U
+                      - generic [ref=e210]: Universidade Autónoma de Moçambique
+                - generic [ref=e211]:
+                  - button "Guardar Gestão Empresarial" [ref=e212]
+                  - generic [ref=e215]:
+                    - text: Até
+                    - paragraph [ref=e216]: MZN 4.200/ano
+              - button "Mostrar mais" [ref=e217]
+            - article [ref=e220]:
+              - generic [ref=e221]:
+                - generic [ref=e222]:
+                  - link "Medicina" [ref=e223] [cursor=pointer]:
+                    - /url: /cursos/medicina
+                  - generic [ref=e224]:
+                    - paragraph [ref=e225]: Licenciatura / Híbrida
+                    - paragraph [ref=e226]:
+                      - generic [aria-hidden] [ref=e227]: U
+                      - generic [ref=e228]: Universidade Lúrio
+                - generic [ref=e229]:
+                  - button "Guardar Medicina" [ref=e230]
+                  - generic [ref=e233]:
+                    - text: Até
+                    - paragraph [ref=e234]: MZN 12.000/ano
+              - button "Mostrar mais" [ref=e235]
+          - navigation "Paginação dos cursos" [ref=e238]:
+            - button "Anterior" [ref=e239]
+            - button "1" [ref=e240]
+            - button "2" [ref=e241]
+            - generic [ref=e242]: …
+            - button "5" [ref=e243]
+            - button "Seguinte" [ref=e244]
+    - generic [ref=e245]:
+      - generic [ref=e247]:
+        - navigation "Sobre a Oportunidades" [ref=e248]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=e249]
+          - list [ref=e250]:
+            - listitem [ref=e251]:
+              - link "Sobre nós" [ref=e252] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e253]:
+              - link "Oportunidades" [ref=e254] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=e255]:
+              - link "Mentoria" [ref=e256] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=e257]:
+          - heading "Explorar" [level=2] [ref=e258]
+          - list [ref=e259]:
+            - listitem [ref=e260]:
+              - link "Universidades" [ref=e261] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=e262]:
+              - link "Bolsas" [ref=e263] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=e264]:
+              - link "Estágios" [ref=e265] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=e266]:
+              - link "Artigos" [ref=e267] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=e268]:
+          - heading "Links úteis" [level=2] [ref=e269]
+          - list [ref=e270]:
+            - listitem [ref=e271]:
+              - link "Termos de utilização" [ref=e272] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e273]:
+              - link "Política de privacidade" [ref=e274] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e275]:
+          - heading "Acompanha-nos" [level=2] [ref=e276]
+          - paragraph [ref=e277]: Encontra-nos nas redes sociais
+      - paragraph [ref=e297]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.
+  - button "Open TanStack Devtools" [ref=e298] [cursor=pointer]:
+    - img "TanStack Devtools" [ref=e299]

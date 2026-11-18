@@ -1,0 +1,170 @@
+- generic [ref=f4e1]:
+  - banner [ref=f4e2]:
+    - generic [ref=f4e3]:
+      - link [ref=f4e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=f4e5]
+      - button "Abrir menu" [ref=f4e6]
+  - main [ref=f4e7]:
+    - generic [ref=f4e8]:
+      - generic [ref=f4e10]:
+        - heading "Pesquisar cursos e programas" [level=1] [ref=f4e11]
+        - generic [ref=f4e12]:
+          - 'button "Semestre: Semestre" [ref=f4e13]':
+            - generic [ref=f4e14]: Semestre
+          - generic [ref=f4e17]:
+            - text: Cursos e programas
+            - searchbox "Cursos e programas" [ref=f4e22]
+          - button "Encontrar cursos" [ref=f4e23]
+      - generic [ref=f4e24]:
+        - 'button "Ordenar cursos: A–Z, curso" [ref=f4e25]':
+          - generic [ref=f4e26]: A–Z, curso
+        - button "Filtros" [ref=f4e29]
+      - region "Resultados de cursos" [ref=f4e33]:
+        - paragraph [ref=f4e35]: 8 cursos encontrados
+        - region "Cursos encontrados" [ref=f4e100]:
+          - article [ref=f4e101]:
+            - generic [ref=f4e102]:
+              - generic [ref=f4e103]:
+                - link "Agricultura e Recursos Naturais" [ref=f4e104] [cursor=pointer]:
+                  - /url: /cursos/agricultura
+                - paragraph [ref=f4e105]: "Licenciatura, Universidade Púnguè, Localização: Chimoio"
+                - paragraph [ref=f4e106]: Candidaturas até 10 de maio de 2024
+              - button "Guardar Agricultura e Recursos Naturais" [ref=f4e108]
+            - button "Mostrar menos" [expanded] [active] [ref=f4e267]
+            - generic [ref=f4e268]:
+              - generic [ref=f4e269]:
+                - heading "Propina" [level=4] [ref=f4e270]
+                - paragraph [ref=f4e271]: "Valor anual indicativo: MZN 4.500"
+              - generic [ref=f4e272]:
+                - generic [ref=f4e273]:
+                  - term [ref=f4e274]: "Candidaturas:"
+                  - definition [ref=f4e275]: até 10 de maio de 2024
+                - generic [ref=f4e276]:
+                  - term [ref=f4e277]: "Nível:"
+                  - definition [ref=f4e278]: Licenciatura
+                - generic [ref=f4e279]:
+                  - term [ref=f4e280]: "Modalidade:"
+                  - definition [ref=f4e281]: Híbrida
+                - generic [ref=f4e282]:
+                  - term [ref=f4e283]: "Duração:"
+                  - definition [ref=f4e284]: 4 anos
+                - generic [ref=f4e285]:
+                  - term [ref=f4e286]: "Área:"
+                  - definition [ref=f4e287]: Agrárias
+              - link "Ver detalhes completos do curso" [ref=f4e288] [cursor=pointer]:
+                - /url: /cursos/agricultura
+          - article [ref=f4e114]:
+            - generic [ref=f4e115]:
+              - generic [ref=f4e116]:
+                - link "Agronomia" [ref=f4e117] [cursor=pointer]:
+                  - /url: /cursos/agronomia
+                - paragraph [ref=f4e118]: "Licenciatura, Universidade Lúrio, Localização: Nampula"
+                - paragraph [ref=f4e119]: Candidaturas até 1 de junho de 2024
+              - button "Guardar Agronomia" [ref=f4e121]
+            - button "Mostrar mais" [ref=f4e124]
+          - article [ref=f4e127]:
+            - generic [ref=f4e128]:
+              - generic [ref=f4e129]:
+                - link "Comunicação Social" [ref=f4e130] [cursor=pointer]:
+                  - /url: /cursos/comunicacao-social
+                - paragraph [ref=f4e131]: "Licenciatura, Universidade São Tomás de Moçambique, Localização: Maputo"
+                - paragraph [ref=f4e132]: Candidaturas até 5 de julho de 2024
+              - button "Guardar Comunicação Social" [ref=f4e134]
+            - button "Mostrar mais" [ref=f4e137]
+          - article [ref=f4e140]:
+            - generic [ref=f4e141]:
+              - generic [ref=f4e142]:
+                - link "Direito" [ref=f4e143] [cursor=pointer]:
+                  - /url: /cursos/direito
+                - paragraph [ref=f4e144]: "Licenciatura, Universidade Zambeze, Localização: Beira"
+                - paragraph [ref=f4e145]: Candidaturas até 28 de maio de 2024
+              - button "Guardar Direito" [ref=f4e147]
+            - button "Mostrar mais" [ref=f4e150]
+          - article [ref=f4e153]:
+            - generic [ref=f4e154]:
+              - generic [ref=f4e155]:
+                - link "Engenharia Civil" [ref=f4e156] [cursor=pointer]:
+                  - /url: /cursos/engenharia-civil
+                - paragraph [ref=f4e157]: "Licenciatura, Instituto Superior de Ciências e Tecnologia de Moçambique, Localização: Maputo"
+                - paragraph [ref=f4e158]: Candidaturas até 15 de maio de 2024
+              - button "Guardar Engenharia Civil" [ref=f4e160]
+            - button "Mostrar mais" [ref=f4e163]
+          - article [ref=f4e166]:
+            - generic [ref=f4e167]:
+              - generic [ref=f4e168]:
+                - link "Engenharia Informática" [ref=f4e169] [cursor=pointer]:
+                  - /url: /cursos/engenharia-informatica
+                - paragraph [ref=f4e170]: "Licenciatura, Instituto Superior de Ciências e Tecnologia de Moçambique, Localização: Maputo"
+                - paragraph [ref=f4e171]: Candidaturas até 15 de maio de 2024
+              - button "Guardar Engenharia Informática" [ref=f4e173]
+            - button "Mostrar mais" [ref=f4e176]
+          - article [ref=f4e179]:
+            - generic [ref=f4e180]:
+              - generic [ref=f4e181]:
+                - link "Gestão Empresarial" [ref=f4e182] [cursor=pointer]:
+                  - /url: /cursos/gestao-empresarial
+                - paragraph [ref=f4e183]: "Licenciatura, Universidade Autónoma de Moçambique, Localização: Maputo"
+                - paragraph [ref=f4e184]: Candidaturas até 20 de junho de 2024
+              - button "Guardar Gestão Empresarial" [ref=f4e186]
+            - button "Mostrar mais" [ref=f4e189]
+          - article [ref=f4e192]:
+            - generic [ref=f4e193]:
+              - generic [ref=f4e194]:
+                - link "Medicina" [ref=f4e195] [cursor=pointer]:
+                  - /url: /cursos/medicina
+                - paragraph [ref=f4e196]: "Licenciatura, Universidade Lúrio, Localização: Nampula"
+                - paragraph [ref=f4e197]: Candidaturas até 1 de junho de 2024
+              - button "Guardar Medicina" [ref=f4e199]
+            - button "Mostrar mais" [ref=f4e202]
+        - navigation "Paginação dos cursos" [ref=f4e40]:
+          - button "Anterior" [ref=f4e41]
+          - button "1" [ref=f4e42]
+          - button "2" [ref=f4e43]
+          - generic [ref=f4e44]: …
+          - button "5" [ref=f4e45]
+          - button "Seguinte" [ref=f4e46]
+    - generic [ref=f4e47]:
+      - generic [ref=f4e49]:
+        - navigation "Sobre a Oportunidades" [ref=f4e50]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=f4e51]
+          - list [ref=f4e52]:
+            - listitem [ref=f4e53]:
+              - link "Sobre nós" [ref=f4e54] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f4e55]:
+              - link "Oportunidades" [ref=f4e56] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=f4e57]:
+              - link "Mentoria" [ref=f4e58] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=f4e59]:
+          - heading "Explorar" [level=2] [ref=f4e60]
+          - list [ref=f4e61]:
+            - listitem [ref=f4e62]:
+              - link "Universidades" [ref=f4e63] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=f4e64]:
+              - link "Bolsas" [ref=f4e65] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=f4e66]:
+              - link "Estágios" [ref=f4e67] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=f4e68]:
+              - link "Artigos" [ref=f4e69] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=f4e70]:
+          - heading "Links úteis" [level=2] [ref=f4e71]
+          - list [ref=f4e72]:
+            - listitem [ref=f4e73]:
+              - link "Termos de utilização" [ref=f4e74] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f4e75]:
+              - link "Política de privacidade" [ref=f4e76] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=f4e77]:
+          - heading "Acompanha-nos" [level=2] [ref=f4e78]
+          - paragraph [ref=f4e79]: Encontra-nos nas redes sociais
+      - paragraph [ref=f4e99]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.
+  - button "Open TanStack Devtools" [ref=f4e205] [cursor=pointer]:
+    - img "TanStack Devtools" [ref=f4e206]

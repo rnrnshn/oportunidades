@@ -1,0 +1,11 @@
+{
+  "pairs": [
+    { "name": "Job primary text", "foreground": "#262626", "background": "#f5f5f5", "type": "normal-text" },
+    { "name": "Job secondary text", "foreground": "#656565", "background": "#f5f5f5", "type": "normal-text" },
+    { "name": "Deadline label", "foreground": "#fcfcfc", "background": "#0049af", "type": "normal-text" },
+    { "name": "Logo fallback", "foreground": "#525252", "background": "#dcdcdc", "type": "normal-text" },
+    { "name": "Bookmark icon", "foreground": "#c75100", "background": "#f5f5f5", "type": "ui" },
+    { "name": "Input border", "foreground": "#8b93a1", "background": "#fbfcfe", "type": "ui" },
+    { "name": "Focus ring", "foreground": "#0049af", "background": "#ffffff", "type": "ui" }
+  ]
+}

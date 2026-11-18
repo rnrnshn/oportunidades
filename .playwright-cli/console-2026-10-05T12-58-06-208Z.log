@@ -1,0 +1,105 @@
+[     291ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3000/node_modules/.vite/deps/react-dom_client.js?v=5d51144a:20102
+[     379ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/account/me:0
+[     416ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/mentorship/mentors?per_page=50:0
+[    1425ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/mentorship/mentors?per_page=50:0
+[    3432ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/mentorship/mentors?per_page=50:0
+[    7446ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/mentorship/mentors?per_page=50:0
+[   74361ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/mentorship/mentors?per_page=50:0
+[   75369ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/mentorship/mentors?per_page=50:0
+[   82893ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/mentorship/mentors?per_page=50:0
+[  364190ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3000/node_modules/.vite/deps/react-dom_client.js?v=5d51144a:20102
+[  364335ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/account/me:0
+[  364397ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?active=true&verified=true&per_page=50:0
+[  365401ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?active=true&verified=true&per_page=50:0
+[  367405ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?active=true&verified=true&per_page=50:0
+[  371411ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?active=true&verified=true&per_page=50:0
+[  374447ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3000/node_modules/.vite/deps/react-dom_client.js?v=5d51144a:20102
+[  374533ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/account/me:0
+[  374634ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?type=bolsa&active=true&verified=true&per_page=100:0
+[  375329ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities/horizonte-stem:0
+[  375683ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities/horizonte-stem:0
+[  377802ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3000/node_modules/.vite/deps/react-dom_client.js?v=5d51144a:20102
+[  377856ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/account/me:0
+[  377905ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?type=estagio&active=true&verified=true&per_page=50:0
+[  380139ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3000/node_modules/.vite/deps/react-dom_client.js?v=5d51144a:20102
+[  380187ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/account/me:0
+[  380232ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?type=emprego&active=true&verified=true&per_page=50:0
+[  383132ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3000/node_modules/.vite/deps/react-dom_client.js?v=5d51144a:20102
+[  383172ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/account/me:0
+[  383216ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?active=true&verified=true&per_page=50:0
+[  384219ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?active=true&verified=true&per_page=50:0
+[  386223ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?active=true&verified=true&per_page=50:0
+[  388359ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3000/node_modules/.vite/deps/react-dom_client.js?v=5d51144a:20102
+[  388402ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/account/me:0
+[  388437ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?active=true&verified=true&per_page=50:0
+[  389440ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?active=true&verified=true&per_page=50:0
+[  391443ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?active=true&verified=true&per_page=50:0
+[  395447ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?active=true&verified=true&per_page=50:0
+[  397671ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3000/node_modules/.vite/deps/react-dom_client.js?v=5d51144a:20102
+[  397716ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/account/me:0
+[  397756ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/opportunities?type=estagio&active=true&verified=true&per_page=50:0
+[  400748ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3000/node_modules/.vite/deps/react-dom_client.js?v=5d51144a:20102
+[  400793ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/account/me:0
+[  400837ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/catalog/courses?per_page=100:0
+[  410599ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3000/node_modules/.vite/deps/react-dom_client.js?v=5d51144a:20102
+[  410648ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/account/me:0
+[  410694ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/catalog/courses?per_page=100:0
+[  412410ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3000/node_modules/.vite/deps/react-dom_client.js?v=5d51144a:20102
+[  412452ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/account/me:0
+[  412497ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/catalog/courses?per_page=100:0
+[  436284ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3000/node_modules/.vite/deps/react-dom_client.js?v=5d51144a:20102
+[  436352ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/account/me:0
+[  436407ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/catalog/courses?per_page=100:0
+[  443902ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3000/node_modules/.vite/deps/react-dom_client.js?v=5d51144a:20102
+[  443954ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/account/me:0
+[  443959ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/articles?per_page=50:0
+[  448814ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/articles/como-preparar-candidatura:0
+[  449418ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/articles/como-preparar-candidatura:0
+[  449626ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/articles/como-preparar-candidatura:0
+[  449708ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/articles/como-preparar-candidatura:0
+[  449824ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/articles/como-preparar-candidatura:0
+[  449857ms] [ERROR] %o
+
+%s
+
+%s
+ TypeError: Failed to fetch
+    at fetchArticleDetail (http://127.0.0.1:3000/src/features/public/articles/api-detail.ts?t=1791065596450:20:26)
+    at Object.loader (http://127.0.0.1:3000/src/routes/artigos/$slug.tsx?t=1791065596450:8:9)
+    at runLoader (http://127.0.0.1:3000/node_modules/.pnpm/@tanstack+router-core@1.136.8/node_modules/@tanstack/router-core/dist/esm/load-matches.js?v=bcbeacb0:385:50)
+    at loadRouteMatch (http://127.0.0.1:3000/node_modules/.pnpm/@tanstack+router-core@1.136.8/node_modules/@tanstack/router-core/dist/esm/load-matches.js?v=bcbeacb0:531:15)
+    at loadMatches (http://127.0.0.1:3000/node_modules/.pnpm/@tanstack+router-core@1.136.8/node_modules/@tanstack/router-core/dist/esm/load-matches.js?v=bcbeacb0:579:32)
+    at http://127.0.0.1:3000/node_modules/.pnpm/@tanstack+router-core@1.136.8/node_modules/@tanstack/router-core/dist/esm/router.js?v=bcbeacb0:623:19
+    at http://127.0.0.1:3000/node_modules/.pnpm/@tanstack+react-router@1.136.8_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/@tanstack/react-router/dist/esm/Transitioner.js?v=bcbeacb0:25:7
+    at exports.startTransition (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-6U6HN6A3.js?v=bcbeacb0:877:29)
+    at Transitioner.router.startTransition (http://127.0.0.1:3000/node_modules/.pnpm/@tanstack+react-router@1.136.8_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/@tanstack/react-router/dist/esm/Transitioner.js?v=bcbeacb0:24:11)
+    at http://127.0.0.1:3000/node_modules/.pnpm/@tanstack+router-core@1.136.8/node_modules/@tanstack/router-core/dist/esm/router.js?v=bcbeacb0:602:14 The above error occurred in the <MatchInnerImpl> component. React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl. @ http://127.0.0.1:3000/node_modules/.vite/deps/react-dom_client.js?v=5d51144a:7000
+[  449859ms] [WARNING] Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute! @ http://127.0.0.1:3000/node_modules/.pnpm/tiny-warning@1.0.3/node_modules/tiny-warning/dist/tiny-warning.esm.js?v=bcbeacb0:8
+[  449859ms] [WARNING] Warning: Failed to fetch @ http://127.0.0.1:3000/node_modules/.pnpm/tiny-warning@1.0.3/node_modules/tiny-warning/dist/tiny-warning.esm.js?v=bcbeacb0:8
+[  451061ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/account/me:0
+[  451061ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/articles?per_page=50:0
+[  453180ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/articles/escolher-curso-certo:0
+[  453296ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/articles/escolher-curso-certo:0
+[  453429ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/articles/escolher-curso-certo:0
+[  453454ms] [ERROR] %o
+
+%s
+
+%s
+ TypeError: Failed to fetch
+    at fetchArticleDetail (http://127.0.0.1:3000/src/features/public/articles/api-detail.ts?t=1791065596450:20:26)
+    at Object.loader (http://127.0.0.1:3000/src/routes/artigos/$slug.tsx?t=1791065596450:8:9)
+    at runLoader (http://127.0.0.1:3000/node_modules/.pnpm/@tanstack+router-core@1.136.8/node_modules/@tanstack/router-core/dist/esm/load-matches.js?v=bcbeacb0:385:50)
+    at loadRouteMatch (http://127.0.0.1:3000/node_modules/.pnpm/@tanstack+router-core@1.136.8/node_modules/@tanstack/router-core/dist/esm/load-matches.js?v=bcbeacb0:531:15)
+    at loadMatches (http://127.0.0.1:3000/node_modules/.pnpm/@tanstack+router-core@1.136.8/node_modules/@tanstack/router-core/dist/esm/load-matches.js?v=bcbeacb0:579:32)
+    at http://127.0.0.1:3000/node_modules/.pnpm/@tanstack+router-core@1.136.8/node_modules/@tanstack/router-core/dist/esm/router.js?v=bcbeacb0:623:19
+    at http://127.0.0.1:3000/node_modules/.pnpm/@tanstack+react-router@1.136.8_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/@tanstack/react-router/dist/esm/Transitioner.js?v=bcbeacb0:25:7
+    at exports.startTransition (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-6U6HN6A3.js?v=bcbeacb0:877:29)
+    at Transitioner.router.startTransition (http://127.0.0.1:3000/node_modules/.pnpm/@tanstack+react-router@1.136.8_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/@tanstack/react-router/dist/esm/Transitioner.js?v=bcbeacb0:24:11)
+    at http://127.0.0.1:3000/node_modules/.pnpm/@tanstack+router-core@1.136.8/node_modules/@tanstack/router-core/dist/esm/router.js?v=bcbeacb0:602:14 The above error occurred in the <MatchInnerImpl> component. React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl. @ http://127.0.0.1:3000/node_modules/.vite/deps/react-dom_client.js?v=5d51144a:7000
+[  453455ms] [WARNING] Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute! @ http://127.0.0.1:3000/node_modules/.pnpm/tiny-warning@1.0.3/node_modules/tiny-warning/dist/tiny-warning.esm.js?v=bcbeacb0:8
+[  453456ms] [WARNING] Warning: Failed to fetch @ http://127.0.0.1:3000/node_modules/.pnpm/tiny-warning@1.0.3/node_modules/tiny-warning/dist/tiny-warning.esm.js?v=bcbeacb0:8
+[  455170ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/account/me:0
+[  455170ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/articles?per_page=50:0
+[  462445ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/articles/primeiro-emprego:0
+[  469772ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/v1/articles?per_page=50:0

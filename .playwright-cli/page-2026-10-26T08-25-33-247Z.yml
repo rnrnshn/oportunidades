@@ -1,0 +1,110 @@
+- generic [active] [ref=f2e1]:
+  - banner [ref=f2e2]:
+    - generic [ref=f2e3]:
+      - link [ref=f2e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=f2e5]
+      - button "Abrir menu" [ref=f2e6]
+  - main [ref=f2e7]:
+    - generic [ref=f2e9]:
+      - link "Voltar aos mentores" [ref=f2e10] [cursor=pointer]:
+        - /url: /mentoria
+      - generic [ref=f2e13]:
+        - generic [aria-hidden] [ref=f2e14]: AM
+        - generic [ref=f2e15]:
+          - generic [ref=f2e16]:
+            - generic [ref=f2e17]: Mentoria
+            - generic [ref=f2e18]: Perfil verificado
+          - heading "Ana Mussá" [level=1] [ref=f2e22]
+          - paragraph [ref=f2e23]: Engenheira de software e mentora de carreira
+          - generic [ref=f2e24]:
+            - generic [ref=f2e25]: Maputo · Sessões online
+            - generic [ref=f2e29]: Português · Inglês
+    - generic [ref=f2e35]:
+      - article [ref=f2e36]:
+        - region [ref=f2e37]:
+          - heading "Sobre Ana" [level=2] [ref=f2e38]
+          - paragraph [ref=f2e39]: Apoio estudantes e profissionais em início de carreira a construir um plano realista para entrar em tecnologia. Nas sessões, trabalhamos decisões concretas, portefólio e preparação para entrevistas.
+          - paragraph [ref=f2e40]: 7 anos em produto e engenharia
+        - region [ref=f2e41]:
+          - heading "Como pode ajudar" [level=2] [ref=f2e42]
+          - list [ref=f2e43]:
+            - listitem [ref=f2e44]:
+              - generic [ref=f2e47]: Transição para tecnologia
+            - listitem [ref=f2e48]:
+              - generic [ref=f2e51]: Portefólio
+            - listitem [ref=f2e52]:
+              - generic [ref=f2e55]: Entrevistas técnicas
+        - region [ref=f2e56]:
+          - heading "O que vais levar da sessão" [level=2] [ref=f2e57]
+          - list [ref=f2e58]:
+            - listitem [ref=f2e59]: Definir um próximo passo realista
+            - listitem [ref=f2e63]: Identificar lacunas prioritárias
+            - listitem [ref=f2e67]: Sair com um plano de acção
+        - region [ref=f2e71]:
+          - heading "Antes de pedir mentoria" [level=2] [ref=f2e72]
+          - paragraph [ref=f2e73]: Prepara uma pergunta concreta, explica brevemente o teu contexto e indica o resultado que gostarias de alcançar. Isto ajuda o mentor a tornar a conversa mais útil desde o primeiro minuto.
+      - complementary [ref=f2e74]:
+        - paragraph [ref=f2e75]: 2 sessões por mês
+        - heading "Queres falar com Ana?" [level=2] [ref=f2e76]
+        - paragraph [ref=f2e77]: Cria o teu perfil, indica o objectivo da conversa e envia um pedido de mentoria.
+        - link "Pedir mentoria" [ref=f2e78] [cursor=pointer]:
+          - /url: /account
+        - paragraph [ref=f2e79]: A mentoria depende da disponibilidade e confirmação do mentor.
+    - generic [ref=f2e80]:
+      - generic [ref=f2e82]:
+        - navigation "Sobre a Oportunidades" [ref=f2e83]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=f2e84]
+          - list [ref=f2e85]:
+            - listitem [ref=f2e86]:
+              - link "Sobre nós" [ref=f2e87] [cursor=pointer]:
+                - /url: /about#about
+            - listitem [ref=f2e88]:
+              - link "Como trabalhamos" [ref=f2e89] [cursor=pointer]:
+                - /url: /about#principles
+            - listitem [ref=f2e90]:
+              - link "Impacto" [ref=f2e91] [cursor=pointer]:
+                - /url: /about#impact
+            - listitem [ref=f2e92]:
+              - link "Parceiros" [ref=f2e93] [cursor=pointer]:
+                - /url: /about#partners
+        - navigation "Explorar" [ref=f2e94]:
+          - heading "Explorar" [level=2] [ref=f2e95]
+          - list [ref=f2e96]:
+            - listitem [ref=f2e97]:
+              - link "Universidades" [ref=f2e98] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=f2e99]:
+              - link "Cursos e Programas" [ref=f2e100] [cursor=pointer]:
+                - /url: /cursos
+            - listitem [ref=f2e101]:
+              - link "Bolsas" [ref=f2e102] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=f2e103]:
+              - link "Empregos" [ref=f2e104] [cursor=pointer]:
+                - /url: /empregos
+            - listitem [ref=f2e105]:
+              - link "Estágios" [ref=f2e106] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=f2e107]:
+              - link "Oportunidades académicas" [ref=f2e108] [cursor=pointer]:
+                - /url: /oportunidades
+        - navigation "Recursos e apoio" [ref=f2e109]:
+          - heading "Recursos e apoio" [level=2] [ref=f2e110]
+          - list [ref=f2e111]:
+            - listitem [ref=f2e112]:
+              - link "Artigos e guias" [ref=f2e113] [cursor=pointer]:
+                - /url: /artigos
+            - listitem [ref=f2e114]:
+              - link "Mentoria" [ref=f2e115] [cursor=pointer]:
+                - /url: /mentoria
+            - listitem [ref=f2e116]:
+              - link "Termos de utilização" [ref=f2e117] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f2e118]:
+              - link "Política de privacidade" [ref=f2e119] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=f2e120]:
+          - heading "Acompanha-nos" [level=2] [ref=f2e121]
+          - paragraph [ref=f2e122]: Encontra-nos nas redes sociais
+      - paragraph [ref=f2e142]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.

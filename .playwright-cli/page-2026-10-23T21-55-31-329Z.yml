@@ -1,0 +1,263 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=e5]
+      - navigation "Navegação principal" [ref=e6]:
+        - button "Oportunidades" [ref=e8]
+        - button "Cursos e Programas" [ref=e12]
+        - link "Universidades" [ref=e15] [cursor=pointer]:
+          - /url: /universidades
+        - button "Recursos" [ref=e17]
+      - generic [ref=e20]:
+        - button "Entrar" [ref=e21]
+        - button "Criar conta" [ref=e22]
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - region [ref=e25]:
+        - generic [ref=e26]:
+          - paragraph [ref=e27]: Orientação personalizada
+          - heading "Ainda não sabes que curso escolher?" [level=2] [ref=e28]
+          - paragraph [ref=e29]: Responde a algumas perguntas e recebe sugestões de cursos adequadas aos teus interesses e objetivos.
+        - button "Obter recomendações" [ref=e30]
+      - generic [ref=e34]:
+        - complementary "Filtros de cursos e programas" [ref=e35]:
+          - generic [ref=e36]:
+            - generic [ref=e37]:
+              - heading "Filtrar cursos" [level=2] [ref=e38]
+              - button "Limpar (0)" [ref=e39]
+            - generic [ref=e40]:
+              - text: Pesquisa
+              - searchbox "Pesquisa" [ref=e41]
+            - group [ref=e43]:
+              - generic "Área de estudo" [ref=e44] [cursor=pointer]
+              - 'button "Áreas de estudo: Todas" [ref=e48]':
+                - generic [ref=e49]: Todas
+            - group [ref=e52]:
+              - generic "Universidade" [ref=e53] [cursor=pointer]
+            - group [ref=e56]:
+              - generic "Níveis" [ref=e57] [cursor=pointer]
+            - group [ref=e60]:
+              - generic "Mostrar apenas cursos" [ref=e61] [cursor=pointer]
+            - group [ref=e64]:
+              - generic "Horário" [ref=e65] [cursor=pointer]
+            - group [ref=e68]:
+              - generic "Idioma" [ref=e69] [cursor=pointer]
+            - button "Aplicar filtros" [ref=e72]
+        - region [ref=e75]:
+          - generic [ref=e76]:
+            - navigation "Breadcrumb" [ref=e77]:
+              - list [ref=e78]:
+                - listitem [ref=e79]:
+                  - link "Início" [ref=e80] [cursor=pointer]:
+                    - /url: /
+                - listitem [aria-hidden] [ref=e81]
+                - listitem [ref=e84]: Cursos e Programas
+            - heading "Pesquisar cursos e programas" [level=1] [ref=e85]
+            - navigation "Tipos de resultados" [ref=e86]:
+              - list [ref=e87]:
+                - listitem [ref=e88]:
+                  - link "Cursos e Programas" [ref=e89] [cursor=pointer]:
+                    - /url: /cursos
+                - listitem [ref=e90]:
+                  - link "Universidades" [ref=e91] [cursor=pointer]:
+                    - /url: /universidades
+                - listitem [ref=e92]:
+                  - link "Bolsas" [ref=e93] [cursor=pointer]:
+                    - /url: /bolsas
+          - generic [ref=e94]:
+            - paragraph [ref=e95]: 8 cursos encontrados
+            - 'button "Ordenar cursos: A–Z, curso" [ref=e96]':
+              - generic [ref=e97]: A–Z, curso
+          - region "Cursos encontrados" [ref=e100]:
+            - article [ref=e101]:
+              - generic [ref=e102]:
+                - generic [ref=e103]:
+                  - link "Agricultura e Recursos Naturais" [ref=e104] [cursor=pointer]:
+                    - /url: /cursos/agricultura
+                  - generic [ref=e105]:
+                    - generic [ref=e106]: Chimoio, Moçambique
+                    - generic [ref=e110]: Licenciatura
+                    - generic [ref=e114]: Híbrida · 4 anos
+                - button "Guardar Agricultura e Recursos Naturais" [ref=e117]
+              - generic [ref=e120]:
+                - link "Ver detalhes do curso" [ref=e121] [cursor=pointer]:
+                  - /url: /cursos/agricultura
+                - generic [ref=e122]:
+                  - generic [ref=e123]: MZN 4.500/ano
+                  - generic [ref=e124]: Prazo encerrado em 10 de maio de 2024
+              - button "Mostrar mais" [ref=e125]
+            - article [ref=e128]:
+              - generic [ref=e129]:
+                - generic [ref=e130]:
+                  - link "Agronomia" [ref=e131] [cursor=pointer]:
+                    - /url: /cursos/agronomia
+                  - generic [ref=e132]:
+                    - generic [ref=e133]: Nampula, Moçambique
+                    - generic [ref=e137]: Licenciatura
+                    - generic [ref=e141]: Híbrida · 4 anos
+                - button "Guardar Agronomia" [ref=e144]
+              - generic [ref=e147]:
+                - link "Ver detalhes do curso" [ref=e148] [cursor=pointer]:
+                  - /url: /cursos/agronomia
+                - generic [ref=e149]:
+                  - generic [ref=e150]: MZN 6.000/ano
+                  - generic [ref=e151]: Prazo encerrado em 1 de junho de 2024
+              - button "Mostrar mais" [ref=e152]
+            - article [ref=e155]:
+              - generic [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Comunicação Social" [ref=e158] [cursor=pointer]:
+                    - /url: /cursos/comunicacao-social
+                  - generic [ref=e159]:
+                    - generic [ref=e160]: Maputo, Moçambique
+                    - generic [ref=e164]: Licenciatura
+                    - generic [ref=e168]: Presencial · 3 anos
+                - button "Guardar Comunicação Social" [ref=e171]
+              - generic [ref=e174]:
+                - link "Ver detalhes do curso" [ref=e175] [cursor=pointer]:
+                  - /url: /cursos/comunicacao-social
+                - generic [ref=e176]:
+                  - generic [ref=e177]: MZN 5.000/ano
+                  - generic [ref=e178]: Prazo encerrado em 5 de julho de 2024
+              - button "Mostrar mais" [ref=e179]
+            - article [ref=e182]:
+              - generic [ref=e183]:
+                - generic [ref=e184]:
+                  - link "Direito" [ref=e185] [cursor=pointer]:
+                    - /url: /cursos/direito
+                  - generic [ref=e186]:
+                    - generic [ref=e187]: Beira, Moçambique
+                    - generic [ref=e191]: Licenciatura
+                    - generic [ref=e195]: Presencial · 5 anos
+                - button "Guardar Direito" [ref=e198]
+              - generic [ref=e201]:
+                - link "Ver detalhes do curso" [ref=e202] [cursor=pointer]:
+                  - /url: /cursos/direito
+                - generic [ref=e203]:
+                  - generic [ref=e204]: MZN 6.000/ano
+                  - generic [ref=e205]: Prazo encerrado em 28 de maio de 2024
+              - button "Mostrar mais" [ref=e206]
+            - article [ref=e209]:
+              - generic [ref=e210]:
+                - generic [ref=e211]:
+                  - link "Engenharia Civil" [ref=e212] [cursor=pointer]:
+                    - /url: /cursos/engenharia-civil
+                  - generic [ref=e213]:
+                    - generic [ref=e214]: Maputo, Moçambique
+                    - generic [ref=e218]: Licenciatura
+                    - generic [ref=e222]: Presencial · 4 anos
+                - button "Guardar Engenharia Civil" [ref=e225]
+              - generic [ref=e228]:
+                - link "Ver detalhes do curso" [ref=e229] [cursor=pointer]:
+                  - /url: /cursos/engenharia-civil
+                - generic [ref=e230]:
+                  - generic [ref=e231]: MZN 7.000/ano
+                  - generic [ref=e232]: Prazo encerrado em 15 de maio de 2024
+              - button "Mostrar mais" [ref=e233]
+            - article [ref=e236]:
+              - generic [ref=e237]:
+                - generic [ref=e238]:
+                  - link "Engenharia Informática" [ref=e239] [cursor=pointer]:
+                    - /url: /cursos/engenharia-informatica
+                  - generic [ref=e240]:
+                    - generic [ref=e241]: Maputo, Moçambique
+                    - generic [ref=e245]: Licenciatura
+                    - generic [ref=e249]: Presencial · 4 anos
+                - button "Guardar Engenharia Informática" [ref=e252]
+              - generic [ref=e255]:
+                - link "Ver detalhes do curso" [ref=e256] [cursor=pointer]:
+                  - /url: /cursos/engenharia-informatica
+                - generic [ref=e257]:
+                  - generic [ref=e258]: MZN 8.000/ano
+                  - generic [ref=e259]: Prazo encerrado em 15 de maio de 2024
+              - button "Mostrar mais" [ref=e260]
+            - article [ref=e263]:
+              - generic [ref=e264]:
+                - generic [ref=e265]:
+                  - link "Gestão Empresarial" [ref=e266] [cursor=pointer]:
+                    - /url: /cursos/gestao-empresarial
+                  - generic [ref=e267]:
+                    - generic [ref=e268]: Maputo, Moçambique
+                    - generic [ref=e272]: Licenciatura
+                    - generic [ref=e276]: Online · 3 anos
+                - button "Guardar Gestão Empresarial" [ref=e279]
+              - generic [ref=e282]:
+                - link "Ver detalhes do curso" [ref=e283] [cursor=pointer]:
+                  - /url: /cursos/gestao-empresarial
+                - generic [ref=e284]:
+                  - generic [ref=e285]: MZN 4.200/ano
+                  - generic [ref=e286]: Prazo encerrado em 20 de junho de 2024
+              - button "Mostrar mais" [ref=e287]
+            - article [ref=e290]:
+              - generic [ref=e291]:
+                - generic [ref=e292]:
+                  - link "Medicina" [ref=e293] [cursor=pointer]:
+                    - /url: /cursos/medicina
+                  - generic [ref=e294]:
+                    - generic [ref=e295]: Nampula, Moçambique
+                    - generic [ref=e299]: Licenciatura
+                    - generic [ref=e303]: Híbrida · 6 anos
+                - button "Guardar Medicina" [ref=e306]
+              - generic [ref=e309]:
+                - link "Ver detalhes do curso" [ref=e310] [cursor=pointer]:
+                  - /url: /cursos/medicina
+                - generic [ref=e311]:
+                  - generic [ref=e312]: MZN 12.000/ano
+                  - generic [ref=e313]: Prazo encerrado em 1 de junho de 2024
+              - button "Mostrar mais" [ref=e314]
+          - navigation "Paginação dos cursos" [ref=e317]:
+            - button "Anterior" [ref=e318]
+            - button "1" [ref=e319]
+            - button "2" [ref=e320]
+            - generic [ref=e321]: …
+            - button "5" [ref=e322]
+            - button "Seguinte" [ref=e323]
+    - generic [ref=e324]:
+      - generic [ref=e326]:
+        - navigation "Sobre a Oportunidades" [ref=e327]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=e328]
+          - list [ref=e329]:
+            - listitem [ref=e330]:
+              - link "Sobre nós" [ref=e331] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e332]:
+              - link "Oportunidades" [ref=e333] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=e334]:
+              - link "Mentoria" [ref=e335] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=e336]:
+          - heading "Explorar" [level=2] [ref=e337]
+          - list [ref=e338]:
+            - listitem [ref=e339]:
+              - link "Universidades" [ref=e340] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=e341]:
+              - link "Cursos e Programas" [ref=e342] [cursor=pointer]:
+                - /url: /cursos
+            - listitem [ref=e343]:
+              - link "Bolsas" [ref=e344] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=e345]:
+              - link "Estágios" [ref=e346] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=e347]:
+              - link "Artigos" [ref=e348] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=e349]:
+          - heading "Links úteis" [level=2] [ref=e350]
+          - list [ref=e351]:
+            - listitem [ref=e352]:
+              - link "Termos de utilização" [ref=e353] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e354]:
+              - link "Política de privacidade" [ref=e355] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e356]:
+          - heading "Acompanha-nos" [level=2] [ref=e357]
+          - paragraph [ref=e358]: Encontra-nos nas redes sociais
+      - paragraph [ref=e378]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.
+  - button "Open TanStack Devtools" [ref=e379] [cursor=pointer]:
+    - img "TanStack Devtools" [ref=e380]

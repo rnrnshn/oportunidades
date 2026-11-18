@@ -1,0 +1,60 @@
+{
+  "pairs": [
+    {
+      "name": "Body text on white",
+      "type": "normal-text",
+      "foreground": "#525252",
+      "background": "#FFFFFF",
+      "context": "Descriptions and supporting content"
+    },
+    {
+      "name": "Navy headings on white",
+      "type": "normal-text",
+      "foreground": "#1F2A42",
+      "background": "#FFFFFF",
+      "context": "Page and section headings"
+    },
+    {
+      "name": "Brand links on white",
+      "type": "normal-text",
+      "foreground": "#0049AF",
+      "background": "#FFFFFF",
+      "context": "Back links and bookmark label"
+    },
+    {
+      "name": "Verified state on white",
+      "type": "normal-text",
+      "foreground": "#176B3A",
+      "background": "#FFFFFF",
+      "context": "Verified opportunity status"
+    },
+    {
+      "name": "Bookmark border on white",
+      "type": "ui",
+      "foreground": "#8793A5",
+      "background": "#FFFFFF",
+      "context": "Bookmark control boundary"
+    },
+    {
+      "name": "Brand focus ring on white",
+      "type": "ui",
+      "foreground": "#0049AF",
+      "background": "#FFFFFF",
+      "context": "Keyboard focus indicator"
+    },
+    {
+      "name": "Primary button text",
+      "type": "normal-text",
+      "foreground": "#FFFFFF",
+      "background": "#0049AF",
+      "context": "Application button label"
+    },
+    {
+      "name": "Related job bookmark",
+      "type": "ui",
+      "foreground": "#C75100",
+      "background": "#FFFFFF",
+      "context": "Bookmark icon on similar job cards"
+    }
+  ]
+}

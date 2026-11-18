@@ -1,0 +1,11 @@
+{
+  "pairs": [
+    { "name": "Body text on page", "type": "normal-text", "foreground": "#262626", "background": "#ffffff" },
+    { "name": "Secondary text on card", "type": "normal-text", "foreground": "#656565", "background": "#fcfcfc" },
+    { "name": "Blue button label", "type": "normal-text", "foreground": "#ffffff", "background": "#0049af" },
+    { "name": "Orange button label", "type": "normal-text", "foreground": "#262626", "background": "#ff8c42" },
+    { "name": "Input boundary on white", "type": "ui", "foreground": "#8b93a1", "background": "#ffffff" },
+    { "name": "Bookmark on card", "type": "ui", "foreground": "#c75100", "background": "#ffffff" },
+    { "name": "Focus ring on page", "type": "ui", "foreground": "#0049af", "background": "#ffffff" }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "pairs": [
+    {
+      "name": "Borda de input sobre branco",
+      "type": "ui",
+      "foreground": "#888888",
+      "background": "#FFFFFF"
+    },
+    {
+      "name": "Borda da pesquisa sobre fundo da hero",
+      "type": "ui",
+      "foreground": "#888888",
+      "background": "#FFF2D3"
+    },
+    {
+      "name": "Texto dos inputs sobre branco",
+      "type": "normal-text",
+      "foreground": "#525252",
+      "background": "#FFFFFF"
+    },
+    {
+      "name": "Texto das métricas sobre azul claro",
+      "type": "normal-text",
+      "foreground": "#4F5C7C",
+      "background": "#F5F9FF"
+    },
+    {
+      "name": "Números azuis sobre azul claro",
+      "type": "large-text",
+      "foreground": "#0049AF",
+      "background": "#F5F9FF"
+    },
+    {
+      "name": "Foco azul sobre branco",
+      "type": "ui",
+      "foreground": "#0049AF",
+      "background": "#FFFFFF"
+    }
+  ]
+}

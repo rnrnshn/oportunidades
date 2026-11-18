@@ -1,0 +1,39 @@
+{
+  "pairs": [
+    {
+      "name": "Primary body text on white",
+      "type": "normal-text",
+      "foreground": "#262626",
+      "background": "#FFFFFF",
+      "context": "Headings, result count and filter labels"
+    },
+    {
+      "name": "Supporting text on white",
+      "type": "normal-text",
+      "foreground": "#4F5C7C",
+      "background": "#FFFFFF",
+      "context": "Page descriptions and metadata"
+    },
+    {
+      "name": "Brand links on white",
+      "type": "normal-text",
+      "foreground": "#0049AF",
+      "background": "#FFFFFF",
+      "context": "Breadcrumbs, active tabs and links"
+    },
+    {
+      "name": "Input border on white",
+      "type": "ui",
+      "foreground": "#8B93A1",
+      "background": "#FFFFFF",
+      "context": "Search, select and mobile filter controls"
+    },
+    {
+      "name": "Focus ring on white",
+      "type": "ui",
+      "foreground": "#0049AF",
+      "background": "#FFFFFF",
+      "context": "Keyboard focus indicator"
+    }
+  ]
+}

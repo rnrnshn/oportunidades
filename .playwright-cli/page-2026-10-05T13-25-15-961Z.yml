@@ -1,0 +1,121 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - generic [ref=f1e3]:
+      - link [ref=f1e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=f1e5]
+      - navigation "Navegação principal" [ref=f1e6]:
+        - button "Oportunidades" [ref=f1e8]
+        - button "Cursos e Programas" [ref=f1e12]
+        - link "Universidades" [ref=f1e15] [cursor=pointer]:
+          - /url: /universidades
+        - button "Recursos" [ref=f1e17]
+      - generic [ref=f1e20]:
+        - button "Entrar" [ref=f1e21]
+        - button "Criar conta" [ref=f1e22]
+  - main [ref=f1e23]:
+    - generic [ref=f1e24]:
+      - generic [ref=f1e25]:
+        - navigation "Breadcrumb" [ref=f1e26]:
+          - list [ref=f1e27]:
+            - listitem [ref=f1e28]:
+              - link "Início" [ref=f1e29] [cursor=pointer]:
+                - /url: /
+            - listitem [aria-hidden] [ref=f1e30]
+            - listitem [ref=f1e33]: Bolsas de Estudo
+        - heading "Explorar Bolsas de Estudo" [level=1] [ref=f1e34]
+        - paragraph [ref=f1e35]: Filtra por localização, modalidade e cobertura para encontrar a bolsa ideal.
+        - navigation "Tipos de resultados" [ref=f1e36]:
+          - list [ref=f1e37]:
+            - listitem [ref=f1e38]:
+              - link "Cursos e Programas" [ref=f1e39] [cursor=pointer]:
+                - /url: /cursos
+            - listitem [ref=f1e40]:
+              - link "Universidades" [ref=f1e41] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=f1e42]:
+              - link "Bolsas" [ref=f1e43] [cursor=pointer]:
+                - /url: /bolsas
+      - generic [ref=f1e44]:
+        - complementary "Filtros de pesquisa" [ref=f1e45]:
+          - generic [ref=f1e48]:
+            - paragraph [ref=f1e51]: Filtrar bolsas
+            - generic [ref=f1e52]:
+              - generic [ref=f1e53]:
+                - text: Pesquisa
+                - textbox "Pesquisa" [ref=f1e54]:
+                  - /placeholder: Bolsa em Maputo ou programa online
+              - group [ref=f1e55]:
+                - generic "Localização" [ref=f1e56] [cursor=pointer]
+              - group [ref=f1e59]:
+                - generic "Área de estudo" [ref=f1e60] [cursor=pointer]
+                - generic [ref=f1e63]:
+                  - generic [ref=f1e64]:
+                    - text: Área de estudo
+                    - 'button "Área de estudo: Seleciona a área" [ref=f1e65]':
+                      - generic [ref=f1e66]: Seleciona a área
+                  - generic [ref=f1e69]:
+                    - text: Nível
+                    - 'button "Nível: Seleciona o nível" [ref=f1e70]':
+                      - generic [ref=f1e71]: Seleciona o nível
+              - group [ref=f1e74]:
+                - generic "Modalidade" [ref=f1e75] [cursor=pointer]
+              - group [ref=f1e78]:
+                - generic "Cobertura e valor" [ref=f1e79] [cursor=pointer]
+              - group [ref=f1e82]:
+                - generic "Idioma e prazo" [ref=f1e83] [cursor=pointer]
+        - region "Resultados" [ref=f1e86]:
+          - generic [ref=f1e87]:
+            - paragraph [ref=f1e88]: 0 bolsas encontradas
+            - 'button "Ordenar resultados: Mais relevantes" [ref=f1e89]':
+              - generic [ref=f1e90]: Mais relevantes
+          - generic [ref=f1e96]:
+            - generic [ref=f1e97]:
+              - paragraph [ref=f1e98]: Nenhuma bolsa encontrada
+              - paragraph [ref=f1e99]: Ajusta os filtros ou aumenta o intervalo de datas para veres mais opções.
+            - button "Limpar filtros" [ref=f1e100]
+    - generic [ref=f1e101]:
+      - generic [ref=f1e103]:
+        - navigation "Sobre a Oportunidades" [ref=f1e104]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=f1e105]
+          - list [ref=f1e106]:
+            - listitem [ref=f1e107]:
+              - link "Sobre nós" [ref=f1e108] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f1e109]:
+              - link "Oportunidades" [ref=f1e110] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=f1e111]:
+              - link "Mentoria" [ref=f1e112] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=f1e113]:
+          - heading "Explorar" [level=2] [ref=f1e114]
+          - list [ref=f1e115]:
+            - listitem [ref=f1e116]:
+              - link "Universidades" [ref=f1e117] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=f1e118]:
+              - link "Cursos e Programas" [ref=f1e119] [cursor=pointer]:
+                - /url: /cursos
+            - listitem [ref=f1e120]:
+              - link "Bolsas" [ref=f1e121] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=f1e122]:
+              - link "Estágios" [ref=f1e123] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=f1e124]:
+              - link "Artigos" [ref=f1e125] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=f1e126]:
+          - heading "Links úteis" [level=2] [ref=f1e127]
+          - list [ref=f1e128]:
+            - listitem [ref=f1e129]:
+              - link "Termos de utilização" [ref=f1e130] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f1e131]:
+              - link "Política de privacidade" [ref=f1e132] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=f1e133]:
+          - heading "Acompanha-nos" [level=2] [ref=f1e134]
+          - paragraph [ref=f1e135]: Encontra-nos nas redes sociais
+      - paragraph [ref=f1e155]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.

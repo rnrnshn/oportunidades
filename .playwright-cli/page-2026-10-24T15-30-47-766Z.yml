@@ -1,0 +1,78 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=e5]
+      - navigation "Navegação principal" [ref=e6]:
+        - button "Oportunidades" [ref=e8]
+        - button "Cursos e Programas" [ref=e12]
+        - link "Universidades" [ref=e15] [cursor=pointer]:
+          - /url: /universidades
+        - button "Recursos" [ref=e17]
+      - generic [ref=e20]:
+        - button "Entrar" [ref=e21]
+        - button "Criar conta" [ref=e22]
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - navigation "Breadcrumb" [ref=e25]:
+        - list [ref=e26]:
+          - listitem [ref=e27]:
+            - link "Início" [ref=e28] [cursor=pointer]:
+              - /url: /
+          - listitem [aria-hidden] [ref=e29]
+          - listitem [ref=e32]: Artigos e guias
+      - generic [ref=e33]:
+        - paragraph [ref=e34]: Recursos
+        - heading "Ideias para decisões com mais confiança" [level=1] [ref=e35]
+        - paragraph [ref=e36]: Guias, histórias e conselhos práticos para escolher estudos, preparar candidaturas e construir a tua carreira.
+      - region [ref=e37]:
+        - heading "Mais para explorar" [level=2] [ref=e38]
+        - generic [ref=e41]:
+          - paragraph [ref=e42]: Nenhum artigo encontrado
+          - paragraph [ref=e43]: De momento não existem artigos publicados.
+    - generic [ref=e44]:
+      - generic [ref=e46]:
+        - navigation "Sobre a Oportunidades" [ref=e47]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=e48]
+          - list [ref=e49]:
+            - listitem [ref=e50]:
+              - link "Sobre nós" [ref=e51] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e52]:
+              - link "Oportunidades" [ref=e53] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=e54]:
+              - link "Mentoria" [ref=e55] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=e56]:
+          - heading "Explorar" [level=2] [ref=e57]
+          - list [ref=e58]:
+            - listitem [ref=e59]:
+              - link "Universidades" [ref=e60] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=e61]:
+              - link "Cursos e Programas" [ref=e62] [cursor=pointer]:
+                - /url: /cursos
+            - listitem [ref=e63]:
+              - link "Bolsas" [ref=e64] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=e65]:
+              - link "Estágios" [ref=e66] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=e67]:
+              - link "Artigos" [ref=e68] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=e69]:
+          - heading "Links úteis" [level=2] [ref=e70]
+          - list [ref=e71]:
+            - listitem [ref=e72]:
+              - link "Termos de utilização" [ref=e73] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e74]:
+              - link "Política de privacidade" [ref=e75] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e76]:
+          - heading "Acompanha-nos" [level=2] [ref=e77]
+          - paragraph [ref=e78]: Encontra-nos nas redes sociais
+      - paragraph [ref=e98]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.

@@ -1,0 +1,9 @@
+{
+  "pairs": [
+    { "name": "Primary text on search canvas", "type": "normal-text", "foreground": "#1F2A42", "background": "#F3F5F7" },
+    { "name": "Secondary text on white", "type": "normal-text", "foreground": "#525252", "background": "#FFFFFF" },
+    { "name": "Primary button text", "type": "normal-text", "foreground": "#FFFFFF", "background": "#0049AF" },
+    { "name": "Input border on white", "type": "ui", "foreground": "#8B93A1", "background": "#FFFFFF" },
+    { "name": "Focus ring on white", "type": "ui", "foreground": "#0049AF", "background": "#FFFFFF" }
+  ]
+}

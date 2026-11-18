@@ -1,0 +1,204 @@
+- generic [active] [ref=f6e1]:
+  - banner [ref=f6e2]:
+    - generic [ref=f6e3]:
+      - link [ref=f6e4] [cursor=pointer]:
+        - /url: /
+        - img "Oportunidades" [ref=f6e5]
+      - navigation "Navegação principal" [ref=f6e6]:
+        - button "Oportunidades" [ref=f6e7]
+        - link "Bolsas" [ref=f6e10] [cursor=pointer]:
+          - /url: /bolsas
+        - link "Universidades" [ref=f6e11] [cursor=pointer]:
+          - /url: /universidades
+        - link "Cursos" [ref=f6e12] [cursor=pointer]:
+          - /url: /cursos
+        - link "Artigos" [ref=f6e13] [cursor=pointer]:
+          - /url: /artigos
+        - link "Mentoria" [ref=f6e14] [cursor=pointer]:
+          - /url: /mentoria
+        - link "Sobre" [ref=f6e15] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=f6e16]:
+        - button "Entrar" [ref=f6e17]
+        - button "Criar conta" [ref=f6e18]
+  - main [ref=f6e19]:
+    - region "Campus da Instituto Superior de Ciências e Tecnologia de Moçambique" [ref=f6e20]:
+      - img "Campus da Instituto Superior de Ciências e Tecnologia de Moçambique" [ref=f6e21]
+    - generic [ref=f6e22]:
+      - navigation "Breadcrumb" [ref=f6e23]:
+        - list [ref=f6e24]:
+          - listitem [ref=f6e25]:
+            - link "Cursos" [ref=f6e26] [cursor=pointer]:
+              - /url: /cursos
+          - listitem [aria-hidden] [ref=f6e27]
+          - listitem [ref=f6e30]: Tecnologia
+          - listitem [aria-hidden] [ref=f6e31]
+          - listitem [ref=f6e34]: Engenharia Informática
+      - generic [ref=f6e35]:
+        - generic [ref=f6e36]:
+          - generic [ref=f6e37]:
+            - generic [ref=f6e38]:
+              - heading "Engenharia Informática" [level=1] [ref=f6e39]
+              - paragraph [ref=f6e40]: Instituto Superior de Ciências e Tecnologia de Moçambique
+            - button "Guardar curso" [ref=f6e41]: Guardar
+          - navigation "Secções do curso" [ref=f6e45]:
+            - button "Visão geral" [ref=f6e46]
+            - button "Currículo" [ref=f6e47]
+            - button "Admissão" [ref=f6e48]
+            - button "Contactos" [ref=f6e49]
+          - generic [ref=f6e50]:
+            - heading "Visão geral" [level=2] [ref=f6e51]
+            - paragraph [ref=f6e52]: O curso de Engenharia Informática prepara estudantes para responder a desafios profissionais da área de Tecnologia, combinando fundamentos teóricos, prática e projetos aplicados.
+            - heading "Objetivos de aprendizagem" [level=3] [ref=f6e53]
+            - list [ref=f6e54]:
+              - listitem [ref=f6e55]: Compreender os fundamentos da computação e da engenharia de software.
+              - listitem [ref=f6e56]: Aplicar métodos de programação, análise de sistemas, redes e bases de dados.
+              - listitem [ref=f6e57]: Desenvolver soluções tecnológicas adequadas às necessidades locais.
+              - listitem [ref=f6e58]: Promover inovação e trabalho colaborativo.
+          - generic [ref=f6e60]:
+            - generic [ref=f6e61]:
+              - term [ref=f6e62]: Duração
+              - definition [ref=f6e63]: 4 anos
+            - generic [ref=f6e64]:
+              - term [ref=f6e65]: Idioma de ensino
+              - definition [ref=f6e66]: Português
+            - generic [ref=f6e67]:
+              - term [ref=f6e68]: Modalidade
+              - definition [ref=f6e69]: Presencial
+            - generic [ref=f6e70]:
+              - term [ref=f6e71]: Horário
+              - definition [ref=f6e72]: Diurno
+            - generic [ref=f6e73]:
+              - term [ref=f6e74]: Faculdade
+              - definition [ref=f6e75]: Tecnologia
+          - generic [ref=f6e76]:
+            - heading "Estrutura curricular" [level=2] [ref=f6e77]
+            - generic [ref=f6e78]:
+              - generic [ref=f6e79]:
+                - heading [level=3] [ref=f6e80]:
+                  - button "1º Ano" [expanded] [ref=f6e81]
+                - generic [ref=f6e84]:
+                  - generic [ref=f6e85]:
+                    - heading "Semestre I" [level=4] [ref=f6e86]
+                    - list [ref=f6e87]:
+                      - listitem [ref=f6e88]: Introdução à área
+                      - listitem [ref=f6e89]: Matemática
+                      - listitem [ref=f6e90]: Comunicação e Expressão
+                      - listitem [ref=f6e91]: Metodologia de estudo
+                  - generic [ref=f6e92]:
+                    - heading "Semestre II" [level=4] [ref=f6e93]
+                    - list [ref=f6e94]:
+                      - listitem [ref=f6e95]: Fundamentos profissionais
+                      - listitem [ref=f6e96]: Métodos quantitativos
+                      - listitem [ref=f6e97]: Tecnologias de informação
+                      - listitem [ref=f6e98]: Projeto integrado
+              - heading [level=3] [ref=f6e100]:
+                - button "2º Ano" [ref=f6e101]
+              - heading [level=3] [ref=f6e105]:
+                - button "3º Ano" [ref=f6e106]
+              - heading [level=3] [ref=f6e110]:
+                - button "4º Ano" [ref=f6e111]
+          - generic [ref=f6e114]:
+            - heading "Admissão" [level=2] [ref=f6e115]
+            - list [ref=f6e116]:
+              - listitem [ref=f6e117]: Conclusão do Ensino Secundário Geral ou equivalente
+              - listitem [ref=f6e118]: Aprovação nos exames de admissão aplicáveis
+          - generic [ref=f6e119]:
+            - heading "Localização e contactos" [level=2] [ref=f6e120]
+            - generic [ref=f6e121]:
+              - paragraph [ref=f6e122]: Tecnologia
+              - paragraph [ref=f6e123]: Instituto Superior de Ciências e Tecnologia de Moçambique
+              - paragraph [ref=f6e124]: Maputo, Moçambique
+            - link "Ver universidade" [ref=f6e125] [cursor=pointer]:
+              - /url: /universities/isctem
+        - complementary "Informação do curso" [ref=f6e130]:
+          - generic [ref=f6e131]:
+            - heading "Engenharia Informática" [level=2] [ref=f6e132]
+            - link "Visitar universidade" [ref=f6e133] [cursor=pointer]:
+              - /url: /universities/isctem
+            - button "Reportar informação incorreta" [ref=f6e138]
+          - generic [ref=f6e141]:
+            - heading "Requisitos de admissão" [level=2] [ref=f6e142]
+            - list [ref=f6e143]:
+              - listitem [ref=f6e144]: Conclusão do Ensino Secundário Geral ou equivalente
+              - listitem [ref=f6e145]: Aprovação nos exames de admissão aplicáveis
+          - generic [ref=f6e146]:
+            - heading "Custos" [level=2] [ref=f6e147]
+            - paragraph [ref=f6e148]: "Propina anual indicativa: MZN 8.000"
+    - generic [ref=f6e150]:
+      - heading "Cursos semelhantes" [level=2] [ref=f6e151]
+      - generic [ref=f6e152]:
+        - article [ref=f6e153]:
+          - generic [ref=f6e154]:
+            - generic [ref=f6e155]:
+              - link "Engenharia Civil" [ref=f6e156] [cursor=pointer]:
+                - /url: /cursos/engenharia-civil
+              - paragraph [ref=f6e157]: Licenciatura / Presencial
+              - paragraph [ref=f6e158]:
+                - generic [aria-hidden] [ref=f6e159]: I
+                - text: Instituto Superior de Ciências e Tecnologia de Moçambique
+            - generic [ref=f6e160]:
+              - button "Guardar Engenharia Civil" [ref=f6e161]
+              - generic [ref=f6e164]:
+                - text: Até
+                - paragraph [ref=f6e165]: MZN 7.000/ano
+          - button "Mostrar mais" [ref=f6e166]
+        - article [ref=f6e169]:
+          - generic [ref=f6e170]:
+            - generic [ref=f6e171]:
+              - link "Medicina" [ref=f6e172] [cursor=pointer]:
+                - /url: /cursos/medicina
+              - paragraph [ref=f6e173]: Licenciatura / Híbrida
+              - paragraph [ref=f6e174]:
+                - generic [aria-hidden] [ref=f6e175]: U
+                - text: Universidade Lúrio
+            - generic [ref=f6e176]:
+              - button "Guardar Medicina" [ref=f6e177]
+              - generic [ref=f6e180]:
+                - text: Até
+                - paragraph [ref=f6e181]: MZN 12.000/ano
+          - button "Mostrar mais" [ref=f6e182]
+      - link "Ver todos os cursos" [ref=f6e186] [cursor=pointer]:
+        - /url: /cursos
+    - generic [ref=f6e187]:
+      - generic [ref=f6e189]:
+        - navigation "Sobre a Oportunidades" [ref=f6e190]:
+          - heading "Sobre a Oportunidades" [level=2] [ref=f6e191]
+          - list [ref=f6e192]:
+            - listitem [ref=f6e193]:
+              - link "Sobre nós" [ref=f6e194] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f6e195]:
+              - link "Oportunidades" [ref=f6e196] [cursor=pointer]:
+                - /url: /oportunidades
+            - listitem [ref=f6e197]:
+              - link "Mentoria" [ref=f6e198] [cursor=pointer]:
+                - /url: /mentoria
+        - navigation "Explorar" [ref=f6e199]:
+          - heading "Explorar" [level=2] [ref=f6e200]
+          - list [ref=f6e201]:
+            - listitem [ref=f6e202]:
+              - link "Universidades" [ref=f6e203] [cursor=pointer]:
+                - /url: /universidades
+            - listitem [ref=f6e204]:
+              - link "Bolsas" [ref=f6e205] [cursor=pointer]:
+                - /url: /bolsas
+            - listitem [ref=f6e206]:
+              - link "Estágios" [ref=f6e207] [cursor=pointer]:
+                - /url: /estagios
+            - listitem [ref=f6e208]:
+              - link "Artigos" [ref=f6e209] [cursor=pointer]:
+                - /url: /artigos
+        - navigation "Links úteis" [ref=f6e210]:
+          - heading "Links úteis" [level=2] [ref=f6e211]
+          - list [ref=f6e212]:
+            - listitem [ref=f6e213]:
+              - link "Termos de utilização" [ref=f6e214] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f6e215]:
+              - link "Política de privacidade" [ref=f6e216] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=f6e217]:
+          - heading "Acompanha-nos" [level=2] [ref=f6e218]
+          - paragraph [ref=f6e219]: Encontra-nos nas redes sociais
+      - paragraph [ref=f6e239]: © 2022–2026 Oportunidades. Todos os direitos reservados. Feito em Moçambique.

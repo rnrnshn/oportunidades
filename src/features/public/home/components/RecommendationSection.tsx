@@ -1,7 +1,9 @@
 import { Link } from '@tanstack/react-router'
 import { ArrowRight } from 'lucide-react'
+import { useLaunchInventory } from '@/features/public/launch-inventory'
 
 export function RecommendationSection() {
+  const { data: inventory } = useLaunchInventory()
   return (
     <section
       id="recomendacoes"
@@ -18,13 +20,17 @@ export function RecommendationSection() {
               Não sabes por onde começar?
             </h2>
             <p className="mt-3 max-w-lg text-sm leading-6 text-[#4f5c7c]">
-              Responde a três perguntas e recebe oportunidades adequadas aos teus objetivos.
+              Escolhe uma área para explorar {[
+                inventory?.courses !== false && 'cursos',
+                'empregos',
+                inventory?.mentors !== false && 'mentores',
+              ].filter(Boolean).join(', ')} publicados.
             </p>
             <Link
               to="/recomendacoes"
               className="mt-5 inline-flex min-h-12 items-center gap-2 rounded-xl bg-brand px-5 text-sm font-semibold text-white hover:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand transition-colors duration-150 ease-out"
             >
-              Receber recomendações
+              Escolher uma área
               <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
           </div>

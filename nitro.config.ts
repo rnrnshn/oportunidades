@@ -7,7 +7,6 @@ export default defineConfig({
         maxAge: 60,
         swr: true,
         staleMaxAge: 300,
-        sendCacheControl: false,
       },
     },
   },

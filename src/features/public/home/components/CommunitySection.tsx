@@ -6,7 +6,6 @@ const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8080'
 // Real catalogue counts from each list's meta.total; a count of 0 is not shown.
 const STATS = [
   { label: 'Bolsas abertas', one: 'Bolsa aberta', path: '/v1/opportunities?type=bolsa&active=true&verified=true&per_page=1' },
-  { label: 'Cursos e programas', one: 'Curso ou programa', path: '/v1/catalog/courses?per_page=1' },
   { label: 'Universidades no catálogo', one: 'Universidade no catálogo', path: '/v1/catalog/universities?verified=true&per_page=1' },
 ]
 

@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router'
+import { useLaunchInventory } from '@/features/public/launch-inventory'
 type FooterRoute = '/about' | '/artigos' | '/bolsas' | '/cursos' | '/empregos' | '/estagios' | '/mentoria' | '/oportunidades' | '/privacidade' | '/termos' | '/universidades'
 type FooterLink = { label: string; to: FooterRoute; hash?: string }
 type FooterSection = { title: string; links: FooterLink[] }
@@ -41,6 +42,7 @@ interface SiteFooterProps {
 
 export default function SiteFooter({ variant = 'default' }: SiteFooterProps) {
   const isHome = variant === 'home'
+  const { data: inventory } = useLaunchInventory()
 
   return (
     <footer className="bg-[#f5f5f5]">
@@ -50,7 +52,13 @@ export default function SiteFooter({ variant = 'default' }: SiteFooterProps) {
             <nav key={section.title} aria-label={section.title} className="space-y-3">
               <h2 className={`text-sm ${isHome ? 'font-medium' : 'font-semibold'} text-[#262626]`}>{section.title}</h2>
               <ul>
-                {section.links.map((link) => (
+                {section.links.filter((link) =>
+                  (link.to !== '/bolsas' || inventory?.scholarships !== false) &&
+                  (link.to !== '/estagios' || inventory?.internships !== false) &&
+                  (link.to !== '/mentoria' || inventory?.mentors !== false) &&
+                  (link.to !== '/cursos' || inventory?.courses !== false) &&
+                  (link.to !== '/universidades' || inventory?.universities !== false),
+                ).map((link) => (
                   <li key={link.label}>
                     <Link
                       to={link.to}

@@ -4,6 +4,7 @@ import { useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { useLaunchInventory } from '@/features/public/launch-inventory'
 
 const opportunityTypes = [
   { label: 'Todas', value: '', action: '/oportunidades' },
@@ -13,6 +14,11 @@ const opportunityTypes = [
 ] as const
 
 export function HeroSection() {
+  const { data: inventory } = useLaunchInventory()
+  const availableTypes = opportunityTypes.filter((option) =>
+    (option.value !== 'bolsa' || inventory?.scholarships !== false) &&
+    (option.value !== 'estagio' || inventory?.internships !== false),
+  )
   const [typeOpen, setTypeOpen] = useState(false)
   const [selectedType, setSelectedType] = useState<(typeof opportunityTypes)[number]>(opportunityTypes[0])
   const firstOptionRef = useRef<HTMLButtonElement>(null)
@@ -34,10 +40,10 @@ export function HeroSection() {
             Encontra aqui a tua próxima oportunidade
           </h1>
           <p className="mt-5 max-w-lg text-base leading-7 text-[#525252]">
-            Bolsas de estudo, universidades, estágios e empregos, tudo num só espaço pensado para estudantes e jovens profissionais.
+            Explora {inventory?.courses === false ? 'as oportunidades já publicadas' : 'as oportunidades e os cursos já publicados'} num espaço pensado para estudantes e jovens profissionais.
           </p>
 
-                    <form action={selectedType.action} method="get" role="search" className="mt-2 flex min-h-[var(--field-height)] max-w-xl flex-wrap rounded-[var(--field-radius)] border border-[var(--field-line)] bg-white focus-within:border-[var(--field-focus)] sm:flex-nowrap">
+          <form action={selectedType.action} method="get" role="search" className="mt-2 flex min-h-[var(--field-height)] max-w-xl flex-wrap rounded-[var(--field-radius)] border border-[var(--field-line)] bg-white focus-within:border-[var(--field-focus)] sm:flex-nowrap">
             <Popover open={typeOpen} onOpenChange={setTypeOpen}>
               <PopoverTrigger asChild>
                 <button
@@ -60,7 +66,7 @@ export function HeroSection() {
               <PopoverContent align="start" sideOffset={8} className="w-[200px] rounded-[var(--field-radius)] border border-[var(--field-line)] bg-white p-1 shadow-lg">
                 <fieldset>
                   <legend className="sr-only">Tipo de oportunidade</legend>
-                  {opportunityTypes.map((option, index) => (
+                  {availableTypes.map((option, index) => (
                     <button
                       key={option.value || 'all'}
                       ref={index === 0 ? firstOptionRef : undefined}

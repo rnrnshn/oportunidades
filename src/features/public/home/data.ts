@@ -1,14 +1,14 @@
 export const journeys = [
   {
     title: 'Quero estudar',
-    description: 'Compara cursos, instituições e formas de financiar os teus estudos.',
+    description: 'Explora cursos e instituições com informação disponível no catálogo.',
     image: '/home-v2/asset-15.png',
     imageAlt: 'Estudante a ler no campus',
     to: '/cursos',
   },
   {
     title: 'Quero trabalhar',
-    description: 'Descobre experiências que ajudam a entrar e a crescer no mercado de trabalho.',
+    description: 'Consulta as vagas de emprego actualmente publicadas.',
     image: '/home-v2/asset-19.png',
     imageAlt: 'Profissional da construção a trabalhar com um tablet',
     to: '/empregos',
@@ -18,7 +18,7 @@ export const journeys = [
 export const steps = [
   {
     title: 'Pesquisa o que te interessa',
-    description: 'Encontra bolsas, universidades, estágios e empregos de forma rápida.',
+    description: 'Explora as oportunidades e os cursos disponíveis no catálogo.',
   },
   {
     title: 'Guarda e acompanha',
@@ -26,10 +26,9 @@ export const steps = [
   },
   {
     title: 'Candidata-te e evolui',
-    description: 'Entra em contacto directo com instituições e empresas.',
+    description: 'Segue as instruções de candidatura indicadas por cada entidade.',
   },
 ]
 
 // Decorative photos for home cards whose item has no image of its own.
 export const cardImages = ['/home-v2/asset-08.png', '/home-v2/asset-15.png', '/home-v2/asset-18.png', '/home-v2/asset-19.png']
-

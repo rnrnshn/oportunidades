@@ -8,7 +8,7 @@ export const Route = createFileRoute('/')({
       { title: 'Oportunidades | Estuda, trabalha e cresce' },
       {
         name: 'description',
-        content: 'Encontra bolsas, cursos, universidades, estágios e empregos em Moçambique.',
+        content: 'Explora os cursos e oportunidades publicados em Moçambique.',
       },
     ],
   }),

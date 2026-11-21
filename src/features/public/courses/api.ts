@@ -57,7 +57,11 @@ export async function getCourses(): Promise<Course[]> {
   if (!response.ok) throw new Error('Não foi possível carregar cursos.')
   const parsed = CoursesResponseSchema.parse(await response.json())
   const byId = new Map(universities.map((university) => [university.id, university]))
-  return parsed.data.map((item) => toCourse(item, byId.get(item.university_id)))
+  // A course is public only when its institution has passed editorial verification.
+  return parsed.data.flatMap((item) => {
+    const university = byId.get(item.university_id)
+    return university ? [toCourse(item, university)] : []
+  })
 }
 
 export async function getCourseDetail(slug: string): Promise<CourseDetail> {
@@ -65,6 +69,8 @@ export async function getCourseDetail(slug: string): Promise<CourseDetail> {
   if (response.status === 404) throw notFound({ routeId: rootRouteId })
   if (!response.ok) throw new Error('Não foi possível carregar o curso.')
   const item = CourseResponseSchema.parse(await response.json()).data
-  const universities = await getCatalogUniversities().catch(() => [])
-  return { ...toCourse(item, universities.find((university) => university.id === item.university_id)), entryRequirements: item.entry_requirements }
+  const universities = await getCatalogUniversities()
+  const university = universities.find((entry) => entry.id === item.university_id)
+  if (!university) throw notFound({ routeId: rootRouteId })
+  return { ...toCourse(item, university), entryRequirements: item.entry_requirements }
 }

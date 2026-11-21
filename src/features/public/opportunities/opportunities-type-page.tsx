@@ -89,11 +89,32 @@ export function OpportunitiesTypePage({ type, category, title }: Props) {
 }
 
 function EmploymentSearchBar({ search, location, onSearchChange, onLocationChange }: { search: string; location: string; onSearchChange: (value: string) => void; onLocationChange: (value: string) => void }) {
-  return <section aria-label="Pesquisa de empregos" className="border-b border-[var(--surface-border)] bg-[#edf4ff]"><form className="mx-auto grid max-w-6xl gap-3 px-5 py-5 sm:px-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] md:items-end" onSubmit={(event) => event.preventDefault()}>
-    <label className="block text-xs font-medium leading-[1.7] text-navy">Cargo, competência ou empresa<span className="relative mt-2 block"><Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-brand" aria-hidden="true" /><Input type="search" value={search} onChange={(event) => onSearchChange(event.target.value)} className="bg-white pl-10 font-normal" placeholder="Programador ou MozTech" /></span></label>
-    <label className="block text-xs font-medium leading-[1.7] text-navy">Cidade, distrito ou província<span className="relative mt-2 block"><MapPin className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-brand" aria-hidden="true" /><Input type="search" value={location} onChange={(event) => onLocationChange(event.target.value)} className="bg-white pl-10 font-normal" placeholder="Maputo" /></span></label>
-    <Button type="submit" className="min-h-11 px-7">Pesquisar empregos</Button>
-  </form></section>
+  return (
+    <div className="bg-white pt-[50px]">
+      <section aria-label="Pesquisa de empregos" className="mx-auto w-full max-w-6xl px-5 sm:px-6">
+        <form
+          className="grid gap-3 rounded-xl bg-[#edf4ff] p-5 sm:p-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] md:items-end"
+          onSubmit={(event) => event.preventDefault()}
+        >
+          <label className="block text-xs font-medium leading-[1.7] text-navy">
+            Cargo, competência ou empresa
+            <span className="relative mt-2 block">
+              <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-brand" aria-hidden="true" />
+              <Input type="search" value={search} onChange={(event) => onSearchChange(event.target.value)} className="border-[#767676] bg-white pl-10 font-normal" placeholder="Programador ou MozTech" />
+            </span>
+          </label>
+          <label className="block text-xs font-medium leading-[1.7] text-navy">
+            Cidade, distrito ou província
+            <span className="relative mt-2 block">
+              <MapPin className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-brand" aria-hidden="true" />
+              <Input type="search" value={location} onChange={(event) => onLocationChange(event.target.value)} className="border-[#767676] bg-white pl-10 font-normal" placeholder="Maputo" />
+            </span>
+          </label>
+          <Button type="submit" className="min-h-11 px-7">Pesquisar empregos</Button>
+        </form>
+      </section>
+    </div>
+  )
 }
 
 function FilterCheckboxes({ label, values, options, onChange }: { label: string; values: string[]; options: Array<{ value: string; label: string }>; onChange: (values: string[]) => void }) {

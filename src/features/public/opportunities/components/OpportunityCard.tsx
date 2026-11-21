@@ -1,6 +1,6 @@
-import { Card, cardLinkClass, interactiveCardClass } from '@/components/ui/card'
+import { aboveCardLinkClass, Card, cardLinkClass, interactiveCardClass } from '@/components/ui/card'
 import { Link } from '@tanstack/react-router'
-import { Bookmark, Calendar, MapPin } from 'lucide-react'
+import { Bookmark, BriefcaseBusiness, Calendar, MapPin } from 'lucide-react'
 import { useBookmark } from '@/features/public/shared/use-bookmark'
 import type { Opportunity } from '../types'
 import { parseDate } from '@/lib/utils'
@@ -80,47 +80,74 @@ function JobCard({ opportunity }: { opportunity: Opportunity }) {
   const newJob = isNewJob(opportunity.publishedAt)
 
   return (
-    <Card className={`overflow-hidden rounded-xl border border-[#dcdcdc]/80 bg-white p-4 shadow-none ${interactiveCardClass}`}>
-      <article className="flex items-start gap-2.5">
-        <div className="flex min-w-0 flex-1 flex-col gap-4">
-          <div className="flex min-w-0 items-start gap-3">
-            <div className="flex size-12 shrink-0 items-center justify-center rounded-lg sm:size-[60px] bg-[#dcdcdc] text-lg font-bold text-[#525252]" aria-hidden="true">
-              {opportunity.entityName.slice(0, 1)}
-            </div>
-            <div className="min-w-0 flex-1 space-y-2">
-              <div className="flex min-w-0 items-start gap-2">
-              <h3 className="min-w-0 text-base font-bold leading-snug text-[#262626]">
-                <Link to="/oportunidades/$slug" params={{ slug: opportunity.slug }} className={`rounded hover:text-[#0049af] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out ${cardLinkClass}`}>
-                  {opportunity.title}
-                </Link>
-              </h3>
-              {newJob ? <span className="shrink-0 rounded-md bg-[#e5f5ec] px-2 py-1 text-xs font-bold text-[#176b3a]">Nova</span> : null}
+    <Card className={`overflow-hidden rounded-xl border border-[#8a8a8a] bg-white p-4 shadow-none ${interactiveCardClass}`}>
+      <article className="flex h-full flex-col gap-5">
+        <div className="flex min-w-0 items-start gap-3">
+          <span className="flex size-12 shrink-0 items-center justify-center rounded-md border border-[#8a8a8a] bg-white text-lg font-bold text-[#0049af] sm:size-16" aria-hidden="true">
+            {opportunity.entityName.slice(0, 1).toUpperCase()}
+          </span>
+
+          <div className="min-w-0 flex-1">
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
+                <p className="mb-1 line-clamp-1 text-sm font-semibold leading-5 text-[#3f3f3f]">
+                  {opportunity.entityName}
+                </p>
+                <h3 className="line-clamp-2 text-base font-bold leading-5 text-[#262626]">
+                  <Link
+                    to="/oportunidades/$slug"
+                    params={{ slug: opportunity.slug }}
+                    className={`rounded hover:text-[#0049af] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out ${cardLinkClass}`}
+                  >
+                    {opportunity.title}
+                  </Link>
+                </h3>
               </div>
-              <p className="text-base leading-snug text-[#656565]">{opportunity.entityName}</p>
-              <p className="text-sm leading-snug text-[#656565]">{location}</p>
+
+              <button
+                type="button"
+                aria-pressed={bookmarked}
+                aria-label={`${bookmarked ? 'Remover dos guardados' : 'Guardar'} ${opportunity.title}`}
+                onClick={toggleBookmark}
+                className={`${aboveCardLinkClass} flex size-11 shrink-0 items-center justify-center rounded-lg text-[#c75100] hover:bg-[#fff2d3] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out`}
+              >
+                <Bookmark className={`size-5 ${bookmarked ? 'fill-current' : ''}`} aria-hidden="true" />
+              </button>
+            </div>
+
+            <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-sm leading-5 text-[#656565]">
+              <span className="inline-flex items-center gap-1">
+                <MapPin className="size-4" aria-hidden="true" />
+                {location}
+              </span>
+              {opportunity.contractType ? (
+                <span className="inline-flex items-center gap-1">
+                  <BriefcaseBusiness className="size-4" aria-hidden="true" />
+                  {opportunity.contractType}
+                </span>
+              ) : null}
+              {newJob ? <span className="rounded-md bg-[#e5f5ec] px-2 text-xs font-semibold text-[#176b3a]">Nova</span> : null}
             </div>
           </div>
-          {formattedDeadline && (
-            <span className="w-fit rounded-lg bg-[#0049af] px-4 py-2 text-xs font-bold uppercase leading-none tracking-[-0.02em] text-[#fcfcfc]">
+        </div>
+
+        <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <Link
+            to="/oportunidades/$slug"
+            params={{ slug: opportunity.slug }}
+            className={`${aboveCardLinkClass} inline-flex min-h-11 items-center rounded text-sm font-medium text-[#0049af] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af]`}
+          >
+            Ver detalhes da vaga
+          </Link>
+          {formattedDeadline ? (
+            <span className="rounded-lg bg-[#0049af] px-4 py-2 text-center text-xs font-bold uppercase leading-none text-white">
               Candidaturas até {formattedDeadline}
             </span>
-          )}
-          <p className="text-base leading-6 text-[#656565]">{formatPublishedDate(opportunity.publishedAt)}</p>
+          ) : null}
         </div>
-        <button type="button" aria-pressed={bookmarked} aria-label={`${bookmarked ? 'Remover dos guardados' : 'Guardar'} ${opportunity.title}`} onClick={toggleBookmark} className="relative z-10 flex size-11 shrink-0 items-center justify-center rounded-lg text-[#c75100] hover:bg-[#fff2d3] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af] transition-colors duration-150 ease-out">
-          <Bookmark className={`size-5 ${bookmarked ? 'fill-current' : ''}`} aria-hidden="true" />
-        </button>
       </article>
     </Card>
   )
-}
-
-function formatPublishedDate(value?: string) {
-  if (!value) return 'Publicado recentemente'
-  const days = getDaysSincePublished(value)
-  if (days === 0) return 'Publicado hoje'
-  if (days === 1) return 'Publicado há 1 dia'
-  return `Publicado há ${days} dias`
 }
 
 function isNewJob(value?: string) {

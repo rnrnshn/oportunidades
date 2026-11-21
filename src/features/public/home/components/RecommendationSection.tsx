@@ -5,7 +5,7 @@ export function RecommendationSection() {
   return (
     <section
       id="recomendacoes"
-      className="bg-white py-12 md:py-16"
+      className="bg-white py-[50px]"
       aria-labelledby="recommendation-title"
     >
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-6 xl:px-0">

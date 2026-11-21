@@ -20,7 +20,7 @@ export function MentorsList({ mentors, viewMode = 'grid' }: { mentors: Mentor[];
   }
 
   return (
-    <div className={viewMode === 'grid' ? 'grid gap-4 lg:grid-cols-2' : 'space-y-4'}>
+    <div className={viewMode === 'grid' ? 'grid gap-4 sm:grid-cols-2' : 'space-y-4'}>
       {mentors.map((mentor) => (
         <MentorCard key={mentor.id} mentor={mentor} />
       ))}

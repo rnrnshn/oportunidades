@@ -3,7 +3,7 @@ import { SectionHeading } from './SectionHeading'
 
 export function StepsSection() {
   return (
-    <section className="relative overflow-hidden bg-canvas-soft py-12 md:py-16" aria-labelledby="steps-title">
+    <section className="relative overflow-hidden bg-canvas-soft py-[50px]" aria-labelledby="steps-title">
       <div
         className="pointer-events-none absolute inset-y-6 left-0 w-64 -translate-x-10 bg-[url('/header-pattern-bg.svg')] bg-contain bg-left-top bg-no-repeat opacity-20"
         aria-hidden="true"
@@ -32,7 +32,10 @@ export function StepsSection() {
                   <h3 className="text-xl font-semibold text-navy">{step.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-[#525252]">{step.description}</p>
                 </div>
-                <span className="select-none text-[7rem] font-black leading-[0.8] text-[#eeeeee] md:text-[9rem]" aria-hidden="true">
+                <span
+                  className="select-none text-[7rem] font-black leading-[0.8] text-[#737373]/15 md:text-[9rem]"
+                  aria-hidden="true"
+                >
                   {index + 1}
                 </span>
               </div>

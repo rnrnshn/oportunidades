@@ -34,12 +34,15 @@ import { Route as BolsasIndexRouteImport } from './routes/bolsas/index'
 import { Route as ArtigosIndexRouteImport } from './routes/artigos/index'
 import { Route as UniversitiesSlugRouteImport } from './routes/universities/$slug'
 import { Route as OportunidadesSlugRouteImport } from './routes/oportunidades/$slug'
+import { Route as MentoriaRecomendacaoRouteImport } from './routes/mentoria/recomendacao'
 import { Route as MentoriaSlugRouteImport } from './routes/mentoria/$slug'
 import { Route as CursosSlugRouteImport } from './routes/cursos/$slug'
 import { Route as BolsasSlugRouteImport } from './routes/bolsas/$slug'
 import { Route as AuthVerifyEmailRouteImport } from './routes/auth/verify-email'
 import { Route as AuthResetPasswordRouteImport } from './routes/auth/reset-password'
 import { Route as ArtigosSlugRouteImport } from './routes/artigos/$slug'
+import { Route as AccountPasswordRouteImport } from './routes/account_.password'
+import { Route as AccountNotificationsRouteImport } from './routes/account_.notifications'
 import { Route as MentoriaPedirSlugRouteImport } from './routes/mentoria/pedir.$slug'
 
 const UniversidadesRoute = UniversidadesRouteImport.update({
@@ -167,6 +170,11 @@ const OportunidadesSlugRoute = OportunidadesSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => OportunidadesRoute,
 } as any)
+const MentoriaRecomendacaoRoute = MentoriaRecomendacaoRouteImport.update({
+  id: '/recomendacao',
+  path: '/recomendacao',
+  getParentRoute: () => MentoriaRoute,
+} as any)
 const MentoriaSlugRoute = MentoriaSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -197,6 +205,16 @@ const ArtigosSlugRoute = ArtigosSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ArtigosRoute,
 } as any)
+const AccountPasswordRoute = AccountPasswordRouteImport.update({
+  id: '/account_/password',
+  path: '/account/password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountNotificationsRoute = AccountNotificationsRouteImport.update({
+  id: '/account_/notifications',
+  path: '/account/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MentoriaPedirSlugRoute = MentoriaPedirSlugRouteImport.update({
   id: '/pedir/$slug',
   path: '/pedir/$slug',
@@ -222,12 +240,15 @@ export interface FileRoutesByFullPath {
   '/styleguide': typeof StyleguideRoute
   '/termos': typeof TermosRoute
   '/universidades': typeof UniversidadesRoute
+  '/account/notifications': typeof AccountNotificationsRoute
+  '/account/password': typeof AccountPasswordRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
   '/auth/reset-password': typeof AuthResetPasswordRoute
   '/auth/verify-email': typeof AuthVerifyEmailRoute
   '/bolsas/$slug': typeof BolsasSlugRoute
   '/cursos/$slug': typeof CursosSlugRoute
   '/mentoria/$slug': typeof MentoriaSlugRoute
+  '/mentoria/recomendacao': typeof MentoriaRecomendacaoRoute
   '/oportunidades/$slug': typeof OportunidadesSlugRoute
   '/universities/$slug': typeof UniversitiesSlugRoute
   '/artigos/': typeof ArtigosIndexRoute
@@ -251,12 +272,15 @@ export interface FileRoutesByTo {
   '/styleguide': typeof StyleguideRoute
   '/termos': typeof TermosRoute
   '/universidades': typeof UniversidadesRoute
+  '/account/notifications': typeof AccountNotificationsRoute
+  '/account/password': typeof AccountPasswordRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
   '/auth/reset-password': typeof AuthResetPasswordRoute
   '/auth/verify-email': typeof AuthVerifyEmailRoute
   '/bolsas/$slug': typeof BolsasSlugRoute
   '/cursos/$slug': typeof CursosSlugRoute
   '/mentoria/$slug': typeof MentoriaSlugRoute
+  '/mentoria/recomendacao': typeof MentoriaRecomendacaoRoute
   '/oportunidades/$slug': typeof OportunidadesSlugRoute
   '/universities/$slug': typeof UniversitiesSlugRoute
   '/artigos': typeof ArtigosIndexRoute
@@ -286,12 +310,15 @@ export interface FileRoutesById {
   '/styleguide': typeof StyleguideRoute
   '/termos': typeof TermosRoute
   '/universidades': typeof UniversidadesRoute
+  '/account_/notifications': typeof AccountNotificationsRoute
+  '/account_/password': typeof AccountPasswordRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
   '/auth/reset-password': typeof AuthResetPasswordRoute
   '/auth/verify-email': typeof AuthVerifyEmailRoute
   '/bolsas/$slug': typeof BolsasSlugRoute
   '/cursos/$slug': typeof CursosSlugRoute
   '/mentoria/$slug': typeof MentoriaSlugRoute
+  '/mentoria/recomendacao': typeof MentoriaRecomendacaoRoute
   '/oportunidades/$slug': typeof OportunidadesSlugRoute
   '/universities/$slug': typeof UniversitiesSlugRoute
   '/artigos/': typeof ArtigosIndexRoute
@@ -322,12 +349,15 @@ export interface FileRouteTypes {
     | '/styleguide'
     | '/termos'
     | '/universidades'
+    | '/account/notifications'
+    | '/account/password'
     | '/artigos/$slug'
     | '/auth/reset-password'
     | '/auth/verify-email'
     | '/bolsas/$slug'
     | '/cursos/$slug'
     | '/mentoria/$slug'
+    | '/mentoria/recomendacao'
     | '/oportunidades/$slug'
     | '/universities/$slug'
     | '/artigos/'
@@ -351,12 +381,15 @@ export interface FileRouteTypes {
     | '/styleguide'
     | '/termos'
     | '/universidades'
+    | '/account/notifications'
+    | '/account/password'
     | '/artigos/$slug'
     | '/auth/reset-password'
     | '/auth/verify-email'
     | '/bolsas/$slug'
     | '/cursos/$slug'
     | '/mentoria/$slug'
+    | '/mentoria/recomendacao'
     | '/oportunidades/$slug'
     | '/universities/$slug'
     | '/artigos'
@@ -385,12 +418,15 @@ export interface FileRouteTypes {
     | '/styleguide'
     | '/termos'
     | '/universidades'
+    | '/account_/notifications'
+    | '/account_/password'
     | '/artigos/$slug'
     | '/auth/reset-password'
     | '/auth/verify-email'
     | '/bolsas/$slug'
     | '/cursos/$slug'
     | '/mentoria/$slug'
+    | '/mentoria/recomendacao'
     | '/oportunidades/$slug'
     | '/universities/$slug'
     | '/artigos/'
@@ -420,6 +456,8 @@ export interface RootRouteChildren {
   StyleguideRoute: typeof StyleguideRoute
   TermosRoute: typeof TermosRoute
   UniversidadesRoute: typeof UniversidadesRoute
+  AccountNotificationsRoute: typeof AccountNotificationsRoute
+  AccountPasswordRoute: typeof AccountPasswordRoute
   AuthResetPasswordRoute: typeof AuthResetPasswordRoute
   AuthVerifyEmailRoute: typeof AuthVerifyEmailRoute
   UniversitiesSlugRoute: typeof UniversitiesSlugRoute
@@ -602,6 +640,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OportunidadesSlugRouteImport
       parentRoute: typeof OportunidadesRoute
     }
+    '/mentoria/recomendacao': {
+      id: '/mentoria/recomendacao'
+      path: '/recomendacao'
+      fullPath: '/mentoria/recomendacao'
+      preLoaderRoute: typeof MentoriaRecomendacaoRouteImport
+      parentRoute: typeof MentoriaRoute
+    }
     '/mentoria/$slug': {
       id: '/mentoria/$slug'
       path: '/$slug'
@@ -643,6 +688,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/artigos/$slug'
       preLoaderRoute: typeof ArtigosSlugRouteImport
       parentRoute: typeof ArtigosRoute
+    }
+    '/account_/password': {
+      id: '/account_/password'
+      path: '/account/password'
+      fullPath: '/account/password'
+      preLoaderRoute: typeof AccountPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account_/notifications': {
+      id: '/account_/notifications'
+      path: '/account/notifications'
+      fullPath: '/account/notifications'
+      preLoaderRoute: typeof AccountNotificationsRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/mentoria/pedir/$slug': {
       id: '/mentoria/pedir/$slug'
@@ -695,12 +754,14 @@ const CursosRouteWithChildren =
 
 interface MentoriaRouteChildren {
   MentoriaSlugRoute: typeof MentoriaSlugRoute
+  MentoriaRecomendacaoRoute: typeof MentoriaRecomendacaoRoute
   MentoriaIndexRoute: typeof MentoriaIndexRoute
   MentoriaPedirSlugRoute: typeof MentoriaPedirSlugRoute
 }
 
 const MentoriaRouteChildren: MentoriaRouteChildren = {
   MentoriaSlugRoute: MentoriaSlugRoute,
+  MentoriaRecomendacaoRoute: MentoriaRecomendacaoRoute,
   MentoriaIndexRoute: MentoriaIndexRoute,
   MentoriaPedirSlugRoute: MentoriaPedirSlugRoute,
 }
@@ -742,6 +803,8 @@ const rootRouteChildren: RootRouteChildren = {
   StyleguideRoute: StyleguideRoute,
   TermosRoute: TermosRoute,
   UniversidadesRoute: UniversidadesRoute,
+  AccountNotificationsRoute: AccountNotificationsRoute,
+  AccountPasswordRoute: AccountPasswordRoute,
   AuthResetPasswordRoute: AuthResetPasswordRoute,
   AuthVerifyEmailRoute: AuthVerifyEmailRoute,
   UniversitiesSlugRoute: UniversitiesSlugRoute,

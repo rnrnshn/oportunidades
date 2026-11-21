@@ -11,15 +11,14 @@ import { getArticles } from '@/features/public/articles/api'
 import { cardImages } from '../data'
 import { SectionHeading } from './SectionHeading'
 import { Button } from '@/components/ui/button'
+import { mockHomeArticles } from '../mock-data'
 
 export function ArticlesSection() {
-  const { data = [] } = useQuery({ queryKey: ['articles'], queryFn: getArticles })
-  const articles = data.slice(0, 6)
-  // Hidden until there is published content.
-  if (articles.length === 0) return null
+  const { data } = useQuery({ queryKey: ['articles'], queryFn: getArticles })
+  const articles = (data?.length ? data : mockHomeArticles).slice(0, 6)
 
   return (
-    <section className="mx-auto w-full max-w-6xl px-5 py-12 sm:px-6 md:py-16 xl:px-0" aria-labelledby="articles-title">
+    <section className="mx-auto w-full max-w-6xl px-5 py-[50px] sm:px-6 xl:px-0" aria-labelledby="articles-title">
       <SectionHeading id="articles-title" title="Conteúdo para decidires melhor" />
 
       <Carousel

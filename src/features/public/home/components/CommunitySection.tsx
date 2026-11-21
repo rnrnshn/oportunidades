@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+import { mockCatalogueStats } from '../mock-data'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8080'
 
@@ -22,9 +23,9 @@ async function getCatalogueCounts() {
 }
 
 export function CommunitySection() {
-  const { data = [] } = useQuery({ queryKey: ['catalogue-counts'], queryFn: getCatalogueCounts, staleTime: 5 * 60_000 })
-  const stats = data.filter((stat) => stat.value > 0)
-  if (stats.length === 0) return null
+  const { data } = useQuery({ queryKey: ['catalogue-counts'], queryFn: getCatalogueCounts, staleTime: 5 * 60_000 })
+  const liveStats = data?.filter((stat) => stat.value > 0) ?? []
+  const stats = liveStats.length > 0 ? liveStats : mockCatalogueStats
 
   return (
     <section className="bg-[#f5f9ff]" aria-label="Catálogo da Oportunidades">

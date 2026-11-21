@@ -6,7 +6,7 @@ import { cardImageZoomClass, cardLinkClass, interactiveCardClass } from '@/compo
 
 export function CategorySection() {
   return (
-    <section className="relative overflow-hidden bg-white py-12 md:py-16" aria-labelledby="categories-title">
+    <section className="relative overflow-hidden bg-white py-[50px]" aria-labelledby="categories-title">
       <img src="/home-v2/asset-03.png" alt="" width="226" height="266" className="pointer-events-none absolute -left-8 top-0 opacity-[0.04]" />
       <div className="relative mx-auto w-full max-w-6xl px-5 sm:px-6 xl:px-0">
         <SectionHeading id="categories-title" title="O que procuras hoje?" divider={false} />

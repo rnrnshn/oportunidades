@@ -20,10 +20,11 @@ type LoginForm = z.infer<typeof loginSchema>
 
 type LoginCardProps = {
   onSwitchMode?: (mode: 'login' | 'signup') => void
+  onForgotPassword?: () => void
   onClose: () => void
 }
 
-export function LoginCard({ onSwitchMode, onClose }: LoginCardProps) {
+export function LoginCard({ onSwitchMode, onForgotPassword, onClose }: LoginCardProps) {
   const queryClient = useQueryClient()
   const form = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
@@ -89,7 +90,7 @@ export function LoginCard({ onSwitchMode, onClose }: LoginCardProps) {
         </Button>
       </form>
 
-      <a href="/recuperar-palavra-passe" className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-brand hover:underline">Esqueci a palavra-passe</a>
+      <button type="button" onClick={onForgotPassword} className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-brand hover:underline">Esqueci a palavra-passe</button>
 
       <p className="mt-4 text-center text-sm text-muted">
         Ainda não tens conta?{' '}

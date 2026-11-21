@@ -16,8 +16,8 @@ import type { SignInMode } from '@/lib/auth-store'
 
 const FORMAT_OPTIONS = [
   { value: '', label: 'Sem preferência' },
-  { value: 'Videochamada', label: 'Videochamada' },
-  { value: 'Chamada de voz', label: 'Chamada de voz' },
+  { value: 'Google Meet', label: 'Google Meet' },
+  { value: 'WhatsApp', label: 'WhatsApp' },
   { value: 'Mensagens', label: 'Mensagens' },
 ]
 
@@ -27,6 +27,7 @@ export function MentorRequestPage() {
   const mentorQuery = useQuery({ queryKey: ['mentor', slug], queryFn: () => getMentor(slug), retry: (count, err) => !(err instanceof MentorNotFoundError) && count < 2 })
   const [message, setMessage] = useState('')
   const [format, setFormat] = useState('')
+  const [slot, setSlot] = useState('')
   const [authMode, setAuthMode] = useState<SignInMode | null>(null)
   const send = useMutation({ mutationFn: (text: string) => requestMentorshipSession(slug, text) })
 
@@ -51,7 +52,8 @@ export function MentorRequestPage() {
     event.preventDefault()
     const text = message.trim()
     if (!text) return
-    send.mutate(format ? `Forma preferida: ${format}\n\n${text}` : text)
+    const details = [`Horário: ${slot || 'A combinar'}`, `Canal: ${format || 'A combinar'}`, '', text].join('\n')
+    send.mutate(details)
   }
 
   return (
@@ -64,10 +66,11 @@ export function MentorRequestPage() {
         </div>
       ) : (
         <form className="max-w-2xl space-y-5 rounded-2xl border border-[var(--surface-border)] p-5 sm:p-7" onSubmit={handleSubmit}>
-          <Field label="Em que precisas de ajuda?" htmlFor="mentor-goal" error={send.isError ? mentorErrorMessage(send.error) : undefined}>
-            <Textarea id="mentor-goal" required rows={5} value={message} onChange={(event) => setMessage(event.target.value)} aria-invalid={send.isError || undefined} aria-describedby={send.isError ? 'mentor-goal-error' : undefined} />
-          </Field>
+          {mentor.availability_slots?.length ? <Field label="Disponibilidade" htmlFor="mentor-slot"><CustomSelect id="mentor-slot" value={slot} onChange={setSlot} ariaLabel="Selecionar disponibilidade" className="w-full" options={[{ value: '', label: 'A combinar' }, ...mentor.availability_slots.map((item) => ({ value: item, label: item }))]} /></Field> : null}
           <Field label="Como preferes conversar?" htmlFor="mentor-format"><CustomSelect id="mentor-format" value={format} onChange={setFormat} ariaLabel="Forma de conversa" className="w-full" options={FORMAT_OPTIONS} /></Field>
+          <Field label="O que gostarias de conversar?" htmlFor="mentor-goal" error={send.isError ? mentorErrorMessage(send.error) : undefined}>
+            <Textarea id="mentor-goal" required rows={4} value={message} onChange={(event) => setMessage(event.target.value)} aria-invalid={send.isError || undefined} aria-describedby={send.isError ? 'mentor-goal-error' : undefined} />
+          </Field>
           <Button type="submit" disabled={send.isPending || !message.trim()} className="w-full sm:w-auto">{send.isPending ? 'A enviar…' : 'Enviar pedido'}</Button>
         </form>
       )}

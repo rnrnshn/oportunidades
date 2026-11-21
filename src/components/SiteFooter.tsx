@@ -1,6 +1,4 @@
 import { Link } from '@tanstack/react-router'
-import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react'
-
 type FooterRoute = '/about' | '/artigos' | '/bolsas' | '/cursos' | '/empregos' | '/estagios' | '/mentoria' | '/oportunidades' | '/privacidade' | '/termos' | '/universidades'
 type FooterLink = { label: string; to: FooterRoute; hash?: string }
 type FooterSection = { title: string; links: FooterLink[] }
@@ -70,25 +68,23 @@ export default function SiteFooter({ variant = 'default' }: SiteFooterProps) {
           <div className="col-span-2 space-y-3 md:col-span-1">
             <h2 className={`text-sm ${isHome ? 'font-medium' : 'font-semibold'} text-[#262626]`}>Acompanha-nos</h2>
             <p className={`max-w-xs leading-6 text-[#525252] ${isHome ? 'text-base' : 'text-sm'}`}>Encontra-nos nas redes sociais</p>
-            <div className="flex flex-wrap gap-2" aria-hidden="true">
+            <nav className="flex flex-wrap gap-2" aria-label="Redes sociais">
               {[
-                { label: 'Facebook', Icon: Facebook },
-                { label: 'LinkedIn', Icon: Linkedin },
-                { label: 'Instagram', Icon: Instagram },
-                { label: 'YouTube', Icon: Youtube },
-              ].map(({ label, Icon }) => (
-                <span key={label} className="flex size-11 items-center justify-center rounded-xl bg-[#0049af] text-white">
-                  <Icon className="size-5" aria-hidden="true" />
-                </span>
+                { label: 'Facebook', href: 'https://web.facebook.com/oportunidades.social/', icon: 'facebook' },
+                { label: 'LinkedIn', href: 'https://www.linkedin.com/company/oportunidadesonline/', icon: 'linkedin' },
+                { label: 'X', href: 'https://x.com/oportunidadesmz', icon: 'x' },
+              ].map(({ label, href, icon }) => (
+                <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={`${label} da Oportunidades (abre numa nova janela)`} className="flex size-11 items-center justify-center rounded-xl bg-[#0049af] text-white transition-colors hover:bg-[#003b8c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0049af]">
+                  <img src={`/social/${icon}.svg`} alt="" width="20" height="20" loading="lazy" className="size-5" />
+                </a>
               ))}
-            </div>
+            </nav>
           </div>
         </div>
       </div>
 
       <div className="border-t border-[#dcdcdc]">
-        <div className={`mx-auto flex w-full max-w-6xl flex-col items-center justify-center px-5 text-center sm:px-6 xl:px-0 ${isHome ? 'gap-5 py-[30px]' : 'py-5'}`}>
-          {isHome && <img src="/logo.png" alt="Oportunidades" width="119" height="32" className="h-8 w-auto object-contain" />}
+        <div className={`mx-auto flex w-full max-w-6xl flex-col items-center justify-center px-5 text-center sm:px-6 xl:px-0 ${isHome ? 'py-[30px]' : 'py-5'}`}>
           <p className="text-xs leading-5 text-[#525252]">
             © 2022–{new Date().getFullYear()} Oportunidades. Todos os direitos reservados. Feito em Moçambique.
           </p>

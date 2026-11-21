@@ -4,6 +4,6 @@ import { apiRequest } from '@/lib/api-client'
 export async function requestPasswordReset(email: string) {
   await apiRequest<unknown>('/v1/auth/forgot-password', {
     method: 'POST',
-    body: JSON.stringify({ email }),
+    body: JSON.stringify({ email, delivery: 'otp' }),
   })
 }

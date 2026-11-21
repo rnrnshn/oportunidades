@@ -1,0 +1,11 @@
+{
+  "pairs": [
+    { "name": "Body text", "type": "normal-text", "foreground": "#262626", "background": "#FFFFFF", "context": "Default text" },
+    { "name": "Secondary text", "type": "normal-text", "foreground": "#525252", "background": "#FFFFFF", "context": "Metadata and descriptions" },
+    { "name": "Brand links", "type": "normal-text", "foreground": "#0049AF", "background": "#FFFFFF", "context": "Navigation and card actions" },
+    { "name": "Primary button", "type": "normal-text", "foreground": "#FFFFFF", "background": "#0049AF", "context": "Primary action" },
+    { "name": "Selected choice", "type": "ui", "foreground": "#0049AF", "background": "#EDF4FF", "context": "Selected radio card boundary" },
+    { "name": "Input border", "type": "ui", "foreground": "#767676", "background": "#FFFFFF", "context": "Select and radio card boundaries" },
+    { "name": "Rating icon", "type": "ui", "foreground": "#9A5A00", "background": "#FFFFFF", "context": "Star rating graphic" }
+  ]
+}

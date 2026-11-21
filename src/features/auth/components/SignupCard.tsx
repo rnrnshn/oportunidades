@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import { DialogHeader } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { register as registerAccount } from '@/features/auth/api'
+import { DASHBOARD_URL } from '@/lib/site'
 
 import { AuthLogo, Field } from './common'
 
@@ -44,6 +45,7 @@ export function SignupCard({ onSwitchMode, onClose }: SignupCardProps) {
       await registerAccount(`${values.firstName} ${values.lastName}`.trim(), values.email, values.password)
       await queryClient.invalidateQueries({ queryKey: ['auth', 'current-user'] })
       onClose()
+      window.location.assign(DASHBOARD_URL)
     } catch (error) {
       form.setError('root', { message: error instanceof Error ? error.message : 'Não foi possível criar a conta.' })
     }
